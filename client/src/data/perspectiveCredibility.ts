@@ -107,24 +107,36 @@ export const MANCHUKUO_PERSPECTIVES: TopicPerspectives = {
     ],
   },
   international: {
-    title: "国际视角",
+    title: "国际/国联视角",
     content:
-      "国际社会在1932年通过李顿调查团报告认定满洲国为日本操纵的傀儡政权，导致日本退出国际联盟。从国际法角度，伪满洲国的建立违反了《九国公约》和《凯洛格-白里安公约》，是对国际秩序的严重破坏。",
+      "国际联盟于1931年12月任命由英、美、法、德、意五国组成的李顿调查团赴东北实地调查。1932年10月公布的《李顿报告》明确指出：日本军事行动并非合法自卫，满洲国并非当地人民自发运动，而是日本军事占领和操纵的结果。1933年2月24日，国联大会以42票赞成、1票反对通过该报告，要求日本撤军。日本随即退席并于3月27日正式退出国联。",
     sources: [
       {
         id: "mk-intl-1",
         title: "Lytton Report (李顿调查团报告)",
-        author: "League of Nations",
+        author: "League of Nations Commission of Enquiry",
         year: "1932",
         type: "international",
-        credibilityScore: 88,
+        credibilityScore: 90,
         excerpt:
           "调查团认定，满洲国并非出于当地人民的自发运动，而是日本军事行动的结果。",
         credibilityReason:
-          "国际调查机构的第一手报告，基于实地考察，但受限于当时的国际政治环境。",
+          "国际调查机构的第一手报告，基于长达数月的实地考察和大量证据，包括1500余封中文来信和400余封俄文来信。",
       },
       {
         id: "mk-intl-2",
+        title: "League of Nations Covenant and Assembly Records",
+        author: "League of Nations",
+        year: "1931-1933",
+        type: "official_archive",
+        credibilityScore: 92,
+        excerpt:
+          "1933年2月24日，国联大会以42票赞成、1票反对通过李顿报告，要求日本将满洲归还中国。",
+        credibilityReason:
+          "国际联盟官方档案，记录投票结果和各国立场，是研究集体安全机制失效的一手材料。",
+      },
+      {
+        id: "mk-intl-3",
         title: "Japan's Total Empire: Manchuria and the Culture of Wartime Imperialism",
         author: "Louise Young",
         year: "1998",
@@ -135,17 +147,130 @@ export const MANCHUKUO_PERSPECTIVES: TopicPerspectives = {
         credibilityReason: "美国学者使用多国档案，分析深入全面，被学界广泛引用。",
       },
     ],
-    overallCredibility: 88,
+    overallCredibility: 89,
     credibilityAssessment:
-      "国际视角较为客观，综合使用多方史料，但早期西方学者对东亚内部视角的理解可能不够深入。近年来的研究质量显著提升。",
+      "国际/国联视角基于第一手调查报告和官方档案，对事件性质的判断较为客观。但其局限性在于：国联未能采取有效行动制止日本，反映了当时国际政治的现实主义逻辑而非理想主义。",
     biasIndicators: [
-      "早期西方研究可能带有东方主义偏见",
-      "冷战时期的研究可能受意识形态影响",
-      "部分研究对东亚国家内部复杂性理解不足",
+      "西方调查团对东亚社会内部状况的理解存在局限",
+      "报告提出的'国际共管'方案忽视中国主权完整",
+      "国联行动受制于大国政治利益",
     ],
     recommendedQuestions: [
       "国际联盟为何未能阻止日本的侵略行为？",
-      "西方学者的视角与亚洲学者有何本质区别？",
+      "李顿报告对满洲国性质的认定为何具有历史意义？",
+      "如果国联对日本实施有效制裁，历史是否会不同？",
+    ],
+  },
+  usa: {
+    title: "美国视角",
+    content:
+      "美国视角强调日本军国主义势力的崛起和大萧条背景下的对外扩张。美国教科书将满洲事变描述为日本军部绕过文官政府、为获取铁煤资源和市场而发动的侵略。美国政府在1932年1月7日由国务卿史汀生发出照会，宣布'不承认'任何违反条约权利和'门户开放'政策的既成事实，即'史汀生主义'。然而，受孤立主义影响，美国未加入国联，也未对日本采取军事或经济制裁。",
+    sources: [
+      {
+        id: "mk-us-1",
+        title: "World History: Patterns of Interaction",
+        author: "McDougal Littell / Houghton Mifflin",
+        year: "2009",
+        type: "academic",
+        credibilityScore: 78,
+        excerpt:
+          "1931年，日本军队占领了满洲，尽管日本议会反对。随后军队建立了傀儡政府。日本工程师和技术人员开始大量抵达，建造矿山和工厂。",
+        credibilityReason:
+          "美国中学历史教科书，反映美国主流教育体系对事件的叙述框架，简明但可能过于简化。",
+      },
+      {
+        id: "mk-us-2",
+        title: "Stimson Doctrine Non-Recognition Note",
+        author: "Henry L. Stimson, U.S. Secretary of State",
+        year: "1932",
+        type: "official_archive",
+        credibilityScore: 90,
+        excerpt:
+          "美国政府不能承认任何既成事实的合法性，也不能承认任何可能损害美国及其公民在华条约权益的条约或协定。",
+        credibilityReason:
+          "美国国务院正式外交文件，确立了美国不承认伪满洲国的立场，具有重要法理意义。",
+      },
+      {
+        id: "mk-us-3",
+        title: "Japanese Imperialism in Manchuria",
+        author: "L. Magyar",
+        year: "1932",
+        type: "media",
+        credibilityScore: 75,
+        excerpt:
+          "满洲所有的经济主导权都掌握在日本帝国主义手中。日本资本控制着对外贸易、主要铁路、最好的煤矿、现代化钢铁厂。",
+        credibilityReason:
+          "当代左翼报刊分析，提供了对日本经济扩张的批判视角，但带有明确的意识形态立场。",
+      },
+    ],
+    overallCredibility: 82,
+    credibilityAssessment:
+      "美国视角提供了关于日本决策动机和美国外交反应的重要记录，'史汀生主义'成为国际不承认伪满的重要法理基础。但美国当时奉行孤立主义，未采取实质性行动制止日本，其口头谴责与实际政策之间存在明显差距。",
+    biasIndicators: [
+      "教科书叙事可能过度强调日本军部'独走'，淡化国家整体责任",
+      "孤立主义叙事可能为美国不干预开脱",
+      "'门户开放'政策背后有美国经济利益考量",
+    ],
+    recommendedQuestions: [
+      "史汀生主义为何没有伴以军事或经济制裁？",
+      "美国'门户开放'政策如何影响了对满洲危机的反应？",
+      "如果美国在1932年采取更强硬立场，日本会否退却？",
+    ],
+  },
+  britain: {
+    title: "英国视角",
+    content:
+      "英国视角高度关注国际联盟的软弱和英国自身的利益计算。英国教科书指出，1931-1933年的满洲危机是对国联集体安全机制的严重考验。李顿调查团的报告详尽客观，结论明确：日本行为不合法，满洲应归还中国。然而，英国和法国在大萧条中无力也不愿对日本实施经济制裁，更不愿冒险与日本开战。英国似乎更热衷于维持对日良好关系，国联最终无能为力。日本未受惩罚退出的结果，被希特勒和墨索里尼密切关注。",
+    sources: [
+      {
+        id: "mk-uk-1",
+        title: "AQA GCSE History: Understanding the Modern World",
+        author: "AQA / Oxford University Press",
+        year: "2016",
+        type: "academic",
+        credibilityScore: 79,
+        excerpt:
+          "国联无能为力。它讨论了实施经济制裁，但美国作为日本的主要贸易伙伴不参与的话，制裁将毫无意义。此外，英国似乎更热衷于与日本保持良好关系。",
+        credibilityReason:
+          "英国中学历史教科书，反映英国主流教育对国联失败和本国政策的反思。",
+      },
+      {
+        id: "mk-uk-2",
+        title: "Cambridge International AS Level International History 1871-1945",
+        author: "Cambridge University Press",
+        year: "2014",
+        type: "academic",
+        credibilityScore: 82,
+        excerpt:
+          "根据《国际联盟盟约》条款，国际联盟本应对日本采取行动。然而，在全球大萧条最严重的时候，英国和法国无力对日本实施经济制裁，而且两国都不愿因这一问题发动战争。",
+        credibilityReason:
+          "国际课程教材，较为平衡地分析了国联失败的结构性原因和英国的政策选择。",
+      },
+      {
+        id: "mk-uk-3",
+        title: "Oxford AQA History for GCSE: Conflict and Tension 1918-1939",
+        author: "Oxford University Press",
+        year: "2016",
+        type: "academic",
+        credibilityScore: 80,
+        excerpt:
+          "李顿报告得出结论：日本是过错方。即使南满铁路曾遭攻击，日本的反应也过度了，不应入侵。",
+        credibilityReason:
+          "英国GCSE教材，简明呈现李顿调查团结论，适合基础历史教育。",
+      },
+    ],
+    overallCredibility: 81,
+    credibilityAssessment:
+      "英国视角对国联失败和英国政策选择的反思较为坦率，承认英国因经济困难和战略顾虑未能有效制止日本。这种自我批评性的叙述有助于理解绥靖政策的早期根源。但英国视角有时可能过度强调国联机制本身的缺陷，而淡化大国自私的决策。",
+    biasIndicators: [
+      "可能为英国不制裁日本的政策进行合理化",
+      "强调国联机制缺陷，转移对大国责任的批评",
+      "对李顿报告的国际法意义评价可能不足",
+    ],
+    recommendedQuestions: [
+      "英国为何不愿对日本实施经济制裁？",
+      "满洲危机中英国的政策选择是否预示了后来的绥靖主义？",
+      "李顿报告如果得到英国更强硬支持，结果会否不同？",
     ],
   },
 };
