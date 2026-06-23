@@ -18,18 +18,20 @@ const base = import.meta.env.PROD ? "/global-history-lens/" : "/";
 function AppRouter() {
   return (
     <WouterRouter base={base}>
-      <Switch>
-        <Route path={"/"} component={Home} />
-        <Route path={"/dialogue"} component={Dialogue} />
-        <Route path={"/archive"} component={Archive} />
-        <Route path={"/archive/:id"} component={Archive} />
-        <Route path={"/dialogue-history"} component={DialogueHistory} />
-        <Route path={"/travel"} component={Travel} />
-        <Route path={"/showcase"} component={Showcase} />
-        <Route path={"/404"} component={NotFound} />
-        {/* Final fallback route */}
-        <Route component={NotFound} />
-      </Switch>
+      <Layout>
+        <Switch>
+          <Route path={"/"} component={Home} />
+          <Route path={"/dialogue"} component={Dialogue} />
+          <Route path={"/archive"} component={Archive} />
+          <Route path={"/archive/:id"} component={Archive} />
+          <Route path={"/dialogue-history"} component={DialogueHistory} />
+          <Route path={"/travel"} component={Travel} />
+          <Route path={"/showcase"} component={Showcase} />
+          <Route path={"/404"} component={NotFound} />
+          {/* Final fallback route */}
+          <Route component={NotFound} />
+        </Switch>
+      </Layout>
     </WouterRouter>
   );
 }
@@ -48,9 +50,7 @@ function App() {
       >
         <TooltipProvider>
           <Toaster />
-          <Layout>
-            <AppRouter />
-          </Layout>
+          <AppRouter />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
