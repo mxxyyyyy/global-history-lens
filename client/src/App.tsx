@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Layout from "./components/Layout";
 import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
+import { Route, Switch, Router as WouterRouter } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
@@ -13,20 +13,22 @@ import Showcase from "./pages/Showcase";
 import DialogueHistory from "./pages/DialogueHistory";
 
 
-function Router() {
+function AppRouter() {
   return (
-    <Switch>
-      <Route path={"/"} component={Home} />
-      <Route path={"/dialogue"} component={Dialogue} />
-      <Route path={"/archive"} component={Archive} />
-      <Route path={"/archive/:id"} component={Archive} />
-      <Route path={"/dialogue-history"} component={DialogueHistory} />
-      <Route path={"/travel"} component={Travel} />
-      <Route path={"/showcase"} component={Showcase} />
-      <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
-      <Route component={NotFound} />
-    </Switch>
+    <WouterRouter base={import.meta.env.BASE_URL}>
+      <Switch>
+        <Route path={"/"} component={Home} />
+        <Route path={"/dialogue"} component={Dialogue} />
+        <Route path={"/archive"} component={Archive} />
+        <Route path={"/archive/:id"} component={Archive} />
+        <Route path={"/dialogue-history"} component={DialogueHistory} />
+        <Route path={"/travel"} component={Travel} />
+        <Route path={"/showcase"} component={Showcase} />
+        <Route path={"/404"} component={NotFound} />
+        {/* Final fallback route */}
+        <Route component={NotFound} />
+      </Switch>
+    </WouterRouter>
   );
 }
 
@@ -45,7 +47,7 @@ function App() {
         <TooltipProvider>
           <Toaster />
           <Layout>
-            <Router />
+            <AppRouter />
           </Layout>
         </TooltipProvider>
       </ThemeProvider>
