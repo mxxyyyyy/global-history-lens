@@ -1,0 +1,236 @@
+import { Button } from "@/components/ui/button";
+import { ArrowRight, MessageSquare, Database, Map as MapIcon, ChevronRight } from "lucide-react";
+import { Link } from "wouter";
+import { motion } from "framer-motion";
+
+export default function Home() {
+  return (
+    <div className="flex flex-col min-h-screen">
+      {/* Hero Section - Brutalist & Archival */}
+      <section className="relative min-h-[90vh] flex items-center border-b-2 border-border overflow-hidden">
+        {/* Background Texture & Image */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-primary/10 mix-blend-multiply z-10"></div>
+          <img 
+            src="/images/hero-bg.jpg" 
+            alt="Historical Archive Texture" 
+            className="w-full h-full object-cover opacity-40 grayscale contrast-125"
+          />
+          {/* Grid Overlay */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#2A2A2A_1px,transparent_1px),linear-gradient(to_bottom,#2A2A2A_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-[0.05] z-20 pointer-events-none"></div>
+        </div>
+
+        <div className="container relative z-30 pt-20 pb-32">
+          <div className="max-w-4xl">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="inline-block mb-6 border-2 border-primary px-4 py-1 bg-background shadow-brutal-sm"
+            >
+              <span className="font-mono text-sm font-bold tracking-widest uppercase text-primary">
+                Global History Lens Project
+              </span>
+            </motion.div>
+            
+            <motion.h1 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.9] mb-8 text-primary mix-blend-hard-light"
+            >
+              HISTORY IS <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/70 italic font-serif">NOT SINGULAR</span>
+            </motion.h1>
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+              className="text-xl md:text-2xl text-foreground/80 max-w-2xl mb-12 font-serif leading-relaxed border-l-4 border-primary pl-6"
+            >
+              基于AI与VR技术的全球多视角历史交互平台。
+              <br/>
+              解构单一叙事，重构历史全像。
+            </motion.p>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <Link href="/dialogue" className="inline-block">
+                <Button size="lg" className="h-14 px-8 text-lg font-mono border-2 border-primary bg-primary text-primary-foreground hover:bg-primary/90 rounded-none shadow-brutal transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal-lg active:translate-x-[0px] active:translate-y-[0px] active:shadow-brutal">
+                  开始多视角对话 <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+              <Link href="/archive" className="inline-block">
+                <Button variant="outline" size="lg" className="h-14 px-8 text-lg font-mono border-2 border-primary bg-transparent hover:bg-secondary rounded-none shadow-brutal-sm transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal active:translate-x-[0px] active:translate-y-[0px] active:shadow-brutal-sm">
+                  浏览档案库
+                </Button>
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+        
+        {/* Scroll Indicator */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5, duration: 1 }}
+          className="absolute bottom-0 left-0 w-full border-t-2 border-border bg-background/80 backdrop-blur py-4"
+        >
+          <div className="container flex justify-between items-center font-mono text-xs uppercase tracking-widest">
+            <span>Scroll to explore</span>
+            <div className="h-12 w-[1px] bg-primary animate-pulse"></div>
+            <span>Est. 2025</span>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Core Features Section - Grid Layout */}
+      <section className="py-24 bg-background relative">
+        <div className="container">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 border-b-2 border-border pb-8">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 font-mono uppercase">核心功能</h2>
+              <p className="text-muted-foreground font-typewriter max-w-md">
+                通过三大核心模块，打破时空界限，重建历史认知。
+              </p>
+            </div>
+            <div className="hidden md:block font-mono text-sm border border-border px-3 py-1">
+              INDEX: 01-03
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Feature 1 */}
+            <div className="group border-2 border-border bg-card p-8 hover:bg-secondary transition-colors relative overflow-hidden shadow-brutal hover:shadow-brutal-lg transition-all duration-300">
+              <div className="absolute top-4 right-4 font-mono text-4xl font-bold text-border/20 group-hover:text-primary/10 transition-colors">01</div>
+              <div className="mb-6 w-16 h-16 bg-primary text-primary-foreground flex items-center justify-center border-2 border-transparent group-hover:border-primary group-hover:bg-transparent group-hover:text-primary transition-all">
+                <MessageSquare className="h-8 w-8" />
+              </div>
+              <h3 className="text-2xl font-bold mb-4 font-serif group-hover:text-primary transition-colors">AI多视角对话</h3>
+              <p className="text-muted-foreground mb-6 font-typewriter leading-relaxed">
+                针对同一历史事件，实时生成中、日、美、英、苏等多国视角的差异化解读。史料来源可追溯，培养批判性思维。
+              </p>
+              <Link href="/dialogue" className="inline-flex items-center font-mono text-sm font-bold uppercase tracking-wider hover:underline decoration-2 underline-offset-4">
+                立即体验 <ChevronRight className="ml-1 h-4 w-4" />
+              </Link>
+            </div>
+
+            {/* Feature 2 */}
+            <div className="group border-2 border-border bg-card p-8 hover:bg-secondary transition-colors relative overflow-hidden shadow-brutal hover:shadow-brutal-lg transition-all duration-300">
+              <div className="absolute top-4 right-4 font-mono text-4xl font-bold text-border/20 group-hover:text-primary/10 transition-colors">02</div>
+              <div className="mb-6 w-16 h-16 bg-primary text-primary-foreground flex items-center justify-center border-2 border-transparent group-hover:border-primary group-hover:bg-transparent group-hover:text-primary transition-all">
+                <Database className="h-8 w-8" />
+              </div>
+              <h3 className="text-2xl font-bold mb-4 font-serif group-hover:text-primary transition-colors">智能历史专题库</h3>
+              <p className="text-muted-foreground mb-6 font-typewriter leading-relaxed">
+                "3+1"结构化呈现：宏观背景、多维解构、证据墙与视角对比。深度剖析政治、经济、社会、文化四大维度。
+              </p>
+              <Link href="/archive" className="inline-flex items-center font-mono text-sm font-bold uppercase tracking-wider hover:underline decoration-2 underline-offset-4">
+                查阅档案 <ChevronRight className="ml-1 h-4 w-4" />
+              </Link>
+            </div>
+
+            {/* Feature 3 */}
+            <div className="group border-2 border-border bg-card p-8 hover:bg-secondary transition-colors relative overflow-hidden shadow-brutal hover:shadow-brutal-lg transition-all duration-300">
+              <div className="absolute top-4 right-4 font-mono text-4xl font-bold text-border/20 group-hover:text-primary/10 transition-colors">03</div>
+              <div className="mb-6 w-16 h-16 bg-primary text-primary-foreground flex items-center justify-center border-2 border-transparent group-hover:border-primary group-hover:bg-transparent group-hover:text-primary transition-all">
+                <MapIcon className="h-8 w-8" />
+              </div>
+              <h3 className="text-2xl font-bold mb-4 font-serif group-hover:text-primary transition-colors">深度主题旅游</h3>
+              <p className="text-muted-foreground mb-6 font-typewriter leading-relaxed">
+                AI生成个性化历史研学路线，结合AR实景复原与VR情境重现，将历史洞察转化为实地探索体验。
+              </p>
+              <Link href="/travel" className="inline-flex items-center font-mono text-sm font-bold uppercase tracking-wider hover:underline decoration-2 underline-offset-4">
+                规划行程 <ChevronRight className="ml-1 h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Case Study - Split Layout */}
+      <section className="py-0 border-y-2 border-border bg-secondary/20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[600px]">
+          <div className="relative border-b-2 lg:border-b-0 lg:border-r-2 border-border overflow-hidden group">
+            <div className="absolute inset-0 bg-primary/20 mix-blend-multiply z-10 group-hover:bg-transparent transition-all duration-500"></div>
+            <img 
+              src="/images/map-bg.jpg" 
+              alt="Manchuria Map 1930s" 
+              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
+            />
+            <div className="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/80 to-transparent z-20">
+              <span className="inline-block px-3 py-1 bg-primary text-primary-foreground font-mono text-xs font-bold mb-2">标杆案例</span>
+              <h3 className="text-3xl md:text-4xl font-bold text-white font-serif">伪满洲国 (1932-1945)</h3>
+            </div>
+          </div>
+          
+          <div className="p-12 lg:p-20 flex flex-col justify-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-mono uppercase">全球视野下的<br/>伪满洲国实录</h2>
+            <div className="w-20 h-2 bg-primary mb-8"></div>
+            
+            <p className="text-lg text-muted-foreground mb-8 font-serif leading-relaxed">
+              这是我们的首个标杆案例。我们聚合了中国、日本、美国、英国、苏联等多国的官方档案、学术研究与民间记忆，深度解构这一复杂的历史时期。
+            </p>
+            
+            <div className="grid grid-cols-2 gap-6 mb-10">
+              <div className="border-l-2 border-primary pl-4">
+                <h4 className="font-bold font-mono text-sm uppercase mb-1">政治外交</h4>
+                <p className="text-sm text-muted-foreground">傀儡政权的合法性危机与国际博弈</p>
+              </div>
+              <div className="border-l-2 border-primary pl-4">
+                <h4 className="font-bold font-mono text-sm uppercase mb-1">经济资源</h4>
+                <p className="text-sm text-muted-foreground">工业化背后的殖民输血与掠夺</p>
+              </div>
+              <div className="border-l-2 border-primary pl-4">
+                <h4 className="font-bold font-mono text-sm uppercase mb-1">社会文化</h4>
+                <p className="text-sm text-muted-foreground">身份认同的撕裂与皇民化教育</p>
+              </div>
+              <div className="border-l-2 border-primary pl-4">
+                <h4 className="font-bold font-mono text-sm uppercase mb-1">军事冲突</h4>
+                <p className="text-sm text-muted-foreground">冰雪中的游击战与国际援助</p>
+              </div>
+            </div>
+            
+            <Link href="/archive/manchukuo" className="inline-block">
+              <Button size="lg" className="self-start rounded-none border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground shadow-brutal-sm hover:shadow-brutal transition-all">
+                深入探索此案例
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Value Proposition - Typography Focused */}
+      <section className="py-24 bg-primary text-primary-foreground relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10 bg-[url('/images/archive-texture.jpg')] bg-cover bg-center mix-blend-overlay"></div>
+        <div className="container relative z-10">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl md:text-5xl font-bold mb-12 font-serif leading-tight">
+              "对同一历史事件的多元解读，是促进文明对话、避免认知偏见的关键。"
+            </h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+              <div className="bg-background/10 backdrop-blur p-6 border border-primary-foreground/20">
+                <h3 className="text-xl font-bold mb-3 font-mono">学术革命</h3>
+                <p className="text-sm opacity-80 font-typewriter">为历史研究提供直观的跨国比较工具，培养批判性思维。</p>
+              </div>
+              <div className="bg-background/10 backdrop-blur p-6 border border-primary-foreground/20">
+                <h3 className="text-xl font-bold mb-3 font-mono">跨文化理解</h3>
+                <p className="text-sm opacity-80 font-typewriter">消解单一叙事带来的误解与偏见，促进基于事实的对话。</p>
+              </div>
+              <div className="bg-background/10 backdrop-blur p-6 border border-primary-foreground/20">
+                <h3 className="text-xl font-bold mb-3 font-mono">人文经济</h3>
+                <p className="text-sm opacity-80 font-typewriter">将历史洞察力转化为文化吸引力，赋能地方文旅发展。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
