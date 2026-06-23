@@ -4,3 +4,9 @@ import { twMerge } from "tailwind-merge";
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+export function getImagePath(path: string): string {
+  const cleanPath = path.startsWith("/") ? path.slice(1) : path;
+  const base = import.meta.env.PROD ? "/global-history-lens/" : "/";
+  return `${base}${cleanPath}`;
+}

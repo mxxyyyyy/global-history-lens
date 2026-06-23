@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageSquare, Database, Map as MapIcon, ChevronRight } from "lucide-react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
+import { getImagePath } from "@/lib/utils";
 
 export default function Home() {
   return (
@@ -12,7 +13,7 @@ export default function Home() {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-primary/10 mix-blend-multiply z-10"></div>
           <img 
-            src="/images/hero-bg.jpg" 
+            src={getImagePath("/images/hero-bg.jpg")}
             alt="Historical Archive Texture" 
             className="w-full h-full object-cover opacity-40 grayscale contrast-125"
           />
@@ -159,7 +160,7 @@ export default function Home() {
           <div className="relative border-b-2 lg:border-b-0 lg:border-r-2 border-border overflow-hidden group">
             <div className="absolute inset-0 bg-primary/20 mix-blend-multiply z-10 group-hover:bg-transparent transition-all duration-500"></div>
             <img 
-              src="/images/map-bg.jpg" 
+              src={getImagePath("/images/map-bg.jpg")}
               alt="Manchuria Map 1930s" 
               className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
             />

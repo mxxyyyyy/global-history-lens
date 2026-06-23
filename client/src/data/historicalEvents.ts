@@ -1,4 +1,4 @@
-﻿// Historical Events Archive Data
+// Historical Events Archive Data
 export interface HistoricalEvent {
   id: string;
   title: string;
@@ -159,16 +159,16 @@ const ALL_EVENTS: HistoricalEvent[] = [
 ];
 
 export const ARCHIVE_TOPICS: ArchiveTopic[] = [
-  { id:"manchukuo", title:"伪满洲国实录", subtitle:"傀儡政权与民族抵抗", period:"1932-1945", region:"中国东北", description:"聚合中、日、美、英、苏等多国官方档案，深度解构1932-1945年间的东北亚历史变局。", coverImage:"/images/map-bg.jpg", caseId:"MAN-1932-1945", events: ALL_EVENTS.filter(e => e.topicId === "manchukuo") },
-  { id:"opium_war", title:"鸦片战争", subtitle:"帝国碰撞与近代开端", period:"1839-1842", region:"中国沿海", description:"中英两种文明首次正面碰撞。'自由贸易'与'主权禁毒'的叙事对立。", coverImage:"/images/hero-bg.jpg", caseId:"OPW-1839-1842", events: ALL_EVENTS.filter(e => e.topicId === "opium_war") },
-  { id:"meiji", title:"明治维新", subtitle:"东方崛起与现代化之路", period:"1868-1912", region:"日本", description:"一个封建国家如何在一代人的时间内跻身列强？", coverImage:"/images/hero-bg.jpg", caseId:"MEI-1868-1912", events: ALL_EVENTS.filter(e => e.topicId === "meiji") },
-  { id:"french_revolution", title:"法国大革命", subtitle:"自由、平等、博爱的代价", period:"1789-1799", region:"法国/欧洲", description:"现代民主的起源还是暴力革命的警示？", coverImage:"/images/hero-bg.jpg", caseId:"FRV-1789-1799", events: ALL_EVENTS.filter(e => e.topicId === "french_revolution") },
-  { id:"cold_war", title:"冷战与柏林墙", subtitle:"铁幕两侧的世界", period:"1947-1991", region:"全球", description:"两个超级大国的意识形态对抗如何塑造了半个世纪的世界格局。", coverImage:"/images/hero-bg.jpg", caseId:"CLD-1947-1991", events: ALL_EVENTS.filter(e => e.topicId === "cold_war") },
-  { id:"silk_road", title:"丝绸之路", subtitle:"千年商路与文明互鉴", period:"公元前2世纪-15世纪", region:"欧亚大陆", description:"连接东西方文明的千年通道。", coverImage:"/images/hero-bg.jpg", caseId:"SLK-BC2C-15C", events: ALL_EVENTS.filter(e => e.topicId === "silk_road") },
-  { id:"american_revolution", title:"美国独立战争", subtitle:"新世界的民主实验", period:"1775-1789", region:"北美", description:"殖民地如何变成了世界强国？", coverImage:"/images/hero-bg.jpg", caseId:"USR-1775-1789", events: ALL_EVENTS.filter(e => e.topicId === "american_revolution") },
-  { id:"industrial_revolution", title:"工业革命", subtitle:"蒸汽与钢铁的新纪元", period:"1760-1900", region:"英国/全球", description:"人类生产力第一次质的飞跃。", coverImage:"/images/hero-bg.jpg", caseId:"IND-1760-1900", events: ALL_EVENTS.filter(e => e.topicId === "industrial_revolution") },
-  { id:"ww1", title:"第一次世界大战", subtitle:"帝国的黄昏", period:"1914-1918", region:"全球", description:"一场'结束一切战争的战争'如何播下了更大灾难的种子。", coverImage:"/images/hero-bg.jpg", caseId:"WW1-1914-1918", events: ALL_EVENTS.filter(e => e.topicId === "ww1") },
-  { id:"age_of_exploration", title:"大航海时代", subtitle:"发现、征服与交换", period:"15-17世纪", region:"全球", description:"'地理大发现'还是'殖民侵略的开端'？", coverImage:"/images/hero-bg.jpg", caseId:"AOE-15C-17C", events: ALL_EVENTS.filter(e => e.topicId === "age_of_exploration") },
+  { id:"manchukuo", title:"伪满洲国实录", subtitle:"傀儡政权与民族抵抗", period:"1932-1945", region:"中国东北", description:"聚合中、日、美、英、苏等多国官方档案，深度解构1932-1945年间的东北亚历史变局。", coverImage:"/images/manchukuo-cover.png", caseId:"MAN-1932-1945", events: ALL_EVENTS.filter(e => e.topicId === "manchukuo") },
+  { id:"opium_war", title:"鸦片战争", subtitle:"帝国碰撞与近代开端", period:"1839-1842", region:"中国沿海", description:"中英两种文明首次正面碰撞。'自由贸易'与'主权禁毒'的叙事对立。", coverImage:"/images/opium-war-cover.jpg", caseId:"OPW-1839-1842", events: ALL_EVENTS.filter(e => e.topicId === "opium_war") },
+  { id:"meiji", title:"明治维新", subtitle:"东方崛起与现代化之路", period:"1868-1912", region:"日本", description:"一个封建国家如何在一代人的时间内跻身列强？", coverImage:"/images/meiji-cover.jpg", caseId:"MEI-1868-1912", events: ALL_EVENTS.filter(e => e.topicId === "meiji") },
+  { id:"french_revolution", title:"法国大革命", subtitle:"自由、平等、博爱的代价", period:"1789-1799", region:"法国/欧洲", description:"现代民主的起源还是暴力革命的警示？", coverImage:"/images/french-revolution-cover.jpg", caseId:"FRV-1789-1799", events: ALL_EVENTS.filter(e => e.topicId === "french_revolution") },
+  { id:"cold_war", title:"冷战与柏林墙", subtitle:"铁幕两侧的世界", period:"1947-1991", region:"全球", description:"两个超级大国的意识形态对抗如何塑造了半个世纪的世界格局。", coverImage:"/images/cold-war-cover.jpg", caseId:"CLD-1947-1991", events: ALL_EVENTS.filter(e => e.topicId === "cold_war") },
+  { id:"silk_road", title:"丝绸之路", subtitle:"千年商路与文明互鉴", period:"公元前2世纪-15世纪", region:"欧亚大陆", description:"连接东西方文明的千年通道。", coverImage:"/images/silk-road-cover.jpg", caseId:"SLK-BC2C-15C", events: ALL_EVENTS.filter(e => e.topicId === "silk_road") },
+  { id:"american_revolution", title:"美国独立战争", subtitle:"新世界的民主实验", period:"1775-1789", region:"北美", description:"殖民地如何变成了世界强国？", coverImage:"/images/american-revolution-cover.jpg", caseId:"USR-1775-1789", events: ALL_EVENTS.filter(e => e.topicId === "american_revolution") },
+  { id:"industrial_revolution", title:"工业革命", subtitle:"蒸汽与钢铁的新纪元", period:"1760-1900", region:"英国/全球", description:"人类生产力第一次质的飞跃。", coverImage:"/images/industrial-revolution-cover.jpg", caseId:"IND-1760-1900", events: ALL_EVENTS.filter(e => e.topicId === "industrial_revolution") },
+  { id:"ww1", title:"第一次世界大战", subtitle:"帝国的黄昏", period:"1914-1918", region:"全球", description:"一场'结束一切战争的战争'如何播下了更大灾难的种子。", coverImage:"/images/ww1-cover.jpg", caseId:"WW1-1914-1918", events: ALL_EVENTS.filter(e => e.topicId === "ww1") },
+  { id:"age_of_exploration", title:"大航海时代", subtitle:"发现、征服与交换", period:"15-17世纪", region:"全球", description:"'地理大发现'还是'殖民侵略的开端'？", coverImage:"/images/age-of-exploration-cover.jpg", caseId:"AOE-15C-17C", events: ALL_EVENTS.filter(e => e.topicId === "age_of_exploration") },
 ];
 
 export const HISTORICAL_EVENTS: HistoricalEvent[] = ARCHIVE_TOPICS.flatMap(t => t.events);

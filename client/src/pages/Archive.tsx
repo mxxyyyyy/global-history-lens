@@ -6,6 +6,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Search, Filter, Calendar, MapPin, FileText, Image as ImageIcon, Film, Mic, Database, X, ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
 import { HISTORICAL_EVENTS, ARCHIVE_CATEGORIES, ARCHIVE_TOPICS, ArchiveTopic, HistoricalEvent } from "@/data/historicalEvents";
+import { getImagePath } from "@/lib/utils";
 
 export default function Archive() {
   const [activeTab, setActiveTab] = useState("politics");
@@ -214,7 +215,7 @@ export default function Archive() {
                 className="text-left border-2 border-border bg-card p-0 shadow-brutal hover:shadow-brutal-lg transition-all group overflow-hidden"
               >
                 <div className="h-32 bg-secondary/30 relative overflow-hidden">
-                  <img src={topic.coverImage} alt={topic.title} className="w-full h-full object-cover opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-60 transition-all duration-500" />
+                  <img src={getImagePath(topic.coverImage)} alt={topic.title} className="w-full h-full object-cover opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-60 transition-all duration-500" />
                   <div className="absolute bottom-2 left-2 px-2 py-0.5 bg-primary text-primary-foreground font-mono text-[10px] font-bold">
                     {topic.caseId}
                   </div>
@@ -252,7 +253,7 @@ export default function Archive() {
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-border/50">
-                <img src="/images/map-bg.jpg" alt="Context Map" className="w-full h-32 object-cover grayscale hover:grayscale-0 transition-all mb-2 border border-border" />
+                <img src={getImagePath("/images/map-bg.jpg")} alt="Context Map" className="w-full h-32 object-cover grayscale hover:grayscale-0 transition-all mb-2 border border-border" />
                 <span className="text-[10px] font-mono text-muted-foreground block text-right">FIG 1.1: GEOPOLITICAL MAP 1931</span>
               </div>
             </div>

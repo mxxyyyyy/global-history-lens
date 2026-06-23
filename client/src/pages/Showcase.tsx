@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, Layers, Palette, Layout, MousePointer, Share2, Download, Eye } from "lucide-react";
 import { Link } from "wouter";
+import { getImagePath } from "@/lib/utils";
 
 export default function Showcase() {
   const [activeSection, setActiveSection] = useState("overview");
@@ -104,7 +105,7 @@ export default function Showcase() {
                   </div>
                 </div>
                 <div className="relative aspect-video bg-secondary border-2 border-border shadow-brutal-lg overflow-hidden group">
-                  <img src="/images/hero-bg.jpg" alt="Project Overview" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+                  <img src={getImagePath("/images/hero-bg.jpg")} alt="Project Overview" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
                   <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-transparent transition-all">
                     <div className="bg-background/90 backdrop-blur px-6 py-3 border-2 border-primary shadow-lg">
                       <span className="font-mono font-bold text-primary uppercase tracking-widest">Project Vision</span>
@@ -228,19 +229,19 @@ export default function Showcase() {
                   title: "AI多视角对话",
                   desc: "实时生成中、日、美、英、苏等多国视角的差异化解读，史料来源可追溯。",
                   link: "/dialogue",
-                  img: "/images/perspective-icon.png"
+                  img: getImagePath("/images/perspective-icon.png")
                 },
                 {
                   title: "智能历史专题库",
                   desc: "3+1结构化呈现：宏观背景、多维解构、证据墙与视角对比。",
                   link: "/archive",
-                  img: "/images/archive-texture.jpg"
+                  img: getImagePath("/images/archive-texture.jpg")
                 },
                 {
                   title: "深度主题旅游",
                   desc: "AI生成个性化历史研学路线，结合AR实景复原与VR情境重现。",
                   link: "/travel",
-                  img: "/images/map-bg.jpg"
+                  img: getImagePath("/images/map-bg.jpg")
                 }
               ].map((feature, i) => (
                 <div key={i} className="group border-2 border-border bg-card overflow-hidden shadow-brutal hover:shadow-brutal-lg transition-all">
