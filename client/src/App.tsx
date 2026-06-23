@@ -13,9 +13,11 @@ import Showcase from "./pages/Showcase";
 import DialogueHistory from "./pages/DialogueHistory";
 
 
+const base = import.meta.env.PROD ? "/global-history-lens/" : "/";
+
 function AppRouter() {
   return (
-    <WouterRouter base={import.meta.env.BASE_URL}>
+    <WouterRouter base={base}>
       <Switch>
         <Route path={"/"} component={Home} />
         <Route path={"/dialogue"} component={Dialogue} />
