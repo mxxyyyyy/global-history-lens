@@ -103,6 +103,7 @@ jspm_packages/
 # Temporary folders
 tmp/
 temp/
+__pycache__/
 
 # Database
 *.db

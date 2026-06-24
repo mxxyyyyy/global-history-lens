@@ -1,0 +1,5066 @@
+{
+  "lisbon": {
+    "name": "里斯本",
+    "case": "大航海时代",
+    "country": "葡萄牙",
+    "description": "特茹河畔的航海之都，贝伦塔与热罗尼莫斯修道院见证葡萄牙从恩里克王子到达·伽马的海洋扩张。阿尔法玛的窄巷、fado与蛋挞交织出欧亚交融的南国风情。",
+    "themes": {
+      "navigation": {
+        "1day": {
+          "title": "大航海荣耀一日线",
+          "subtitle": "从贝伦塔到发现者纪念碑，读懂葡萄牙帝国梦",
+          "duration": "1日",
+          "stops": [
+            {
+              "time": "09:30",
+              "title": "贝伦塔 Torre de Belém",
+              "type": "核心",
+              "desc": "大航海时代的象征，这座曼努埃尔式防御塔曾是航海家启航的守望点。清晨光线最适合拍摄石砌雕饰与特茹河景。#世界遗产",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Torre_de_Bel%C3%A9m.jpg",
+              "tips": "门票约10€，建议官网提前订票；上午开门就去避开旅行团，傍晚可顺路看河畔日落。"
+            },
+            {
+              "time": "10:30",
+              "title": "热罗尼莫斯修道院 Mosteiro dos Jerónimos",
+              "type": "核心",
+              "desc": "达·伽马航海前夜祈祷之地，葡萄牙晚期哥特与文艺复兴的巅峰。航海家达·伽马长眠于此。#曼努埃尔建筑",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Mosteiro_dos_Jer%C3%B3nimos.jpg",
+              "tips": "修道院与教堂分开售票，联票约12€；周一上午部分区域关闭，穿舒适鞋子地面很滑。"
+            },
+            {
+              "time": "12:00",
+              "title": "发现者纪念碑 Padrão dos Descobrimentos",
+              "type": "核心",
+              "desc": "纪念恩里克王子与葡萄牙大航海先驱，碑顶观景台可远眺贝伦塔与4月25日大桥。#航海记忆",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Padr%C3%A3o_dos_Descobrimentos.jpg",
+              "tips": "登顶门票约6€，风大需外套；广场上可拍到人字形马赛克世界地图。"
+            },
+            {
+              "time": "13:00",
+              "title": "贝伦蛋挞店 Pastéis de Belém",
+              "type": "美食",
+              "desc": "1837年开业的蛋挞创始店，外皮酥脆、蛋奶香浓。一次吃两个是本地人的日常。#葡式蛋挞",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Past%C3%A9is_de_Bel%C3%A9m.jpg",
+              "tips": "店内座位多但常排队，外带更快；建议配一杯bica浓缩咖啡，单个约1.3€。"
+            },
+            {
+              "time": "14:30",
+              "title": "海事博物馆 Museu de Marinha",
+              "type": "核心",
+              "desc": "收藏大航海时代舰船模型、航海仪器与皇家游艇，重现葡萄牙从恩里克王子到伽马的海洋霸权。#航海史",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Museu_de_Marinha_de_Lisboa.jpg",
+              "tips": "门票约8.5€，周二至周日开放；模型控可预留2小时，语音导览值得租。"
+            },
+            {
+              "time": "17:00",
+              "title": "特茹河畔日落",
+              "type": "体验",
+              "desc": "在贝伦区河滨步道散步，看4月25日大桥与帆船剪影，感受航海家们扬帆前最后一片陆地。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Torre_de_Bel%C3%A9m.jpg",
+              "tips": "夏季日落约20:30，带防风外套。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "机场乘地铁红线转绿/黄线至Cais do Sodré，再换乘电车15E到贝伦；市区打车约25€",
+            "accommodation": "拜萨区或贝伦区，交通便利、餐厅集中",
+            "food": "葡式蛋挞、烤沙丁鱼、海鲜饭、樱桃酒Ginjinha",
+            "budget": "80-150€/人/天",
+            "bestTime": "4-6月、9-10月气候温和",
+            "tips": [
+              "贝伦区景点密集，建议购买联票",
+              "蛋挞店Pastéis de Belém永远排队，外带更快"
+            ]
+          }
+        },
+        "2days": {
+          "title": "大航海双日深度游",
+          "subtitle": "贝伦遗迹+老城生活，完整触摸海洋帝国",
+          "duration": "2日",
+          "stops": [
+            {
+              "time": "09:30",
+              "title": "贝伦塔 Torre de Belém",
+              "type": "核心",
+              "desc": "大航海时代的象征，这座曼努埃尔式防御塔曾是航海家启航的守望点。清晨光线最适合拍摄石砌雕饰与特茹河景。#世界遗产",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Torre_de_Bel%C3%A9m.jpg",
+              "tips": "门票约10€，建议官网提前订票；上午开门就去避开旅行团，傍晚可顺路看河畔日落。"
+            },
+            {
+              "time": "10:30",
+              "title": "热罗尼莫斯修道院 Mosteiro dos Jerónimos",
+              "type": "核心",
+              "desc": "达·伽马航海前夜祈祷之地，葡萄牙晚期哥特与文艺复兴的巅峰。航海家达·伽马长眠于此。#曼努埃尔建筑",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Mosteiro_dos_Jer%C3%B3nimos.jpg",
+              "tips": "修道院与教堂分开售票，联票约12€；周一上午部分区域关闭，穿舒适鞋子地面很滑。"
+            },
+            {
+              "time": "12:00",
+              "title": "发现者纪念碑 Padrão dos Descobrimentos",
+              "type": "核心",
+              "desc": "纪念恩里克王子与葡萄牙大航海先驱，碑顶观景台可远眺贝伦塔与4月25日大桥。#航海记忆",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Padr%C3%A3o_dos_Descobrimentos.jpg",
+              "tips": "登顶门票约6€，风大需外套；广场上可拍到人字形马赛克世界地图。"
+            },
+            {
+              "time": "13:00",
+              "title": "贝伦蛋挞店 Pastéis de Belém",
+              "type": "美食",
+              "desc": "1837年开业的蛋挞创始店，外皮酥脆、蛋奶香浓。一次吃两个是本地人的日常。#葡式蛋挞",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Past%C3%A9is_de_Bel%C3%A9m.jpg",
+              "tips": "店内座位多但常排队，外带更快；建议配一杯bica浓缩咖啡，单个约1.3€。"
+            },
+            {
+              "time": "14:30",
+              "title": "海事博物馆 Museu de Marinha",
+              "type": "核心",
+              "desc": "收藏大航海时代舰船模型、航海仪器与皇家游艇，重现葡萄牙从恩里克王子到伽马的海洋霸权。#航海史",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Museu_de_Marinha_de_Lisboa.jpg",
+              "tips": "门票约8.5€，周二至周日开放；模型控可预留2小时，语音导览值得租。"
+            },
+            {
+              "time": "17:30",
+              "title": "国家马车博物馆",
+              "type": "核心",
+              "desc": "全球规模最大的皇家马车收藏，金碧辉煌的车厢展示帝国礼仪与工艺巅峰。",
+              "img": "/images/lisbon_Museu_Nacional_dos_Coches.jpg",
+              "tips": "门票8€，周一闭馆，预留1.5小时。"
+            },
+            {
+              "time": "19:00",
+              "title": "贝伦河畔晚餐",
+              "type": "美食",
+              "desc": "在Rua de Belém选一家海鲜餐厅，品尝烤章鱼与葡式海鲜饭Arroz de Marisco。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Past%C3%A9is_de_Bel%C3%A9m.jpg",
+              "tips": "晚餐高峰需预订，人均25-40€。"
+            },
+            {
+              "time": "09:00",
+              "title": "商业广场 Praça do Comércio",
+              "type": "核心",
+              "desc": "里斯本最大的广场，曾是皇家宫殿所在地与通往特茹河的门户。约瑟一世铜像俯视着昔日帝国财富。#城市地标",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Pra%C3%A7a_do_Com%C3%A9rcio.jpg",
+              "tips": "清晨人少光线柔和，拱门内侧拍照最佳；附近有游客中心可领地图。"
+            },
+            {
+              "time": "10:30",
+              "title": "阿尔法玛老区 Alfama",
+              "type": "体验",
+              "desc": "里斯本最古老的摩尔人街区，窄巷、晾晒衣物与 azulejos 瓷砖交织出真实市井。随便转角都能听到fado。#老城漫步",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Alfama.jpg",
+              "tips": "穿平底鞋，坡陡台阶多；Miradouro das Portas do Sol 是最佳观景平台。"
+            },
+            {
+              "time": "12:00",
+              "title": "圣若热城堡 Castelo de São Jorge",
+              "type": "核心",
+              "desc": "摩尔人城堡遗迹占据阿尔法玛最高点，360度俯瞰红屋顶老城与特茹河。孔雀在城墙上悠闲踱步。#城市制高点",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Castelo_de_S%C3%A3o_Jorge.jpg",
+              "tips": "门票约10€，下午逆光不利拍照；城堡内咖啡厅价格偏高，可自带水。"
+            },
+            {
+              "time": "13:00",
+              "title": "Time Out Market / Mercado da Ribeira",
+              "type": "美食",
+              "desc": "传统市场改造的熟食广场，汇聚葡式海鲜饭、烤沙丁鱼、奶酪火腿与创意小吃。#美食广场",
+              "img": "/images/lisbon_Mercado_da_Ribeira_Lisbon.jpg",
+              "tips": "午餐高峰人挤人，建议12点前或14点后；人均15-25€，海鲜饭必试。"
+            },
+            {
+              "time": "15:00",
+              "title": "28路有轨电车 Elétrico 28",
+              "type": "交通",
+              "desc": "黄色复古电车穿越阿尔法玛、拜萨与埃斯特雷拉，是里斯本移动的风景线。#复古电车",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Tram_28_Lisbon.jpg",
+              "tips": "单程3.2€，24小时通票更划算；高峰期拥挤且小偷多，注意随身包。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "买24小时Viva Viagem卡（约6.6€）覆盖地铁、电车与升降机；贝伦区可乘15E电车",
+            "accommodation": "阿尔法玛老区体验法朵，拜萨区靠近地铁站更方便",
+            "food": "蛋挞、烤沙丁鱼Sardinhas Assadas、葡式炖菜Caldo Verde",
+            "budget": "120-220€/人/天",
+            "bestTime": "4-6月、9-10月",
+            "tips": [
+              "大航海景点集中在贝伦，可步行串联",
+              "阿尔法玛坡陡，穿防滑鞋"
+            ]
+          }
+        },
+        "3days": {
+          "title": "大航海三日沉浸线",
+          "subtitle": "帝国遗迹、老城街巷与一日近郊辛特拉",
+          "duration": "3日",
+          "stops": [
+            {
+              "time": "09:30",
+              "title": "贝伦塔 Torre de Belém",
+              "type": "核心",
+              "desc": "大航海时代的象征，这座曼努埃尔式防御塔曾是航海家启航的守望点。清晨光线最适合拍摄石砌雕饰与特茹河景。#世界遗产",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Torre_de_Bel%C3%A9m.jpg",
+              "tips": "门票约10€，建议官网提前订票；上午开门就去避开旅行团，傍晚可顺路看河畔日落。"
+            },
+            {
+              "time": "10:30",
+              "title": "热罗尼莫斯修道院 Mosteiro dos Jerónimos",
+              "type": "核心",
+              "desc": "达·伽马航海前夜祈祷之地，葡萄牙晚期哥特与文艺复兴的巅峰。航海家达·伽马长眠于此。#曼努埃尔建筑",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Mosteiro_dos_Jer%C3%B3nimos.jpg",
+              "tips": "修道院与教堂分开售票，联票约12€；周一上午部分区域关闭，穿舒适鞋子地面很滑。"
+            },
+            {
+              "time": "12:00",
+              "title": "发现者纪念碑 Padrão dos Descobrimentos",
+              "type": "核心",
+              "desc": "纪念恩里克王子与葡萄牙大航海先驱，碑顶观景台可远眺贝伦塔与4月25日大桥。#航海记忆",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Padr%C3%A3o_dos_Descobrimentos.jpg",
+              "tips": "登顶门票约6€，风大需外套；广场上可拍到人字形马赛克世界地图。"
+            },
+            {
+              "time": "13:00",
+              "title": "贝伦蛋挞店 Pastéis de Belém",
+              "type": "美食",
+              "desc": "1837年开业的蛋挞创始店，外皮酥脆、蛋奶香浓。一次吃两个是本地人的日常。#葡式蛋挞",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Past%C3%A9is_de_Bel%C3%A9m.jpg",
+              "tips": "店内座位多但常排队，外带更快；建议配一杯bica浓缩咖啡，单个约1.3€。"
+            },
+            {
+              "time": "14:30",
+              "title": "海事博物馆 Museu de Marinha",
+              "type": "核心",
+              "desc": "收藏大航海时代舰船模型、航海仪器与皇家游艇，重现葡萄牙从恩里克王子到伽马的海洋霸权。#航海史",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Museu_de_Marinha_de_Lisboa.jpg",
+              "tips": "门票约8.5€，周二至周日开放；模型控可预留2小时，语音导览值得租。"
+            },
+            {
+              "time": "16:00",
+              "title": "贝伦塔畔下午茶",
+              "type": "美食",
+              "desc": "在河滨咖啡馆点一杯bica和蛋挞，看帆船驶过贝伦塔，假装自己是等待启航的船长。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Past%C3%A9is_de_Bel%C3%A9m.jpg",
+              "tips": "河滨餐厅价格偏高，外带蛋挞更划算。"
+            },
+            {
+              "time": "18:00",
+              "title": "4月25日大桥观景",
+              "type": "体验",
+              "desc": "这座红色悬索桥神似金门大桥，从Padrão dos Descobrimentos对岸拍摄日落绝佳。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Padr%C3%A3o_dos_Descobrimentos.jpg",
+              "tips": "日落前30分钟到达，长曝光可拍车轨。"
+            },
+            {
+              "time": "20:00",
+              "title": "贝伦区晚餐",
+              "type": "美食",
+              "desc": "推荐Restaurante A Travessa do Fado，传统葡菜配现场法朵。",
+              "img": "/images/lisbon_Fado_Lisbon.jpg",
+              "tips": "需提前预订，演出通常21:00开始。"
+            },
+            {
+              "time": "09:00",
+              "title": "商业广场 Praça do Comércio",
+              "type": "核心",
+              "desc": "里斯本最大的广场，曾是皇家宫殿所在地与通往特茹河的门户。约瑟一世铜像俯视着昔日帝国财富。#城市地标",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Pra%C3%A7a_do_Com%C3%A9rcio.jpg",
+              "tips": "清晨人少光线柔和，拱门内侧拍照最佳；附近有游客中心可领地图。"
+            },
+            {
+              "time": "10:30",
+              "title": "阿尔法玛老区 Alfama",
+              "type": "体验",
+              "desc": "里斯本最古老的摩尔人街区，窄巷、晾晒衣物与 azulejos 瓷砖交织出真实市井。随便转角都能听到fado。#老城漫步",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Alfama.jpg",
+              "tips": "穿平底鞋，坡陡台阶多；Miradouro das Portas do Sol 是最佳观景平台。"
+            },
+            {
+              "time": "12:00",
+              "title": "圣若热城堡 Castelo de São Jorge",
+              "type": "核心",
+              "desc": "摩尔人城堡遗迹占据阿尔法玛最高点，360度俯瞰红屋顶老城与特茹河。孔雀在城墙上悠闲踱步。#城市制高点",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Castelo_de_S%C3%A3o_Jorge.jpg",
+              "tips": "门票约10€，下午逆光不利拍照；城堡内咖啡厅价格偏高，可自带水。"
+            },
+            {
+              "time": "13:00",
+              "title": "Time Out Market / Mercado da Ribeira",
+              "type": "美食",
+              "desc": "传统市场改造的熟食广场，汇聚葡式海鲜饭、烤沙丁鱼、奶酪火腿与创意小吃。#美食广场",
+              "img": "/images/lisbon_Mercado_da_Ribeira_Lisbon.jpg",
+              "tips": "午餐高峰人挤人，建议12点前或14点后；人均15-25€，海鲜饭必试。"
+            },
+            {
+              "time": "15:00",
+              "title": "28路有轨电车 Elétrico 28",
+              "type": "交通",
+              "desc": "黄色复古电车穿越阿尔法玛、拜萨与埃斯特雷拉，是里斯本移动的风景线。#复古电车",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Tram_28_Lisbon.jpg",
+              "tips": "单程3.2€，24小时通票更划算；高峰期拥挤且小偷多，注意随身包。"
+            },
+            {
+              "time": "16:30",
+              "title": "圣胡斯塔升降机 Elevador de Santa Justa",
+              "type": "体验",
+              "desc": "新哥特式铁艺升降机连接拜萨区与卡尔莫广场，顶层可俯瞰城市全景。#工业风地标",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Elevador_de_Santa_Justa.jpg",
+              "tips": "排队常超30分钟，有24小时交通卡可刷卡进入；建议傍晚前往光线最佳。"
+            },
+            {
+              "time": "17:30",
+              "title": "罗西乌广场与自由大道 Praça do Rossio & Avenida da Liberdade",
+              "type": "购物",
+              "desc": "里斯本人的客厅，波浪纹地砖与喷泉是经典画面。自由大道汇集Zara、Porcelain等品牌与咖啡馆。#购物大道",
+              "img": "/images/lisbon_Praça_de_Rossio.jpg",
+              "tips": "日落前拍照光线柔和；A Brasileira 咖啡馆历史悠久，适合歇脚。"
+            },
+            {
+              "time": "18:00",
+              "title": "Ginjinha 樱桃酒小馆",
+              "type": "美食",
+              "desc": "里斯本传统樱桃利口酒，常装在巧克力杯中一饮而尽，甜蜜微醺。#本地特色",
+              "img": "/images/lisbon_Ginjinha_Lisbon.jpg",
+              "tips": "A Ginjinha 老店每杯约1.5€，站在街边喝最有氛围；未成年人勿饮。"
+            },
+            {
+              "time": "21:00",
+              "title": "阿尔法玛法朵之夜",
+              "type": "体验",
+              "desc": "走进Clube de Fado或Parreirinha de Alfama，在吉他与哀歌中结束老城之夜。",
+              "img": "/images/lisbon_Fado_Lisbon.jpg",
+              "tips": "建议提前2天官网订座，演出约1小时。"
+            },
+            {
+              "time": "08:00",
+              "title": "辛特拉一日游",
+              "type": "核心",
+              "desc": "乘火车40分钟到辛特拉，佩纳宫、雷加莱拉宫与罗卡角构成大航海时代贵族的童话后花园。",
+              "img": "/images/lisbon_Palácio_da_Pena.jpg",
+              "tips": "建议报一日游团或提前买辛特拉交通日票；罗卡角风大需外套。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "市区买24小时交通卡；去辛特拉在Rossio火车站买日票；机场红线直达",
+            "accommodation": "拜萨区（Baixa）最方便，阿尔法玛更有风情，贝伦区适合深度历史控",
+            "food": "蛋挞Pastel de nata、烤沙丁鱼、葡式海鲜饭、樱桃酒、Bacalhau鳕鱼",
+            "budget": "150-300€/人/天",
+            "bestTime": "4-6月、9-10月，避开盛夏暴晒",
+            "tips": [
+              "辛特拉建议单独安排一天，佩纳宫提前网上订票",
+              "法朵演出餐厅通常有最低消费，提前查好"
+            ]
+          }
+        }
+      },
+      "architecture": {
+        "1day": {
+          "title": "曼努埃尔建筑一日巡礼",
+          "subtitle": "石雕海洋、哥特尖拱与葡萄牙黄金时代的建筑狂欢",
+          "duration": "1日",
+          "stops": [
+            {
+              "time": "10:30",
+              "title": "热罗尼莫斯修道院 Mosteiro dos Jerónimos",
+              "type": "核心",
+              "desc": "达·伽马航海前夜祈祷之地，葡萄牙晚期哥特与文艺复兴的巅峰。航海家达·伽马长眠于此。#曼努埃尔建筑",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Mosteiro_dos_Jer%C3%B3nimos.jpg",
+              "tips": "修道院与教堂分开售票，联票约12€；周一上午部分区域关闭，穿舒适鞋子地面很滑。"
+            },
+            {
+              "time": "09:30",
+              "title": "贝伦塔 Torre de Belém",
+              "type": "核心",
+              "desc": "大航海时代的象征，这座曼努埃尔式防御塔曾是航海家启航的守望点。清晨光线最适合拍摄石砌雕饰与特茹河景。#世界遗产",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Torre_de_Bel%C3%A9m.jpg",
+              "tips": "门票约10€，建议官网提前订票；上午开门就去避开旅行团，傍晚可顺路看河畔日落。"
+            },
+            {
+              "time": "12:00",
+              "title": "发现者纪念碑 Padrão dos Descobrimentos",
+              "type": "核心",
+              "desc": "纪念恩里克王子与葡萄牙大航海先驱，碑顶观景台可远眺贝伦塔与4月25日大桥。#航海记忆",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Padr%C3%A3o_dos_Descobrimentos.jpg",
+              "tips": "登顶门票约6€，风大需外套；广场上可拍到人字形马赛克世界地图。"
+            },
+            {
+              "time": "13:00",
+              "title": "贝伦区葡萄牙建筑简餐",
+              "type": "美食",
+              "desc": "在Pasteis de Belem旁边的Pão Pão Queijo Queijo吃葡式火腿芝士三明治。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Past%C3%A9is_de_Bel%C3%A9m.jpg",
+              "tips": "人均8-12€，适合快速午餐。"
+            },
+            {
+              "time": "16:30",
+              "title": "圣胡斯塔升降机 Elevador de Santa Justa",
+              "type": "体验",
+              "desc": "新哥特式铁艺升降机连接拜萨区与卡尔莫广场，顶层可俯瞰城市全景。#工业风地标",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Elevador_de_Santa_Justa.jpg",
+              "tips": "排队常超30分钟，有24小时交通卡可刷卡进入；建议傍晚前往光线最佳。"
+            },
+            {
+              "time": "15:30",
+              "title": "卡尔莫修道院遗址",
+              "type": "核心",
+              "desc": "1755年地震后留下无顶哥特式拱廊，石柱直指蓝天，是里斯本最诗意的废墟。",
+              "img": "/images/lisbon_Convento_do_Carmo_Lisbon.jpg",
+              "tips": "门票5€，周一闭馆；拱廊光影中午最美。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "15E电车串联贝伦主要建筑；市区步行+升降机即可",
+            "accommodation": "拜萨区或希亚多区，靠近升降机与古建筑",
+            "food": "蛋挞、烤鳕鱼、葡式炖饭",
+            "budget": "70-130€/人/天",
+            "bestTime": "春秋最佳",
+            "tips": [
+              "卡尔莫修道院周一闭馆",
+              "升降机可用24小时交通卡"
+            ]
+          }
+        },
+        "2days": {
+          "title": "建筑双日经典线",
+          "subtitle": "从曼努埃尔到庞巴尔式，看懂里斯本五百年",
+          "duration": "2日",
+          "stops": [
+            {
+              "time": "10:30",
+              "title": "热罗尼莫斯修道院 Mosteiro dos Jerónimos",
+              "type": "核心",
+              "desc": "达·伽马航海前夜祈祷之地，葡萄牙晚期哥特与文艺复兴的巅峰。航海家达·伽马长眠于此。#曼努埃尔建筑",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Mosteiro_dos_Jer%C3%B3nimos.jpg",
+              "tips": "修道院与教堂分开售票，联票约12€；周一上午部分区域关闭，穿舒适鞋子地面很滑。"
+            },
+            {
+              "time": "09:30",
+              "title": "贝伦塔 Torre de Belém",
+              "type": "核心",
+              "desc": "大航海时代的象征，这座曼努埃尔式防御塔曾是航海家启航的守望点。清晨光线最适合拍摄石砌雕饰与特茹河景。#世界遗产",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Torre_de_Bel%C3%A9m.jpg",
+              "tips": "门票约10€，建议官网提前订票；上午开门就去避开旅行团，傍晚可顺路看河畔日落。"
+            },
+            {
+              "time": "12:00",
+              "title": "发现者纪念碑 Padrão dos Descobrimentos",
+              "type": "核心",
+              "desc": "纪念恩里克王子与葡萄牙大航海先驱，碑顶观景台可远眺贝伦塔与4月25日大桥。#航海记忆",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Padr%C3%A3o_dos_Descobrimentos.jpg",
+              "tips": "登顶门票约6€，风大需外套；广场上可拍到人字形马赛克世界地图。"
+            },
+            {
+              "time": "13:30",
+              "title": "贝伦塔花园野餐",
+              "type": "美食",
+              "desc": "在塔前草坪铺上从Time Out Market买的火腿奶酪，边吃边欣赏特茹河。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Torre_de_Bel%C3%A9m.jpg",
+              "tips": "附近超市有现切火腿和红酒，人均10€。"
+            },
+            {
+              "time": "15:00",
+              "title": "国家马车博物馆",
+              "type": "核心",
+              "desc": "皇家马车极尽巴洛克华丽，车厢上的金色雕刻与帝国徽章令人叹为观止。",
+              "img": "/images/lisbon_Museu_Nacional_dos_Coches.jpg",
+              "tips": "周一闭馆，语音导览推荐。"
+            },
+            {
+              "time": "17:00",
+              "title": "贝伦文化中心",
+              "type": "体验",
+              "desc": "现代建筑与古老修道院形成对话，常设当代艺术展，天台是隐藏观景点。",
+              "img": "/images/lisbon_Centro_Cultural_de_Belém.jpg",
+              "tips": "展览票价不等，天台免费。"
+            },
+            {
+              "time": "19:00",
+              "title": "Ribeira Market晚餐",
+              "type": "美食",
+              "desc": "在19世纪铁艺市场改造的美食广场吃遍葡式小食。",
+              "img": "/images/lisbon_Mercado_da_Ribeira_Lisbon.jpg",
+              "tips": "人均15-25€，晚上有DJ。"
+            },
+            {
+              "time": "09:00",
+              "title": "庞巴尔下城 Baixa Pombalina",
+              "type": "核心",
+              "desc": "1755年地震后按启蒙网格重建的城区，拱廊街、瓷砖店招与黄色电车构成典型画面。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Pra%C3%A7a_do_Com%C3%A9rcio.jpg",
+              "tips": "从Rossio步行到Commerce Square约15分钟。"
+            },
+            {
+              "time": "16:30",
+              "title": "圣胡斯塔升降机 Elevador de Santa Justa",
+              "type": "体验",
+              "desc": "新哥特式铁艺升降机连接拜萨区与卡尔莫广场，顶层可俯瞰城市全景。#工业风地标",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Elevador_de_Santa_Justa.jpg",
+              "tips": "排队常超30分钟，有24小时交通卡可刷卡进入；建议傍晚前往光线最佳。"
+            },
+            {
+              "time": "12:00",
+              "title": "希亚多区 Chiado",
+              "type": "核心",
+              "desc": "新古典与商业建筑交汇，巴西人咖啡馆与圣卡洛斯剧院是文人聚集地。",
+              "img": "/images/lisbon_Chiado_Lisbon.jpg",
+              "tips": "周日许多商店关门，适合拍照。"
+            },
+            {
+              "time": "14:00",
+              "title": "圣罗克教堂 São Roque",
+              "type": "核心",
+              "desc": "外表朴素，内部却是巴洛克金银装饰的震撼，中国厅镶嵌着东方瓷板。",
+              "img": "/images/lisbon_Igreja_de_São_Roque_Lisbon.jpg",
+              "tips": "免费进入，博物馆门票3€。"
+            },
+            {
+              "time": "10:30",
+              "title": "阿尔法玛老区 Alfama",
+              "type": "体验",
+              "desc": "里斯本最古老的摩尔人街区，窄巷、晾晒衣物与 azulejos 瓷砖交织出真实市井。随便转角都能听到fado。#老城漫步",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Alfama.jpg",
+              "tips": "穿平底鞋，坡陡台阶多；Miradouro das Portas do Sol 是最佳观景平台。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "买24小时交通卡坐升降机和电车；贝伦区用15E",
+            "accommodation": "拜萨/希亚多区最方便，阿尔法玛更有特色",
+            "food": "蛋挞、烤章鱼、葡式香肠Chouriço",
+            "budget": "100-200€/人/天",
+            "bestTime": "4-6月、9-10月",
+            "tips": [
+              "周一多数博物馆闭馆",
+              "阿尔法玛建议白天游览，夜晚跟导航易迷路"
+            ]
+          }
+        },
+        "3days": {
+          "title": "建筑三日沉浸线",
+          "subtitle": "世界遗产、地震重建与瓷砖美学",
+          "duration": "3日",
+          "stops": [
+            {
+              "time": "10:30",
+              "title": "热罗尼莫斯修道院 Mosteiro dos Jerónimos",
+              "type": "核心",
+              "desc": "达·伽马航海前夜祈祷之地，葡萄牙晚期哥特与文艺复兴的巅峰。航海家达·伽马长眠于此。#曼努埃尔建筑",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Mosteiro_dos_Jer%C3%B3nimos.jpg",
+              "tips": "修道院与教堂分开售票，联票约12€；周一上午部分区域关闭，穿舒适鞋子地面很滑。"
+            },
+            {
+              "time": "09:30",
+              "title": "贝伦塔 Torre de Belém",
+              "type": "核心",
+              "desc": "大航海时代的象征，这座曼努埃尔式防御塔曾是航海家启航的守望点。清晨光线最适合拍摄石砌雕饰与特茹河景。#世界遗产",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Torre_de_Bel%C3%A9m.jpg",
+              "tips": "门票约10€，建议官网提前订票；上午开门就去避开旅行团，傍晚可顺路看河畔日落。"
+            },
+            {
+              "time": "12:00",
+              "title": "发现者纪念碑 Padrão dos Descobrimentos",
+              "type": "核心",
+              "desc": "纪念恩里克王子与葡萄牙大航海先驱，碑顶观景台可远眺贝伦塔与4月25日大桥。#航海记忆",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Padr%C3%A3o_dos_Descobrimentos.jpg",
+              "tips": "登顶门票约6€，风大需外套；广场上可拍到人字形马赛克世界地图。"
+            },
+            {
+              "time": "13:00",
+              "title": "Restaurante Os Jerónimos",
+              "type": "美食",
+              "desc": "修道院旁的老牌海鲜馆，烤章鱼和海鲜炖饭分量足。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Past%C3%A9is_de_Bel%C3%A9m.jpg",
+              "tips": "午餐人均25-35€，建议预订。"
+            },
+            {
+              "time": "15:00",
+              "title": "国家马车博物馆",
+              "type": "核心",
+              "desc": "从16世纪到19世纪的皇家马车演进史，车厢装饰折射帝国审美变迁。",
+              "img": "/images/lisbon_Museu_Nacional_dos_Coches.jpg",
+              "tips": "预留2小时，周一闭馆。"
+            },
+            {
+              "time": "17:30",
+              "title": "贝伦塔日落",
+              "type": "体验",
+              "desc": "在塔前草坪等待日落，看暖光把曼努埃尔石雕染成金色。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Torre_de_Bel%C3%A9m.jpg",
+              "tips": "夏季日落约20:30，带外套。"
+            },
+            {
+              "time": "09:00",
+              "title": "庞巴尔下城步行",
+              "type": "核心",
+              "desc": "从Rossio到Commerce Square，观察18世纪网格城市、拱廊街与瓷砖招牌。",
+              "img": "/images/lisbon_Praça_de_Rossio.jpg",
+              "tips": "周日街头艺人多，适合拍照。"
+            },
+            {
+              "time": "16:30",
+              "title": "圣胡斯塔升降机 Elevador de Santa Justa",
+              "type": "体验",
+              "desc": "新哥特式铁艺升降机连接拜萨区与卡尔莫广场，顶层可俯瞰城市全景。#工业风地标",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Elevador_de_Santa_Justa.jpg",
+              "tips": "排队常超30分钟，有24小时交通卡可刷卡进入；建议傍晚前往光线最佳。"
+            },
+            {
+              "time": "11:30",
+              "title": "卡尔莫修道院",
+              "type": "核心",
+              "desc": "地震后遗留的哥特拱廊成为里斯本城市记忆的纪念碑。",
+              "img": "/images/lisbon_Convento_do_Carmo_Lisbon.jpg",
+              "tips": "与升降机顶层相连，可一起游览。"
+            },
+            {
+              "time": "13:00",
+              "title": "希亚多午餐",
+              "type": "美食",
+              "desc": "在Brasserie de l'Entrecôte吃牛排薯条，感受里斯本法式风情。",
+              "img": "/images/lisbon_Chiado_Lisbon.jpg",
+              "tips": "人均20-30€，午餐套餐性价比高。"
+            },
+            {
+              "time": "15:00",
+              "title": "圣罗克教堂与博物馆",
+              "type": "核心",
+              "desc": "欧洲最豪华的巴洛克教堂之一，金箔、象牙与东方瓷器展现大航海财富。",
+              "img": "/images/lisbon_Igreja_de_São_Roque_Lisbon.jpg",
+              "tips": "教堂免费，博物馆门票3€。"
+            },
+            {
+              "time": "17:00",
+              "title": "奥古斯塔街凯旋门",
+              "type": "核心",
+              "desc": "通往商业广场的纪念性拱门，顶部可俯瞰广场与特茹河。",
+              "img": "/images/lisbon_Arco_da_Rua_Augusta.jpg",
+              "tips": "登顶门票约3€，傍晚景色最佳。"
+            },
+            {
+              "time": "19:00",
+              "title": "商业广场河畔晚餐",
+              "type": "美食",
+              "desc": "在广场拱廊下的餐厅吃烤沙丁鱼，看特茹河夜景。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Pra%C3%A7a_do_Com%C3%A9rcio.jpg",
+              "tips": "人均30-50€，避免广场正中心高价餐厅。"
+            },
+            {
+              "time": "10:30",
+              "title": "阿尔法玛老区 Alfama",
+              "type": "体验",
+              "desc": "里斯本最古老的摩尔人街区，窄巷、晾晒衣物与 azulejos 瓷砖交织出真实市井。随便转角都能听到fado。#老城漫步",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Alfama.jpg",
+              "tips": "穿平底鞋，坡陡台阶多；Miradouro das Portas do Sol 是最佳观景平台。"
+            },
+            {
+              "time": "12:00",
+              "title": "圣若热城堡 Castelo de São Jorge",
+              "type": "核心",
+              "desc": "摩尔人城堡遗迹占据阿尔法玛最高点，360度俯瞰红屋顶老城与特茹河。孔雀在城墙上悠闲踱步。#城市制高点",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Castelo_de_S%C3%A3o_Jorge.jpg",
+              "tips": "门票约10€，下午逆光不利拍照；城堡内咖啡厅价格偏高，可自带水。"
+            },
+            {
+              "time": "14:00",
+              "title": "葡萄牙瓷砖博物馆",
+              "type": "核心",
+              "desc": "从摩尔人到现代的蓝白瓷砖演变，整座修道院本身就是瓷砖艺术的殿堂。",
+              "img": "/images/lisbon_Azulejos_Lisbon.jpg",
+              "tips": "门票5€，周二闭馆，预留2小时。"
+            },
+            {
+              "time": "16:30",
+              "title": "圣恩格拉西亚教堂 Panteão Nacional",
+              "type": "核心",
+              "desc": "巨大白色穹顶是新古典主义地标，内部安葬葡萄牙名人。",
+              "img": "/images/lisbon_Panteão_Nacional.jpg",
+              "tips": "门票5€，穹顶光影中午最佳。"
+            },
+            {
+              "time": "18:30",
+              "title": "圣露西亚观景台",
+              "type": "体验",
+              "desc": "阿尔法玛最美观景台，白色花廊与红屋顶构成明信片画面。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Alfama.jpg",
+              "tips": "日落前1小时到达占位，街头艺人表演很氛围。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "地铁+电车+步行即可；去贝伦乘15E，去LX Factory乘电车15E或728路",
+            "accommodation": "希亚多/拜萨交通便利，阿尔法玛适合沉浸式体验",
+            "food": "蛋挞、烤沙丁鱼、海鲜炖饭、葡式鳕鱼",
+            "budget": "120-250€/人/天",
+            "bestTime": "春秋最佳，避开8月高温",
+            "tips": [
+              "瓷砖博物馆周二闭馆",
+              "教堂内部请勿穿吊带和短裤"
+            ]
+          }
+        }
+      },
+      "food": {
+        "1day": {
+          "title": "葡式美食一日线",
+          "subtitle": "蛋挞、海鲜、法朵与樱桃酒",
+          "duration": "1日",
+          "stops": [
+            {
+              "time": "13:00",
+              "title": "贝伦蛋挞店 Pastéis de Belém",
+              "type": "美食",
+              "desc": "1837年开业的蛋挞创始店，外皮酥脆、蛋奶香浓。一次吃两个是本地人的日常。#葡式蛋挞",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Past%C3%A9is_de_Bel%C3%A9m.jpg",
+              "tips": "店内座位多但常排队，外带更快；建议配一杯bica浓缩咖啡，单个约1.3€。"
+            },
+            {
+              "time": "10:30",
+              "title": "里斯本农贸市场 Mercado de Campo de Ourique",
+              "type": "美食",
+              "desc": "本地人更爱的小型市场，海鲜、火腿、奶酪与现做小吃摊让早餐变成盛宴。",
+              "img": "/images/lisbon_Mercado_da_Ribeira_Lisbon.jpg",
+              "tips": "上午10点陆续开张，周末最热闹。"
+            },
+            {
+              "time": "12:30",
+              "title": "烤沙丁鱼与海鲜饭",
+              "type": "美食",
+              "desc": "6-8月沙丁鱼节期间满街飘香，推荐Tasco do Chico吃烤沙丁鱼配面包。",
+              "img": "/images/lisbon_Sardinhas_assadas.jpg",
+              "tips": "沙丁鱼按条计费约8-12€，配绿酒Vinho Verde最佳。"
+            },
+            {
+              "time": "13:00",
+              "title": "Time Out Market / Mercado da Ribeira",
+              "type": "美食",
+              "desc": "传统市场改造的熟食广场，汇聚葡式海鲜饭、烤沙丁鱼、奶酪火腿与创意小吃。#美食广场",
+              "img": "/images/lisbon_Mercado_da_Ribeira_Lisbon.jpg",
+              "tips": "午餐高峰人挤人，建议12点前或14点后；人均15-25€，海鲜饭必试。"
+            },
+            {
+              "time": "16:00",
+              "title": "Ginjinha樱桃酒",
+              "type": "美食",
+              "desc": "站在百年老店街边，用巧克力杯喝一口甜润樱桃酒。",
+              "img": "/images/lisbon_Ginjinha_Lisbon.jpg",
+              "tips": "一杯1.5€，喝完可连杯子一起吃掉。"
+            },
+            {
+              "time": "19:00",
+              "title": "阿尔法玛法朵晚餐",
+              "type": "美食",
+              "desc": "在小馆里边吃Caldo Verde薯蓉青菜汤边听法朵，感受葡萄牙灵魂音乐。",
+              "img": "/images/lisbon_Fado_Lisbon.jpg",
+              "tips": "含演出晚餐人均40-60€，需预订。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "美食线集中在贝伦、拜萨与阿尔法玛，步行+电车即可",
+            "accommodation": "拜萨区最方便，阿尔法玛适合夜晚法朵",
+            "food": "蛋挞、烤沙丁鱼、海鲜饭、樱桃酒、Bacalhau鳕鱼",
+            "budget": "100-180€/人/天",
+            "bestTime": "5-6月沙丁鱼季最佳",
+            "tips": [
+              "法朵餐厅通常有固定演出时间，提前预订",
+              "市场午餐比晚餐便宜"
+            ]
+          }
+        },
+        "2days": {
+          "title": "美食双日寻味线",
+          "subtitle": "从百年老店到创意市场，吃懂里斯本",
+          "duration": "2日",
+          "stops": [
+            {
+              "time": "13:00",
+              "title": "贝伦蛋挞店 Pastéis de Belém",
+              "type": "美食",
+              "desc": "1837年开业的蛋挞创始店，外皮酥脆、蛋奶香浓。一次吃两个是本地人的日常。#葡式蛋挞",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Past%C3%A9is_de_Bel%C3%A9m.jpg",
+              "tips": "店内座位多但常排队，外带更快；建议配一杯bica浓缩咖啡，单个约1.3€。"
+            },
+            {
+              "time": "11:00",
+              "title": "贝伦区咖啡馆 A Brasileira",
+              "type": "美食",
+              "desc": "百年咖啡馆，葡萄牙知识分子曾在此聚会，点一杯bica浓缩咖啡配点心。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Past%C3%A9is_de_Bel%C3%A9m.jpg",
+              "tips": "早餐人均5-8€，周末需等位。"
+            },
+            {
+              "time": "13:00",
+              "title": "海鲜饭午餐",
+              "type": "美食",
+              "desc": "推荐Restaurante A Travessa do Fado，Arroz de Marisco料足汤鲜。",
+              "img": "/images/lisbon_Mercado_da_Ribeira_Lisbon.jpg",
+              "tips": "海鲜饭按人数点，人均25-35€。"
+            },
+            {
+              "time": "16:00",
+              "title": "贝伦塔冰淇淋",
+              "type": "美食",
+              "desc": "在河滨小摊买一支葡萄牙手工冰淇淋，边散步边看帆船。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Torre_de_Bel%C3%A9m.jpg",
+              "tips": "夏季小摊多，2-4€一支。"
+            },
+            {
+              "time": "20:00",
+              "title": "阿尔法玛传统晚餐",
+              "type": "美食",
+              "desc": "Clube de Fado提供高质量演出与葡式炖菜，是游客与本地人都爱的选择。",
+              "img": "/images/lisbon_Fado_Lisbon.jpg",
+              "tips": "需提前预订，演出21:00开始。"
+            },
+            {
+              "time": "09:00",
+              "title": "Time Out Market早午餐",
+              "type": "美食",
+              "desc": "在19世纪铁艺市场吃各种摊位，从生蚝到牛排三明治应有尽有。",
+              "img": "/images/lisbon_Mercado_da_Ribeira_Lisbon.jpg",
+              "tips": "上午10点开门，人均12-20€。"
+            },
+            {
+              "time": "11:30",
+              "title": "葡萄牙瓷砖博物馆咖啡",
+              "type": "体验",
+              "desc": "在修道院改造的博物馆庭院喝咖啡， surrounded by azulejos。",
+              "img": "/images/lisbon_Azulejos_Lisbon.jpg",
+              "tips": "博物馆门票5€，咖啡馆人均5€。"
+            },
+            {
+              "time": "13:30",
+              "title": "烤鳕鱼Bacalhau",
+              "type": "美食",
+              "desc": "葡萄牙人说有365种鳕鱼做法，推荐Bacalhau à Brás（鳕鱼炒薯丝）。",
+              "img": "/images/lisbon_Bacalhau_à_Brás.jpg",
+              "tips": "传统餐厅人均20-30€。"
+            },
+            {
+              "time": "16:00",
+              "title": "A Ginjinha樱桃酒",
+              "type": "美食",
+              "desc": "排队也要喝的街头仪式，巧克力杯一饮而尽。",
+              "img": "/images/lisbon_Ginjinha_Lisbon.jpg",
+              "tips": "只收现金，备好零钱。"
+            },
+            {
+              "time": "18:00",
+              "title": "Ribeira das Naus滨水区",
+              "type": "体验",
+              "desc": "傍晚在特茹河畔散步，沿岸酒吧买一杯桑格利亚看日落。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Pra%C3%A7a_do_Com%C3%A9rcio.jpg",
+              "tips": "夏季有露天电影和音乐会。"
+            },
+            {
+              "time": "20:30",
+              "title": "希亚多创意菜晚餐",
+              "type": "美食",
+              "desc": "在Belcanto或Alma等米其林星级餐厅体验新派葡萄牙料理。",
+              "img": "/images/lisbon_Chiado_Lisbon.jpg",
+              "tips": "需提前数周预订，套餐150€起。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "步行+电车即可覆盖主要美食点；贝伦与拜萨最集中",
+            "accommodation": "拜萨区或希亚多，夜生活与餐厅选择多",
+            "food": "蛋挞、烤沙丁鱼、海鲜饭、鳕鱼、樱桃酒、绿酒",
+            "budget": "150-300€/人/天",
+            "bestTime": "5-6月海鲜最肥美",
+            "tips": [
+              "米其林餐厅务必提前预订",
+              "市场摊位现金和刷卡均可"
+            ]
+          }
+        },
+        "3days": {
+          "title": "美食三日慢游线",
+          "subtitle": "老店、市集、酒庄与海滨渔村",
+          "duration": "3日",
+          "stops": [
+            {
+              "time": "13:00",
+              "title": "贝伦蛋挞店 Pastéis de Belém",
+              "type": "美食",
+              "desc": "1837年开业的蛋挞创始店，外皮酥脆、蛋奶香浓。一次吃两个是本地人的日常。#葡式蛋挞",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Past%C3%A9is_de_Bel%C3%A9m.jpg",
+              "tips": "店内座位多但常排队，外带更快；建议配一杯bica浓缩咖啡，单个约1.3€。"
+            },
+            {
+              "time": "11:00",
+              "title": "贝伦区早午餐",
+              "type": "美食",
+              "desc": "在Café NATA吃刚出炉蛋挞，配一杯galão（葡式拿铁）。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Past%C3%A9is_de_Bel%C3%A9m.jpg",
+              "tips": "人均5-8€，蛋挞1.2€左右。"
+            },
+            {
+              "time": "13:30",
+              "title": "贝伦海鲜餐厅",
+              "type": "美食",
+              "desc": "Restaurante Os Jerónimos烤章鱼与蛤蜊Cataplana值得一试。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Past%C3%A9is_de_Bel%C3%A9m.jpg",
+              "tips": "人均30-40€，午餐性价比高。"
+            },
+            {
+              "time": "16:00",
+              "title": "发现者纪念碑观景",
+              "type": "体验",
+              "desc": "消化午餐后登上纪念碑顶，眺望帝国曾经征服的海洋。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Padr%C3%A3o_dos_Descobrimentos.jpg",
+              "tips": "门票6€，风大。"
+            },
+            {
+              "time": "19:00",
+              "title": "Cais do Sodré河畔晚餐",
+              "type": "美食",
+              "desc": "在Pink Street附近吃Petiscos（葡式小菜），感受里斯本夜生活。",
+              "img": "/images/lisbon_Mercado_da_Ribeira_Lisbon.jpg",
+              "tips": "人均20-35€，周末热闹非凡。"
+            },
+            {
+              "time": "09:30",
+              "title": "Mercado de Campo de Ourique",
+              "type": "美食",
+              "desc": "本地中产社区市场，海鲜、肉类、奶酪摊位品质上乘。",
+              "img": "/images/lisbon_Mercado_da_Ribeira_Lisbon.jpg",
+              "tips": "上午10点开门，适合买伴手礼。"
+            },
+            {
+              "time": "11:30",
+              "title": "葡萄牙瓷砖博物馆",
+              "type": "核心",
+              "desc": "蓝白瓷砖也是餐桌艺术，博物馆餐厅环境绝佳。",
+              "img": "/images/lisbon_Azulejos_Lisbon.jpg",
+              "tips": "门票5€，周二闭馆。"
+            },
+            {
+              "time": "14:00",
+              "title": "传统鳕鱼料理",
+              "type": "美食",
+              "desc": "在Alfama地区的传统小馆点Bacalhau com Natas（奶油焗鳕鱼）。",
+              "img": "/images/lisbon_Bacalhau_com_natas.jpg",
+              "tips": "人均20-28€，分量很大。"
+            },
+            {
+              "time": "18:00",
+              "title": "Ginjinha 樱桃酒小馆",
+              "type": "美食",
+              "desc": "里斯本传统樱桃利口酒，常装在巧克力杯中一饮而尽，甜蜜微醺。#本地特色",
+              "img": "/images/lisbon_Ginjinha_Lisbon.jpg",
+              "tips": "A Ginjinha 老店每杯约1.5€，站在街边喝最有氛围；未成年人勿饮。"
+            },
+            {
+              "time": "18:00",
+              "title": "Cais do Sodré至Belém游船",
+              "type": "体验",
+              "desc": "乘渡轮沿特茹河航行，看两岸建筑与4月25日大桥。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Torre_de_Bel%C3%A9m.jpg",
+              "tips": "船票可用交通卡，约3€。"
+            },
+            {
+              "time": "20:30",
+              "title": "阿尔法玛法朵之夜",
+              "type": "美食",
+              "desc": "在Parreirinha de Alfama边吃烤肉边听法朵，眼泪与葡萄酒齐飞。",
+              "img": "/images/lisbon_Fado_Lisbon.jpg",
+              "tips": "含演出晚餐人均50-70€，需预订。"
+            },
+            {
+              "time": "09:00",
+              "title": "辛特拉一日美食",
+              "type": "美食",
+              "desc": "去辛特拉吃Travesseiros长条蛋糕和Queijadas奶酪小挞，再配一杯当地咖啡。",
+              "img": "/images/lisbon_Travesseiros_de_Sintra.jpg",
+              "tips": "Piriquita老店必去，人均10€。"
+            },
+            {
+              "time": "13:00",
+              "title": "卡斯凯什海鲜午餐",
+              "type": "美食",
+              "desc": "在海边小镇吃 grilled seabass 与章鱼沙拉，价格比里斯本实惠。",
+              "img": "/images/lisbon_Cascais.jpg",
+              "tips": "海滨餐厅人均25-40€。"
+            },
+            {
+              "time": "17:00",
+              "title": "返回里斯本LX Factory",
+              "type": "购物",
+              "desc": "在文创园区买手工皮具、设计和纪念品。",
+              "img": "/images/lisbon_LX_Factory.jpg",
+              "tips": "周日上午有跳蚤市场。"
+            },
+            {
+              "time": "20:00",
+              "title": "告别晚餐",
+              "type": "美食",
+              "desc": "在LX Factory的A Cantina吃现代葡菜，结束三天味觉之旅。",
+              "img": "/images/lisbon_LX_Factory.jpg",
+              "tips": "人均30-50€，工业风装潢很出片。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "地铁红线去机场，火车去辛特拉，渡轮游特茹河",
+            "accommodation": "拜萨区或希亚多，餐厅与交通最便利",
+            "food": "蛋挞、烤沙丁鱼、海鲜饭、鳕鱼、樱桃酒、辛特拉甜点",
+            "budget": "180-350€/人/天",
+            "bestTime": "5-6月、9-10月",
+            "tips": [
+              "辛特拉火车建议提前查时刻表",
+              "法朵餐厅周一可能休息，提前确认"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "rome": {
+    "name": "罗马",
+    "case": "罗马帝国",
+    "country": "意大利",
+    "description": "永恒之城承载罗马帝国千年荣光，斗兽场、万神殿与古罗马广场见证从共和到帝国的权力更替。台伯河畔的喷泉、披萨与特拉斯提弗列夜生活让历史变得可触摸。",
+    "themes": {
+      "architecture": {
+        "1day": {
+          "title": "帝国遗迹一日巡礼",
+          "subtitle": "斗兽场、广场、万神殿与喷泉，一日穿越两千年",
+          "duration": "1日",
+          "stops": [
+            {
+              "time": "08:30",
+              "title": "罗马斗兽场 Colosseo",
+              "type": "核心",
+              "desc": "罗马帝国角斗士与野兽搏杀的舞台，可容纳5万观众的椭圆 amphitheatre。清晨入场避开人潮，触摸两千年石拱门。#帝国象征",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Colosseum_Rome.jpg",
+              "tips": "必须提前网上预约，含古罗马广场联票约18€；9:00开门，建议8:30到排队安检。"
+            },
+            {
+              "time": "11:00",
+              "title": "古罗马广场 Foro Romano",
+              "type": "核心",
+              "desc": "曾是罗马政治、商业与宗教中心，恺撒神庙、元老院与凯旋门遗迹遍布。沿圣道想象帝国盛世的游行。#罗马心脏",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Roman_Forum.jpg",
+              "tips": "与斗兽场联票，建议从Palatine Hill入口进人少；夏季带遮阳帽和水。"
+            },
+            {
+              "time": "12:30",
+              "title": "帕拉蒂尼山 Palatino",
+              "type": "核心",
+              "desc": "罗马七丘之一，传说罗慕路斯建城之地。帝国皇宫遗址与花园可远眺广场与斗兽场。#建城传说",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Palatine_Hill.jpg",
+              "tips": "联票包含，山坡平坦好走；树阴多适合午后休息。"
+            },
+            {
+              "time": "14:00",
+              "title": "罗马午餐 Pizza al Taglio",
+              "type": "美食",
+              "desc": "在Largo Argentina附近买一片方形罗马披萨，站着吃是本地传统。",
+              "img": "/images/rome_Pizza_al_taglio.jpg",
+              "tips": "人均5-10€，按重量计费。"
+            },
+            {
+              "time": "15:00",
+              "title": "万神殿 Pantheon",
+              "type": "核心",
+              "desc": "哈德良时期重建的穹顶奇迹，两千年来仍是世界最大无钢筋混凝土穹顶。顶部圆孔泄下神圣天光。#建筑奇迹",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Pantheon_Rome.jpg",
+              "tips": "免费进入但周末需预约；中午12点圆孔直射地面最壮观，雨天可见水帘。"
+            },
+            {
+              "time": "17:00",
+              "title": "特雷维喷泉 Fontana di Trevi",
+              "type": "核心",
+              "desc": "巴洛克喷泉杰作，背对抛一枚硬币保证重返罗马。傍晚灯光亮起时金色雕塑与碧水交相辉映。#许愿池",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Trevi_Fountain.jpg",
+              "tips": "清晨7点或深夜人少；别坐池边，会被罚款。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "机场快线到Termini，市内地铁A/B线+步行；斗兽场到万神殿步行约25分钟",
+            "accommodation": "Termini周边交通便利，Monti区更文艺，Trastevere夜生活丰富",
+            "food": "Carbonara、Cacio e Pepe、Pizza al Taglio、Gelato",
+            "budget": "80-160€/人/天",
+            "bestTime": "4-5月、9-10月最佳",
+            "tips": [
+              "斗兽场必须提前预约",
+              "万神殿周末需预约"
+            ]
+          }
+        },
+        "2days": {
+          "title": "帝国建筑双日深度游",
+          "subtitle": "从斗兽场到阿庇亚古道，读懂罗马工程与权力美学",
+          "duration": "2日",
+          "stops": [
+            {
+              "time": "08:30",
+              "title": "罗马斗兽场 Colosseo",
+              "type": "核心",
+              "desc": "罗马帝国角斗士与野兽搏杀的舞台，可容纳5万观众的椭圆 amphitheatre。清晨入场避开人潮，触摸两千年石拱门。#帝国象征",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Colosseum_Rome.jpg",
+              "tips": "必须提前网上预约，含古罗马广场联票约18€；9:00开门，建议8:30到排队安检。"
+            },
+            {
+              "time": "11:00",
+              "title": "古罗马广场 Foro Romano",
+              "type": "核心",
+              "desc": "曾是罗马政治、商业与宗教中心，恺撒神庙、元老院与凯旋门遗迹遍布。沿圣道想象帝国盛世的游行。#罗马心脏",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Roman_Forum.jpg",
+              "tips": "与斗兽场联票，建议从Palatine Hill入口进人少；夏季带遮阳帽和水。"
+            },
+            {
+              "time": "12:30",
+              "title": "帕拉蒂尼山 Palatino",
+              "type": "核心",
+              "desc": "罗马七丘之一，传说罗慕路斯建城之地。帝国皇宫遗址与花园可远眺广场与斗兽场。#建城传说",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Palatine_Hill.jpg",
+              "tips": "联票包含，山坡平坦好走；树阴多适合午后休息。"
+            },
+            {
+              "time": "11:00",
+              "title": "卡比托利欧广场与博物馆",
+              "type": "核心",
+              "desc": "米开朗基罗设计的市政广场，广场下是古罗马时代博物馆，藏有母狼育婴像与君士坦丁巨像残片。#帝国博物馆",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Piazza_del_Campidoglio.jpg",
+              "tips": "广场免费，博物馆门票约13€；建议从广场后坡的地下通道进入。"
+            },
+            {
+              "time": "14:00",
+              "title": "威尼斯广场午餐",
+              "type": "美食",
+              "desc": "在祖国祭坛旁的咖啡馆吃帕尼尼，看 traffic 环绕白色大理石纪念堂。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Piazza_del_Campidoglio.jpg",
+              "tips": "广场餐厅偏贵，人均15-25€。"
+            },
+            {
+              "time": "16:00",
+              "title": "图拉真柱与市场",
+              "type": "核心",
+              "desc": "纪念图拉真征服达契亚的螺旋浮雕柱，旁边是帝国最早的购物商场遗址。#帝国宣传",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Trajan%27s_Column.jpg",
+              "tips": "外部免费参观；图拉真市场博物馆门票约13€。"
+            },
+            {
+              "time": "15:00",
+              "title": "万神殿 Pantheon",
+              "type": "核心",
+              "desc": "哈德良时期重建的穹顶奇迹，两千年来仍是世界最大无钢筋混凝土穹顶。顶部圆孔泄下神圣天光。#建筑奇迹",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Pantheon_Rome.jpg",
+              "tips": "免费进入但周末需预约；中午12点圆孔直射地面最壮观，雨天可见水帘。"
+            },
+            {
+              "time": "19:30",
+              "title": "纳沃纳广场晚餐",
+              "type": "美食",
+              "desc": "在巴洛克广场边的餐厅吃Amatriciana番茄培根面，看喷泉灯光。",
+              "img": "/images/rome_Piazza_Navona.jpg",
+              "tips": "广场餐厅价格较高，人均30-50€。"
+            },
+            {
+              "time": "14:00",
+              "title": "卡拉卡拉浴场 Terme di Caracalla",
+              "type": "核心",
+              "desc": "3世纪帝国公共浴场遗址，巨大的拱券与马赛克地面展现罗马社会福利与工程实力。#罗马工程",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Baths_of_Caracalla.jpg",
+              "tips": "门票8€，夏季有歌剧演出；遗址空旷暴晒，带足水。"
+            },
+            {
+              "time": "09:00",
+              "title": "阿庇亚古道 Via Appia Antica",
+              "type": "体验",
+              "desc": "罗马帝国最早的战略公路，两旁古墓与基督教地下墓穴密布。租辆自行车骑行感受「条条大路通罗马」。#古道骑行",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Via_Appia.jpg",
+              "tips": "周日部分路段禁车最适合骑行；入口附近可租自行车约15€/半天。"
+            },
+            {
+              "time": "14:00",
+              "title": "圣塞巴斯蒂安地下墓穴",
+              "type": "核心",
+              "desc": "早期基督徒地下墓穴，隧道中可见壁画与墓葬室，感受帝国边缘信仰的坚韧。",
+              "img": "/images/rome_Catacombs_of_Rome.jpg",
+              "tips": "门票约8€，需跟团进入；地下阴冷带外套。"
+            },
+            {
+              "time": "10:30",
+              "title": "圣天使堡 Castel Sant'Angelo",
+              "type": "核心",
+              "desc": "哈德良皇帝陵墓改建为教皇堡垒，顶层露台可俯瞰台伯河与圣彼得大教堂。#帝国陵寝",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Castel_Sant%27Angelo.jpg",
+              "tips": "门票约13€，周一闭馆；连接城堡的圣天使桥是经典拍照点。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "地铁B线到斗兽场/卡拉卡拉浴场，公交Appian Way；梵蒂冈可乘地铁A线",
+            "accommodation": "Monti区靠近斗兽场，Prati区靠近梵蒂冈",
+            "food": "Carbonara、Amatriciana、Carciofi（炸洋蓟）、Gelato",
+            "budget": "120-220€/人/天",
+            "bestTime": "4-5月、9-10月",
+            "tips": [
+              "斗兽场和梵蒂冈必须提前预约",
+              "穿舒适步行鞋，罗马石板路走一天很累"
+            ]
+          }
+        },
+        "3days": {
+          "title": "帝国建筑三日沉浸线",
+          "subtitle": "政治、宗教、工程与日常，全面解构永恒之城",
+          "duration": "3日",
+          "stops": [
+            {
+              "time": "07:30",
+              "title": "罗马特米尼火车站 Roma Termini",
+              "type": "交通",
+              "desc": "意大利最大火车站，连接机场快线、高铁与地铁A/B线。地下一层有寄存行李和快餐。#交通枢纽",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Roma_Termini.jpg",
+              "tips": "机场快线Leonardo Express约14€，30分钟到Termini；早高峰人流量大。"
+            },
+            {
+              "time": "08:30",
+              "title": "罗马斗兽场 Colosseo",
+              "type": "核心",
+              "desc": "罗马帝国角斗士与野兽搏杀的舞台，可容纳5万观众的椭圆 amphitheatre。清晨入场避开人潮，触摸两千年石拱门。#帝国象征",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Colosseum_Rome.jpg",
+              "tips": "必须提前网上预约，含古罗马广场联票约18€；9:00开门，建议8:30到排队安检。"
+            },
+            {
+              "time": "11:00",
+              "title": "古罗马广场 Foro Romano",
+              "type": "核心",
+              "desc": "曾是罗马政治、商业与宗教中心，恺撒神庙、元老院与凯旋门遗迹遍布。沿圣道想象帝国盛世的游行。#罗马心脏",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Roman_Forum.jpg",
+              "tips": "与斗兽场联票，建议从Palatine Hill入口进人少；夏季带遮阳帽和水。"
+            },
+            {
+              "time": "12:30",
+              "title": "帕拉蒂尼山 Palatino",
+              "type": "核心",
+              "desc": "罗马七丘之一，传说罗慕路斯建城之地。帝国皇宫遗址与花园可远眺广场与斗兽场。#建城传说",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Palatine_Hill.jpg",
+              "tips": "联票包含，山坡平坦好走；树阴多适合午后休息。"
+            },
+            {
+              "time": "11:00",
+              "title": "卡比托利欧广场与博物馆",
+              "type": "核心",
+              "desc": "米开朗基罗设计的市政广场，广场下是古罗马时代博物馆，藏有母狼育婴像与君士坦丁巨像残片。#帝国博物馆",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Piazza_del_Campidoglio.jpg",
+              "tips": "广场免费，博物馆门票约13€；建议从广场后坡的地下通道进入。"
+            },
+            {
+              "time": "14:00",
+              "title": "帝国广场大道午餐",
+              "type": "美食",
+              "desc": "在Via dei Fori Imperiali路边的餐厅吃罗马式披萨与沙拉，正对广场遗迹。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Roman_Forum.jpg",
+              "tips": "景区餐厅人均20-30€，口味一般但位置绝。"
+            },
+            {
+              "time": "16:00",
+              "title": "图拉真柱与市场",
+              "type": "核心",
+              "desc": "纪念图拉真征服达契亚的螺旋浮雕柱，旁边是帝国最早的购物商场遗址。#帝国宣传",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Trajan%27s_Column.jpg",
+              "tips": "外部免费参观；图拉真市场博物馆门票约13€。"
+            },
+            {
+              "time": "17:00",
+              "title": "维托里亚诺纪念碑",
+              "type": "核心",
+              "desc": "俗称「结婚蛋糕」的白色大理石纪念堂，顶层露台俯瞰整个古罗马中心区。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Piazza_del_Campidoglio.jpg",
+              "tips": "免费进入，电梯登顶约10€；17:30后光线最佳。"
+            },
+            {
+              "time": "19:30",
+              "title": "Monti区晚餐",
+              "type": "美食",
+              "desc": "在斗兽场旁的文艺街区吃传统罗马菜，氛围轻松。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Colosseum_Rome.jpg",
+              "tips": "推荐La Taverna dei Fori Imperiali，人均35-50€，需预订。"
+            },
+            {
+              "time": "15:00",
+              "title": "万神殿 Pantheon",
+              "type": "核心",
+              "desc": "哈德良时期重建的穹顶奇迹，两千年来仍是世界最大无钢筋混凝土穹顶。顶部圆孔泄下神圣天光。#建筑奇迹",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Pantheon_Rome.jpg",
+              "tips": "免费进入但周末需预约；中午12点圆孔直射地面最壮观，雨天可见水帘。"
+            },
+            {
+              "time": "17:00",
+              "title": "特雷维喷泉 Fontana di Trevi",
+              "type": "核心",
+              "desc": "巴洛克喷泉杰作，背对抛一枚硬币保证重返罗马。傍晚灯光亮起时金色雕塑与碧水交相辉映。#许愿池",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Trevi_Fountain.jpg",
+              "tips": "清晨7点或深夜人少；别坐池边，会被罚款。"
+            },
+            {
+              "time": "10:00",
+              "title": "西班牙阶梯 Piazza di Spagna",
+              "type": "体验",
+              "desc": "《罗马假日》取景地，135级阶梯连接西班牙广场与山上圣三一教堂。春天杜鹃花盛开最美。#电影打卡",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Spanish_Steps.jpg",
+              "tips": "如今禁止在阶梯上吃冰淇淋或久坐；附近奢侈品街适合购物。"
+            },
+            {
+              "time": "13:00",
+              "title": "西班牙阶梯附近午餐",
+              "type": "美食",
+              "desc": "在Via del Corso边的小馆吃Cacio e Pepe，避开阶梯正下方的游客店。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Spanish_Steps.jpg",
+              "tips": "人均20-30€。"
+            },
+            {
+              "time": "15:00",
+              "title": "巴贝里尼宫与国立古代美术馆",
+              "type": "核心",
+              "desc": "巴洛克宫殿藏有卡拉瓦乔与拉斐尔作品，螺旋楼梯本身就是建筑精品。",
+              "img": "/images/rome_Palazzo_Barberini.jpg",
+              "tips": "门票约12€，周一闭馆。"
+            },
+            {
+              "time": "17:00",
+              "title": "博尔盖塞美术馆",
+              "type": "核心",
+              "desc": "贝尼尼与卡拉瓦乔杰作藏于17世纪别墅中，需预约限流参观。",
+              "img": "/images/rome_Galleria_Borghese.jpg",
+              "tips": "必须提前网上预订，每次限2小时。"
+            },
+            {
+              "time": "19:00",
+              "title": "特拉斯提弗列 Trastevere",
+              "type": "美食",
+              "desc": "台伯河对岸的古老街区，鹅卵石街道、涂鸦墙与家庭小馆让罗马夜晚充满烟火气。#本地生活",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Trastevere_Rome.jpg",
+              "tips": "晚餐推荐Da Enzo或Felice a Testaccio，人均30-50€；周日市集好玩。"
+            },
+            {
+              "time": "20:00",
+              "title": "台伯河夜游",
+              "type": "体验",
+              "desc": "从圣天使桥沿台伯河散步，两岸灯光倒映，是罗马最浪漫的夜晚。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Castel_Sant%27Angelo.jpg",
+              "tips": "河边步道安全，夏季有露天酒吧。"
+            },
+            {
+              "time": "14:00",
+              "title": "卡拉卡拉浴场 Terme di Caracalla",
+              "type": "核心",
+              "desc": "3世纪帝国公共浴场遗址，巨大的拱券与马赛克地面展现罗马社会福利与工程实力。#罗马工程",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Baths_of_Caracalla.jpg",
+              "tips": "门票8€，夏季有歌剧演出；遗址空旷暴晒，带足水。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "机场快线到Termini；市内买Roma Pass可省门票和交通；梵蒂冈需单独预约",
+            "accommodation": "Monti区靠近斗兽场，Prati区靠近梵蒂冈，Trastevere夜生活丰富",
+            "food": "Carbonara、Cacio e Pepe、Amatriciana、Gelato、Supplì炸饭团",
+            "budget": "150-300€/人/天",
+            "bestTime": "4-5月、9-10月，避开8月高温",
+            "tips": [
+              "所有热门景点务必提前预约",
+              "Roma Pass有48/72小时两种，按需购买"
+            ]
+          }
+        }
+      },
+      "culture": {
+        "1day": {
+          "title": "古罗马生活一日线",
+          "subtitle": "浴场、市场、广场与地下墓穴，体验帝国日常",
+          "duration": "1日",
+          "stops": [
+            {
+              "time": "09:00",
+              "title": "卡拉卡拉浴场",
+              "type": "核心",
+              "desc": "帝国市民社交、健身与洗浴的公共空间，马赛克与健身房遗迹展现罗马日常生活。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Baths_of_Caracalla.jpg",
+              "tips": "上午人少，带好水。"
+            },
+            {
+              "time": "09:00",
+              "title": "鲜花广场 Campo de' Fiori",
+              "type": "美食",
+              "desc": "中世纪以来就是露天市场，鲜花、蔬果、香料与橄榄油摊位热闹，中央布鲁诺雕像见证宗教审判历史。#罗马市集",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Campo_de%27_Fiori.jpg",
+              "tips": "上午市场最热闹，中午收摊；附近Forno Campo de' Fiori披萨很有名。"
+            },
+            {
+              "time": "11:30",
+              "title": "古罗马广场日常",
+              "type": "核心",
+              "desc": "这里曾是演说家辩论、商人交易与公民投票的场所，政治生活的心脏。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Roman_Forum.jpg",
+              "tips": "从广场西北角进入路线最顺。"
+            },
+            {
+              "time": "14:00",
+              "title": "泰斯塔西奥市场午餐",
+              "type": "美食",
+              "desc": "本地人最爱的社区市场，吃Trippa和手工意面。",
+              "img": "/images/rome_Mercato_di_Testaccio.jpg",
+              "tips": "人均12-18€，周一闭市。"
+            },
+            {
+              "time": "15:00",
+              "title": "万神殿 Pantheon",
+              "type": "核心",
+              "desc": "哈德良时期重建的穹顶奇迹，两千年来仍是世界最大无钢筋混凝土穹顶。顶部圆孔泄下神圣天光。#建筑奇迹",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Pantheon_Rome.jpg",
+              "tips": "免费进入但周末需预约；中午12点圆孔直射地面最壮观，雨天可见水帘。"
+            },
+            {
+              "time": "16:00",
+              "title": "纳沃纳广场",
+              "type": "体验",
+              "desc": "昔日罗马竞技场遗址改造的巴洛克广场，喷泉与街头艺人让帝国空间延续至今。",
+              "img": "/images/rome_Piazza_Navona.jpg",
+              "tips": "下午咖啡人均5-8€；警惕兜售玩具的小贩。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "地铁B线到Circo Massimo站，步行到卡拉卡拉浴场；其余景点步行+公交",
+            "accommodation": "Trastevere或Testaccio区体验本地生活",
+            "food": "Trippa、Carciofi、Carbonara、Gelato",
+            "budget": "70-140€/人/天",
+            "bestTime": "春秋最佳",
+            "tips": [
+              "Campo de' Fiori上午 market 最热闹",
+              "Testaccio市场周一闭市"
+            ]
+          }
+        },
+        "2days": {
+          "title": "罗马生活双日深度线",
+          "subtitle": "从公共浴场到地下信仰，走进帝国人的一天",
+          "duration": "2日",
+          "stops": [
+            {
+              "time": "14:00",
+              "title": "卡拉卡拉浴场 Terme di Caracalla",
+              "type": "核心",
+              "desc": "3世纪帝国公共浴场遗址，巨大的拱券与马赛克地面展现罗马社会福利与工程实力。#罗马工程",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Baths_of_Caracalla.jpg",
+              "tips": "门票8€，夏季有歌剧演出；遗址空旷暴晒，带足水。"
+            },
+            {
+              "time": "11:00",
+              "title": "马克西穆斯竞技场 Circus Maximus",
+              "type": "核心",
+              "desc": "古罗马最大的战车竞技场，可容纳25万观众。如今是开阔绿地，可遥望帕拉蒂尼山。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Palatine_Hill.jpg",
+              "tips": "免费进入，适合散步和拍照。"
+            },
+            {
+              "time": "12:30",
+              "title": "阿文提诺山",
+              "type": "体验",
+              "desc": "罗马南部山丘，玫瑰园与马耳他骑士团钥匙孔观景点是本地人秘密去处。",
+              "img": "/images/rome_Aventine_Hill_Rome.jpg",
+              "tips": "钥匙孔排队拍照，无需门票。"
+            },
+            {
+              "time": "12:30",
+              "title": "泰斯塔西奥市场 Mercato di Testaccio",
+              "type": "美食",
+              "desc": "罗马本地人的社区市场，下楼吃Trippa（牛肚）、Pizza al Taglio和手工意面。#本地美食",
+              "img": "/images/rome_Mercato_di_Testaccio.jpg",
+              "tips": "人均10-15€，午餐时段最热闹；周一闭市。"
+            },
+            {
+              "time": "15:30",
+              "title": "泰斯塔西奥山 Monte Testaccio",
+              "type": "核心",
+              "desc": "由数百万个碎陶罐堆积而成的古代垃圾山，是罗马食用油贸易的考古证据。",
+              "img": "/images/rome_Mercato_di_Testaccio.jpg",
+              "tips": "外观即可，周边夜店晚上热闹。"
+            },
+            {
+              "time": "17:00",
+              "title": "罗马非天主教徒公墓",
+              "type": "体验",
+              "desc": "济慈与雪莱安息于此，金字塔Cestia见证帝国晚期的埃及时尚。",
+              "img": "/images/rome_Cimitero_Acattolico_Rome.jpg",
+              "tips": "门票免费，16:30前进入。"
+            },
+            {
+              "time": "19:30",
+              "title": "Ostiense工业区晚餐",
+              "type": "美食",
+              "desc": "旧工业区改造的餐厅和酒吧，体验罗马年轻人的夜生活。",
+              "img": "/images/rome_Ostiense_Rome.jpg",
+              "tips": "人均25-40€。"
+            },
+            {
+              "time": "11:00",
+              "title": "古罗马广场 Foro Romano",
+              "type": "核心",
+              "desc": "曾是罗马政治、商业与宗教中心，恺撒神庙、元老院与凯旋门遗迹遍布。沿圣道想象帝国盛世的游行。#罗马心脏",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Roman_Forum.jpg",
+              "tips": "与斗兽场联票，建议从Palatine Hill入口进人少；夏季带遮阳帽和水。"
+            },
+            {
+              "time": "12:30",
+              "title": "帕拉蒂尼山 Palatino",
+              "type": "核心",
+              "desc": "罗马七丘之一，传说罗慕路斯建城之地。帝国皇宫遗址与花园可远眺广场与斗兽场。#建城传说",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Palatine_Hill.jpg",
+              "tips": "联票包含，山坡平坦好走；树阴多适合午后休息。"
+            },
+            {
+              "time": "13:00",
+              "title": "古罗马广场周边午餐",
+              "type": "美食",
+              "desc": "在Largo di Torre Argentina边的小馆吃帕尼尼，看流浪猫在共和神庙遗址间午睡。",
+              "img": "/images/rome_Largo_di_Torre_Argentina.jpg",
+              "tips": "人均10-15€。"
+            },
+            {
+              "time": "15:00",
+              "title": "地下墓穴导览",
+              "type": "核心",
+              "desc": "早期基督徒与犹太人的地下墓室，折射帝国晚期宗教信仰与社会结构。",
+              "img": "/images/rome_Catacombs_of_Rome.jpg",
+              "tips": "门票约8€，跟团参观约45分钟。"
+            },
+            {
+              "time": "15:00",
+              "title": "万神殿 Pantheon",
+              "type": "核心",
+              "desc": "哈德良时期重建的穹顶奇迹，两千年来仍是世界最大无钢筋混凝土穹顶。顶部圆孔泄下神圣天光。#建筑奇迹",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Pantheon_Rome.jpg",
+              "tips": "免费进入但周末需预约；中午12点圆孔直射地面最壮观，雨天可见水帘。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "地铁B线覆盖大部分遗址区，地下墓穴需公交或打车",
+            "accommodation": "Testaccio区美食集中，Aventino安静适合慢游",
+            "food": "Trippa、Cacio e Pepe、Maritozzo奶油面包、Gelato",
+            "budget": "100-190€/人/天",
+            "bestTime": "春秋最佳",
+            "tips": [
+              "地下墓穴较阴冷，带薄外套",
+              "Aventino玫瑰园春季最美"
+            ]
+          }
+        },
+        "3days": {
+          "title": "罗马生活三日沉浸线",
+          "subtitle": "公共建筑、宗教信仰与帝国衰亡的完整图景",
+          "duration": "3日",
+          "stops": [
+            {
+              "time": "14:00",
+              "title": "卡拉卡拉浴场 Terme di Caracalla",
+              "type": "核心",
+              "desc": "3世纪帝国公共浴场遗址，巨大的拱券与马赛克地面展现罗马社会福利与工程实力。#罗马工程",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Baths_of_Caracalla.jpg",
+              "tips": "门票8€，夏季有歌剧演出；遗址空旷暴晒，带足水。"
+            },
+            {
+              "time": "11:00",
+              "title": "戴克里先浴场遗址",
+              "type": "核心",
+              "desc": "帝国最大浴场之一，现为国立罗马博物馆，巨型穹顶大厅展示罗马工程技术。",
+              "img": "/images/rome_Baths_of_Diocletian_Rome.jpg",
+              "tips": "门票约10€，周一闭馆。"
+            },
+            {
+              "time": "13:00",
+              "title": "Termini周边午餐",
+              "type": "美食",
+              "desc": "在火车站附近吃传统罗马小吃Supplì和Pizza al Taglio。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Roma_Termini.jpg",
+              "tips": "人均8-12€。"
+            },
+            {
+              "time": "15:00",
+              "title": "马克西穆斯竞技场",
+              "type": "核心",
+              "desc": "古罗马战车赛的圣地，可容纳全城近三分之一人口，是帝国大众娱乐的缩影。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Palatine_Hill.jpg",
+              "tips": "免费开放，傍晚适合跑步。"
+            },
+            {
+              "time": "16:30",
+              "title": "真理之口",
+              "type": "体验",
+              "desc": "《罗马假日》经典场景，这块古罗马井盖据说说谎者会被咬手。",
+              "img": "/images/rome_Bocca_della_Verità.jpg",
+              "tips": "免费排队拍照，团队游客多；教堂内值得一看。"
+            },
+            {
+              "time": "19:00",
+              "title": "Circus Maximus附近晚餐",
+              "type": "美食",
+              "desc": "在Aventino山脚小馆吃烤羊排Abbacchio，配罗马白葡萄酒。",
+              "img": "/images/rome_Aventine_Hill_Rome.jpg",
+              "tips": "人均30-45€。"
+            },
+            {
+              "time": "11:00",
+              "title": "古罗马广场 Foro Romano",
+              "type": "核心",
+              "desc": "曾是罗马政治、商业与宗教中心，恺撒神庙、元老院与凯旋门遗迹遍布。沿圣道想象帝国盛世的游行。#罗马心脏",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Roman_Forum.jpg",
+              "tips": "与斗兽场联票，建议从Palatine Hill入口进人少；夏季带遮阳帽和水。"
+            },
+            {
+              "time": "12:30",
+              "title": "帕拉蒂尼山 Palatino",
+              "type": "核心",
+              "desc": "罗马七丘之一，传说罗慕路斯建城之地。帝国皇宫遗址与花园可远眺广场与斗兽场。#建城传说",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Palatine_Hill.jpg",
+              "tips": "联票包含，山坡平坦好走；树阴多适合午后休息。"
+            },
+            {
+              "time": "11:00",
+              "title": "卡比托利欧广场与博物馆",
+              "type": "核心",
+              "desc": "米开朗基罗设计的市政广场，广场下是古罗马时代博物馆，藏有母狼育婴像与君士坦丁巨像残片。#帝国博物馆",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Piazza_del_Campidoglio.jpg",
+              "tips": "广场免费，博物馆门票约13€；建议从广场后坡的地下通道进入。"
+            },
+            {
+              "time": "15:00",
+              "title": "马塞卢斯剧院",
+              "type": "核心",
+              "desc": "奥古斯都时期建造的半圆形剧场，是斗兽场的前身，后改建为 fortress 与民居。",
+              "img": "/images/rome_Theatre_of_Marcellus.jpg",
+              "tips": "外部免费，内部参观需预约。"
+            },
+            {
+              "time": "16:30",
+              "title": "犹太区与波特ico d'Ottavia",
+              "type": "核心",
+              "desc": "帝国时期犹太社区遗址，中世纪街道与古罗马柱廊交织。",
+              "img": "/images/rome_Jewish_ghetto_Rome.jpg",
+              "tips": "尝尝犹太炸洋蓟Carciofi alla Giudia。"
+            },
+            {
+              "time": "19:30",
+              "title": "犹太区晚餐",
+              "type": "美食",
+              "desc": "在Sora Margherita吃传统犹太罗马菜，炸洋蓟是必点。",
+              "img": "/images/rome_Jewish_ghetto_Rome.jpg",
+              "tips": "人均25-40€，只收现金。"
+            },
+            {
+              "time": "09:00",
+              "title": "阿庇亚古道 Via Appia Antica",
+              "type": "体验",
+              "desc": "罗马帝国最早的战略公路，两旁古墓与基督教地下墓穴密布。租辆自行车骑行感受「条条大路通罗马」。#古道骑行",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Via_Appia.jpg",
+              "tips": "周日部分路段禁车最适合骑行；入口附近可租自行车约15€/半天。"
+            },
+            {
+              "time": "12:30",
+              "title": "古道野餐",
+              "type": "美食",
+              "desc": "在Appian Way公园草地上吃从Campo de' Fiori买的火腿奶酪和水果。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Via_Appia.jpg",
+              "tips": "带上野餐垫和垃圾袋。"
+            },
+            {
+              "time": "14:00",
+              "title": "地下墓穴",
+              "type": "核心",
+              "desc": "圣卡利斯托或圣塞巴斯蒂安地下墓穴，见证基督教在罗马帝国边缘的兴起。",
+              "img": "/images/rome_Catacombs_of_Rome.jpg",
+              "tips": "门票约8€，英语团每小时发团。"
+            },
+            {
+              "time": "15:00",
+              "title": "万神殿 Pantheon",
+              "type": "核心",
+              "desc": "哈德良时期重建的穹顶奇迹，两千年来仍是世界最大无钢筋混凝土穹顶。顶部圆孔泄下神圣天光。#建筑奇迹",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Pantheon_Rome.jpg",
+              "tips": "免费进入但周末需预约；中午12点圆孔直射地面最壮观，雨天可见水帘。"
+            },
+            {
+              "time": "17:30",
+              "title": "万神殿周边aperitivo",
+              "type": "美食",
+              "desc": "在广场边酒吧点一杯Aperol Spritz和小食，看夕阳照进穹顶。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Pantheon_Rome.jpg",
+              "tips": "aperitivo人均10-15€，18:00-20:00最热闹。"
+            },
+            {
+              "time": "17:00",
+              "title": "特雷维喷泉 Fontana di Trevi",
+              "type": "核心",
+              "desc": "巴洛克喷泉杰作，背对抛一枚硬币保证重返罗马。傍晚灯光亮起时金色雕塑与碧水交相辉映。#许愿池",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Trevi_Fountain.jpg",
+              "tips": "清晨7点或深夜人少；别坐池边，会被罚款。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "买72小时Roma Pass含交通和2个景点；地下墓穴和Appian Way建议报半日游",
+            "accommodation": "Testaccio或Aventino区安静本地，Monti区更文艺",
+            "food": "Carciofi alla Giudia、Carbonara、Cacio e Pepe、Gelato、Maritozzo",
+            "budget": "130-260€/人/天",
+            "bestTime": "4-5月、9-10月",
+            "tips": [
+              "地下墓穴需跟团，提前查英语团时间",
+              "犹太区部分餐厅只收现金"
+            ]
+          }
+        }
+      },
+      "food": {
+        "1day": {
+          "title": "罗马美食一日线",
+          "subtitle": "从Carbonara到Gelato，吃懂永恒之城",
+          "duration": "1日",
+          "stops": [
+            {
+              "time": "09:00",
+              "title": "Campo de' Fiori 早市",
+              "type": "美食",
+              "desc": "罗马最热闹的露天市场，鲜花、蔬果、香料与橄榄油摊位开启一天。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Campo_de%27_Fiori.jpg",
+              "tips": "上午9-12点最热闹，可买松露酱和干意面当伴手礼。"
+            },
+            {
+              "time": "10:30",
+              "title": "Forno Campo de' Fiori 披萨",
+              "type": "美食",
+              "desc": "罗马最出名的Pizza al Taglio老店，Margherita和Potato口味刚出炉时最香。",
+              "img": "/images/rome_Pizza_al_taglio.jpg",
+              "tips": "按重量卖，人均3-6€，站着吃最地道。"
+            },
+            {
+              "time": "12:30",
+              "title": "正宗Carbonara午餐",
+              "type": "美食",
+              "desc": "罗马式培根蛋面只用鸡蛋、佩科里诺奶酪、guanciale和黑胡椒，绝不含奶油。",
+              "img": "/images/rome_Spaghetti_alla_Carbonara.jpg",
+              "tips": "推荐Roscioli或Da Enzo，人均25-40€，晚餐需预订。"
+            },
+            {
+              "time": "15:00",
+              "title": "Giolitti Gelato",
+              "type": "美食",
+              "desc": "1880年开业的老店，教皇也爱。开心果、榛子与大米口味是罗马经典。",
+              "img": "/images/rome_Gelato_italiano.jpg",
+              "tips": "小杯约4€，排队是常态，但值得。"
+            },
+            {
+              "time": "17:00",
+              "title": "纳沃纳广场 Aperitivo",
+              "type": "美食",
+              "desc": "在广场边酒吧点一杯Aperol Spritz配小食，看喷泉与街头艺人。",
+              "img": "/images/rome_Piazza_Navona.jpg",
+              "tips": "aperitivo人均10-15€，18:00-20:00最热闹。"
+            },
+            {
+              "time": "20:00",
+              "title": "Trastevere 晚餐",
+              "type": "美食",
+              "desc": "过河到本地街区吃Cacio e Pepe和烤羊排，感受罗马夜晚。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Trevi_Fountain.jpg",
+              "tips": "推荐Da Enzo，人均30-50€，排队是常态。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "市中心步行即可；从Termini坐地铁A线到Spagna",
+            "accommodation": "Trastevere或Campo de' Fiori周边",
+            "food": "Carbonara、Cacio e Pepe、Pizza al Taglio、Gelato、Aperol Spritz",
+            "budget": "80-160€/人/天",
+            "bestTime": "春秋最佳",
+            "tips": [
+              "热门餐厅务必预订",
+              "Gelato避开颜色过于鲜艳的游客店"
+            ]
+          }
+        },
+        "2days": {
+          "title": "罗马美食双日寻味线",
+          "subtitle": "市场、小馆、甜品与aperitivo",
+          "duration": "2日",
+          "stops": [
+            {
+              "time": "08:30",
+              "title": "Trastevere 早餐",
+              "type": "美食",
+              "desc": "在本地咖啡馆吃Cornetto牛角包配Cappuccino，像罗马人一样开始一天。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Trevi_Fountain.jpg",
+              "tips": "站立吧台喝比坐下便宜，约2-3€。"
+            },
+            {
+              "time": "10:00",
+              "title": "Porta Portese 跳蚤市场",
+              "type": "购物",
+              "desc": "周日最大的露天跳蚤市场，从复古衣饰到旧书黑胶应有尽有。",
+              "img": "/images/rome_Porta_Portese.jpg",
+              "tips": "只有周日7:00-14:00开放，注意财物。"
+            },
+            {
+              "time": "12:30",
+              "title": "Testaccio Market 午餐",
+              "type": "美食",
+              "desc": "罗马本地人的社区市场，吃Trippa牛肚、Pizza al Taglio和手工意面。",
+              "img": "/images/rome_Mercato_di_Testaccio.jpg",
+              "tips": "人均10-15€，周一闭市。"
+            },
+            {
+              "time": "15:00",
+              "title": "Pizzarium Bonci",
+              "type": "美食",
+              "desc": "Gabriele Bonci的方形披萨被奉为罗马最佳，面团发酵48小时，配料随季节变化。",
+              "img": "/images/rome_Pizzarium_Bonci.jpg",
+              "tips": "靠近梵蒂冈，人均8-15€，需排队。"
+            },
+            {
+              "time": "17:30",
+              "title": "梵蒂冈周边 Aperitivo",
+              "type": "美食",
+              "desc": "在Prati区酒吧喝Spritz配橄榄和意式小食，等待晚餐。",
+              "img": "/images/rome_Prati_Rome.jpg",
+              "tips": "人均10-15€。"
+            },
+            {
+              "time": "20:00",
+              "title": "Trastevere 传统晚餐",
+              "type": "美食",
+              "desc": "在Flavio al Velavevodetto吃Amatriciana和Cacio e Pepe。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Trevi_Fountain.jpg",
+              "tips": "人均30-45€，需预订。"
+            },
+            {
+              "time": "09:00",
+              "title": "Campo de' Fiori 早市",
+              "type": "美食",
+              "desc": "再买一束鲜花和新鲜食材，体验罗马人的日常采购。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Campo_de%27_Fiori.jpg",
+              "tips": "上午市场最热闹。"
+            },
+            {
+              "time": "10:30",
+              "title": "Roscioli Salumeria",
+              "type": "美食",
+              "desc": "百年熟食店兼餐厅，精选火腿、奶酪与葡萄酒，是美食家的朝圣地。",
+              "img": "/images/rome_Roscioli_Rome.jpg",
+              "tips": "人均40-70€，需提前预订。"
+            },
+            {
+              "time": "12:30",
+              "title": "Carbonara 朝圣",
+              "type": "美食",
+              "desc": "在Roscioli或Da Enzo点一份正宗Carbonara，感受简单食材的极致。",
+              "img": "/images/rome_Spaghetti_alla_Carbonara.jpg",
+              "tips": "约25-35€一份。"
+            },
+            {
+              "time": "15:00",
+              "title": "Gelato 巡礼",
+              "type": "美食",
+              "desc": "从Giolitti吃到Fatamorgana和Gelateria del Teatro，比较三家风味。",
+              "img": "/images/rome_Gelato_italiano.jpg",
+              "tips": "每家小杯3-5€，建议分享。"
+            },
+            {
+              "time": "17:00",
+              "title": "西班牙阶梯周边",
+              "type": "体验",
+              "desc": "在Condotti街购物后，到Antico Caffè Greco喝一杯高价但历史悠久的咖啡。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Spanish_Steps.jpg",
+              "tips": "咖啡约8-12€，为历史买单。"
+            },
+            {
+              "time": "20:30",
+              "title": "犹太区晚餐",
+              "type": "美食",
+              "desc": "在Sora Margherita吃Carciofi alla Giudia炸洋蓟与犹太罗马菜。",
+              "img": "/images/rome_Jewish_ghetto_Rome.jpg",
+              "tips": "人均25-40€，只收现金。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "步行+地铁A线；Testaccio和Prati地铁可达",
+            "accommodation": "Trastevere或Testaccio",
+            "food": "Carbonara、Cacio e Pepe、Amatriciana、Gelato、Trippa、炸洋蓟",
+            "budget": "120-250€/人/天",
+            "bestTime": "春秋最佳",
+            "tips": [
+              "Bonci和Roscioli务必提前或错峰",
+              "周日Porta Portese只有上午开放"
+            ]
+          }
+        },
+        "3days": {
+          "title": "罗马美食三日沉浸线",
+          "subtitle": "从街头小食到米其林，全面吃懂罗马",
+          "duration": "3日",
+          "stops": [
+            {
+              "time": "08:30",
+              "title": "Trastevere 早餐",
+              "type": "美食",
+              "desc": "本地Cornetto与Cappuccino。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Trevi_Fountain.jpg",
+              "tips": "站立吧台2-3€。"
+            },
+            {
+              "time": "10:00",
+              "title": "Porta Portese 跳蚤市场",
+              "type": "购物",
+              "desc": "周日复古市集淘宝。",
+              "img": "/images/rome_Porta_Portese.jpg",
+              "tips": "只周日开放。"
+            },
+            {
+              "time": "12:30",
+              "title": "Testaccio Market",
+              "type": "美食",
+              "desc": "本地人市场吃Trippa。",
+              "img": "/images/rome_Mercato_di_Testaccio.jpg",
+              "tips": "人均10-15€。"
+            },
+            {
+              "time": "15:00",
+              "title": "Pizzarium Bonci",
+              "type": "美食",
+              "desc": "罗马最佳方形披萨。",
+              "img": "/images/rome_Pizzarium_Bonci.jpg",
+              "tips": "人均8-15€。"
+            },
+            {
+              "time": "17:30",
+              "title": "Prati Aperitivo",
+              "type": "美食",
+              "desc": "梵蒂冈周边Spritz时光。",
+              "img": "/images/rome_Prati_Rome.jpg",
+              "tips": "人均10-15€。"
+            },
+            {
+              "time": "20:00",
+              "title": "Trastevere 晚餐",
+              "type": "美食",
+              "desc": "家庭小馆传统罗马菜。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Trevi_Fountain.jpg",
+              "tips": "人均30-45€。"
+            },
+            {
+              "time": "09:00",
+              "title": "Campo de' Fiori 早市",
+              "type": "美食",
+              "desc": "鲜花与食材市场。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Campo_de%27_Fiori.jpg",
+              "tips": "上午最热闹。"
+            },
+            {
+              "time": "10:30",
+              "title": "Roscioli Salumeria",
+              "type": "美食",
+              "desc": "百年熟食店与餐厅。",
+              "img": "/images/rome_Roscioli_Rome.jpg",
+              "tips": "人均40-70€，需预订。"
+            },
+            {
+              "time": "12:30",
+              "title": "Carbonara 朝圣",
+              "type": "美食",
+              "desc": "正宗培根蛋面。",
+              "img": "/images/rome_Spaghetti_alla_Carbonara.jpg",
+              "tips": "25-35€。"
+            },
+            {
+              "time": "15:00",
+              "title": "Gelato 巡礼",
+              "type": "美食",
+              "desc": "三家名店对比。",
+              "img": "/images/rome_Gelato_italiano.jpg",
+              "tips": "每家3-5€。"
+            },
+            {
+              "time": "17:00",
+              "title": "西班牙阶梯",
+              "type": "体验",
+              "desc": "Condotti购物与Antico Caffè Greco。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Spanish_Steps.jpg",
+              "tips": "咖啡8-12€。"
+            },
+            {
+              "time": "20:30",
+              "title": "犹太区晚餐",
+              "type": "美食",
+              "desc": "炸洋蓟与犹太罗马菜。",
+              "img": "/images/rome_Jewish_ghetto_Rome.jpg",
+              "tips": "人均25-40€。"
+            },
+            {
+              "time": "09:30",
+              "title": "Eataly Rome",
+              "type": "体验",
+              "desc": "意大利美食主题乐园，从各地奶酪、火腿到手工意面一站式体验。",
+              "img": "/images/rome_Eataly_Rome.jpg",
+              "tips": "适合买伴手礼，楼上餐厅人均30-50€。"
+            },
+            {
+              "time": "11:30",
+              "title": "Ostiense 工业区涂鸦与咖啡",
+              "type": "体验",
+              "desc": "旧工业区改造的咖啡馆与精酿酒吧，感受罗马年轻人的美食新浪潮。",
+              "img": "/images/rome_Ostiense_Rome.jpg",
+              "tips": "咖啡3-5€，氛围很棒。"
+            },
+            {
+              "time": "13:30",
+              "title": "Pigneto 午餐",
+              "type": "美食",
+              "desc": "波西米亚街区的新兴餐厅，创意意大利菜与街头艺术并存。",
+              "img": "/images/rome_Pigneto_Rome.jpg",
+              "tips": "人均20-35€。"
+            },
+            {
+              "time": "16:00",
+              "title": "Maritozzo 奶油面包",
+              "type": "美食",
+              "desc": "罗马传统甜点，面包夹鲜奶油与松子，配一杯咖啡是完美下午茶。",
+              "img": "/images/rome_Maritozzo.jpg",
+              "tips": "约3-5€一个。"
+            },
+            {
+              "time": "18:00",
+              "title": "Gianicolo 日落",
+              "type": "体验",
+              "desc": "在罗马最高山丘看城市全景与日落，是晚餐前最佳开胃菜。",
+              "img": "/images/rome_Gianicolo_Rome.jpg",
+              "tips": "免费，从Trastevere步行约20分钟。"
+            },
+            {
+              "time": "20:30",
+              "title": "米其林告别晚餐",
+              "type": "美食",
+              "desc": "在Il Pagliaccio或Metamorfosi体验新派罗马料理。",
+              "img": "/images/rome_Metamorfosi_Rome.jpg",
+              "tips": "套餐120€起，需提前数周预订。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "步行+地铁A/B线+打车；Eataly在Ostiense",
+            "accommodation": "Trastevere、Testaccio或Monti",
+            "food": "Carbonara、Cacio e Pepe、Amatriciana、Gelato、Maritozzo、炸洋蓟",
+            "budget": "180-400€/人/天",
+            "bestTime": "春秋最佳",
+            "tips": [
+              "米其林餐厅务必提前预订",
+              "Maritozzo下午容易卖完"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "florence": {
+    "name": "佛罗伦萨",
+    "case": "文艺复兴 + 黑死病",
+    "country": "意大利",
+    "description": "阿诺河畔的文艺复兴摇篮，美第奇家族赞助下诞生了达芬奇、米开朗基罗与波提切利。1348年黑死病曾让城市折损半数人口，却也成为人文主义觉醒的催化剂。",
+    "themes": {
+      "renaissance": {
+        "1day": {
+          "title": "文艺复兴艺术一日线",
+          "subtitle": "大卫、乌菲兹与老桥，穿越黄金时代",
+          "duration": "1日",
+          "stops": [
+            {
+              "time": "08:30",
+              "title": "圣母百花大教堂 Duomo",
+              "type": "核心",
+              "desc": "布鲁内莱斯基设计的巨大红砖穹顶是文艺复兴工程的标志。登穹顶可俯瞰全城红瓦屋顶。#文艺复兴地标",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Santa_Maria_del_Fiore.jpg",
+              "tips": "必须提前预约登穹顶或钟楼，联票约18-30€；教堂内部免费但需排队。"
+            },
+            {
+              "time": "11:00",
+              "title": "学院美术馆 Galleria dell'Accademia",
+              "type": "核心",
+              "desc": "米开朗基罗《大卫》真身所在地，原作从每一块肌肉中散发出人文主义对人体的赞颂。#大卫像",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Galleria_dell%27Accademia_Florence.jpg",
+              "tips": "必须提前网上预约，门票约16.5€；周二至周日开放，周一闭馆。"
+            },
+            {
+              "time": "13:00",
+              "title": "中央市场美食广场 Mercato Centrale",
+              "type": "美食",
+              "desc": "19世纪铁艺玻璃大厅内汇集了托斯卡纳小吃、松露、牛排与手工意面。#美食广场",
+              "img": "/images/florence_Mercato_Centrale_Firenze.jpg",
+              "tips": "人均15-25€，推荐松露意面和牛肚包；营业至午夜。"
+            },
+            {
+              "time": "09:30",
+              "title": "旧宫 Palazzo Vecchio",
+              "type": "核心",
+              "desc": "佛罗伦萨共和国的市政厅，萨佛纳罗拉在此被处决，大厅壁画讲述城市荣耀与权力。#市政权力",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Palazzo_Vecchio.jpg",
+              "tips": "门票约16.5€，可登塔楼；广场上的大卫像是复制品，真品在学院美术馆。"
+            },
+            {
+              "time": "14:30",
+              "title": "乌菲兹美术馆 Uffizi",
+              "type": "核心",
+              "desc": "世界上最重要的文艺复兴美术馆，波提切利《维纳斯诞生》、达芬奇《天使报喜》与美第奇收藏悉数在此。#艺术圣殿",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Uffizi_Gallery.jpg",
+              "tips": "务必提前预订时段票，门票约20€；建议租讲解器，预留3小时。"
+            },
+            {
+              "time": "17:30",
+              "title": "老桥 Ponte Vecchio",
+              "type": "核心",
+              "desc": "中世纪珠宝商铺林立的石桥，二战中唯一未被炸毁的佛罗伦萨桥梁。日落时金光洒在阿诺河上。#浪漫地标",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Ponte_Vecchio.jpg",
+              "tips": "傍晚拍照最佳，桥上人挤人注意财物；珠宝店价格不菲， window shopping 即可。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "步行即可覆盖市中心；从SMN火车站步行10分钟到主教座堂",
+            "accommodation": "主教座堂周边最方便，圣十字区更有文艺气息",
+            "food": "Bistecca alla Fiorentina、Lampredotto、Gelato、Ribollita蔬菜汤",
+            "budget": "100-200€/人/天",
+            "bestTime": "4-5月、9-10月",
+            "tips": [
+              "学院美术馆和乌菲兹必须提前预约",
+              "登穹顶需体力，建议早上去"
+            ]
+          }
+        },
+        "2days": {
+          "title": "文艺复兴双日深度游",
+          "subtitle": "教堂、宫殿、美术馆与美第奇家族传奇",
+          "duration": "2日",
+          "stops": [
+            {
+              "time": "08:30",
+              "title": "圣母百花大教堂 Duomo",
+              "type": "核心",
+              "desc": "布鲁内莱斯基设计的巨大红砖穹顶是文艺复兴工程的标志。登穹顶可俯瞰全城红瓦屋顶。#文艺复兴地标",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Santa_Maria_del_Fiore.jpg",
+              "tips": "必须提前预约登穹顶或钟楼，联票约18-30€；教堂内部免费但需排队。"
+            },
+            {
+              "time": "11:00",
+              "title": "学院美术馆 Galleria dell'Accademia",
+              "type": "核心",
+              "desc": "米开朗基罗《大卫》真身所在地，原作从每一块肌肉中散发出人文主义对人体的赞颂。#大卫像",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Galleria_dell%27Accademia_Florence.jpg",
+              "tips": "必须提前网上预约，门票约16.5€；周二至周日开放，周一闭馆。"
+            },
+            {
+              "time": "10:00",
+              "title": "圣弥额尔教堂 Orsanmichele",
+              "type": "核心",
+              "desc": "原为粮仓，外壁布满行会捐赠的圣人雕像，是多纳泰罗等大师早期作品的露天展览馆。#行会艺术",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Orsanmichele.jpg",
+              "tips": "教堂免费，内部小博物馆周一开放；二层可近距离看外墙雕像复制品。"
+            },
+            {
+              "time": "13:00",
+              "title": "中央市场美食广场 Mercato Centrale",
+              "type": "美食",
+              "desc": "19世纪铁艺玻璃大厅内汇集了托斯卡纳小吃、松露、牛排与手工意面。#美食广场",
+              "img": "/images/florence_Mercato_Centrale_Firenze.jpg",
+              "tips": "人均15-25€，推荐松露意面和牛肚包；营业至午夜。"
+            },
+            {
+              "time": "09:30",
+              "title": "旧宫 Palazzo Vecchio",
+              "type": "核心",
+              "desc": "佛罗伦萨共和国的市政厅，萨佛纳罗拉在此被处决，大厅壁画讲述城市荣耀与权力。#市政权力",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Palazzo_Vecchio.jpg",
+              "tips": "门票约16.5€，可登塔楼；广场上的大卫像是复制品，真品在学院美术馆。"
+            },
+            {
+              "time": "14:30",
+              "title": "乌菲兹美术馆 Uffizi",
+              "type": "核心",
+              "desc": "世界上最重要的文艺复兴美术馆，波提切利《维纳斯诞生》、达芬奇《天使报喜》与美第奇收藏悉数在此。#艺术圣殿",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Uffizi_Gallery.jpg",
+              "tips": "务必提前预订时段票，门票约20€；建议租讲解器，预留3小时。"
+            },
+            {
+              "time": "17:30",
+              "title": "老桥 Ponte Vecchio",
+              "type": "核心",
+              "desc": "中世纪珠宝商铺林立的石桥，二战中唯一未被炸毁的佛罗伦萨桥梁。日落时金光洒在阿诺河上。#浪漫地标",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Ponte_Vecchio.jpg",
+              "tips": "傍晚拍照最佳，桥上人挤人注意财物；珠宝店价格不菲， window shopping 即可。"
+            },
+            {
+              "time": "18:30",
+              "title": "米开朗基罗广场 Piazzale Michelangelo",
+              "type": "体验",
+              "desc": "俯瞰佛罗伦萨全城与阿诺河全景的最佳地点，日落时分大教堂穹顶被染成金色。#城市全景",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Piazzale_Michelangelo.jpg",
+              "tips": "建议傍晚提前1小时占位；可乘12/13路公交，步行约20分钟上坡。"
+            },
+            {
+              "time": "11:00",
+              "title": "圣十字圣殿 Santa Croce",
+              "type": "核心",
+              "desc": "佛罗伦萨先贤祠，米开朗基罗、伽利略、马基雅维利长眠于此。哥特式立面由文艺复兴时期完成。#先贤祠",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Basilica_di_Santa_Croce.jpg",
+              "tips": "门票约8€，教堂内有帕齐小礼拜堂等杰作；周日上午弥撒免费。"
+            },
+            {
+              "time": "12:00",
+              "title": "圣洛伦佐市场 Mercato di San Lorenzo",
+              "type": "购物",
+              "desc": "户外皮革制品、围巾与纪念品摊位环绕中央市场，是淘伴手礼与体验市井的好去处。#市集淘宝",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Mercato_di_San_Lorenzo.jpg",
+              "tips": "记得砍价， leather 质量参差；中央市场二楼美食广场适合午餐。"
+            },
+            {
+              "time": "14:00",
+              "title": "美第奇-里卡迪宫",
+              "type": "核心",
+              "desc": "美第奇家族早期宫殿，马焦雷礼拜堂内有戈佐利的《三王来朝》壁画，是了解家族崛起的窗口。",
+              "img": "/images/florence_Palazzo_Medici_Riccardi.jpg",
+              "tips": "门票约10€，周一闭馆。"
+            },
+            {
+              "time": "15:00",
+              "title": "美第奇礼拜堂 Cappelle Medicee",
+              "type": "核心",
+              "desc": "美第奇家族陵墓，米开朗基罗设计的《昼》《夜》《晨》《暮》雕塑是文艺复兴盛期杰作。#家族陵寝",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Cappelle_Medicee.jpg",
+              "tips": "门票约9€，周二闭馆；与圣洛伦佐教堂相连。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "买Firenze Card可免预约进入72个景点；市内景点步行可达",
+            "accommodation": "主教座堂周边或圣洛伦佐区",
+            "food": "T骨牛排、牛肚包、松露意面、Gelato",
+            "budget": "150-280€/人/天",
+            "bestTime": "春秋最佳，避开盛夏",
+            "tips": [
+              "Firenze Card 72小时有效，但热门馆仍需预约时段",
+              "米开朗基罗广场傍晚光线最佳"
+            ]
+          }
+        },
+        "3days": {
+          "title": "文艺复兴三日沉浸线",
+          "subtitle": "从宗教虔诚到世俗权力，全面解读佛罗伦萨",
+          "duration": "3日",
+          "stops": [
+            {
+              "time": "08:30",
+              "title": "圣母百花大教堂 Duomo",
+              "type": "核心",
+              "desc": "布鲁内莱斯基设计的巨大红砖穹顶是文艺复兴工程的标志。登穹顶可俯瞰全城红瓦屋顶。#文艺复兴地标",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Santa_Maria_del_Fiore.jpg",
+              "tips": "必须提前预约登穹顶或钟楼，联票约18-30€；教堂内部免费但需排队。"
+            },
+            {
+              "time": "11:00",
+              "title": "学院美术馆 Galleria dell'Accademia",
+              "type": "核心",
+              "desc": "米开朗基罗《大卫》真身所在地，原作从每一块肌肉中散发出人文主义对人体的赞颂。#大卫像",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Galleria_dell%27Accademia_Florence.jpg",
+              "tips": "必须提前网上预约，门票约16.5€；周二至周日开放，周一闭馆。"
+            },
+            {
+              "time": "10:00",
+              "title": "圣弥额尔教堂 Orsanmichele",
+              "type": "核心",
+              "desc": "原为粮仓，外壁布满行会捐赠的圣人雕像，是多纳泰罗等大师早期作品的露天展览馆。#行会艺术",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Orsanmichele.jpg",
+              "tips": "教堂免费，内部小博物馆周一开放；二层可近距离看外墙雕像复制品。"
+            },
+            {
+              "time": "13:00",
+              "title": "中央市场美食广场 Mercato Centrale",
+              "type": "美食",
+              "desc": "19世纪铁艺玻璃大厅内汇集了托斯卡纳小吃、松露、牛排与手工意面。#美食广场",
+              "img": "/images/florence_Mercato_Centrale_Firenze.jpg",
+              "tips": "人均15-25€，推荐松露意面和牛肚包；营业至午夜。"
+            },
+            {
+              "time": "09:30",
+              "title": "旧宫 Palazzo Vecchio",
+              "type": "核心",
+              "desc": "佛罗伦萨共和国的市政厅，萨佛纳罗拉在此被处决，大厅壁画讲述城市荣耀与权力。#市政权力",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Palazzo_Vecchio.jpg",
+              "tips": "门票约16.5€，可登塔楼；广场上的大卫像是复制品，真品在学院美术馆。"
+            },
+            {
+              "time": "14:30",
+              "title": "乌菲兹美术馆 Uffizi",
+              "type": "核心",
+              "desc": "世界上最重要的文艺复兴美术馆，波提切利《维纳斯诞生》、达芬奇《天使报喜》与美第奇收藏悉数在此。#艺术圣殿",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Uffizi_Gallery.jpg",
+              "tips": "务必提前预订时段票，门票约20€；建议租讲解器，预留3小时。"
+            },
+            {
+              "time": "17:30",
+              "title": "老桥 Ponte Vecchio",
+              "type": "核心",
+              "desc": "中世纪珠宝商铺林立的石桥，二战中唯一未被炸毁的佛罗伦萨桥梁。日落时金光洒在阿诺河上。#浪漫地标",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Ponte_Vecchio.jpg",
+              "tips": "傍晚拍照最佳，桥上人挤人注意财物；珠宝店价格不菲， window shopping 即可。"
+            },
+            {
+              "time": "18:30",
+              "title": "米开朗基罗广场 Piazzale Michelangelo",
+              "type": "体验",
+              "desc": "俯瞰佛罗伦萨全城与阿诺河全景的最佳地点，日落时分大教堂穹顶被染成金色。#城市全景",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Piazzale_Michelangelo.jpg",
+              "tips": "建议傍晚提前1小时占位；可乘12/13路公交，步行约20分钟上坡。"
+            },
+            {
+              "time": "11:00",
+              "title": "圣十字圣殿 Santa Croce",
+              "type": "核心",
+              "desc": "佛罗伦萨先贤祠，米开朗基罗、伽利略、马基雅维利长眠于此。哥特式立面由文艺复兴时期完成。#先贤祠",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Basilica_di_Santa_Croce.jpg",
+              "tips": "门票约8€，教堂内有帕齐小礼拜堂等杰作；周日上午弥撒免费。"
+            },
+            {
+              "time": "12:00",
+              "title": "圣洛伦佐市场 Mercato di San Lorenzo",
+              "type": "购物",
+              "desc": "户外皮革制品、围巾与纪念品摊位环绕中央市场，是淘伴手礼与体验市井的好去处。#市集淘宝",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Mercato_di_San_Lorenzo.jpg",
+              "tips": "记得砍价， leather 质量参差；中央市场二楼美食广场适合午餐。"
+            },
+            {
+              "time": "15:00",
+              "title": "美第奇礼拜堂 Cappelle Medicee",
+              "type": "核心",
+              "desc": "美第奇家族陵墓，米开朗基罗设计的《昼》《夜》《晨》《暮》雕塑是文艺复兴盛期杰作。#家族陵寝",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Cappelle_Medicee.jpg",
+              "tips": "门票约9€，周二闭馆；与圣洛伦佐教堂相连。"
+            },
+            {
+              "time": "14:00",
+              "title": "碧提宫 Palazzo Pitti",
+              "type": "核心",
+              "desc": "美第奇家族的宏伟宫殿，拉斐尔、提香等大师画作与皇家公寓展现权力审美。#美第奇宫殿",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Palazzo_Pitti.jpg",
+              "tips": "门票约16€，周一闭馆；与波波里花园联票更划算。"
+            },
+            {
+              "time": "16:00",
+              "title": "波波里花园 Giardino di Boboli",
+              "type": "体验",
+              "desc": "文艺复兴园林典范，喷泉、雕塑与柏树小径构成托斯卡纳式几何美学。#园林艺术",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Boboli_Gardens.jpg",
+              "tips": "与碧提宫联票，夏季很晒带足水；花园很大，穿舒适鞋子。"
+            },
+            {
+              "time": "11:00",
+              "title": "布兰卡契礼拜堂 Cappella Brancacci",
+              "type": "核心",
+              "desc": "马萨乔与马索利诺绘制的《亚当夏娃逐出伊甸园》等壁画，被誉为文艺复兴绘画的摇篮。#文艺复兴摇篮",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Cappella_Brancacci.jpg",
+              "tips": "位于Santa Maria del Carmine教堂内，需预约，每次限流参观。"
+            },
+            {
+              "time": "10:00",
+              "title": "圣马可修道院 Convento di San Marco",
+              "type": "核心",
+              "desc": "安杰利科修士绘制的壁画遍布每一间修士小室，宁静氛围中感受文艺复兴宗教虔诚。#修道院艺术",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/San_Marco_Florence.jpg",
+              "tips": "门票约8€，周一闭馆；游客较少，体验极佳。"
+            },
+            {
+              "time": "17:00",
+              "title": "鲁切拉宫",
+              "type": "核心",
+              "desc": "阿尔伯蒂设计的早期文艺复兴宫殿立面，立柱与拱门的比例成为后世典范。",
+              "img": "/images/florence_Palazzo_Rucellai.jpg",
+              "tips": "外观即可，位于Via della Vigna Nuova。"
+            },
+            {
+              "time": "19:30",
+              "title": "阿诺河日落晚餐",
+              "type": "美食",
+              "desc": "在Borgo San Jacopo等河畔餐厅吃晚餐，看夕阳把老桥染成金色。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Ponte_Vecchio.jpg",
+              "tips": "需提前预订，人均80-150€。"
+            },
+            {
+              "time": "09:30",
+              "title": "菲耶索莱一日游",
+              "type": "核心",
+              "desc": "佛罗伦萨山丘上的伊特鲁里亚与罗马遗址，也可俯瞰城市全景，是古罗马向文艺复兴过渡的见证。",
+              "img": "/images/florence_Fiesole.jpg",
+              "tips": "公交7路约20分钟；罗马剧场门票约10€。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "买72小时Firenze Card；去菲耶索莱乘公交7路",
+            "accommodation": "主教座堂周边最方便，Oltarno区更有本地生活气息",
+            "food": "T骨牛排、牛肚包、松露、基安蒂红酒、Gelato",
+            "budget": "180-350€/人/天",
+            "bestTime": "4-5月、9-10月",
+            "tips": [
+              "菲耶索莱适合半日游，下午回城看日落",
+              "所有美术馆务必提前预约"
+            ]
+          }
+        }
+      },
+      "plague": {
+        "1day": {
+          "title": "黑死病记忆一日线",
+          "subtitle": "从瘟疫柱到薄伽丘，走进1348年的佛罗伦萨",
+          "duration": "1日",
+          "stops": [
+            {
+              "time": "09:30",
+              "title": "圣母领报广场与瘟疫柱",
+              "type": "核心",
+              "desc": "1348年黑死病席卷佛罗伦萨后，市民竖立感恩柱祈求庇护。广场旁的孤儿院是文艺复兴早期建筑的典范。#黑死病记忆",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Colonna_della_Santissima_Annunziata.jpg",
+              "tips": "广场免费开放；孤儿院博物馆门票约7€，周一闭馆。"
+            },
+            {
+              "time": "11:00",
+              "title": "新圣母大殿 Santa Maria Novella",
+              "type": "核心",
+              "desc": "黑死病期间多米尼克会修士在此救治病人，教堂内马萨乔《圣三位一体》是文艺复兴透视法里程碑。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Firenze_Santa_Maria_Novella.jpg",
+              "tips": "门票约7.5€，周一至周六开放。"
+            },
+            {
+              "time": "11:00",
+              "title": "圣十字圣殿 Santa Croce",
+              "type": "核心",
+              "desc": "佛罗伦萨先贤祠，米开朗基罗、伽利略、马基雅维利长眠于此。哥特式立面由文艺复兴时期完成。#先贤祠",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Basilica_di_Santa_Croce.jpg",
+              "tips": "门票约8€，教堂内有帕齐小礼拜堂等杰作；周日上午弥撒免费。"
+            },
+            {
+              "time": "14:00",
+              "title": "圣十字区午餐",
+              "type": "美食",
+              "desc": "在Sant'Ambrogio市场吃Ribollita蔬菜汤与面包沙拉，体验平民在瘟疫后的节俭智慧。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Mercato_di_San_Lorenzo.jpg",
+              "tips": "人均12-20€。"
+            },
+            {
+              "time": "15:30",
+              "title": "孤儿院博物馆 Ospedale degli Innocenti",
+              "type": "核心",
+              "desc": "欧洲最早的弃儿收容所，布鲁内莱斯基设计的拱廊开创文艺复兴建筑先河，也反映黑死病后社会对孤儿的关注。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Colonna_della_Santissima_Annunziata.jpg",
+              "tips": "门票约7€，周一闭馆。"
+            },
+            {
+              "time": "18:30",
+              "title": "米开朗基罗广场 Piazzale Michelangelo",
+              "type": "体验",
+              "desc": "俯瞰佛罗伦萨全城与阿诺河全景的最佳地点，日落时分大教堂穹顶被染成金色。#城市全景",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Piazzale_Michelangelo.jpg",
+              "tips": "建议傍晚提前1小时占位；可乘12/13路公交，步行约20分钟上坡。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "市中心步行即可；新圣母大殿靠近SMN火车站",
+            "accommodation": "圣十字区或新圣母区",
+            "food": "Ribollita、Pappa al Pomodoro、Lampredotto",
+            "budget": "80-150€/人/天",
+            "bestTime": "春秋最佳",
+            "tips": [
+              "孤儿院博物馆周一闭馆",
+              "Sant'Ambrogio市场上午最热闹"
+            ]
+          }
+        },
+        "2days": {
+          "title": "黑死病与城市韧性双日线",
+          "subtitle": "瘟疫、社会崩溃与人文主义觉醒",
+          "duration": "2日",
+          "stops": [
+            {
+              "time": "09:30",
+              "title": "圣母领报广场与瘟疫柱",
+              "type": "核心",
+              "desc": "1348年黑死病席卷佛罗伦萨后，市民竖立感恩柱祈求庇护。广场旁的孤儿院是文艺复兴早期建筑的典范。#黑死病记忆",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Colonna_della_Santissima_Annunziata.jpg",
+              "tips": "广场免费开放；孤儿院博物馆门票约7€，周一闭馆。"
+            },
+            {
+              "time": "11:00",
+              "title": "新圣母大殿",
+              "type": "核心",
+              "desc": "多米尼克会在此组织防疫与救治，教堂藏有透视法杰作《圣三位一体》。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Firenze_Santa_Maria_Novella.jpg",
+              "tips": "门票7.5€，周一闭馆。"
+            },
+            {
+              "time": "12:30",
+              "title": "Sant'Ambrogio市场午餐",
+              "type": "美食",
+              "desc": "本地社区市场，瘟疫后平民饮食的节俭智慧化作 hearty 蔬菜汤与牛肚。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Mercato_di_San_Lorenzo.jpg",
+              "tips": "人均10-15€，周日关闭。"
+            },
+            {
+              "time": "11:00",
+              "title": "圣十字圣殿 Santa Croce",
+              "type": "核心",
+              "desc": "佛罗伦萨先贤祠，米开朗基罗、伽利略、马基雅维利长眠于此。哥特式立面由文艺复兴时期完成。#先贤祠",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Basilica_di_Santa_Croce.jpg",
+              "tips": "门票约8€，教堂内有帕齐小礼拜堂等杰作；周日上午弥撒免费。"
+            },
+            {
+              "time": "15:00",
+              "title": "巴杰罗美术馆",
+              "type": "核心",
+              "desc": "多纳泰罗《大卫》与米开朗基罗早期雕塑展示黑死病后艺术对人体与情感的重新关注。",
+              "img": "/images/florence_Museo_nazionale_del_Bargello.jpg",
+              "tips": "门票约13€，周四闭馆。"
+            },
+            {
+              "time": "18:30",
+              "title": "米开朗基罗广场 Piazzale Michelangelo",
+              "type": "体验",
+              "desc": "俯瞰佛罗伦萨全城与阿诺河全景的最佳地点，日落时分大教堂穹顶被染成金色。#城市全景",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Piazzale_Michelangelo.jpg",
+              "tips": "建议傍晚提前1小时占位；可乘12/13路公交，步行约20分钟上坡。"
+            },
+            {
+              "time": "19:00",
+              "title": "Oltarno区晚餐",
+              "type": "美食",
+              "desc": "在河对岸本地人街区吃传统托斯卡纳炖菜，感受城市复苏后的日常。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Ponte_Vecchio.jpg",
+              "tips": "人均25-40€。"
+            },
+            {
+              "time": "09:00",
+              "title": "菲耶索莱高地",
+              "type": "核心",
+              "desc": "1348年瘟疫从沿海传入，佛罗伦萨山丘上的修道院与村庄记录了乡村人口锐减与社会结构变化。",
+              "img": "/images/florence_Fiesole.jpg",
+              "tips": "公交7路可达，预留半天。"
+            },
+            {
+              "time": "12:00",
+              "title": "Fiesole午餐",
+              "type": "美食",
+              "desc": "在山城小馆吃Pappa al Pomodoro面包番茄汤，这是饥荒年代穷人的智慧料理。",
+              "img": "/images/florence_Fiesole.jpg",
+              "tips": "人均15-25€。"
+            },
+            {
+              "time": "11:00",
+              "title": "学院美术馆 Galleria dell'Accademia",
+              "type": "核心",
+              "desc": "米开朗基罗《大卫》真身所在地，原作从每一块肌肉中散发出人文主义对人体的赞颂。#大卫像",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Galleria_dell%27Accademia_Florence.jpg",
+              "tips": "必须提前网上预约，门票约16.5€；周二至周日开放，周一闭馆。"
+            },
+            {
+              "time": "16:30",
+              "title": "圣马可修道院",
+              "type": "核心",
+              "desc": "安杰利科修士的壁画在黑死病后传递宁静与信仰，是多明我会精神生活的缩影。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/San_Marco_Florence.jpg",
+              "tips": "门票8€，周一闭馆。"
+            },
+            {
+              "time": "18:30",
+              "title": "《十日谈》主题散步",
+              "type": "体验",
+              "desc": "沿阿诺河想象薄伽丘笔下躲避瘟疫的青年男女，瘟疫催生了世俗文学与个人主义。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Ponte_Vecchio.jpg",
+              "tips": "可在河边酒吧点一杯酒阅读《十日谈》片段。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "步行+公交7路去菲耶索莱；买Firenze Card可覆盖多数博物馆",
+            "accommodation": "新圣母区或圣十字区，靠近历史记忆点",
+            "food": "Ribollita、Pappa al Pomodoro、Lampredotto、Chianti",
+            "budget": "120-220€/人/天",
+            "bestTime": "春秋最佳",
+            "tips": [
+              "巴杰罗美术馆周四闭馆",
+              "菲耶索莱需预留半天"
+            ]
+          }
+        },
+        "3days": {
+          "title": "黑死病三日沉浸线",
+          "subtitle": "瘟疫、信仰、艺术与社会转型的佛罗伦萨样本",
+          "duration": "3日",
+          "stops": [
+            {
+              "time": "09:30",
+              "title": "圣母领报广场与瘟疫柱",
+              "type": "核心",
+              "desc": "1348年黑死病席卷佛罗伦萨后，市民竖立感恩柱祈求庇护。广场旁的孤儿院是文艺复兴早期建筑的典范。#黑死病记忆",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Colonna_della_Santissima_Annunziata.jpg",
+              "tips": "广场免费开放；孤儿院博物馆门票约7€，周一闭馆。"
+            },
+            {
+              "time": "11:00",
+              "title": "新圣母大殿",
+              "type": "核心",
+              "desc": "多米尼克会防疫中心，也是文艺复兴透视法最早实验场之一。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Firenze_Santa_Maria_Novella.jpg",
+              "tips": "门票7.5€，周一闭馆。"
+            },
+            {
+              "time": "12:30",
+              "title": "孤儿院博物馆午餐",
+              "type": "美食",
+              "desc": "在布鲁内莱斯基拱廊旁的咖啡馆吃轻食，思考黑死病后社会福利的萌芽。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Colonna_della_Santissima_Annunziata.jpg",
+              "tips": "人均12-18€。"
+            },
+            {
+              "time": "14:00",
+              "title": "孤儿院博物馆",
+              "type": "核心",
+              "desc": "欧洲第一所弃儿收容所，拱廊建筑与分娩轮盘见证对弱势群体的制度化关怀。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Colonna_della_Santissima_Annunziata.jpg",
+              "tips": "门票7€，周一闭馆。"
+            },
+            {
+              "time": "11:00",
+              "title": "圣十字圣殿 Santa Croce",
+              "type": "核心",
+              "desc": "佛罗伦萨先贤祠，米开朗基罗、伽利略、马基雅维利长眠于此。哥特式立面由文艺复兴时期完成。#先贤祠",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Basilica_di_Santa_Croce.jpg",
+              "tips": "门票约8€，教堂内有帕齐小礼拜堂等杰作；周日上午弥撒免费。"
+            },
+            {
+              "time": "17:00",
+              "title": "圣十字广场咖啡",
+              "type": "体验",
+              "desc": "在广场边咖啡馆坐看夕阳，这里是但丁、米开朗基罗与伽利略的精神故乡。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Basilica_di_Santa_Croce.jpg",
+              "tips": "咖啡3-5€，广场周日夜市热闹。"
+            },
+            {
+              "time": "09:30",
+              "title": "菲耶索莱与修道院",
+              "type": "核心",
+              "desc": "山丘修道院记录瘟疫对乡村的冲击，也保存了中世纪向文艺复兴过渡的艺术。",
+              "img": "/images/florence_Fiesole.jpg",
+              "tips": "公交7路约20分钟。"
+            },
+            {
+              "time": "13:00",
+              "title": "Fiesole午餐",
+              "type": "美食",
+              "desc": "吃Pappa al Pomodoro与烤蔬菜，体会托斯卡纳乡村饮食。",
+              "img": "/images/florence_Fiesole.jpg",
+              "tips": "人均15-25€。"
+            },
+            {
+              "time": "11:00",
+              "title": "学院美术馆 Galleria dell'Accademia",
+              "type": "核心",
+              "desc": "米开朗基罗《大卫》真身所在地，原作从每一块肌肉中散发出人文主义对人体的赞颂。#大卫像",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Galleria_dell%27Accademia_Florence.jpg",
+              "tips": "必须提前网上预约，门票约16.5€；周二至周日开放，周一闭馆。"
+            },
+            {
+              "time": "10:00",
+              "title": "圣马可修道院 Convento di San Marco",
+              "type": "核心",
+              "desc": "安杰利科修士绘制的壁画遍布每一间修士小室，宁静氛围中感受文艺复兴宗教虔诚。#修道院艺术",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/San_Marco_Florence.jpg",
+              "tips": "门票约8€，周一闭馆；游客较少，体验极佳。"
+            },
+            {
+              "time": "18:00",
+              "title": "阿诺河瘟疫文学散步",
+              "type": "体验",
+              "desc": "沿河阅读薄伽丘《十日谈》序言，感受瘟疫如何催生现代叙事与个人意识。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Ponte_Vecchio.jpg",
+              "tips": "河边步道安全，适合傍晚。"
+            },
+            {
+              "time": "20:00",
+              "title": "《十日谈》主题晚餐",
+              "type": "美食",
+              "desc": "在Oltarno区餐厅吃托斯卡纳传统菜，想象薄伽丘故事中的宴会场景。",
+              "img": "/images/florence_Bistecca_alla_fiorentina.jpg",
+              "tips": "人均30-50€。"
+            },
+            {
+              "time": "08:30",
+              "title": "圣母百花大教堂 Duomo",
+              "type": "核心",
+              "desc": "布鲁内莱斯基设计的巨大红砖穹顶是文艺复兴工程的标志。登穹顶可俯瞰全城红瓦屋顶。#文艺复兴地标",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Santa_Maria_del_Fiore.jpg",
+              "tips": "必须提前预约登穹顶或钟楼，联票约18-30€；教堂内部免费但需排队。"
+            },
+            {
+              "time": "11:30",
+              "title": "洗礼堂与天堂之门",
+              "type": "核心",
+              "desc": "吉贝尔蒂的青铜浮雕门被米开朗基罗称为「天堂之门」，展现黑死病后宗教艺术的复兴。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Santa_Maria_del_Fiore.jpg",
+              "tips": "含在大教堂联票内，真品在主教座堂博物馆。"
+            },
+            {
+              "time": "13:00",
+              "title": "主教座堂博物馆午餐",
+              "type": "美食",
+              "desc": "附近小馆吃Ribollita，这是瘟疫年代穷人把剩菜变成美味的智慧。",
+              "img": "/images/florence_Mercato_Centrale_Firenze.jpg",
+              "tips": "人均12-18€。"
+            },
+            {
+              "time": "14:30",
+              "title": "主教座堂博物馆",
+              "type": "核心",
+              "desc": "收藏天堂之门真品、米开朗基罗《圣殇》与布鲁内莱斯基穹顶模型。",
+              "img": "/images/florence_Museo_dell'Opera_del_Duomo.jpg",
+              "tips": "门票约11€，周二闭馆。"
+            },
+            {
+              "time": "14:00",
+              "title": "碧提宫 Palazzo Pitti",
+              "type": "核心",
+              "desc": "美第奇家族的宏伟宫殿，拉斐尔、提香等大师画作与皇家公寓展现权力审美。#美第奇宫殿",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Palazzo_Pitti.jpg",
+              "tips": "门票约16€，周一闭馆；与波波里花园联票更划算。"
+            },
+            {
+              "time": "16:00",
+              "title": "波波里花园 Giardino di Boboli",
+              "type": "体验",
+              "desc": "文艺复兴园林典范，喷泉、雕塑与柏树小径构成托斯卡纳式几何美学。#园林艺术",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Boboli_Gardens.jpg",
+              "tips": "与碧提宫联票，夏季很晒带足水；花园很大，穿舒适鞋子。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "步行+公交；菲耶索莱半日游；Firenze Card覆盖主要博物馆",
+            "accommodation": "新圣母区或主教座堂周边",
+            "food": "Ribollita、Pappa al Pomodoro、Lampredotto、Bistecca、Gelato",
+            "budget": "150-280€/人/天",
+            "bestTime": "4-5月、9-10月",
+            "tips": [
+              "主教座堂博物馆周二闭馆",
+              "菲耶索莱公交班次较少，提前查时刻"
+            ]
+          }
+        }
+      },
+      "food": {
+        "1day": {
+          "title": "托斯卡纳美食一日线",
+          "subtitle": "从牛肚包到T骨牛排，吃遍佛罗伦萨",
+          "duration": "1日",
+          "stops": [
+            {
+              "time": "08:30",
+              "title": "Mercato Centrale 早餐",
+              "type": "美食",
+              "desc": "在19世纪铁艺市场二楼吃现做牛角包与意式咖啡，看托斯卡纳食材摊位。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Mercato_di_San_Lorenzo.jpg",
+              "tips": "市场7:30开门，早餐人均5-10€。"
+            },
+            {
+              "time": "10:00",
+              "title": "圣母百花大教堂",
+              "type": "核心",
+              "desc": "早餐后备足体力参观佛罗伦萨地标，布鲁内莱斯基穹顶值得攀登。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Santa_Maria_del_Fiore.jpg",
+              "tips": "提前预约登穹顶。"
+            },
+            {
+              "time": "12:30",
+              "title": "牛肚包 Lampredotto",
+              "type": "美食",
+              "desc": "在中央市场周边小摊吃佛罗伦萨街头灵魂美食，牛肚煮得软糯配青酱。",
+              "img": "/images/florence_Lampredotto.jpg",
+              "tips": "约5-8€一个，推荐Nerbone。"
+            },
+            {
+              "time": "14:30",
+              "title": "乌菲兹美术馆",
+              "type": "核心",
+              "desc": "餐后消食看波提切利与达芬奇，艺术与美食同样滋养灵魂。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Uffizi_Gallery.jpg",
+              "tips": "提前预约。"
+            },
+            {
+              "time": "17:00",
+              "title": "Vivoli Gelato",
+              "type": "美食",
+              "desc": "佛罗伦萨最古老Gelato店之一，严格天然原料，大米与开心果口味经典。",
+              "img": "/images/florence_Gelato_Florence.jpg",
+              "tips": "小杯约4€。"
+            },
+            {
+              "time": "20:00",
+              "title": "T骨牛排晚餐",
+              "type": "美食",
+              "desc": "厚切Chianina牛T骨炭火烤至外焦里嫩，配基安蒂红酒。",
+              "img": "/images/florence_Bistecca_alla_fiorentina.jpg",
+              "tips": "推荐Trattoria Mario，按公斤计价，人均40-70€。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "市中心步行即可",
+            "accommodation": "主教座堂周边或圣洛伦佐区",
+            "food": "Lampredotto、Bistecca、Gelato、Ribollita、Chianti",
+            "budget": "100-200€/人/天",
+            "bestTime": "春秋最佳",
+            "tips": [
+              "T骨牛排通常1kg起点，适合多人",
+              "乌菲兹必须提前预约"
+            ]
+          }
+        },
+        "2days": {
+          "title": "托斯卡纳美食双日深度线",
+          "subtitle": "市场、松露、红酒与意面手工课",
+          "duration": "2日",
+          "stops": [
+            {
+              "time": "08:30",
+              "title": "Mercato Centrale 早餐",
+              "type": "美食",
+              "desc": "铁艺市场二楼早餐，看新鲜松露、火腿与奶酪。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Mercato_di_San_Lorenzo.jpg",
+              "tips": "人均5-10€。"
+            },
+            {
+              "time": "10:00",
+              "title": "圣洛伦佐市场淘宝",
+              "type": "购物",
+              "desc": "户外皮革制品与纪念品摊位，也是本地人买食材的地方。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Mercato_di_San_Lorenzo.jpg",
+              "tips": "记得砍价，上午最热闹。"
+            },
+            {
+              "time": "12:30",
+              "title": "Lampredotto 牛肚包",
+              "type": "美食",
+              "desc": "在中央市场Nerbone摊位站着吃，配半甜白葡萄酒。",
+              "img": "/images/florence_Lampredotto.jpg",
+              "tips": "人均5-8€。"
+            },
+            {
+              "time": "15:00",
+              "title": "Piazzale Michelangelo",
+              "type": "体验",
+              "desc": "登上观景广场俯瞰佛罗伦萨，顺便消耗午餐热量。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Ponte_Vecchio.jpg",
+              "tips": "傍晚光线最佳。"
+            },
+            {
+              "time": "18:00",
+              "title": "基安蒂品酒",
+              "type": "体验",
+              "desc": "在 enoteca 酒窖品托斯卡纳红酒，了解Chianti Classico的等级。",
+              "img": "/images/florence_Chianti_wine.jpg",
+              "tips": "人均20-40€，可配奶酪火腿拼盘。"
+            },
+            {
+              "time": "20:30",
+              "title": "Bistecca 晚餐",
+              "type": "美食",
+              "desc": "Trattoria Mario或Il Latini的T骨牛排。",
+              "img": "/images/florence_Bistecca_alla_fiorentina.jpg",
+              "tips": "人均40-70€。"
+            },
+            {
+              "time": "09:00",
+              "title": "手工意面课",
+              "type": "体验",
+              "desc": "学做手工Tagliatelle与Tortellini，了解托斯卡纳面食传统。",
+              "img": "/images/florence_Pasta_making_Tuscany.jpg",
+              "tips": "课程约60-100€/人，含午餐与红酒。"
+            },
+            {
+              "time": "12:30",
+              "title": "课程午餐",
+              "type": "美食",
+              "desc": "吃自己亲手做的意面，配本地橄榄油与红酒。",
+              "img": "/images/florence_Pasta_making_Tuscany.jpg",
+              "tips": "含在课程费用中。"
+            },
+            {
+              "time": "15:00",
+              "title": "Gelato 巡礼",
+              "type": "美食",
+              "desc": "Vivoli、Grom、La Carraia三家对比。",
+              "img": "/images/florence_Gelato_Florence.jpg",
+              "tips": "每家3-5€。"
+            },
+            {
+              "time": "17:00",
+              "title": "Oltrarno 街区漫步",
+              "type": "体验",
+              "desc": "河对岸本地工匠区，有传统皮革、金箔与家具作坊。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Ponte_Vecchio.jpg",
+              "tips": "适合买手工纪念品。"
+            },
+            {
+              "time": "19:00",
+              "title": "Ribollita 晚餐",
+              "type": "美食",
+              "desc": "在Osteria Santo Spirito吃托斯卡纳蔬菜汤与烤面包沙拉Panzanella。",
+              "img": "/images/florence_Ribollita.jpg",
+              "tips": "人均20-35€。"
+            },
+            {
+              "time": "21:00",
+              "title": "夜间Gelato",
+              "type": "美食",
+              "desc": "以第二杯Gelato结束美食之旅。",
+              "img": "/images/florence_Gelato_Florence.jpg",
+              "tips": "约4€。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "步行+偶尔公交；意面课通常在市中心",
+            "accommodation": "主教座堂周边或Oltrarno",
+            "food": "Bistecca、Lampredotto、Ribollita、Gelato、Chianti、松露",
+            "budget": "150-300€/人/天",
+            "bestTime": "春秋最佳",
+            "tips": [
+              "意面课需提前预订",
+              "松露季是10-12月"
+            ]
+          }
+        },
+        "3days": {
+          "title": "托斯卡纳美食三日沉浸线",
+          "subtitle": "市区美食+基安蒂酒庄+菲耶索莱",
+          "duration": "3日",
+          "stops": [
+            {
+              "time": "08:30",
+              "title": "Mercato Centrale 早餐",
+              "type": "美食",
+              "desc": "铁艺市场二楼早餐。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Mercato_di_San_Lorenzo.jpg",
+              "tips": "人均5-10€。"
+            },
+            {
+              "time": "10:00",
+              "title": "圣洛伦佐市场",
+              "type": "购物",
+              "desc": "户外摊位淘宝。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Mercato_di_San_Lorenzo.jpg",
+              "tips": "上午最热闹。"
+            },
+            {
+              "time": "12:30",
+              "title": "Lampredotto",
+              "type": "美食",
+              "desc": "牛肚包午餐。",
+              "img": "/images/florence_Lampredotto.jpg",
+              "tips": "人均5-8€。"
+            },
+            {
+              "time": "15:00",
+              "title": "Piazzale Michelangelo",
+              "type": "体验",
+              "desc": "观景消食。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Ponte_Vecchio.jpg",
+              "tips": "傍晚最佳。"
+            },
+            {
+              "time": "18:00",
+              "title": "基安蒂品酒",
+              "type": "体验",
+              "desc": "酒窖品酒。",
+              "img": "/images/florence_Chianti_wine.jpg",
+              "tips": "人均20-40€。"
+            },
+            {
+              "time": "20:30",
+              "title": "Bistecca 晚餐",
+              "type": "美食",
+              "desc": "T骨牛排。",
+              "img": "/images/florence_Bistecca_alla_fiorentina.jpg",
+              "tips": "人均40-70€。"
+            },
+            {
+              "time": "09:00",
+              "title": "手工意面课",
+              "type": "体验",
+              "desc": "学做托斯卡纳面食。",
+              "img": "/images/florence_Pasta_making_Tuscany.jpg",
+              "tips": "约60-100€。"
+            },
+            {
+              "time": "12:30",
+              "title": "课程午餐",
+              "type": "美食",
+              "desc": "自做意面配红酒。",
+              "img": "/images/florence_Pasta_making_Tuscany.jpg",
+              "tips": "含课程。"
+            },
+            {
+              "time": "15:00",
+              "title": "Gelato 巡礼",
+              "type": "美食",
+              "desc": "三家名店对比。",
+              "img": "/images/florence_Gelato_Florence.jpg",
+              "tips": "每家3-5€。"
+            },
+            {
+              "time": "17:00",
+              "title": "Oltrarno 漫步",
+              "type": "体验",
+              "desc": "河对岸工匠区。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Ponte_Vecchio.jpg",
+              "tips": "买手工纪念品。"
+            },
+            {
+              "time": "19:00",
+              "title": "Ribollita 晚餐",
+              "type": "美食",
+              "desc": "托斯卡纳蔬菜汤。",
+              "img": "/images/florence_Ribollita.jpg",
+              "tips": "人均20-35€。"
+            },
+            {
+              "time": "21:00",
+              "title": "夜间Gelato",
+              "type": "美食",
+              "desc": "第二杯Gelato。",
+              "img": "/images/florence_Gelato_Florence.jpg",
+              "tips": "约4€。"
+            },
+            {
+              "time": "09:00",
+              "title": "基安蒂酒庄一日游",
+              "type": "体验",
+              "desc": "乘小团去Greve in Chianti或Castellina酒庄，参观葡萄园、酒窖并品酒。",
+              "img": "/images/florence_Chianti_vineyard.jpg",
+              "tips": "一日游约80-150€，含午餐。"
+            },
+            {
+              "time": "13:00",
+              "title": "酒庄午餐",
+              "type": "美食",
+              "desc": "在酒庄吃托斯卡纳炖肉、豆汤与手工意面，配酒庄自产红酒。",
+              "img": "/images/florence_Chianti_vineyard.jpg",
+              "tips": "含在一日游中。"
+            },
+            {
+              "time": "16:00",
+              "title": "菲耶索莱小镇",
+              "type": "体验",
+              "desc": "从酒庄返回时顺路去菲耶索莱，吃Travesseiros长条蛋糕。",
+              "img": "/images/florence_Fiesole.jpg",
+              "tips": "公交7路，蛋糕人均5€。"
+            },
+            {
+              "time": "18:30",
+              "title": "米开朗基罗广场日落",
+              "type": "体验",
+              "desc": "带一瓶基安蒂和披萨在广场看日落。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Ponte_Vecchio.jpg",
+              "tips": "可外带食物，注意垃圾带走。"
+            },
+            {
+              "time": "20:30",
+              "title": "告别晚餐",
+              "type": "美食",
+              "desc": "在Il Latini吃最后一顿Bistecca，与同桌游客举杯。",
+              "img": "/images/florence_Bistecca_alla_fiorentina.jpg",
+              "tips": "人均50-80€，需预订。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "步行+公交7路去菲耶索莱+酒庄一日游团",
+            "accommodation": "主教座堂周边或Oltrarno",
+            "food": "Bistecca、Lampredotto、Ribollita、Gelato、Chianti、松露、Travesseiros",
+            "budget": "200-450€/人/天",
+            "bestTime": "4-6月、9-10月，松露季10-12月",
+            "tips": [
+              "酒庄一日游提前预订",
+              "T骨牛排人多更划算"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "wittenberg": {
+    "name": "维滕贝格",
+    "case": "宗教改革",
+    "country": "德国",
+    "description": "萨克森州的小城因1517年路德张贴《九十五条论纲》而改变欧洲。城堡教堂、路德故居与城市教堂构成宗教改革的圣地巡礼，木筋房与易北河则保留了德意志小城的静谧。",
+    "themes": {
+      "reformation": {
+        "1day": {
+          "title": "宗教改革圣地一日巡礼",
+          "subtitle": "从城堡教堂到路德故居，追溯1517年的信仰裂变",
+          "duration": "1日",
+          "stops": [
+            {
+              "time": "09:00",
+              "title": "城堡教堂 Schlosskirche",
+              "type": "核心",
+              "desc": "1517年马丁·路德在此张贴《九十五条论纲》，开启宗教改革。教堂内安葬路德与梅兰希顿，是德意志新教圣地。#宗教改革起点",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Schlosskirche_Wittenberg.jpg",
+              "tips": "门票约6€，10-17点开放；路德墓位于祭坛前，可安静瞻仰。"
+            },
+            {
+              "time": "10:30",
+              "title": "路德故居 Lutherhaus",
+              "type": "核心",
+              "desc": "马丁·路德生活了近40年的奥古斯丁修道院，现为世界最大宗教改革博物馆，藏有其圣经译本与手稿。#路德生活",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lutherhaus_Wittenberg.jpg",
+              "tips": "门票约8.5€，周一闭馆；建议预留1.5-2小时。"
+            },
+            {
+              "time": "12:30",
+              "title": "萨克森传统餐厅",
+              "type": "美食",
+              "desc": "品尝Sächsische Kartoffelsuppe土豆汤、Leipziger Allerlei蔬菜杂烩与本地黑啤，体验东德日常滋味。#萨克森美食",
+              "img": "/images/wittenberg_Sächsische_Küche.jpg",
+              "tips": "推荐Brauhaus Wittenberg，人均15-25€；分量足，午餐套餐性价比高。"
+            },
+            {
+              "time": "13:00",
+              "title": "城市教堂 Stadtkirche St. Marien",
+              "type": "核心",
+              "desc": "维滕贝格城市教区教堂，路德在此首次用德语主持弥撒，并首次分发圣餐面包与酒给平信徒。#首次德语弥撒",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Stadtkirche_Wittenberg.jpg",
+              "tips": "免费参观， donations 欢迎；注意礼拜时间可能限制参观。"
+            },
+            {
+              "time": "14:30",
+              "title": "梅兰希顿故居 Melanchthonhaus",
+              "type": "核心",
+              "desc": "宗教改革核心神学家梅兰希顿的住所，他以《奥格斯堡信条》系统化路德宗神学，被称为「德意志导师」。#改革思想家",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Melanchthonhaus_Wittenberg.jpg",
+              "tips": "门票约5€，与路德故居有联票；周一闭馆。"
+            },
+            {
+              "time": "17:30",
+              "title": "集市广场与路德纪念碑 Markt & Lutherdenkmal",
+              "type": "核心",
+              "desc": "广场中央矗立着19世纪路德纪念碑，周围市政厅、彩色木筋房与咖啡馆构成萨克森小城的宁静中心。#小城地标",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Markt_Wittenberg.jpg",
+              "tips": "广场周边咖啡馆适合休息；每周三、六有露天市集。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "从柏林/莱比锡乘RE火车约1小时；老城步行即可",
+            "accommodation": "老城中心集市广场周边，民宿与小酒店为主",
+            "food": "萨克森土豆汤、Leipziger Allerlei、本地黑啤",
+            "budget": "60-120€/人/天",
+            "bestTime": "5-9月气候宜人，10月31日改革节有特殊活动",
+            "tips": [
+              "城堡教堂与路德故居有联票",
+              "城市教堂弥撒期间可能限制参观"
+            ]
+          }
+        },
+        "2days": {
+          "title": "宗教改革双日深度游",
+          "subtitle": "思想、艺术与印刷：看懂德意志信仰革命",
+          "duration": "2日",
+          "stops": [
+            {
+              "time": "09:00",
+              "title": "城堡教堂 Schlosskirche",
+              "type": "核心",
+              "desc": "1517年马丁·路德在此张贴《九十五条论纲》，开启宗教改革。教堂内安葬路德与梅兰希顿，是德意志新教圣地。#宗教改革起点",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Schlosskirche_Wittenberg.jpg",
+              "tips": "门票约6€，10-17点开放；路德墓位于祭坛前，可安静瞻仰。"
+            },
+            {
+              "time": "10:30",
+              "title": "路德故居 Lutherhaus",
+              "type": "核心",
+              "desc": "马丁·路德生活了近40年的奥古斯丁修道院，现为世界最大宗教改革博物馆，藏有其圣经译本与手稿。#路德生活",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lutherhaus_Wittenberg.jpg",
+              "tips": "门票约8.5€，周一闭馆；建议预留1.5-2小时。"
+            },
+            {
+              "time": "15:00",
+              "title": "维滕贝格王宫 Schloss Wittenberg",
+              "type": "核心",
+              "desc": "选帝侯腓特烈三世的宫殿，城堡教堂即为其宫廷教堂，宗教改革论纲最初就贴在这里的大门上。#选帝侯宫殿",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Schloss_Wittenberg.jpg",
+              "tips": "王宫部分区域现为博物馆，门票约6€；城堡教堂无需门票。"
+            },
+            {
+              "time": "12:30",
+              "title": "萨克森传统餐厅",
+              "type": "美食",
+              "desc": "品尝Sächsische Kartoffelsuppe土豆汤、Leipziger Allerlei蔬菜杂烩与本地黑啤，体验东德日常滋味。#萨克森美食",
+              "img": "/images/wittenberg_Sächsische_Küche.jpg",
+              "tips": "推荐Brauhaus Wittenberg，人均15-25€；分量足，午餐套餐性价比高。"
+            },
+            {
+              "time": "13:00",
+              "title": "城市教堂 Stadtkirche St. Marien",
+              "type": "核心",
+              "desc": "维滕贝格城市教区教堂，路德在此首次用德语主持弥撒，并首次分发圣餐面包与酒给平信徒。#首次德语弥撒",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Stadtkirche_Wittenberg.jpg",
+              "tips": "免费参观， donations 欢迎；注意礼拜时间可能限制参观。"
+            },
+            {
+              "time": "14:30",
+              "title": "梅兰希顿故居 Melanchthonhaus",
+              "type": "核心",
+              "desc": "宗教改革核心神学家梅兰希顿的住所，他以《奥格斯堡信条》系统化路德宗神学，被称为「德意志导师」。#改革思想家",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Melanchthonhaus_Wittenberg.jpg",
+              "tips": "门票约5€，与路德故居有联票；周一闭馆。"
+            },
+            {
+              "time": "16:00",
+              "title": "克拉纳赫故居 Cranachhaus",
+              "type": "核心",
+              "desc": "画家老卢卡斯·克拉纳赫的住所与工作室，他为路德绘制肖像并传播改革思想，故居展示其版画与印刷作坊。#艺术与改革",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Cranachhaus_Wittenberg.jpg",
+              "tips": "外观免费，内部博物馆门票约5€；老城街道本身很上镜。"
+            },
+            {
+              "time": "17:30",
+              "title": "集市广场与路德纪念碑 Markt & Lutherdenkmal",
+              "type": "核心",
+              "desc": "广场中央矗立着19世纪路德纪念碑，周围市政厅、彩色木筋房与咖啡馆构成萨克森小城的宁静中心。#小城地标",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Markt_Wittenberg.jpg",
+              "tips": "广场周边咖啡馆适合休息；每周三、六有露天市集。"
+            },
+            {
+              "time": "09:30",
+              "title": "维滕贝格大学档案馆",
+              "type": "核心",
+              "desc": "路德与梅兰希顿曾在此讲学，档案馆展示宗教改革时期的学术生活与印刷文献。",
+              "img": "/images/wittenberg_Leucorea_Wittenberg.jpg",
+              "tips": "需提前预约，部分资料有德英导览。"
+            },
+            {
+              "time": "11:00",
+              "title": "克拉纳赫庭院",
+              "type": "体验",
+              "desc": "老克拉纳赫的画室与药铺，了解艺术家如何通过版画将路德形象传遍德意志。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Cranachhaus_Wittenberg.jpg",
+              "tips": "与故居联票，可买组合票。"
+            },
+            {
+              "time": "14:00",
+              "title": "易北河骑行",
+              "type": "体验",
+              "desc": "租一辆自行车沿易北河骑行，感受宗教改革文献沿河流与贸易路线传播的轨迹。",
+              "img": "/images/wittenberg_Elbe_Wittenberg.jpg",
+              "tips": "租车约10€/半天，河堤平坦好骑。"
+            },
+            {
+              "time": "17:30",
+              "title": "集市广场咖啡",
+              "type": "美食",
+              "desc": "在广场边咖啡馆吃一块Sachsenkuchen蛋糕，看路人经过路德纪念碑。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Markt_Wittenberg.jpg",
+              "tips": "人均5-8€。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "火车+步行；可租自行车游易北河",
+            "accommodation": "老城集市广场周边",
+            "food": "萨克森土豆汤、烤肉、黑啤、蜂蜜蛋糕",
+            "budget": "80-160€/人/天",
+            "bestTime": "5-9月",
+            "tips": [
+              "宗教改革节期间住宿紧张，提前预订",
+              "大学档案馆需邮件预约"
+            ]
+          }
+        },
+        "3days": {
+          "title": "宗教改革三日沉浸线",
+          "subtitle": "维滕贝格+周边：信仰革命的全景地图",
+          "duration": "3日",
+          "stops": [
+            {
+              "time": "09:00",
+              "title": "城堡教堂 Schlosskirche",
+              "type": "核心",
+              "desc": "1517年马丁·路德在此张贴《九十五条论纲》，开启宗教改革。教堂内安葬路德与梅兰希顿，是德意志新教圣地。#宗教改革起点",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Schlosskirche_Wittenberg.jpg",
+              "tips": "门票约6€，10-17点开放；路德墓位于祭坛前，可安静瞻仰。"
+            },
+            {
+              "time": "10:30",
+              "title": "路德故居 Lutherhaus",
+              "type": "核心",
+              "desc": "马丁·路德生活了近40年的奥古斯丁修道院，现为世界最大宗教改革博物馆，藏有其圣经译本与手稿。#路德生活",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lutherhaus_Wittenberg.jpg",
+              "tips": "门票约8.5€，周一闭馆；建议预留1.5-2小时。"
+            },
+            {
+              "time": "15:00",
+              "title": "维滕贝格王宫 Schloss Wittenberg",
+              "type": "核心",
+              "desc": "选帝侯腓特烈三世的宫殿，城堡教堂即为其宫廷教堂，宗教改革论纲最初就贴在这里的大门上。#选帝侯宫殿",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Schloss_Wittenberg.jpg",
+              "tips": "王宫部分区域现为博物馆，门票约6€；城堡教堂无需门票。"
+            },
+            {
+              "time": "12:30",
+              "title": "萨克森传统餐厅",
+              "type": "美食",
+              "desc": "品尝Sächsische Kartoffelsuppe土豆汤、Leipziger Allerlei蔬菜杂烩与本地黑啤，体验东德日常滋味。#萨克森美食",
+              "img": "/images/wittenberg_Sächsische_Küche.jpg",
+              "tips": "推荐Brauhaus Wittenberg，人均15-25€；分量足，午餐套餐性价比高。"
+            },
+            {
+              "time": "13:00",
+              "title": "城市教堂 Stadtkirche St. Marien",
+              "type": "核心",
+              "desc": "维滕贝格城市教区教堂，路德在此首次用德语主持弥撒，并首次分发圣餐面包与酒给平信徒。#首次德语弥撒",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Stadtkirche_Wittenberg.jpg",
+              "tips": "免费参观， donations 欢迎；注意礼拜时间可能限制参观。"
+            },
+            {
+              "time": "14:30",
+              "title": "梅兰希顿故居 Melanchthonhaus",
+              "type": "核心",
+              "desc": "宗教改革核心神学家梅兰希顿的住所，他以《奥格斯堡信条》系统化路德宗神学，被称为「德意志导师」。#改革思想家",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Melanchthonhaus_Wittenberg.jpg",
+              "tips": "门票约5€，与路德故居有联票；周一闭馆。"
+            },
+            {
+              "time": "16:00",
+              "title": "克拉纳赫故居 Cranachhaus",
+              "type": "核心",
+              "desc": "画家老卢卡斯·克拉纳赫的住所与工作室，他为路德绘制肖像并传播改革思想，故居展示其版画与印刷作坊。#艺术与改革",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Cranachhaus_Wittenberg.jpg",
+              "tips": "外观免费，内部博物馆门票约5€；老城街道本身很上镜。"
+            },
+            {
+              "time": "17:30",
+              "title": "集市广场与路德纪念碑 Markt & Lutherdenkmal",
+              "type": "核心",
+              "desc": "广场中央矗立着19世纪路德纪念碑，周围市政厅、彩色木筋房与咖啡馆构成萨克森小城的宁静中心。#小城地标",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Markt_Wittenberg.jpg",
+              "tips": "广场周边咖啡馆适合休息；每周三、六有露天市集。"
+            },
+            {
+              "time": "09:30",
+              "title": "维滕贝格大学档案馆",
+              "type": "核心",
+              "desc": "查阅路德讲稿与早期印刷版圣经的数字化资料。",
+              "img": "/images/wittenberg_Leucorea_Wittenberg.jpg",
+              "tips": "需提前预约。"
+            },
+            {
+              "time": "11:00",
+              "title": "克拉纳赫庭院与印刷坊",
+              "type": "核心",
+              "desc": "艺术家工坊是宗教改革视觉传播的中心，版画让路德思想迅速进入普通人家。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Cranachhaus_Wittenberg.jpg",
+              "tips": "门票约5€。"
+            },
+            {
+              "time": "14:00",
+              "title": "易北河畔 Elbe",
+              "type": "体验",
+              "desc": "沿着易北河散步，看河对岸的草地与教堂尖塔，感受这座小城的宁静与宗教改革时期的印刷传播路线。#河畔放松",
+              "img": "/images/wittenberg_Elbe_Wittenberg.jpg",
+              "tips": "河边步道约3公里，适合骑行或慢跑；夏季有露天咖啡馆。"
+            },
+            {
+              "time": "09:00",
+              "title": "艾斯莱本 Eisleben 一日游",
+              "type": "核心",
+              "desc": "路德出生与去世的城市，路德诞生地与圣安德烈教堂完整保存其生命起点与终点。",
+              "img": "/images/wittenberg_Luther_Geburtshaus_Eisleben.jpg",
+              "tips": "从维滕贝格乘RE约40分钟；路德故居联票约8€。"
+            },
+            {
+              "time": "13:00",
+              "title": "艾斯莱本午餐",
+              "type": "美食",
+              "desc": "在小城餐厅吃Thüringer Rostbratwurst，这是路德故乡的特色香肠。",
+              "img": "/images/wittenberg_Thüringer_Rostbratwurst.jpg",
+              "tips": "人均10-18€。"
+            },
+            {
+              "time": "15:30",
+              "title": "路德城维滕贝格全景徒步",
+              "type": "体验",
+              "desc": "从易北河对岸回望老城天际线，城堡教堂与城市教堂双塔并立，是德意志宗教改革最经典的画面。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Schlosskirche_Wittenberg.jpg",
+              "tips": "最佳拍摄点在北岸河堤，日落前1小时。"
+            },
+            {
+              "time": "19:00",
+              "title": "告别晚餐",
+              "type": "美食",
+              "desc": "在Brauhaus Wittenberg吃烤猪膝配黑啤，为改革圣地巡礼画上句号。",
+              "img": "/images/wittenberg_Sächsische_Küche.jpg",
+              "tips": "人均20-35€，建议预订。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "RE火车连接柏林/莱比锡/艾斯莱本；老城步行+自行车即可",
+            "accommodation": "老城中心或易北河畔民宿",
+            "food": "萨克森土豆汤、烤猪膝、图林根香肠、黑啤",
+            "budget": "100-200€/人/天",
+            "bestTime": "5-9月，10月底改革节",
+            "tips": [
+              "艾斯莱本路德故居周一闭馆",
+              "宗教改革节期间有大型游行和礼拜"
+            ]
+          }
+        }
+      },
+      "culture": {
+        "1day": {
+          "title": "路德与德语圣经一日线",
+          "subtitle": "从拉丁文到德文：一场阅读革命",
+          "duration": "1日",
+          "stops": [
+            {
+              "time": "10:30",
+              "title": "路德故居 Lutherhaus",
+              "type": "核心",
+              "desc": "马丁·路德生活了近40年的奥古斯丁修道院，现为世界最大宗教改革博物馆，藏有其圣经译本与手稿。#路德生活",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lutherhaus_Wittenberg.jpg",
+              "tips": "门票约8.5€，周一闭馆；建议预留1.5-2小时。"
+            },
+            {
+              "time": "11:00",
+              "title": "路德翻译圣经工作室",
+              "type": "核心",
+              "desc": "路德在瓦尔特堡与维滕贝格将圣经译为德语，奠定了现代德语与 Protestant 礼拜的基础。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lutherhaus_Wittenberg.jpg",
+              "tips": "故居内展示早期德文圣经版本。"
+            },
+            {
+              "time": "09:00",
+              "title": "城堡教堂 Schlosskirche",
+              "type": "核心",
+              "desc": "1517年马丁·路德在此张贴《九十五条论纲》，开启宗教改革。教堂内安葬路德与梅兰希顿，是德意志新教圣地。#宗教改革起点",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Schlosskirche_Wittenberg.jpg",
+              "tips": "门票约6€，10-17点开放；路德墓位于祭坛前，可安静瞻仰。"
+            },
+            {
+              "time": "12:30",
+              "title": "萨克森传统餐厅",
+              "type": "美食",
+              "desc": "品尝Sächsische Kartoffelsuppe土豆汤、Leipziger Allerlei蔬菜杂烩与本地黑啤，体验东德日常滋味。#萨克森美食",
+              "img": "/images/wittenberg_Sächsische_Küche.jpg",
+              "tips": "推荐Brauhaus Wittenberg，人均15-25€；分量足，午餐套餐性价比高。"
+            },
+            {
+              "time": "13:00",
+              "title": "城市教堂 Stadtkirche St. Marien",
+              "type": "核心",
+              "desc": "维滕贝格城市教区教堂，路德在此首次用德语主持弥撒，并首次分发圣餐面包与酒给平信徒。#首次德语弥撒",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Stadtkirche_Wittenberg.jpg",
+              "tips": "免费参观， donations 欢迎；注意礼拜时间可能限制参观。"
+            },
+            {
+              "time": "16:00",
+              "title": "本地书店与咖啡馆",
+              "type": "体验",
+              "desc": "在小城书店翻阅历德传记与现代宗教改革研究著作，配一杯咖啡。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Markt_Wittenberg.jpg",
+              "tips": "广场周边有几家独立书店。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "火车+步行；从柏林或莱比锡当日往返可行",
+            "accommodation": "老城中心",
+            "food": "萨克森家常菜、黑啤",
+            "budget": "50-100€/人/天",
+            "bestTime": "春秋最佳",
+            "tips": [
+              "故居周一闭馆",
+              "城市教堂德语弥撒时间可查官网"
+            ]
+          }
+        },
+        "2days": {
+          "title": "德语圣经与文化双日线",
+          "subtitle": "印刷术、方言与教育普及",
+          "duration": "2日",
+          "stops": [
+            {
+              "time": "10:30",
+              "title": "路德故居 Lutherhaus",
+              "type": "核心",
+              "desc": "马丁·路德生活了近40年的奥古斯丁修道院，现为世界最大宗教改革博物馆，藏有其圣经译本与手稿。#路德生活",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lutherhaus_Wittenberg.jpg",
+              "tips": "门票约8.5€，周一闭馆；建议预留1.5-2小时。"
+            },
+            {
+              "time": "11:00",
+              "title": "路德圣经展览",
+              "type": "核心",
+              "desc": "从1522年新约到1534年完整圣经，看路德如何用萨克森方言塑造统一德语。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lutherhaus_Wittenberg.jpg",
+              "tips": "展览含英文说明，建议租语音导览。"
+            },
+            {
+              "time": "09:00",
+              "title": "城堡教堂 Schlosskirche",
+              "type": "核心",
+              "desc": "1517年马丁·路德在此张贴《九十五条论纲》，开启宗教改革。教堂内安葬路德与梅兰希顿，是德意志新教圣地。#宗教改革起点",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Schlosskirche_Wittenberg.jpg",
+              "tips": "门票约6€，10-17点开放；路德墓位于祭坛前，可安静瞻仰。"
+            },
+            {
+              "time": "12:30",
+              "title": "萨克森传统餐厅",
+              "type": "美食",
+              "desc": "品尝Sächsische Kartoffelsuppe土豆汤、Leipziger Allerlei蔬菜杂烩与本地黑啤，体验东德日常滋味。#萨克森美食",
+              "img": "/images/wittenberg_Sächsische_Küche.jpg",
+              "tips": "推荐Brauhaus Wittenberg，人均15-25€；分量足，午餐套餐性价比高。"
+            },
+            {
+              "time": "13:00",
+              "title": "城市教堂 Stadtkirche St. Marien",
+              "type": "核心",
+              "desc": "维滕贝格城市教区教堂，路德在此首次用德语主持弥撒，并首次分发圣餐面包与酒给平信徒。#首次德语弥撒",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Stadtkirche_Wittenberg.jpg",
+              "tips": "免费参观， donations 欢迎；注意礼拜时间可能限制参观。"
+            },
+            {
+              "time": "15:00",
+              "title": "城市教堂管风琴音乐会",
+              "type": "体验",
+              "desc": "首次德语弥撒之地，管风琴音乐会让你感受路德宗礼拜的庄严。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Stadtkirche_Wittenberg.jpg",
+              "tips": "音乐会时间见教堂公告，通常免费或随意捐献。"
+            },
+            {
+              "time": "17:00",
+              "title": "梅兰希顿故居",
+              "type": "核心",
+              "desc": "梅兰希顿编写《奥格斯堡信条》与路德宗教育体系，是宗教改革中最具人文主义精神的人物。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Melanchthonhaus_Wittenberg.jpg",
+              "tips": "门票约5€，周一闭馆。"
+            },
+            {
+              "time": "09:30",
+              "title": "克拉纳赫故居",
+              "type": "核心",
+              "desc": "印刷作坊让路德肖像与讽刺教皇的版画广为流传，是宗教改革的大众传媒。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Cranachhaus_Wittenberg.jpg",
+              "tips": "门票约5€。"
+            },
+            {
+              "time": "11:00",
+              "title": "大学旧址散步",
+              "type": "体验",
+              "desc": "沿Collegienstraße想象16世纪学生、修士与印刷商穿梭的学术氛围。",
+              "img": "/images/wittenberg_Leucorea_Wittenberg.jpg",
+              "tips": "街道本身免费开放，多处建筑有说明牌。"
+            },
+            {
+              "time": "13:00",
+              "title": "大学餐厅午餐",
+              "type": "美食",
+              "desc": "在大学附近的Mensa或传统餐厅吃一顿学生价套餐。",
+              "img": "/images/wittenberg_Sächsische_Küche.jpg",
+              "tips": "人均8-15€。"
+            },
+            {
+              "time": "15:00",
+              "title": "易北河阅读时光",
+              "type": "体验",
+              "desc": "带一本《基督徒的自由》或《九十五条论纲》在河边阅读，体验思想启蒙的氛围。",
+              "img": "/images/wittenberg_Elbe_Wittenberg.jpg",
+              "tips": "河边有长椅，夏季蚊子较多。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "火车+步行；城市很小，所有景点步行15分钟内可达",
+            "accommodation": "老城中心或大学附近",
+            "food": "学生餐厅、萨克森家常菜、咖啡蛋糕",
+            "budget": "70-140€/人/天",
+            "bestTime": "5-9月",
+            "tips": [
+              "梅兰希顿故居周一闭馆",
+              "城市教堂音乐会通常周末举行"
+            ]
+          }
+        },
+        "3days": {
+          "title": "文化三日沉浸线",
+          "subtitle": "宗教改革如何改变德意志的语言、教育与艺术",
+          "duration": "3日",
+          "stops": [
+            {
+              "time": "10:30",
+              "title": "路德故居 Lutherhaus",
+              "type": "核心",
+              "desc": "马丁·路德生活了近40年的奥古斯丁修道院，现为世界最大宗教改革博物馆，藏有其圣经译本与手稿。#路德生活",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lutherhaus_Wittenberg.jpg",
+              "tips": "门票约8.5€，周一闭馆；建议预留1.5-2小时。"
+            },
+            {
+              "time": "11:00",
+              "title": "路德圣经与德语标准化",
+              "type": "核心",
+              "desc": "路德圣经使萨克森方言成为高地德语基础，塑造了现代德国文化认同。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lutherhaus_Wittenberg.jpg",
+              "tips": "故居内有1522年与1534年圣经对比展。"
+            },
+            {
+              "time": "09:00",
+              "title": "城堡教堂 Schlosskirche",
+              "type": "核心",
+              "desc": "1517年马丁·路德在此张贴《九十五条论纲》，开启宗教改革。教堂内安葬路德与梅兰希顿，是德意志新教圣地。#宗教改革起点",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Schlosskirche_Wittenberg.jpg",
+              "tips": "门票约6€，10-17点开放；路德墓位于祭坛前，可安静瞻仰。"
+            },
+            {
+              "time": "12:30",
+              "title": "萨克森传统餐厅",
+              "type": "美食",
+              "desc": "品尝Sächsische Kartoffelsuppe土豆汤、Leipziger Allerlei蔬菜杂烩与本地黑啤，体验东德日常滋味。#萨克森美食",
+              "img": "/images/wittenberg_Sächsische_Küche.jpg",
+              "tips": "推荐Brauhaus Wittenberg，人均15-25€；分量足，午餐套餐性价比高。"
+            },
+            {
+              "time": "13:00",
+              "title": "城市教堂 Stadtkirche St. Marien",
+              "type": "核心",
+              "desc": "维滕贝格城市教区教堂，路德在此首次用德语主持弥撒，并首次分发圣餐面包与酒给平信徒。#首次德语弥撒",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Stadtkirche_Wittenberg.jpg",
+              "tips": "免费参观， donations 欢迎；注意礼拜时间可能限制参观。"
+            },
+            {
+              "time": "15:30",
+              "title": "梅兰希顿故居",
+              "type": "核心",
+              "desc": "了解梅兰希顿如何建立新教学校体系，使教育从修道院走向大众。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Melanchthonhaus_Wittenberg.jpg",
+              "tips": "门票5€，周一闭馆。"
+            },
+            {
+              "time": "17:00",
+              "title": "集市广场与路德纪念碑",
+              "type": "核心",
+              "desc": "19世纪纪念碑不仅是宗教象征，也是德意志民族主义与文化认同的纪念碑。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lutherdenkmal_Wittenberg.jpg",
+              "tips": "广场周边咖啡馆可歇脚。"
+            },
+            {
+              "time": "09:30",
+              "title": "克拉纳赫故居与版画展",
+              "type": "核心",
+              "desc": "老克拉纳赫与小克拉纳赫如何通过肖像画、祭坛画和讽刺版画传播改革思想。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Cranachhaus_Wittenberg.jpg",
+              "tips": "门票5€。"
+            },
+            {
+              "time": "11:30",
+              "title": "维滕贝格大学历史导览",
+              "type": "体验",
+              "desc": "1502年建校后迅速成为德意志学术中心，路德、梅兰希顿与克拉纳赫在此交汇。",
+              "img": "/images/wittenberg_Leucorea_Wittenberg.jpg",
+              "tips": "部分导览需通过游客中心预约。"
+            },
+            {
+              "time": "14:00",
+              "title": "易北河骑行",
+              "type": "体验",
+              "desc": "沿易北河骑行至Pretzsch或Elster，感受宗教改革文献沿水路传播的地理背景。",
+              "img": "/images/wittenberg_Elbe_Wittenberg.jpg",
+              "tips": "骑行道约15公里，体力好可往返。"
+            },
+            {
+              "time": "19:00",
+              "title": "传统餐厅晚餐",
+              "type": "美食",
+              "desc": "吃Sauerbraten（醋焖牛肉）配红甘蓝与土豆团子。",
+              "img": "/images/wittenberg_Sächsische_Küche.jpg",
+              "tips": "人均18-30€。"
+            },
+            {
+              "time": "09:00",
+              "title": "艾斯莱本一日游",
+              "type": "核心",
+              "desc": "路德出生与去世之地，完整了解改革者的一生。",
+              "img": "/images/wittenberg_Luther_Geburtshaus_Eisleben.jpg",
+              "tips": "RE火车约40分钟，故居联票8€。"
+            },
+            {
+              "time": "13:00",
+              "title": "艾斯莱本老城午餐",
+              "type": "美食",
+              "desc": "在小城广场吃图林根香肠与土豆沙拉。",
+              "img": "/images/wittenberg_Eisleben_Markt.jpg",
+              "tips": "人均12-20€。"
+            },
+            {
+              "time": "15:30",
+              "title": "返回维滕贝格选购纪念品",
+              "type": "购物",
+              "desc": "在老城购买路德名言书签、德文圣经节选与宗教改革主题明信片。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Markt_Wittenberg.jpg",
+              "tips": "书店和教堂礼品店选择较多。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "火车+步行+自行车；艾斯莱本一日游需早起",
+            "accommodation": "老城中心",
+            "food": "萨克森炖肉、图林根香肠、黑啤、蜂蜜蛋糕",
+            "budget": "90-180€/人/天",
+            "bestTime": "5-9月",
+            "tips": [
+              "周一多数博物馆闭馆",
+              "艾斯莱本与维滕贝格之间火车班次不多，提前查好"
+            ]
+          }
+        }
+      },
+      "daily": {
+        "1day": {
+          "title": "萨克森小城慢生活一日线",
+          "subtitle": "集市、咖啡、易北河与木筋房",
+          "duration": "1日",
+          "stops": [
+            {
+              "time": "09:00",
+              "title": "集市广场早餐",
+              "type": "美食",
+              "desc": "在广场边咖啡馆吃德式黄油扭结面包与咖啡，看路德纪念碑。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Markt_Wittenberg.jpg",
+              "tips": "人均4-7€。"
+            },
+            {
+              "time": "10:00",
+              "title": "市政厅与集市广场",
+              "type": "核心",
+              "desc": "文艺复兴市政厅与彩色木筋房环绕的广场，是小城生活的中心。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Markt_Wittenberg.jpg",
+              "tips": "周三、六有露天市集。"
+            },
+            {
+              "time": "11:30",
+              "title": "本地面包房",
+              "type": "美食",
+              "desc": "买新鲜黑麦面包与蜂蜜蛋糕，感受东德小镇的质朴味道。",
+              "img": "/images/wittenberg_German_bakery.jpg",
+              "tips": "约3-6€。"
+            },
+            {
+              "time": "13:00",
+              "title": "易北河畔野餐",
+              "type": "体验",
+              "desc": "在河边草地铺上毯子，吃面包、奶酪与香肠，看河水静静流淌。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Schlosskirche_Wittenberg.jpg",
+              "tips": "夏季最佳，记得带走垃圾。"
+            },
+            {
+              "time": "15:00",
+              "title": "老城木筋房散步",
+              "type": "体验",
+              "desc": "科尔贝格街与大学街两旁保存完好的16世纪木筋房，随手拍都是明信片。",
+              "img": "/images/wittenberg_Wittenberg_half_timbered.jpg",
+              "tips": "适合下午光线，无需门票。"
+            },
+            {
+              "time": "18:30",
+              "title": "Brauhaus 传统晚餐",
+              "type": "美食",
+              "desc": "在本地啤酒屋吃烤猪膝配酸菜与黑啤。",
+              "img": "/images/wittenberg_Sächsische_Küche.jpg",
+              "tips": "人均18-30€，分量足。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "步行即可，城市很小",
+            "accommodation": "老城集市广场周边",
+            "food": "烤猪膝、香肠、酸菜、黑啤、蜂蜜蛋糕",
+            "budget": "50-100€/人/天",
+            "bestTime": "5-9月",
+            "tips": [
+              "易北河夏季蚊虫多",
+              "啤酒屋晚上可能客满，建议预订"
+            ]
+          }
+        },
+        "2days": {
+          "title": "萨克森小城双日慢游线",
+          "subtitle": "自行车、公园、跳蚤市场与本地节庆",
+          "duration": "2日",
+          "stops": [
+            {
+              "time": "09:00",
+              "title": "集市广场早餐",
+              "type": "美食",
+              "desc": "德式早餐与咖啡。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Markt_Wittenberg.jpg",
+              "tips": "人均4-7€。"
+            },
+            {
+              "time": "10:00",
+              "title": "市政厅",
+              "type": "核心",
+              "desc": "文艺复兴市政厅外观。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Markt_Wittenberg.jpg",
+              "tips": "免费外观。"
+            },
+            {
+              "time": "11:00",
+              "title": "本地面包房",
+              "type": "美食",
+              "desc": "买黑麦面包与蜂蜜蛋糕。",
+              "img": "/images/wittenberg_German_bakery.jpg",
+              "tips": "3-6€。"
+            },
+            {
+              "time": "13:00",
+              "title": "易北河骑行",
+              "type": "体验",
+              "desc": "租自行车沿河骑行，经过草地、树林与河畔渔村。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Schlosskirche_Wittenberg.jpg",
+              "tips": "租车约10€/半天。"
+            },
+            {
+              "time": "15:30",
+              "title": "跳蚤市场",
+              "type": "购物",
+              "desc": "周末集市上淘旧书、瓷器和东德时期小物件。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Markt_Wittenberg.jpg",
+              "tips": "周六上午最热闹。"
+            },
+            {
+              "time": "18:30",
+              "title": "Brauhaus 晚餐",
+              "type": "美食",
+              "desc": "烤猪膝与黑啤。",
+              "img": "/images/wittenberg_Sächsische_Küche.jpg",
+              "tips": "人均18-30€。"
+            },
+            {
+              "time": "09:30",
+              "title": "城市教堂礼拜",
+              "type": "体验",
+              "desc": "参加一次德语或英语礼拜，感受小城居民的虔诚日常。",
+              "img": "/images/wittenberg_Sächsische_Küche.jpg",
+              "tips": "周日礼拜时间可查官网。"
+            },
+            {
+              "time": "11:00",
+              "title": "本地咖啡馆",
+              "type": "美食",
+              "desc": "在广场边咖啡馆读一本路德传记或《九十五条论纲》译本。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Markt_Wittenberg.jpg",
+              "tips": "咖啡3-5€。"
+            },
+            {
+              "time": "13:00",
+              "title": "老城午餐",
+              "type": "美食",
+              "desc": "在小馆吃土豆汤与香肠。",
+              "img": "/images/wittenberg_Sächsische_Küche.jpg",
+              "tips": "人均10-18€。"
+            },
+            {
+              "time": "15:00",
+              "title": "城市公园",
+              "type": "体验",
+              "desc": "在Stadtpark散步或划船，看本地家庭与孩子享受周末。",
+              "img": "/images/wittenberg_Stadtpark_Wittenberg.jpg",
+              "tips": "免费。"
+            },
+            {
+              "time": "17:00",
+              "title": "易北河日落",
+              "type": "体验",
+              "desc": "在河岸长椅上看夕阳，结束小城慢生活。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Schlosskirche_Wittenberg.jpg",
+              "tips": "免费。"
+            },
+            {
+              "time": "19:00",
+              "title": "家庭式晚餐",
+              "type": "美食",
+              "desc": "在Gasthaus吃家常菜与本地啤酒。",
+              "img": "/images/wittenberg_Sächsische_Küche.jpg",
+              "tips": "人均15-25€。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "步行+自行车；城市很小",
+            "accommodation": "老城集市广场周边",
+            "food": "烤猪膝、香肠、土豆汤、黑啤、蜂蜜蛋糕",
+            "budget": "70-140€/人/天",
+            "bestTime": "5-9月",
+            "tips": [
+              "周日商店关门，提前备好零食",
+              "跳蚤市场周六上午最热闹"
+            ]
+          }
+        },
+        "3days": {
+          "title": "萨克森小城三日慢生活线",
+          "subtitle": "维滕贝格+周边乡村与易北河",
+          "duration": "3日",
+          "stops": [
+            {
+              "time": "09:00",
+              "title": "集市广场早餐",
+              "type": "美食",
+              "desc": "德式早餐。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Markt_Wittenberg.jpg",
+              "tips": "人均4-7€。"
+            },
+            {
+              "time": "10:00",
+              "title": "市政厅",
+              "type": "核心",
+              "desc": "市政厅外观。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Markt_Wittenberg.jpg",
+              "tips": "免费。"
+            },
+            {
+              "time": "11:00",
+              "title": "本地面包房",
+              "type": "美食",
+              "desc": "买面包蛋糕。",
+              "img": "/images/wittenberg_German_bakery.jpg",
+              "tips": "3-6€。"
+            },
+            {
+              "time": "13:00",
+              "title": "易北河骑行",
+              "type": "体验",
+              "desc": "沿河骑行。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Schlosskirche_Wittenberg.jpg",
+              "tips": "租车10€/半天。"
+            },
+            {
+              "time": "15:30",
+              "title": "跳蚤市场",
+              "type": "购物",
+              "desc": "淘旧物。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Markt_Wittenberg.jpg",
+              "tips": "周六上午。"
+            },
+            {
+              "time": "18:30",
+              "title": "Brauhaus 晚餐",
+              "type": "美食",
+              "desc": "烤猪膝黑啤。",
+              "img": "/images/wittenberg_Sächsische_Küche.jpg",
+              "tips": "人均18-30€。"
+            },
+            {
+              "time": "09:30",
+              "title": "城市教堂礼拜",
+              "type": "体验",
+              "desc": "参加礼拜。",
+              "img": "/images/wittenberg_Sächsische_Küche.jpg",
+              "tips": "周日。"
+            },
+            {
+              "time": "11:00",
+              "title": "本地咖啡馆",
+              "type": "美食",
+              "desc": "读路德传记。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Markt_Wittenberg.jpg",
+              "tips": "咖啡3-5€。"
+            },
+            {
+              "time": "13:00",
+              "title": "老城午餐",
+              "type": "美食",
+              "desc": "土豆汤香肠。",
+              "img": "/images/wittenberg_Sächsische_Küche.jpg",
+              "tips": "人均10-18€。"
+            },
+            {
+              "time": "15:00",
+              "title": "城市公园",
+              "type": "体验",
+              "desc": "Stadtpark散步。",
+              "img": "/images/wittenberg_Stadtpark_Wittenberg.jpg",
+              "tips": "免费。"
+            },
+            {
+              "time": "17:00",
+              "title": "易北河日落",
+              "type": "体验",
+              "desc": "河岸日落。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Schlosskirche_Wittenberg.jpg",
+              "tips": "免费。"
+            },
+            {
+              "time": "19:00",
+              "title": "家庭式晚餐",
+              "type": "美食",
+              "desc": "Gasthaus家常菜。",
+              "img": "/images/wittenberg_Sächsische_Küche.jpg",
+              "tips": "人均15-25€。"
+            },
+            {
+              "time": "09:00",
+              "title": "Wörlitz 园林一日游",
+              "type": "体验",
+              "desc": "乘公交或骑行去联合国教科文组织世界遗产Wörlitz公园，欣赏18世纪英式景观园林。",
+              "img": "/images/wittenberg_Wörlitzer_Park.jpg",
+              "tips": "公交约1小时，公园免费。"
+            },
+            {
+              "time": "13:00",
+              "title": "Wörlitz 午餐",
+              "type": "美食",
+              "desc": "在小镇餐厅吃萨克森传统菜。",
+              "img": "/images/wittenberg_Wörlitzer_Park.jpg",
+              "tips": "人均15-25€。"
+            },
+            {
+              "time": "15:00",
+              "title": "易北河游船",
+              "type": "体验",
+              "desc": "夏季可乘游船从维滕贝格到Wörlitz，欣赏河谷风光。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Schlosskirche_Wittenberg.jpg",
+              "tips": "船票约15€，班次有限需提前查。"
+            },
+            {
+              "time": "17:30",
+              "title": "老城告别咖啡",
+              "type": "美食",
+              "desc": "在集市广场最后喝一杯咖啡，买蜂蜜蛋糕当伴手礼。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Markt_Wittenberg.jpg",
+              "tips": "人均5-8€。"
+            },
+            {
+              "time": "19:30",
+              "title": "告别晚餐",
+              "type": "美食",
+              "desc": "在Brauhaus吃最后一顿烤猪膝。",
+              "img": "/images/wittenberg_Sächsische_Küche.jpg",
+              "tips": "人均18-30€。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "步行+自行车+公交去Wörlitz；夏季可乘游船",
+            "accommodation": "老城集市广场周边",
+            "food": "烤猪膝、香肠、土豆汤、黑啤、蜂蜜蛋糕",
+            "budget": "90-180€/人/天",
+            "bestTime": "5-9月",
+            "tips": [
+              "Wörlitz公园很大，穿舒适鞋子",
+              "周日商店与部分餐厅休息"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "liverpool": {
+    "name": "利物浦",
+    "case": "跨大西洋奴隶贸易与废奴运动",
+    "country": "英国",
+    "description": "默西河畔的港口城市在18世纪成为欧洲最大的奴隶贸易港口之一。今天的阿尔伯特码头与国际奴隶制博物馆直面这段黑暗历史，同时披头士与足球让城市焕发新生。",
+    "themes": {
+      "trade": {
+        "1day": {
+          "title": "奴隶贸易与港口历史一日线",
+          "subtitle": "从阿尔伯特码头到三女神，直面帝国航运的黑暗与辉煌",
+          "duration": "1日",
+          "stops": [
+            {
+              "time": "09:30",
+              "title": "皇家阿尔伯特码头 Royal Albert Dock",
+              "type": "核心",
+              "desc": "19世纪世界最先进的码头仓库群，也是利物浦奴隶贸易与帝国航运财富的见证。现为世界遗产与文化区。#港口遗产",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Royal_Albert_Dock_Liverpool.jpg",
+              "tips": "码头区免费开放；博物馆多位于仓库内，可安排一整天慢慢逛。"
+            },
+            {
+              "time": "10:30",
+              "title": "国际奴隶制博物馆 International Slavery Museum",
+              "type": "核心",
+              "desc": "位于阿尔伯特码头，直面利物浦作为跨大西洋奴隶贸易重要港口的历史，展示被奴役者视角与废奴运动。#直面历史",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/International_Slavery_Museum.jpg",
+              "tips": "免费参观，建议捐5£；周二至周日10-17点，预留2-3小时。"
+            },
+            {
+              "time": "12:30",
+              "title": "默西塞德海事博物馆",
+              "type": "核心",
+              "desc": "展示利物浦港口、移民、泰坦尼克号与Lusitania号的历史，帮助理解航运如何塑造这座城市。#海事史",
+              "img": "/images/liverpool_Merseyside_Maritime_Museum.jpg",
+              "tips": "免费参观，顶层观景台可俯瞰码头。"
+            },
+            {
+              "time": "13:00",
+              "title": "英式炸鱼薯条 Fish & Chips",
+              "type": "美食",
+              "desc": "港口城市的国民美食，酥脆鳕鱼配厚切薯条，淋上盐和 malt vinegar。码头边的老店最有氛围。#英国国菜",
+              "img": "/images/liverpool_Fish_and_chips.jpg",
+              "tips": "推荐The Lobster Pot或The Baltic Fleet，人均10-15£。"
+            },
+            {
+              "time": "14:00",
+              "title": "利物浦博物馆 Museum of Liverpool",
+              "type": "核心",
+              "desc": "讲述利物浦从港口城市到现代都市的故事，包含奴隶贸易、工业、披头士与足球文化。#城市记忆",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Museum_of_Liverpool.jpg",
+              "tips": "免费参观，建筑本身现代感强；周二至周日开放。"
+            },
+            {
+              "time": "16:00",
+              "title": "码头顶与三女神 Pier Head & Three Graces",
+              "type": "核心",
+              "desc": " Liver Building、Cunard Building 与 Port of Liverpool Building 并称「三女神」，是帝国航运霸权的建筑宣言。#城市地标",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Three_Graces_Liverpool.jpg",
+              "tips": " waterfront 步道最适合拍照；Liver Building钟楼整点报时。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "从Lime Street火车站步行15分钟到码头；市区景点步行+公交即可",
+            "accommodation": "市中心或Albert Dock周边酒店",
+            "food": "Fish & Chips、Scouse、英式早餐、印度菜",
+            "budget": "70-140£/人/天",
+            "bestTime": "5-9月气候温和",
+            "tips": [
+              "奴隶制博物馆免费但建议捐款",
+              "阿尔伯特码头餐厅较贵，可到市中心用餐"
+            ]
+          }
+        },
+        "2days": {
+          "title": "港口贸易双日深度游",
+          "subtitle": "航运、帝国与奴隶贸易的全球网络",
+          "duration": "2日",
+          "stops": [
+            {
+              "time": "09:30",
+              "title": "皇家阿尔伯特码头 Royal Albert Dock",
+              "type": "核心",
+              "desc": "19世纪世界最先进的码头仓库群，也是利物浦奴隶贸易与帝国航运财富的见证。现为世界遗产与文化区。#港口遗产",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Royal_Albert_Dock_Liverpool.jpg",
+              "tips": "码头区免费开放；博物馆多位于仓库内，可安排一整天慢慢逛。"
+            },
+            {
+              "time": "10:30",
+              "title": "国际奴隶制博物馆 International Slavery Museum",
+              "type": "核心",
+              "desc": "位于阿尔伯特码头，直面利物浦作为跨大西洋奴隶贸易重要港口的历史，展示被奴役者视角与废奴运动。#直面历史",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/International_Slavery_Museum.jpg",
+              "tips": "免费参观，建议捐5£；周二至周日10-17点，预留2-3小时。"
+            },
+            {
+              "time": "12:30",
+              "title": "默西塞德海事博物馆",
+              "type": "核心",
+              "desc": "展示利物浦港口、移民、泰坦尼克号与Lusitania号的历史，帮助理解航运如何塑造这座城市。#海事史",
+              "img": "/images/liverpool_Merseyside_Maritime_Museum.jpg",
+              "tips": "免费参观，顶层观景台可俯瞰码头。"
+            },
+            {
+              "time": "13:00",
+              "title": "英式炸鱼薯条 Fish & Chips",
+              "type": "美食",
+              "desc": "港口城市的国民美食，酥脆鳕鱼配厚切薯条，淋上盐和 malt vinegar。码头边的老店最有氛围。#英国国菜",
+              "img": "/images/liverpool_Fish_and_chips.jpg",
+              "tips": "推荐The Lobster Pot或The Baltic Fleet，人均10-15£。"
+            },
+            {
+              "time": "14:00",
+              "title": "利物浦博物馆 Museum of Liverpool",
+              "type": "核心",
+              "desc": "讲述利物浦从港口城市到现代都市的故事，包含奴隶贸易、工业、披头士与足球文化。#城市记忆",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Museum_of_Liverpool.jpg",
+              "tips": "免费参观，建筑本身现代感强；周二至周日开放。"
+            },
+            {
+              "time": "16:00",
+              "title": "码头顶与三女神 Pier Head & Three Graces",
+              "type": "核心",
+              "desc": " Liver Building、Cunard Building 与 Port of Liverpool Building 并称「三女神」，是帝国航运霸权的建筑宣言。#城市地标",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Three_Graces_Liverpool.jpg",
+              "tips": " waterfront 步道最适合拍照；Liver Building钟楼整点报时。"
+            },
+            {
+              "time": "09:30",
+              "title": "奴隶贸易徒步导览",
+              "type": "体验",
+              "desc": "跟随讲解员走访18世纪船东宅邸、奴隶拍卖地与码头遗址，了解利物浦如何从奴隶贸易中积累财富。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Liverpool_Waterfront.jpg",
+              "tips": "约15£/人，可在游客中心报名。"
+            },
+            {
+              "time": "11:30",
+              "title": "蓝衣会所 Bluecoat",
+              "type": "核心",
+              "desc": "利物浦最古老的市中心建筑，曾是慈善学校，现在展示艺术与殖民历史的当代艺术对话。",
+              "img": "/images/liverpool_The_Bluecoat_Liverpool.jpg",
+              "tips": "免费参观，咖啡厅很棒。"
+            },
+            {
+              "time": "13:30",
+              "title": "波罗的海三角区午餐",
+              "type": "美食",
+              "desc": "在旧仓库改造的Baltic Market吃全球街头小食，感受港口城市的多元移民文化。",
+              "img": "/images/liverpool_Baltic_Market_Liverpool.jpg",
+              "tips": "人均10-15£，周末有现场音乐。"
+            },
+            {
+              "time": "15:00",
+              "title": "泰特利物浦",
+              "type": "文化",
+              "desc": "现代艺术常以殖民、身份与全球贸易为主题，是思考港口历史的新视角。",
+              "img": "/images/liverpool_Tate_Liverpool.jpg",
+              "tips": "免费参观，特展需购票。"
+            },
+            {
+              "time": "17:30",
+              "title": "默西河渡轮",
+              "type": "体验",
+              "desc": "乘渡轮横渡默西河，从水上眺望三女神与城市天际线，体验当年移民与商船的视角。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Liverpool_Waterfront.jpg",
+              "tips": "约4.6£往返，日落班次最值。"
+            },
+            {
+              "time": "19:30",
+              "title": "波罗的海区晚餐",
+              "type": "美食",
+              "desc": "在The Baltic Fleet等精酿酒吧吃Scouse炖菜，听本地乐队演出。",
+              "img": "/images/liverpool_Scouse_(food).jpg",
+              "tips": "人均15-25£。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "步行+Merseyrail火车+渡轮；买Day Saver约5.5£覆盖公交",
+            "accommodation": "Albert Dock或波罗的海三角区（Baltic Triangle）",
+            "food": "Fish & Chips、Scouse、精酿啤酒、街头小食",
+            "budget": "100-200£/人/天",
+            "bestTime": "5-9月",
+            "tips": [
+              "奴隶贸易徒步导览需提前报名",
+              "Baltic Market周末人多，建议早到"
+            ]
+          }
+        },
+        "3days": {
+          "title": "港口贸易三日沉浸线",
+          "subtitle": "从奴隶贸易到现代多元港城的完整叙事",
+          "duration": "3日",
+          "stops": [
+            {
+              "time": "09:30",
+              "title": "皇家阿尔伯特码头 Royal Albert Dock",
+              "type": "核心",
+              "desc": "19世纪世界最先进的码头仓库群，也是利物浦奴隶贸易与帝国航运财富的见证。现为世界遗产与文化区。#港口遗产",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Royal_Albert_Dock_Liverpool.jpg",
+              "tips": "码头区免费开放；博物馆多位于仓库内，可安排一整天慢慢逛。"
+            },
+            {
+              "time": "10:30",
+              "title": "国际奴隶制博物馆 International Slavery Museum",
+              "type": "核心",
+              "desc": "位于阿尔伯特码头，直面利物浦作为跨大西洋奴隶贸易重要港口的历史，展示被奴役者视角与废奴运动。#直面历史",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/International_Slavery_Museum.jpg",
+              "tips": "免费参观，建议捐5£；周二至周日10-17点，预留2-3小时。"
+            },
+            {
+              "time": "12:30",
+              "title": "默西塞德海事博物馆",
+              "type": "核心",
+              "desc": "展示利物浦港口、移民、泰坦尼克号与Lusitania号的历史，帮助理解航运如何塑造这座城市。#海事史",
+              "img": "/images/liverpool_Merseyside_Maritime_Museum.jpg",
+              "tips": "免费参观，顶层观景台可俯瞰码头。"
+            },
+            {
+              "time": "13:00",
+              "title": "英式炸鱼薯条 Fish & Chips",
+              "type": "美食",
+              "desc": "港口城市的国民美食，酥脆鳕鱼配厚切薯条，淋上盐和 malt vinegar。码头边的老店最有氛围。#英国国菜",
+              "img": "/images/liverpool_Fish_and_chips.jpg",
+              "tips": "推荐The Lobster Pot或The Baltic Fleet，人均10-15£。"
+            },
+            {
+              "time": "14:00",
+              "title": "利物浦博物馆 Museum of Liverpool",
+              "type": "核心",
+              "desc": "讲述利物浦从港口城市到现代都市的故事，包含奴隶贸易、工业、披头士与足球文化。#城市记忆",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Museum_of_Liverpool.jpg",
+              "tips": "免费参观，建筑本身现代感强；周二至周日开放。"
+            },
+            {
+              "time": "16:00",
+              "title": "码头顶与三女神 Pier Head & Three Graces",
+              "type": "核心",
+              "desc": " Liver Building、Cunard Building 与 Port of Liverpool Building 并称「三女神」，是帝国航运霸权的建筑宣言。#城市地标",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Three_Graces_Liverpool.jpg",
+              "tips": " waterfront 步道最适合拍照；Liver Building钟楼整点报时。"
+            },
+            {
+              "time": "09:30",
+              "title": "奴隶贸易徒步导览",
+              "type": "体验",
+              "desc": "走访当年奴隶船东宅邸与码头，听讲解员还原三角贸易的运作与暴行。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Liverpool_Waterfront.jpg",
+              "tips": "约15£/人，游客中心报名。"
+            },
+            {
+              "time": "12:00",
+              "title": "蓝衣会所",
+              "type": "核心",
+              "desc": "市中心最古老建筑，从慈善学校到当代艺术中心，折射利物浦的社会变迁。",
+              "img": "/images/liverpool_The_Bluecoat_Liverpool.jpg",
+              "tips": "免费参观。"
+            },
+            {
+              "time": "13:30",
+              "title": "Baltic Market午餐",
+              "type": "美食",
+              "desc": "旧仓库改造的街头美食市场，汇聚加勒比、中东与亚洲风味。",
+              "img": "/images/liverpool_Baltic_Market_Liverpool.jpg",
+              "tips": "人均10-15£。"
+            },
+            {
+              "time": "16:00",
+              "title": "泰特利物浦 Tate Liverpool",
+              "type": "文化",
+              "desc": "阿尔伯特码头内的现代美术馆，常设与特展探索艺术与社会议题，包括殖民与身份主题。#当代艺术",
+              "img": "/images/liverpool_Tate_Liverpool.jpg",
+              "tips": "免费参观特展需票；周一闭馆。"
+            },
+            {
+              "time": "17:30",
+              "title": "默西河渡轮",
+              "type": "体验",
+              "desc": "从水上欣赏三女神与码头工业景观。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Liverpool_Waterfront.jpg",
+              "tips": "约4.6£往返。"
+            },
+            {
+              "time": "09:30",
+              "title": "国际奴隶制博物馆专题导览",
+              "type": "核心",
+              "desc": "深入了解被奴役者视角、中段航程与废奴运动，建议听一场免费讲解。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/International_Slavery_Museum.jpg",
+              "tips": "上午10:30有免费导览。"
+            },
+            {
+              "time": "12:30",
+              "title": "码头区午餐",
+              "type": "美食",
+              "desc": "在Albert Dock边餐厅吃海鲜拼盘，看帆船与游艇。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Royal_Albert_Dock_Liverpool.jpg",
+              "tips": "人均20-35£，风景佳。"
+            },
+            {
+              "time": "10:00",
+              "title": "利物浦大教堂 Liverpool Cathedral",
+              "type": "核心",
+              "desc": "英国最大的圣公会教堂，20世纪哥特复兴巨作。教堂在废奴运动与帝国道德反思中扮演重要角色。#宗教反思",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Liverpool_Anglican_Cathedral.jpg",
+              "tips": "免费进入，登塔约7£；每日有唱诗班礼拜，氛围庄严。"
+            },
+            {
+              "time": "16:00",
+              "title": "圣乔治大厅",
+              "type": "核心",
+              "desc": "新古典主义市政厅，内部大理石柱与穹顶华丽，举办过无数反奴隶制演讲与集会。",
+              "img": "/images/liverpool_St_George's_Hall_Liverpool.jpg",
+              "tips": "外部免费，内部导览约5£。"
+            },
+            {
+              "time": "18:00",
+              "title": "St Luke's Bombed Out Church",
+              "type": "体验",
+              "desc": "二战中被炸毁的教堂遗址，如今成为反思战争与记忆的露天文化空间。",
+              "img": "/images/liverpool_St_Luke's_Church_Liverpool.jpg",
+              "tips": "免费，常有展览与演出。"
+            },
+            {
+              "time": "19:30",
+              "title": "中国城晚餐",
+              "type": "美食",
+              "desc": "在欧洲最古老华人社区吃中餐，了解华人海员与利物浦港口贸易史。",
+              "img": "/images/liverpool_Liverpool_Chinatown.jpg",
+              "tips": "人均15-25£。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "步行+公交+渡轮；买Day Saver划算；Lime Street是主要铁路枢纽",
+            "accommodation": "Albert Dock或市中心",
+            "food": "Fish & Chips、Scouse、海鲜、中餐、精酿啤酒",
+            "budget": "120-260£/人/天",
+            "bestTime": "5-9月",
+            "tips": [
+              "国际奴隶制博物馆专题导览时间可在官网查",
+              "Baltic Triangle夜生活丰富，注意安全"
+            ]
+          }
+        }
+      },
+      "abolition": {
+        "1day": {
+          "title": "废奴运动记忆一日线",
+          "subtitle": "从国际奴隶制博物馆到教堂与纪念碑",
+          "duration": "1日",
+          "stops": [
+            {
+              "time": "10:30",
+              "title": "国际奴隶制博物馆 International Slavery Museum",
+              "type": "核心",
+              "desc": "位于阿尔伯特码头，直面利物浦作为跨大西洋奴隶贸易重要港口的历史，展示被奴役者视角与废奴运动。#直面历史",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/International_Slavery_Museum.jpg",
+              "tips": "免费参观，建议捐5£；周二至周日10-17点，预留2-3小时。"
+            },
+            {
+              "time": "11:30",
+              "title": "废奴运动纪念地",
+              "type": "核心",
+              "desc": "利物浦街头多处纪念跨大西洋奴隶贸易受害者，教堂与档案馆藏有威廉·威尔伯福斯与本地废奴主义者资料。#废奴记忆",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Liverpool_Anglican_Cathedral.jpg",
+              "tips": "可参加本地「slavery walking tour」，约15£/人。"
+            },
+            {
+              "time": "12:30",
+              "title": "Bluecoat午餐",
+              "type": "美食",
+              "desc": "在建于1717年的慈善学校旧址吃轻食，思考启蒙时代慈善与压迫的悖论。",
+              "img": "/images/liverpool_The_Bluecoat_Liverpool.jpg",
+              "tips": "人均10-15£。"
+            },
+            {
+              "time": "10:00",
+              "title": "利物浦大教堂 Liverpool Cathedral",
+              "type": "核心",
+              "desc": "英国最大的圣公会教堂，20世纪哥特复兴巨作。教堂在废奴运动与帝国道德反思中扮演重要角色。#宗教反思",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Liverpool_Anglican_Cathedral.jpg",
+              "tips": "免费进入，登塔约7£；每日有唱诗班礼拜，氛围庄严。"
+            },
+            {
+              "time": "15:00",
+              "title": "利物浦中央图书馆档案",
+              "type": "核心",
+              "desc": "查阅本地废奴主义者小册子、请愿书与议会辩论记录，了解 grassroots 运动如何推动1807年废奴法案。",
+              "img": "/images/liverpool_Liverpool_Central_Library.jpg",
+              "tips": "免费，需带身份证件办卡。"
+            },
+            {
+              "time": "17:00",
+              "title": "默西河日落",
+              "type": "体验",
+              "desc": "在码头边静坐，反思跨大西洋奴隶贸易的人权遗产。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Liverpool_Waterfront.jpg",
+              "tips": "免费；Pier Head与Albert Dock之间步道最佳。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "步行+公交；奴隶制博物馆与教堂、图书馆都在市中心",
+            "accommodation": "市中心或码头区",
+            "food": "英式简餐、Scouse、素食选项",
+            "budget": "60-120£/人/天",
+            "bestTime": "5-9月",
+            "tips": [
+              "奴隶制博物馆周二至周日开放",
+              "中央图书馆周一可能闭馆"
+            ]
+          }
+        },
+        "2days": {
+          "title": "废奴运动双日深度线",
+          "subtitle": "威尔伯福斯、本地活动家与利物浦的道德转折",
+          "duration": "2日",
+          "stops": [
+            {
+              "time": "10:30",
+              "title": "国际奴隶制博物馆 International Slavery Museum",
+              "type": "核心",
+              "desc": "位于阿尔伯特码头，直面利物浦作为跨大西洋奴隶贸易重要港口的历史，展示被奴役者视角与废奴运动。#直面历史",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/International_Slavery_Museum.jpg",
+              "tips": "免费参观，建议捐5£；周二至周日10-17点，预留2-3小时。"
+            },
+            {
+              "time": "10:30",
+              "title": "奴隶贸易受害者纪念碑",
+              "type": "核心",
+              "desc": "码头区与街头的多处纪念碑提醒城市曾有的罪行，也是公共历史教育的空间。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Liverpool_Waterfront.jpg",
+              "tips": "可跟随本地导览了解每座纪念碑背后的故事。"
+            },
+            {
+              "time": "10:00",
+              "title": "利物浦大教堂 Liverpool Cathedral",
+              "type": "核心",
+              "desc": "英国最大的圣公会教堂，20世纪哥特复兴巨作。教堂在废奴运动与帝国道德反思中扮演重要角色。#宗教反思",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Liverpool_Anglican_Cathedral.jpg",
+              "tips": "免费进入，登塔约7£；每日有唱诗班礼拜，氛围庄严。"
+            },
+            {
+              "time": "13:00",
+              "title": "大教堂午餐",
+              "type": "美食",
+              "desc": "在教堂咖啡厅吃汤和三明治，环境安静适合反思。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Liverpool_Anglican_Cathedral.jpg",
+              "tips": "人均8-12£。"
+            },
+            {
+              "time": "14:30",
+              "title": "中央图书馆废奴档案",
+              "type": "核心",
+              "desc": "查阅Thomas Clarkson、William Wilberforce与利物浦废奴协会的宣传资料。",
+              "img": "/images/liverpool_Liverpool_Central_Library.jpg",
+              "tips": "提前在官网预约档案阅读。"
+            },
+            {
+              "time": "16:30",
+              "title": "St George's Hall",
+              "type": "核心",
+              "desc": "新古典主义建筑内部曾举行废奴演讲与公众集会，是利物浦社会运动的象征。",
+              "img": "/images/liverpool_St_George's_Hall_Liverpool.jpg",
+              "tips": "外部免费，内部导览约5£。"
+            },
+            {
+              "time": "18:00",
+              "title": "Albert Dock散步",
+              "type": "体验",
+              "desc": "在改造后的码头仓库间散步，思考工业遗产与道德责任的当代意义。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Royal_Albert_Dock_Liverpool.jpg",
+              "tips": "傍晚灯光很美，适合拍照。"
+            },
+            {
+              "time": "09:30",
+              "title": "Rokeby Venus 与 Walker Art Gallery",
+              "type": "核心",
+              "desc": "美术馆藏有大量与帝国、身份与奴隶制相关的艺术作品，提供视觉角度的废奴叙事。",
+              "img": "/images/liverpool_Walker_Art_Gallery.jpg",
+              "tips": "免费参观，周一闭馆。"
+            },
+            {
+              "time": "12:00",
+              "title": "市中心午餐",
+              "type": "美食",
+              "desc": "在Bold Street的独立咖啡馆吃素食或国际料理。",
+              "img": "/images/liverpool_Bold_Street_Liverpool.jpg",
+              "tips": "人均10-18£。"
+            },
+            {
+              "time": "14:00",
+              "title": "Princes Road Synagogue",
+              "type": "核心",
+              "desc": "利物浦多元移民史的一部分，了解19世纪自由派与宗教团体在废奴与社会改革中的联盟。",
+              "img": "/images/liverpool_Princes_Road_Synagogue.jpg",
+              "tips": "需预约参观，着装需庄重。"
+            },
+            {
+              "time": "16:00",
+              "title": "Sefton Park",
+              "type": "体验",
+              "desc": "维多利亚式公园是市民公共空间的典范，也是反思城市记忆与集体疗愈的场所。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Sefton_Park_Liverpool.jpg",
+              "tips": "免费，温室值得一看。"
+            },
+            {
+              "time": "19:30",
+              "title": "波罗的海区晚餐",
+              "type": "美食",
+              "desc": "在Baltic Market或周边餐厅吃晚餐，感受利物浦当代文化活力。",
+              "img": "/images/liverpool_Baltic_Market_Liverpool.jpg",
+              "tips": "人均15-25£。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "步行+公交；Walker Art Gallery在中央图书馆附近",
+            "accommodation": "市中心",
+            "food": "英式早餐、Scouse、素食、国际料理",
+            "budget": "90-180£/人/天",
+            "bestTime": "5-9月",
+            "tips": [
+              "Walker Art Gallery周一闭馆",
+              "档案馆需提前预约"
+            ]
+          }
+        },
+        "3days": {
+          "title": "废奴运动三日沉浸线",
+          "subtitle": "历史、艺术、档案与当代反思",
+          "duration": "3日",
+          "stops": [
+            {
+              "time": "10:30",
+              "title": "国际奴隶制博物馆 International Slavery Museum",
+              "type": "核心",
+              "desc": "位于阿尔伯特码头，直面利物浦作为跨大西洋奴隶贸易重要港口的历史，展示被奴役者视角与废奴运动。#直面历史",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/International_Slavery_Museum.jpg",
+              "tips": "免费参观，建议捐5£；周二至周日10-17点，预留2-3小时。"
+            },
+            {
+              "time": "10:30",
+              "title": "奴隶贸易受害者纪念碑群",
+              "type": "核心",
+              "desc": "码头区、教堂与街头多处纪念碑构成城市的记忆地图。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Liverpool_Waterfront.jpg",
+              "tips": "建议跟随官方导览。"
+            },
+            {
+              "time": "10:00",
+              "title": "利物浦大教堂 Liverpool Cathedral",
+              "type": "核心",
+              "desc": "英国最大的圣公会教堂，20世纪哥特复兴巨作。教堂在废奴运动与帝国道德反思中扮演重要角色。#宗教反思",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Liverpool_Anglican_Cathedral.jpg",
+              "tips": "免费进入，登塔约7£；每日有唱诗班礼拜，氛围庄严。"
+            },
+            {
+              "time": "13:30",
+              "title": "中央图书馆废奴档案",
+              "type": "核心",
+              "desc": "阅读本地废奴主义者的小册子、请愿书与议会记录。",
+              "img": "/images/liverpool_Liverpool_Central_Library.jpg",
+              "tips": "提前官网预约。"
+            },
+            {
+              "time": "15:30",
+              "title": "St George's Hall",
+              "type": "核心",
+              "desc": "新古典主义市政厅，废奴演讲与公共集会的重要场所。",
+              "img": "/images/liverpool_St_George's_Hall_Liverpool.jpg",
+              "tips": "导览约5£。"
+            },
+            {
+              "time": "17:30",
+              "title": "Albert Dock日落",
+              "type": "体验",
+              "desc": "在码头仓库改造的餐厅露台看日落，思考历史与当下。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Royal_Albert_Dock_Liverpool.jpg",
+              "tips": "免费，露台消费约10£起。"
+            },
+            {
+              "time": "09:30",
+              "title": "Walker Art Gallery",
+              "type": "核心",
+              "desc": "通过艺术史视角审视殖民、种族与身份议题。",
+              "img": "/images/liverpool_Walker_Art_Gallery.jpg",
+              "tips": "免费，周一闭馆。"
+            },
+            {
+              "time": "12:00",
+              "title": "Bold Street午餐",
+              "type": "美食",
+              "desc": "独立咖啡馆与餐厅聚集，素食与公平贸易选项多。",
+              "img": "/images/liverpool_Bold_Street_Liverpool.jpg",
+              "tips": "人均10-18£。"
+            },
+            {
+              "time": "14:00",
+              "title": "Rokeby Venus 专题",
+              "type": "核心",
+              "desc": "馆内藏品《Rokeby Venus》等作品关联性别、凝视与帝国权力。",
+              "img": "/images/liverpool_Walker_Art_Gallery.jpg",
+              "tips": "免费，建议参加主题讲解。"
+            },
+            {
+              "time": "16:00",
+              "title": "Bluecoat",
+              "type": "核心",
+              "desc": "从慈善学校到当代艺术中心，展览常涉及记忆与正义。",
+              "img": "/images/liverpool_The_Bluecoat_Liverpool.jpg",
+              "tips": "免费。"
+            },
+            {
+              "time": "18:30",
+              "title": "中国城晚餐",
+              "type": "美食",
+              "desc": "了解华人海员与利物浦港口史，也是全球劳工迁徙的一部分。",
+              "img": "/images/liverpool_Liverpool_Chinatown.jpg",
+              "tips": "人均15-25£。"
+            },
+            {
+              "time": "09:30",
+              "title": "Sefton Park晨跑/散步",
+              "type": "体验",
+              "desc": "在维多利亚公园开始一天，思考公共空间如何促进社会和解。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Sefton_Park_Liverpool.jpg",
+              "tips": "免费。"
+            },
+            {
+              "time": "11:00",
+              "title": "Princes Road Synagogue",
+              "type": "核心",
+              "desc": "19世纪自由宗教团体在社会改革中的角色。",
+              "img": "/images/liverpool_Princes_Road_Synagogue.jpg",
+              "tips": "需预约。"
+            },
+            {
+              "time": "13:00",
+              "title": "Baltic Market午餐",
+              "type": "美食",
+              "desc": "多元街头美食反映利物浦作为移民港口的文化熔炉。",
+              "img": "/images/liverpool_Baltic_Market_Liverpool.jpg",
+              "tips": "人均10-15£。"
+            },
+            {
+              "time": "15:00",
+              "title": "St Luke's Bombed Out Church",
+              "type": "体验",
+              "desc": "战争与殖民记忆的交汇点，如今用于和平与文化反思活动。",
+              "img": "/images/liverpool_St_Luke's_Church_Liverpool.jpg",
+              "tips": "免费，常有展览。"
+            },
+            {
+              "time": "17:00",
+              "title": "默西河渡轮",
+              "type": "体验",
+              "desc": "从水上回望利物浦，结束这段关于人权与记忆的旅程。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Liverpool_Waterfront.jpg",
+              "tips": "约4.6£往返。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "步行+公交+渡轮；多数博物馆免费",
+            "accommodation": "市中心或Albert Dock",
+            "food": "英式简餐、Scouse、素食、中餐、街头美食",
+            "budget": "110-230£/人/天",
+            "bestTime": "5-9月",
+            "tips": [
+              "Walker Art Gallery周一闭馆",
+              "犹太会堂需邮件预约参观"
+            ]
+          }
+        }
+      },
+      "culture": {
+        "1day": {
+          "title": "利物浦文化重生一日线",
+          "subtitle": "披头士、泰特与现代港口城市",
+          "duration": "1日",
+          "stops": [
+            {
+              "time": "09:30",
+              "title": "阿尔伯特码头",
+              "type": "核心",
+              "desc": "世界遗产码头仓库群，如今是博物馆、餐厅与文化空间。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Royal_Albert_Dock_Liverpool.jpg",
+              "tips": "免费开放。"
+            },
+            {
+              "time": "10:30",
+              "title": "泰特利物浦",
+              "type": "文化",
+              "desc": "现代艺术馆藏与特展，探索殖民、身份与城市记忆。",
+              "img": "/images/liverpool_The_Bluecoat_Liverpool.jpg",
+              "tips": "免费，周一闭馆。"
+            },
+            {
+              "time": "12:00",
+              "title": "披头士雕像",
+              "type": "文化",
+              "desc": " waterfront 的披头士铜像，是音乐朝圣与游客打卡第一站。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Liverpool_Waterfront.jpg",
+              "tips": "免费拍照。"
+            },
+            {
+              "time": "13:00",
+              "title": "码头区午餐",
+              "type": "美食",
+              "desc": "在Albert Dock边的餐厅吃Fish & Chips或海鲜。",
+              "img": "/images/liverpool_Fish_and_chips.jpg",
+              "tips": "人均15-25£。"
+            },
+            {
+              "time": "15:00",
+              "title": "利物浦博物馆",
+              "type": "核心",
+              "desc": "从港口、移民、音乐到足球，全面了解利物浦城市身份。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Museum_of_Liverpool.jpg",
+              "tips": "免费。"
+            },
+            {
+              "time": "17:00",
+              "title": "洞穴俱乐部",
+              "type": "文化",
+              "desc": "披头士早年演出地，如今仍有现场乐队。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Liverpool_Waterfront.jpg",
+              "tips": "入场约5£。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "步行即可覆盖Albert Dock与市中心",
+            "accommodation": "Albert Dock或市中心",
+            "food": "Fish & Chips、Scouse、精酿啤酒",
+            "budget": "60-120£/人/天",
+            "bestTime": "5-9月",
+            "tips": [
+              "泰特周一闭馆",
+              "洞穴俱乐部晚上演出更精彩"
+            ]
+          }
+        },
+        "2days": {
+          "title": "利物浦文化双日线",
+          "subtitle": "音乐、足球、建筑与街头艺术",
+          "duration": "2日",
+          "stops": [
+            {
+              "time": "09:30",
+              "title": "阿尔伯特码头",
+              "type": "核心",
+              "desc": "世界遗产码头区。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Royal_Albert_Dock_Liverpool.jpg",
+              "tips": "免费。"
+            },
+            {
+              "time": "10:30",
+              "title": "泰特利物浦",
+              "type": "文化",
+              "desc": "现代艺术。",
+              "img": "/images/liverpool_The_Bluecoat_Liverpool.jpg",
+              "tips": "免费。"
+            },
+            {
+              "time": "12:00",
+              "title": "披头士雕像",
+              "type": "文化",
+              "desc": " waterfront 铜像。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Liverpool_Waterfront.jpg",
+              "tips": "免费。"
+            },
+            {
+              "time": "13:00",
+              "title": "码头午餐",
+              "type": "美食",
+              "desc": "Fish & Chips。",
+              "img": "/images/liverpool_Fish_and_chips.jpg",
+              "tips": "人均15-25£。"
+            },
+            {
+              "time": "15:00",
+              "title": "利物浦博物馆",
+              "type": "核心",
+              "desc": "城市身份展览。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Museum_of_Liverpool.jpg",
+              "tips": "免费。"
+            },
+            {
+              "time": "17:00",
+              "title": "洞穴俱乐部",
+              "type": "文化",
+              "desc": "现场音乐。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Liverpool_Waterfront.jpg",
+              "tips": "约5£。"
+            },
+            {
+              "time": "10:00",
+              "title": "利物浦大教堂",
+              "type": "核心",
+              "desc": "英国最大圣公会教堂，哥特复兴巨作。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Three_Graces_Liverpool.jpg",
+              "tips": "免费，登塔约7£。"
+            },
+            {
+              "time": "12:00",
+              "title": "Georgian Quarter 漫步",
+              "type": "体验",
+              "desc": "维多利亚与爱德华时代的排屋街区，充满文学与电影感。",
+              "img": "/images/liverpool_Georgian_Quarter_Liverpool.jpg",
+              "tips": "适合拍照，免费。"
+            },
+            {
+              "time": "13:30",
+              "title": "Bold Street 午餐",
+              "type": "美食",
+              "desc": "独立咖啡馆与全球料理聚集，利物浦最酷的街道之一。",
+              "img": "/images/liverpool_Bold_Street_Liverpool.jpg",
+              "tips": "人均10-18£。"
+            },
+            {
+              "time": "15:00",
+              "title": "安菲尔德球场",
+              "type": "体验",
+              "desc": "利物浦FC主场，You'll Never Walk Alone的歌声是城市灵魂。",
+              "img": "/images/liverpool_Baltic_Market_Liverpool.jpg",
+              "tips": "参观约25£，比赛日球票需提前抢购。"
+            },
+            {
+              "time": "18:00",
+              "title": "Baltic Market",
+              "type": "美食",
+              "desc": "旧仓库改造的美食市场，现场音乐与街头小食。",
+              "img": "/images/liverpool_Baltic_Market_Liverpool.jpg",
+              "tips": "人均10-15£。"
+            },
+            {
+              "time": "20:00",
+              "title": "Philharmonic Pub",
+              "type": "体验",
+              "desc": "维多利亚式华丽酒吧，是披头士早年常去的地方。",
+              "img": "/images/liverpool_Philharmonic_Pub_Liverpool.jpg",
+              "tips": " pint 约4-5£。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "步行+公交；安菲尔德在城北",
+            "accommodation": "市中心或Georgian Quarter",
+            "food": "Fish & Chips、Scouse、街头美食、精酿啤酒",
+            "budget": "90-180£/人/天",
+            "bestTime": "5-9月",
+            "tips": [
+              "安菲尔德参观需提前订票",
+              "Bold Street周末热闹"
+            ]
+          }
+        },
+        "3days": {
+          "title": "利物浦文化三日沉浸线",
+          "subtitle": "港口、音乐、足球与当代艺术的完整拼图",
+          "duration": "3日",
+          "stops": [
+            {
+              "time": "09:30",
+              "title": "阿尔伯特码头",
+              "type": "核心",
+              "desc": "世界遗产码头区。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Royal_Albert_Dock_Liverpool.jpg",
+              "tips": "免费。"
+            },
+            {
+              "time": "10:30",
+              "title": "泰特利物浦",
+              "type": "文化",
+              "desc": "现代艺术。",
+              "img": "/images/liverpool_The_Bluecoat_Liverpool.jpg",
+              "tips": "免费。"
+            },
+            {
+              "time": "12:00",
+              "title": "披头士雕像",
+              "type": "文化",
+              "desc": " waterfront 铜像。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Liverpool_Waterfront.jpg",
+              "tips": "免费。"
+            },
+            {
+              "time": "13:00",
+              "title": "码头午餐",
+              "type": "美食",
+              "desc": "Fish & Chips。",
+              "img": "/images/liverpool_Fish_and_chips.jpg",
+              "tips": "人均15-25£。"
+            },
+            {
+              "time": "15:00",
+              "title": "利物浦博物馆",
+              "type": "核心",
+              "desc": "城市身份展览。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Museum_of_Liverpool.jpg",
+              "tips": "免费。"
+            },
+            {
+              "time": "17:00",
+              "title": "洞穴俱乐部",
+              "type": "文化",
+              "desc": "现场音乐。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Liverpool_Waterfront.jpg",
+              "tips": "约5£。"
+            },
+            {
+              "time": "10:00",
+              "title": "利物浦大教堂",
+              "type": "核心",
+              "desc": "哥特复兴巨作。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Three_Graces_Liverpool.jpg",
+              "tips": "免费。"
+            },
+            {
+              "time": "12:00",
+              "title": "Georgian Quarter",
+              "type": "体验",
+              "desc": "维多利亚排屋街区。",
+              "img": "/images/liverpool_Georgian_Quarter_Liverpool.jpg",
+              "tips": "免费。"
+            },
+            {
+              "time": "13:30",
+              "title": "Bold Street 午餐",
+              "type": "美食",
+              "desc": "全球料理。",
+              "img": "/images/liverpool_Bold_Street_Liverpool.jpg",
+              "tips": "人均10-18£。"
+            },
+            {
+              "time": "15:00",
+              "title": "安菲尔德球场",
+              "type": "体验",
+              "desc": "利物浦FC主场。",
+              "img": "/images/liverpool_Baltic_Market_Liverpool.jpg",
+              "tips": "约25£。"
+            },
+            {
+              "time": "18:00",
+              "title": "Baltic Market",
+              "type": "美食",
+              "desc": "美食市场与现场音乐。",
+              "img": "/images/liverpool_Baltic_Market_Liverpool.jpg",
+              "tips": "人均10-15£。"
+            },
+            {
+              "time": "20:00",
+              "title": "Philharmonic Pub",
+              "type": "体验",
+              "desc": "华丽酒吧。",
+              "img": "/images/liverpool_Philharmonic_Pub_Liverpool.jpg",
+              "tips": "约4-5£。"
+            },
+            {
+              "time": "10:00",
+              "title": "Walker Art Gallery",
+              "type": "文化",
+              "desc": "英国最好的省级美术馆之一，藏有前拉斐尔派与现代艺术作品。",
+              "img": "/images/liverpool_Walker_Art_Gallery.jpg",
+              "tips": "免费，周一闭馆。"
+            },
+            {
+              "time": "12:30",
+              "title": "St George's Hall",
+              "type": "核心",
+              "desc": "新古典主义市政厅，内部大理石柱与穹顶华丽。",
+              "img": "/images/liverpool_St_George's_Hall_Liverpool.jpg",
+              "tips": "外部免费，导览约5£。"
+            },
+            {
+              "time": "14:00",
+              "title": "Liver Building 参观",
+              "type": "体验",
+              "desc": "登上著名的Liver Bird大楼，俯瞰码头与默西河。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Three_Graces_Liverpool.jpg",
+              "tips": "导览约18£，需预订。"
+            },
+            {
+              "time": "16:00",
+              "title": "Cavern Quarter",
+              "type": "体验",
+              "desc": "马修街周边布满披头士主题商店、酒吧与街头艺人。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Liverpool_Waterfront.jpg",
+              "tips": "免费逛街。"
+            },
+            {
+              "time": "18:00",
+              "title": "Sefton Park",
+              "type": "体验",
+              "desc": "维多利亚式城市公园，棕榈温室免费。",
+              "img": "/images/liverpool_Tate_Liverpool.jpg",
+              "tips": "免费。"
+            },
+            {
+              "time": "20:00",
+              "title": "中国城晚餐",
+              "type": "美食",
+              "desc": "欧洲最古老华人社区的中餐。",
+              "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Three_Graces_Liverpool.jpg",
+              "tips": "人均15-25£。"
+            }
+          ],
+          "practicalInfo": {
+            "transport": "步行+公交+球场参观专线",
+            "accommodation": "市中心或Albert Dock",
+            "food": "Fish & Chips、Scouse、街头美食、中餐、精酿啤酒",
+            "budget": "120-240£/人/天",
+            "bestTime": "5-9月",
+            "tips": [
+              "Liver Building参观需提前预订",
+              "Walker Art Gallery周一闭馆"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
