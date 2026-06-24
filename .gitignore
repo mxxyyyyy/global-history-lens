@@ -8,6 +8,8 @@ dist/
 build/
 *.dist
 global-history-lens.zip
+temp_case_research/
+integrate_cases.py
 
 # Environment variables
 .env
