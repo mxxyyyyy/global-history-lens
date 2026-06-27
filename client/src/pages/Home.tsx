@@ -253,9 +253,10 @@ export default function Home() {
       <section className="py-24 bg-primary text-primary-foreground relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[url('/images/archive-texture.jpg')] bg-cover bg-center mix-blend-overlay"></div>
         <div className="container relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-6xl mx-auto text-center">
             <h2 className="text-3xl md:text-5xl font-bold mb-12 font-serif leading-tight">
-              "对同一历史事件的多元解读，是促进文明对话、避免认知偏见的关键。"
+              <span className="md:block">"对同一历史事件的多元解读，</span>
+              <span className="md:block">是促进文明对话、避免认知偏见的关键。"</span>
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
