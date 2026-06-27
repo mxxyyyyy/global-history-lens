@@ -3,5 +3,5 @@ services:
     name: global-history-lens
     runtime: node
     plan: free
-    buildCommand: corepack enable && corepack prepare pnpm@10.4.1 --activate && pnpm install --frozen-lockfile --prod=false && pnpm build
+    buildCommand: NPM_CONFIG_CACHE=.npm-cache npx -y pnpm@10.4.1 install --frozen-lockfile --prod=false && NPM_CONFIG_CACHE=.npm-cache npx -y pnpm@10.4.1 build
     startCommand: NODE_ENV=production node dist/index.js
