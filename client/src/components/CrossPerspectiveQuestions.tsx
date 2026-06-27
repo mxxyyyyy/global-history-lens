@@ -1,12 +1,14 @@
 import { motion } from "framer-motion";
 import { Lightbulb, ChevronRight } from "lucide-react";
 import { CROSS_PERSPECTIVE_QUESTIONS } from "@/data/perspectiveCredibility";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface CrossPerspectiveQuestionsProps {
   onQuestionSelect: (question: string) => void;
 }
 
 export default function CrossPerspectiveQuestions({ onQuestionSelect }: CrossPerspectiveQuestionsProps) {
+  const { t } = useLanguage();
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
       case "easy":
@@ -23,13 +25,13 @@ export default function CrossPerspectiveQuestions({ onQuestionSelect }: CrossPer
   const getDifficultyLabel = (difficulty: string) => {
     switch (difficulty) {
       case "easy":
-        return "初级";
+        return t("初级", "Basic");
       case "medium":
-        return "中级";
+        return t("中级", "Intermediate");
       case "hard":
-        return "高级";
+        return t("高级", "Advanced");
       default:
-        return "未知";
+        return t("未知", "Unknown");
     }
   };
 
@@ -41,11 +43,11 @@ export default function CrossPerspectiveQuestions({ onQuestionSelect }: CrossPer
     >
       <h3 className="font-mono text-sm font-bold uppercase flex items-center gap-2">
         <Lightbulb className="w-4 h-4 text-amber-600" />
-        跨视角思考问题
+        {t("跨视角思考问题", "Cross-perspective Questions")}
       </h3>
 
       <p className="text-xs text-muted-foreground font-typewriter">
-        这些问题旨在帮助您从多个角度思考历史，培养批判性思维。
+        {t("这些问题旨在帮助您从多个角度思考历史，培养批判性思维。", "Use these prompts to compare interpretations and sharpen critical thinking.")}
       </p>
 
       <div className="space-y-2">
@@ -67,7 +69,7 @@ export default function CrossPerspectiveQuestions({ onQuestionSelect }: CrossPer
                     {getDifficultyLabel(item.difficulty)}
                   </span>
                   <span className="text-[10px] text-muted-foreground font-mono">
-                    {item.relatedPerspectives.length} 个视角相关
+                    {item.relatedPerspectives.length} {t("个视角相关", "related perspectives")}
                   </span>
                 </div>
               </div>
@@ -77,7 +79,7 @@ export default function CrossPerspectiveQuestions({ onQuestionSelect }: CrossPer
       </div>
 
       <div className="pt-2 border-t border-border/30 text-xs text-muted-foreground font-typewriter">
-        💡 <strong>提示：</strong>点击任何问题，系统将为您生成多视角的深度分析。
+        <strong>{t("提示：", "Tip: ")}</strong>{t("点击任何问题，系统将为您生成多视角的深度分析。", "Click a question to generate a multi-perspective analysis.")}
       </div>
     </motion.div>
   );

@@ -1,12 +1,14 @@
 import { motion } from "framer-motion";
 import { AlertCircle, CheckCircle, BookOpen, TrendingUp } from "lucide-react";
 import { PerspectiveAnalysis } from "@/data/perspectiveCredibility";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface CredibilityAssessmentProps {
   perspective: PerspectiveAnalysis;
 }
 
 export default function CredibilityAssessment({ perspective }: CredibilityAssessmentProps) {
+  const { t } = useLanguage();
   const getCredibilityColor = (score: number) => {
     if (score >= 85) return "text-emerald-600";
     if (score >= 70) return "text-amber-600";
@@ -14,9 +16,9 @@ export default function CredibilityAssessment({ perspective }: CredibilityAssess
   };
 
   const getCredibilityLabel = (score: number) => {
-    if (score >= 85) return "高度可信";
-    if (score >= 70) return "中等可信";
-    return "需谨慎";
+    if (score >= 85) return t("高度可信", "Highly reliable");
+    if (score >= 70) return t("中等可信", "Moderately reliable");
+    return t("需谨慎", "Use with caution");
   };
 
   return (
@@ -29,7 +31,7 @@ export default function CredibilityAssessment({ perspective }: CredibilityAssess
       <div className="flex items-center justify-between gap-3 pb-3 border-b border-border/30">
         <div className="flex items-center gap-3">
           <TrendingUp className="w-5 h-5 text-muted-foreground" />
-          <span className="font-mono text-sm font-bold uppercase">可信度评估</span>
+          <span className="font-mono text-sm font-bold uppercase">{t("可信度评估", "Source Reliability")}</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="relative w-24 h-2 bg-background border border-border overflow-hidden">
@@ -60,7 +62,7 @@ export default function CredibilityAssessment({ perspective }: CredibilityAssess
       {/* 偏见指标 */}
       <div className="space-y-2">
         <h4 className="font-mono text-xs font-bold uppercase flex items-center gap-2 text-amber-700">
-          <AlertCircle className="w-4 h-4" /> 潜在偏见
+          <AlertCircle className="w-4 h-4" /> {t("潜在偏见", "Possible Bias")}
         </h4>
         <ul className="space-y-1">
           {perspective.biasIndicators.slice(0, 3).map((bias, idx) => (
@@ -75,7 +77,7 @@ export default function CredibilityAssessment({ perspective }: CredibilityAssess
       {/* 史料来源 */}
       <div className="space-y-2 pt-2 border-t border-border/30">
         <h4 className="font-mono text-xs font-bold uppercase flex items-center gap-2">
-          <BookOpen className="w-4 h-4" /> 主要来源 ({perspective.sources.length})
+          <BookOpen className="w-4 h-4" /> {t("主要来源", "Key Sources")} ({perspective.sources.length})
         </h4>
         <div className="space-y-2">
           {perspective.sources.slice(0, 2).map((source) => (
@@ -90,11 +92,11 @@ export default function CredibilityAssessment({ perspective }: CredibilityAssess
                   <h5 className="font-bold text-foreground truncate">{source.title}</h5>
                   <p className="text-muted-foreground">
                     {source.author && `${source.author} · `}
-                    {source.year} · {source.type === "official_archive" && "官方档案"}
-                    {source.type === "academic" && "学术研究"}
-                    {source.type === "media" && "媒体报道"}
-                    {source.type === "memoir" && "亲历记录"}
-                    {source.type === "international" && "国际文献"}
+                    {source.year} · {source.type === "official_archive" && t("官方档案", "official archive")}
+                    {source.type === "academic" && t("学术研究", "scholarship")}
+                    {source.type === "media" && t("媒体报道", "media")}
+                    {source.type === "memoir" && t("亲历记录", "memoir")}
+                    {source.type === "international" && t("国际文献", "international record")}
                   </p>
                 </div>
                 <div className="shrink-0 flex items-center gap-1">
@@ -104,14 +106,14 @@ export default function CredibilityAssessment({ perspective }: CredibilityAssess
               </div>
               <p className="text-muted-foreground italic line-clamp-2">{source.excerpt}</p>
               <p className="text-[10px] text-muted-foreground border-t border-border/30 pt-1">
-                <span className="font-mono">评价：</span>
+                <span className="font-mono">{t("评价：", "Note: ")}</span>
                 {source.credibilityReason}
               </p>
             </motion.div>
           ))}
           {perspective.sources.length > 2 && (
             <p className="text-[10px] text-muted-foreground font-mono">
-              已显示前 2 条核心来源，更多来源保留在档案库中。
+              {t("已显示前 2 条核心来源，更多来源保留在档案库中。", "Showing the top 2 sources here. More source detail remains in the archive.")}
             </p>
           )}
         </div>
@@ -119,14 +121,14 @@ export default function CredibilityAssessment({ perspective }: CredibilityAssess
 
       {/* 推荐问题 */}
       <div className="space-y-2 pt-2 border-t border-border/30">
-        <h4 className="font-mono text-xs font-bold uppercase">深度思考问题</h4>
+        <h4 className="font-mono text-xs font-bold uppercase">{t("深度思考问题", "Questions to Think With")}</h4>
         <ul className="space-y-1">
           {perspective.sources.length > 0 &&
             perspective.sources.slice(0, 2).map((_, idx) => (
               <li key={idx} className="text-xs text-primary font-typewriter pl-4 relative cursor-pointer hover:underline">
                 <span className="absolute left-0">→</span>
-                {idx === 0 && "这些来源的共识点在哪里？"}
-                {idx === 1 && "与其他视角相比，这个视角的独特之处是什么？"}
+                {idx === 0 && t("这些来源的共识点在哪里？", "Where do these sources overlap?")}
+                {idx === 1 && t("与其他视角相比，这个视角的独特之处是什么？", "What makes this perspective distinct from the others?")}
               </li>
             ))}
         </ul>

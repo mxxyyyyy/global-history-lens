@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Settings, Zap, ZapOff } from "lucide-react";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
 import {
   loadLLMConfig,
   saveLLMConfig,
@@ -16,6 +17,7 @@ interface LLMSettingsProps {
 }
 
 export default function LLMSettings({ onConfigChange }: LLMSettingsProps) {
+  const { t } = useLanguage();
   const [config, setConfig] = useState<LLMConfig | null>(null);
   const [open, setOpen] = useState(false);
 
@@ -105,11 +107,11 @@ export default function LLMSettings({ onConfigChange }: LLMSettingsProps) {
         >
           {config ? (
             <>
-              <Zap className="w-4 h-4 mr-1" /> AI已连接
+              <Zap className="w-4 h-4 mr-1" /> {t("AI已连接", "AI Connected")}
             </>
           ) : (
             <>
-              <Settings className="w-4 h-4 mr-1" /> 配置AI
+              <Settings className="w-4 h-4 mr-1" /> {t("配置AI", "Configure AI")}
             </>
           )}
         </Button>
@@ -129,24 +131,24 @@ export default function LLMSettings({ onConfigChange }: LLMSettingsProps) {
             className="relative z-10 bg-background border-2 border-border shadow-brutal p-6 w-full max-w-md mx-4 rounded-lg"
           >
             <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-              <Settings className="w-5 h-5" /> AI 模型配置
+              <Settings className="w-5 h-5" /> {t("AI 模型配置", "AI Model Settings")}
             </h3>
 
             <div className="space-y-4">
               {/* Preset selector - native select */}
               <div>
                 <label className="text-sm font-medium mb-1 block">
-                  预设服务商
+                  {t("预设服务商", "Provider Preset")}
                 </label>
                 <select
                   value={preset}
                   onChange={(e) => handlePresetChange(e.target.value)}
                   className="w-full h-9 rounded-md border border-input bg-background px-3 py-1 text-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-ring"
                 >
-                  <option value="deepseek">DeepSeek（推荐）</option>
+                  <option value="deepseek">{t("DeepSeek（推荐）", "DeepSeek (Recommended)")}</option>
                   <option value="openai">OpenAI</option>
-                  <option value="tongyi">通义千问</option>
-                  <option value="custom">自定义</option>
+                  <option value="tongyi">{t("通义千问", "Qwen")}</option>
+                  <option value="custom">{t("自定义", "Custom")}</option>
                 </select>
               </div>
 
@@ -178,7 +180,7 @@ export default function LLMSettings({ onConfigChange }: LLMSettingsProps) {
                   </div>
                   <div>
                     <label className="text-sm font-medium mb-1 block">
-                      模型名称
+                      {t("模型名称", "Model Name")}
                     </label>
                     <Input
                       placeholder="model-name"
@@ -192,10 +194,10 @@ export default function LLMSettings({ onConfigChange }: LLMSettingsProps) {
               {/* Actions */}
               <div className="flex gap-2 pt-2">
                 <Button onClick={handleSave} disabled={!apiKey.trim()} className="flex-1">
-                  保存
+                  {t("保存", "Save")}
                 </Button>
                 <Button variant="outline" onClick={() => setOpen(false)} className="flex-1">
-                  取消
+                  {t("取消", "Cancel")}
                 </Button>
               </div>
 
@@ -206,7 +208,7 @@ export default function LLMSettings({ onConfigChange }: LLMSettingsProps) {
                   className="w-full"
                   onClick={handleDisconnect}
                 >
-                  <ZapOff className="w-4 h-4 mr-1" /> 断开连接
+                  <ZapOff className="w-4 h-4 mr-1" /> {t("断开连接", "Disconnect")}
                 </Button>
               )}
             </div>

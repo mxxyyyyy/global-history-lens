@@ -4,18 +4,20 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, Search, Globe, BookOpen, Map as MapIcon, Glasses, LogIn, LogOut, UserRound } from "lucide-react";
 import { useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [location] = useLocation();
   const { user, loading, logout } = useAuth();
+  const { language, toggleLanguage, t } = useLanguage();
 
   const navItems = [
-    { name: "首页", path: "/", icon: Globe },
-    { name: "AI对话", path: "/dialogue", icon: Glasses },
-    { name: "档案库", path: "/archive", icon: BookOpen },
-    { name: "历史交互", path: "/travel", icon: MapIcon },
-    { name: "对话历史", path: "/dialogue-history", icon: BookOpen },
+    { name: t("首页", "Home"), path: "/", icon: Globe },
+    { name: t("AI对话", "AI Dialogue"), path: "/dialogue", icon: Glasses },
+    { name: t("档案库", "Archive"), path: "/archive", icon: BookOpen },
+    { name: t("历史交互", "Story Map"), path: "/travel", icon: MapIcon },
+    { name: t("对话历史", "History"), path: "/dialogue-history", icon: BookOpen },
   ];
 
   return (
@@ -54,8 +56,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div className="flex shrink-0 items-center gap-2">
             <Button variant="outline" size="icon" className="border-2 border-border rounded-none hover:bg-secondary shadow-brutal-sm active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all">
               <Search className="h-4 w-4" />
-              <span className="sr-only">搜索档案</span>
+              <span className="sr-only">{t("搜索档案", "Search archives")}</span>
             </Button>
+            <button
+              type="button"
+              onClick={toggleLanguage}
+              className="flex h-9 shrink-0 items-center gap-1 border-2 border-border bg-background px-3 font-mono text-xs font-bold hover:bg-primary hover:text-primary-foreground transition-colors shadow-brutal-sm"
+              aria-label={t("切换到英文", "Switch language")}
+              title={t("切换到英文", "Switch language")}
+            >
+              <Globe className="h-4 w-4" />
+              <span>{language === "en" ? "中" : "EN"}</span>
+            </button>
             {!loading && (
               user ? (
                 <div className="flex shrink-0 items-center gap-2">
@@ -74,7 +86,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     onClick={() => logout()}
                   >
                     <LogOut className="h-4 w-4" />
-                    <span className="sr-only">退出登录</span>
+                    <span className="sr-only">{t("退出登录", "Sign out")}</span>
                   </Button>
                 </div>
               ) : (
@@ -83,7 +95,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   className="flex h-9 items-center gap-2 border-2 border-border bg-background px-3 font-mono text-xs font-bold hover:bg-primary hover:text-primary-foreground transition-colors shadow-brutal-sm"
                 >
                   <LogIn className="h-4 w-4" />
-                  <span className="hidden sm:inline">登录/注册</span>
+                  <span className="hidden sm:inline">{t("登录/注册", "Sign in")}</span>
                 </Link>
               )
             )}
@@ -136,7 +148,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                       }}
                     >
                       <LogOut className="w-4 h-4" />
-                      退出登录
+                      {t("退出登录", "Sign out")}
                     </button>
                   </>
                 ) : (
@@ -146,7 +158,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     onClick={() => setIsMenuOpen(false)}
                   >
                     <LogIn className="w-4 h-4" />
-                    登录
+                    {t("登录", "Sign in")}
                   </Link>
                 )
               )}
@@ -174,9 +186,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 </span>
               </div>
               <p className="text-sm text-muted-foreground max-w-xs font-typewriter leading-relaxed">
-                基于AI与VR技术的全球多视角历史交互平台。
+                {t("基于AI与VR技术的全球多视角历史交互平台。", "A multi-perspective history platform powered by AI and immersive technology.")}
                 <br />
-                解构单一叙事，重构历史全像。
+                {t("解构单一叙事，重构历史全像。", "Break single narratives. Rebuild the whole historical picture.")}
               </p>
               <div className="pt-4 flex gap-4">
                 <div className="h-8 w-8 border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors cursor-pointer">
@@ -195,23 +207,23 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </div>
             
             <div className="space-y-4">
-              <h3 className="font-mono font-bold text-sm uppercase tracking-wider border-b border-border pb-2 inline-block">探索</h3>
+              <h3 className="font-mono font-bold text-sm uppercase tracking-wider border-b border-border pb-2 inline-block">{t("探索", "Explore")}</h3>
               <ul className="space-y-2 text-sm font-typewriter">
-                <li><Link href="/archive" className="hover:underline decoration-primary decoration-2 underline-offset-4">历史档案库</Link></li>
-                <li><Link href="/dialogue-history" className="hover:underline decoration-primary decoration-2 underline-offset-4">对话历史</Link></li>
-                <li><Link href="/dialogue" className="hover:underline decoration-primary decoration-2 underline-offset-4">AI多视角对话</Link></li>
-                <li><Link href="/travel" className="hover:underline decoration-primary decoration-2 underline-offset-4">历史交互路线</Link></li>
-                <li><Link href="/vr" className="hover:underline decoration-primary decoration-2 underline-offset-4">VR情境体验</Link></li>
+                <li><Link href="/archive" className="hover:underline decoration-primary decoration-2 underline-offset-4">{t("历史档案库", "Historical Archive")}</Link></li>
+                <li><Link href="/dialogue-history" className="hover:underline decoration-primary decoration-2 underline-offset-4">{t("对话历史", "Dialogue History")}</Link></li>
+                <li><Link href="/dialogue" className="hover:underline decoration-primary decoration-2 underline-offset-4">{t("AI多视角对话", "AI Multi-perspective Dialogue")}</Link></li>
+                <li><Link href="/travel" className="hover:underline decoration-primary decoration-2 underline-offset-4">{t("历史交互路线", "Story Map Routes")}</Link></li>
+                <li><Link href="/vr" className="hover:underline decoration-primary decoration-2 underline-offset-4">{t("VR情境体验", "VR Scene Experience")}</Link></li>
               </ul>
             </div>
 
             <div className="space-y-4">
-              <h3 className="font-mono font-bold text-sm uppercase tracking-wider border-b border-border pb-2 inline-block">关于</h3>
+              <h3 className="font-mono font-bold text-sm uppercase tracking-wider border-b border-border pb-2 inline-block">{t("关于", "About")}</h3>
               <ul className="space-y-2 text-sm font-typewriter">
-                <li><Link href="/about" className="hover:underline decoration-primary decoration-2 underline-offset-4">项目愿景</Link></li>
-                <li><Link href="/team" className="hover:underline decoration-primary decoration-2 underline-offset-4">研究团队</Link></li>
-                <li><Link href="/partners" className="hover:underline decoration-primary decoration-2 underline-offset-4">合作伙伴</Link></li>
-                <li><Link href="/contact" className="hover:underline decoration-primary decoration-2 underline-offset-4">联系我们</Link></li>
+                <li><Link href="/about" className="hover:underline decoration-primary decoration-2 underline-offset-4">{t("项目愿景", "Vision")}</Link></li>
+                <li><Link href="/team" className="hover:underline decoration-primary decoration-2 underline-offset-4">{t("研究团队", "Research Team")}</Link></li>
+                <li><Link href="/partners" className="hover:underline decoration-primary decoration-2 underline-offset-4">{t("合作伙伴", "Partners")}</Link></li>
+                <li><Link href="/contact" className="hover:underline decoration-primary decoration-2 underline-offset-4">{t("联系我们", "Contact")}</Link></li>
               </ul>
             </div>
           </div>

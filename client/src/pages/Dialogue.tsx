@@ -16,6 +16,7 @@ import { ARCHIVE_TOPICS } from "@/data/historicalEvents";
 import { createDialogueRecord, saveDialogueHistory, loadDialogueHistory } from "@/data/dialogueHistory";
 import { loadLLMConfig, askPerspective, askPersona, type LLMConfig } from "@/lib/llm";
 import { createContext, generateLocalResponse, type ConversationContext } from "@/lib/personaEngine";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 // 根据专题生成建议问题
 const TOPIC_QUESTIONS: { [topicId: string]: string[] } = {
@@ -38,11 +39,25 @@ const SUGGESTED_QUESTIONS = [
   "工业革命的受益者和受害者分别是谁？"
 ];
 
+const SUGGESTED_QUESTIONS_EN = [
+  "How should we understand the founding of Manchukuo in 1932?",
+  "What were the deeper causes of the Opium War?",
+  "Why did the French Revolution's idea of rights exclude Black people and women?",
+  "Who benefited from the Industrial Revolution, and who paid the price?"
+];
+
 const PERSONA_SUGGESTED_QUESTIONS = [
   "您当时为何选择留在东北？",
   "您如何看待当时的'五族协和'口号？",
   "战乱对您的家庭造成了什么影响？",
   "您对未来有什么期望？"
+];
+
+const PERSONA_SUGGESTED_QUESTIONS_EN = [
+  "Why did you choose to stay in Northeast China at that time?",
+  "How did you understand the slogan of 'harmony among five races'?",
+  "How did war change your family life?",
+  "What hopes did you still have for the future?"
 ];
 
 // 根据问题匹配专题并返回视角数据
@@ -86,6 +101,7 @@ function getResponseForQuestion(question: string) {
 }
 
 export default function Dialogue() {
+  const { language, t } = useLanguage();
   const [query, setQuery] = useState("");
   const [chatHistory, setChatHistory] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -266,7 +282,7 @@ export default function Dialogue() {
   };
 
   const handleClearChat = () => {
-    if (confirm('确定要清空当前对话吗?')) {
+    if (confirm(t('确定要清空当前对话吗?', 'Clear this conversation?'))) {
       setChatHistory([]);
       setQuery("");
     }
@@ -280,7 +296,7 @@ export default function Dialogue() {
           <div className="min-w-0">
             <h1 className="font-mono text-sm md:text-lg font-bold uppercase flex items-center gap-2 truncate">
               <span className={`w-2.5 h-2.5 inline-block animate-pulse shrink-0 ${mode === 'perspective' ? 'bg-primary' : 'bg-amber-600'}`}></span>
-              {mode === 'perspective' ? 'AI多视角历史对话系统' : '历史人物跨时空对话'}
+              {mode === 'perspective' ? t('AI多视角历史对话系统', 'AI Multi-perspective History Dialogue') : t('历史人物跨时空对话', 'Historical Persona Dialogue')}
             </h1>
             <p className="text-[10px] text-muted-foreground font-typewriter mt-0.5 hidden md:block">
               {mode === 'perspective' ? 'Multi-Perspective Historical Dialogue System v1.0' : 'Historical Persona Dialogue Interface v2.0'}
@@ -291,15 +307,15 @@ export default function Dialogue() {
             <Tabs value={mode} onValueChange={switchMode}>
               <TabsList className="grid w-[160px] md:w-[240px] grid-cols-2 rounded-none border-2 border-border bg-background p-0 h-8 md:h-9">
                 <TabsTrigger value="perspective" className="rounded-none data-[state=active]:bg-primary data-[state=active]:text-primary-foreground font-mono text-[10px] md:text-xs px-1 md:px-3">
-                  <Users className="w-3 h-3 mr-1 hidden md:inline" /> 多视角
+                  <Users className="w-3 h-3 mr-1 hidden md:inline" /> {t('多视角', 'Perspectives')}
                 </TabsTrigger>
                 <TabsTrigger value="persona" className="rounded-none data-[state=active]:bg-amber-600 data-[state=active]:text-white font-mono text-[10px] md:text-xs px-1 md:px-3">
-                  <User className="w-3 h-3 mr-1 hidden md:inline" /> 人物
+                  <User className="w-3 h-3 mr-1 hidden md:inline" /> {t('人物', 'Personas')}
                 </TabsTrigger>
               </TabsList>
           </Tabs>
           <Button variant="outline" size="icon" className="w-8 h-8 md:w-auto md:h-auto md:px-3 md:py-1.5 font-mono text-xs border-2 border-border rounded-none" onClick={() => setChatHistory([])}>
-            <RotateCcw className="w-3 h-3 md:mr-1" /><span className="hidden md:inline">重置</span>
+            <RotateCcw className="w-3 h-3 md:mr-1" /><span className="hidden md:inline">{t('重置', 'Reset')}</span>
           </Button>
           </div>
         </div>
@@ -320,7 +336,7 @@ export default function Dialogue() {
               onClick={() => setShowSidebar(!showSidebar)}
               className="md:hidden absolute top-2 left-2 z-30 px-2 py-1 bg-amber-600 text-white text-[10px] font-mono border-2 border-amber-700 shadow-brutal-sm"
             >
-              {showSidebar ? '✕ 关闭' : '☰ 人物'}
+              {showSidebar ? t('✕ 关闭', 'Close') : t('☰ 人物', 'Personas')}
             </button>
 
             {/* Sidebar - overlay on mobile, static on desktop */}
@@ -364,15 +380,18 @@ export default function Dialogue() {
                   )}
                 </div>
                 <h2 className="text-3xl md:text-4xl font-serif font-bold mb-3 text-center">
-                  {mode === 'perspective' ? '探索历史的多重面相' : '倾听历史亲历者的声音'}
+                  {mode === 'perspective' ? t('探索历史的多重面相', 'Explore History From Multiple Angles') : t('倾听历史亲历者的声音', 'Hear the Voices of Historical Witnesses')}
                 </h2>
                 <p className="text-base text-muted-foreground font-typewriter mb-8 max-w-2xl mx-auto leading-relaxed">
-                  {mode === 'perspective' ? '从不同国家、不同立场的档案中发掘历史真相，培养批判性思维。' : '与历史人物进行对话，感受大时代背景下的个人命运与抉择。'}
+                  {mode === 'perspective' ? t('从不同国家、不同立场的档案中发掘历史真相，培养批判性思维。', 'Compare archives, nations, and standpoints to see how historical truth is argued, not simply received.') : t('与历史人物进行对话，感受大时代背景下的个人命运与抉择。', 'Speak with historical personas and see how private choices were shaped by public crisis.')}
                 </p>
                 
                 {(mode === 'perspective' || selectedPersona) && (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-4xl">
-                    {(mode === 'perspective' ? SUGGESTED_QUESTIONS : PERSONA_SUGGESTED_QUESTIONS).map((q, i) => (
+                    {(mode === 'perspective'
+                      ? language === 'en' ? SUGGESTED_QUESTIONS_EN : SUGGESTED_QUESTIONS
+                      : language === 'en' ? PERSONA_SUGGESTED_QUESTIONS_EN : PERSONA_SUGGESTED_QUESTIONS
+                    ).map((q, i) => (
                       <button 
                         key={i}
                         onClick={() => handleSearch(q)}
@@ -406,9 +425,9 @@ export default function Dialogue() {
                               <div className="flex items-start gap-3 mb-4">
                                 <AlertCircle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
                                 <div>
-                                  <h3 className="font-mono font-bold text-sm mb-2">暂未找到精确匹配的历史专题</h3>
+                                  <h3 className="font-mono font-bold text-sm mb-2">{t('暂未找到精确匹配的历史专题', 'No exact case match yet')}</h3>
                                   <p className="text-sm text-muted-foreground font-typewriter leading-relaxed">
-                                    您的问题"{msg.content._query}"很有价值。我们的档案库目前覆盖以下10个专题，请尝试相关问题：
+                                    {t(`您的问题"${msg.content._query}"很有价值。我们的档案库目前覆盖以下10个专题，请尝试相关问题：`, `Your question "${msg.content._query}" is valuable. Try one of the covered case questions below:`)}
                                   </p>
                                 </div>
                               </div>
@@ -449,7 +468,7 @@ export default function Dialogue() {
                                         <p className="font-serif text-base leading-8">{perspective.content}</p>
                                         {perspective.source && (
                                           <div className="border-t border-border/40 pt-3 text-xs font-typewriter text-muted-foreground">
-                                            <span className="font-mono font-bold text-foreground">主要来源：</span>
+                                            <span className="font-mono font-bold text-foreground">{t('主要来源：', 'Primary source: ')}</span>
                                             {perspective.source}
                                           </div>
                                         )}
@@ -543,8 +562,8 @@ export default function Dialogue() {
           {/* LLM 错误提示 */}
           {llmError && (
             <div className="px-4 py-2 bg-red-50 border-t border-red-200 text-red-700 text-xs font-mono flex items-center gap-2 shrink-0">
-              <AlertCircle className="w-3 h-3" /> AI调用失败: {llmError}（已降级为本地数据）
-              <button onClick={() => setLlmError(null)} className="ml-auto hover:underline">关闭</button>
+              <AlertCircle className="w-3 h-3" /> {t('AI调用失败', 'AI request failed')}: {llmError} {t('（已降级为本地数据）', '(using local data instead)')}
+              <button onClick={() => setLlmError(null)} className="ml-auto hover:underline">{t('关闭', 'Close')}</button>
             </div>
           )}
 
@@ -591,7 +610,7 @@ export default function Dialogue() {
                 onClick={() => setShowSaveDialog(true)}
               >
                 <BookOpen className="w-3 h-3 mr-1" />
-                保存到历史
+                {t('保存到历史', 'Save to history')}
               </Button>
               <Button
                 size="sm"
@@ -600,7 +619,7 @@ export default function Dialogue() {
                 onClick={handleClearChat}
               >
                 <RotateCcw className="w-3 h-3 mr-1" />
-                清空对话
+                {t('清空对话', 'Clear conversation')}
               </Button>
               </div>
             </div>
@@ -620,9 +639,9 @@ export default function Dialogue() {
                 onClick={(e) => e.stopPropagation()}
                 className="bg-background border-2 border-border p-6 max-w-md w-full shadow-brutal"
               >
-                <h3 className="font-bold text-lg font-serif mb-4">保存对话</h3>
+                <h3 className="font-bold text-lg font-serif mb-4">{t('保存对话', 'Save Conversation')}</h3>
                 <Input
-                  placeholder="输入对话标题(可选)..."
+                  placeholder={t("输入对话标题(可选)...", "Add a title (optional)...")}
                   value={saveTitle}
                   onChange={(e) => setSaveTitle(e.target.value)}
                   className="mb-4 h-10 border-2 border-border rounded-none focus-visible:ring-0 focus-visible:border-primary"
@@ -632,14 +651,14 @@ export default function Dialogue() {
                     className="flex-1 h-9 text-xs font-mono rounded-none bg-primary text-primary-foreground"
                     onClick={handleSaveDialogue}
                   >
-                    保存
+                    {t('保存', 'Save')}
                   </Button>
                   <Button
                     variant="outline"
                     className="flex-1 h-9 text-xs font-mono rounded-none border-2 border-border"
                     onClick={() => setShowSaveDialog(false)}
                   >
-                    取消
+                    {t('取消', 'Cancel')}
                   </Button>
                 </div>
               </motion.div>
@@ -657,7 +676,7 @@ export default function Dialogue() {
                     handleSearch(query);
                   }
                 }}
-                placeholder={mode === 'perspective' ? "输入历史事件或问题，支持连续追问..." : "向历史人物提问..."}
+                placeholder={mode === 'perspective' ? t("输入历史事件或问题，支持连续追问...", "Ask about a historical event. Follow-up questions are supported...") : t("向历史人物提问...", "Ask a historical persona...")}
                 disabled={isLoading}
                 className={`pr-12 h-12 font-serif text-base border-2 border-border rounded-none focus-visible:ring-0 focus-visible:border-primary bg-background shadow-brutal-sm disabled:opacity-50 ${mode === 'persona' ? 'focus-visible:border-amber-600' : ''}`}
               />
@@ -684,7 +703,7 @@ export default function Dialogue() {
             className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-primary text-primary-foreground px-6 py-3 shadow-brutal border-2 border-primary flex items-center gap-2 font-mono text-sm"
           >
             <BookOpen className="w-4 h-4" />
-            对话已保存！可在「对话历史」页面查看。
+            {t('对话已保存！可在「对话历史」页面查看。', 'Conversation saved. You can find it in Dialogue History.')}
           </motion.div>
         )}
       </AnimatePresence>

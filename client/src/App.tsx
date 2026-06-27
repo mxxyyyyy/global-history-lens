@@ -6,6 +6,7 @@ import { Route, Switch, Router as WouterRouter } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { AuthProvider } from "./contexts/AuthContext";
+import { LanguageProvider } from "./contexts/LanguageContext";
 import Home from "./pages/Home";
 import Dialogue from "./pages/Dialogue";
 import Archive from "./pages/Archive";
@@ -52,12 +53,14 @@ function App() {
         defaultTheme="light"
         // switchable
       >
-        <TooltipProvider>
-          <AuthProvider>
-            <Toaster />
-            <AppRouter />
-          </AuthProvider>
-        </TooltipProvider>
+        <LanguageProvider>
+          <TooltipProvider>
+            <AuthProvider>
+              <Toaster />
+              <AppRouter />
+            </AuthProvider>
+          </TooltipProvider>
+        </LanguageProvider>
       </ThemeProvider>
     </ErrorBoundary>
   );

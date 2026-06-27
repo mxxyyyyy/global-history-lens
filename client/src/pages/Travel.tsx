@@ -27,6 +27,7 @@ import {
   type RoutePlan,
   type RouteStop,
 } from "@/data/travelRoutes";
+import { useLanguage, type Language } from "@/contexts/LanguageContext";
 
 const CASE_TO_CITY: Record<string, string> = {
   manchukuo: "changchun",
@@ -300,7 +301,45 @@ function resolveImageSrc(src: string) {
   return src.startsWith("/") ? getImagePath(src) : src;
 }
 
-function getTraceText(stop: RouteStop) {
+function getTypeLabel(type: string, language: Language) {
+  if (language === "zh") return type;
+  const labels: Record<string, string> = {
+    核心: "Core",
+    美食: "Food",
+    餐饮: "Dining",
+    住宿: "Stay",
+    酒店: "Hotel",
+    交通: "Transit",
+    购物: "Shops",
+    体验: "Experience",
+    徒步: "Walk",
+    补充: "Extra",
+    风景: "Scenic",
+    文化: "Culture",
+  };
+  return labels[type] || type;
+}
+
+function getTraceText(stop: RouteStop, language: Language) {
+  if (language === "en") {
+    if (stop.type === "美食" || stop.type === "餐饮") {
+      return "Food, local shops, and neighborhood routines reveal how history enters everyday life.";
+    }
+    if (stop.type === "住宿" || stop.type === "酒店") {
+      return "Use this as a base point, then read the surrounding streets as layers of urban change.";
+    }
+    if (stop.type === "交通") {
+      return "This works as a transfer point for understanding how mobility reshaped historical space.";
+    }
+    if (stop.type === "购物") {
+      return "Local crafts, souvenirs, and commercial streets show how public memory is reproduced.";
+    }
+    if (stop.type === "体验" || stop.type === "徒步" || stop.type === "风景") {
+      return "Walk slowly and read the terrain, building scale, and urban texture as part of the story.";
+    }
+    return "Today, traces of this history can still be seen through sites, buildings, museums, and street patterns.";
+  }
+
   if (stop.type === "美食" || stop.type === "餐饮") {
     return "今天可以通过地方饮食、老字号和街区生活观察历史如何进入日常。";
   }
@@ -413,11 +452,13 @@ function RealRouteMap({
   cityId,
   routePlan,
   activeStopIndex,
+  language,
   onStopSelect,
 }: {
   cityId: string;
   routePlan: RoutePlan | null;
   activeStopIndex: number;
+  language: Language;
   onStopSelect: (index: number) => void;
 }) {
   const points = useMemo(() => getRoutePoints(cityId, routePlan), [cityId, routePlan]);
@@ -519,9 +560,13 @@ function RealRouteMap({
 
       <div className="absolute left-4 top-4 z-40 border-2 border-border bg-background/95 p-3 shadow-brutal max-w-[260px]">
         <p className="font-mono text-[10px] uppercase text-muted-foreground">Story Map</p>
-        <p className="font-serif text-lg font-bold leading-tight">{activeProjectedPoint?.stop.title || "历史现场"}</p>
+        <p className="font-serif text-lg font-bold leading-tight">
+          {activeProjectedPoint?.stop.title || (language === "en" ? "Historical Site" : "历史现场")}
+        </p>
         {activeProjectedPoint && !activeProjectedPoint.isExact && (
-          <p className="mt-1 font-mono text-[10px] text-muted-foreground">该点位使用城市近似坐标，可继续精修。</p>
+          <p className="mt-1 font-mono text-[10px] text-muted-foreground">
+            {language === "en" ? "Approximate city-level coordinate. This point can be refined later." : "该点位使用城市近似坐标，可继续精修。"}
+          </p>
         )}
       </div>
 
@@ -548,12 +593,12 @@ function RealRouteMap({
         <div className="absolute left-4 right-4 bottom-4 z-40 border-2 border-border bg-background/95 p-4 shadow-brutal">
           <div className="flex items-start gap-3">
             <span className={`font-mono text-[10px] px-2 py-1 ${getTypeClass(activeProjectedPoint.stop.type)}`}>
-              {activeProjectedPoint.stop.type}
+              {getTypeLabel(activeProjectedPoint.stop.type, language)}
             </span>
             <div className="min-w-0">
               <h3 className="font-serif text-xl font-bold truncate">{activeProjectedPoint.stop.title}</h3>
               <p className="font-typewriter text-xs text-muted-foreground mt-1 line-clamp-2">
-                {getTraceText(activeProjectedPoint.stop)}
+                {getTraceText(activeProjectedPoint.stop, language)}
               </p>
             </div>
           </div>
@@ -568,6 +613,7 @@ function RealRouteMap({
 }
 
 export default function Travel() {
+  const { language, t } = useLanguage();
   const [selectedCity, setSelectedCity] = useState<string>(() => getInitialCity());
   const [selectedTheme, setSelectedTheme] = useState<string>(() => getFirstTheme(getInitialCity()));
   const [selectedDuration, setSelectedDuration] = useState<DurationKey>("1day");
@@ -621,23 +667,23 @@ export default function Travel() {
               <MapPin className="w-4 h-4" />
               WHERE HISTORY STILL LIVES
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold font-serif mb-4">历史交互</h1>
+            <h1 className="text-4xl md:text-6xl font-bold font-serif mb-4">{t("历史交互", "Historical Story Map")}</h1>
             <p className="text-lg opacity-90 font-typewriter max-w-3xl leading-relaxed">
-              以“今天在哪里还能看到这段历史”为核心，把历史事件拆成地点 slide、现场叙事和可执行的旅行路线。
+              {t("以“今天在哪里还能看到这段历史”为核心，把历史事件拆成地点 slide、现场叙事和可执行的旅行路线。", "Built around one question: where can this history still be seen today? Each route connects real map locations, narrative slides, and travel-ready context.")}
             </p>
           </div>
           <div className="grid grid-cols-3 gap-3 text-center">
             <div className="border-2 border-primary-foreground/50 p-4 bg-primary-foreground/10">
               <div className="font-mono text-2xl font-bold">{routeSummary?.totalStops || 0}</div>
-              <div className="font-mono text-[10px] uppercase opacity-80">地点节点</div>
+              <div className="font-mono text-[10px] uppercase opacity-80">{t("地点节点", "Location stops")}</div>
             </div>
             <div className="border-2 border-primary-foreground/50 p-4 bg-primary-foreground/10">
               <div className="font-mono text-2xl font-bold">{routeSummary?.coreStops || 0}</div>
-              <div className="font-mono text-[10px] uppercase opacity-80">核心现场</div>
+              <div className="font-mono text-[10px] uppercase opacity-80">{t("核心现场", "Core sites")}</div>
             </div>
             <div className="border-2 border-primary-foreground/50 p-4 bg-primary-foreground/10">
               <div className="font-mono text-2xl font-bold">{routePlan?.duration || "-"}</div>
-              <div className="font-mono text-[10px] uppercase opacity-80">推荐时长</div>
+              <div className="font-mono text-[10px] uppercase opacity-80">{t("推荐时长", "Suggested time")}</div>
             </div>
           </div>
         </div>
@@ -648,14 +694,14 @@ export default function Travel() {
           <div className="border-2 border-border bg-card p-5 shadow-brutal">
             <h2 className="font-mono font-bold text-lg uppercase mb-5 flex items-center gap-2">
               <Compass className="w-5 h-5" />
-              选择历史现场
+              {t("选择历史现场", "Choose a Story Map")}
             </h2>
             <div className="space-y-4">
               <div className="space-y-2">
-                <label className="text-sm font-bold font-mono uppercase">案例 / 城市</label>
+                <label className="text-sm font-bold font-mono uppercase">{t("案例 / 城市", "Case / City")}</label>
                 <Select value={selectedCity} onValueChange={setSelectedCity}>
                   <SelectTrigger className="w-full rounded-none border-2 border-border focus:ring-0 focus:border-primary bg-background">
-                    <SelectValue placeholder="选择案例" />
+                    <SelectValue placeholder={t("选择案例", "Choose a case")} />
                   </SelectTrigger>
                   <SelectContent className="rounded-none border-2 border-border max-h-80">
                     {CITY_OPTIONS.map((city) => (
@@ -668,10 +714,10 @@ export default function Travel() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-bold font-mono uppercase">叙事主题</label>
+                <label className="text-sm font-bold font-mono uppercase">{t("叙事主题", "Narrative theme")}</label>
                 <Select value={selectedTheme} onValueChange={setSelectedTheme} disabled={themeOptions.length === 0}>
                   <SelectTrigger className="w-full rounded-none border-2 border-border focus:ring-0 focus:border-primary bg-background">
-                    <SelectValue placeholder="选择主题" />
+                    <SelectValue placeholder={t("选择主题", "Choose a theme")} />
                   </SelectTrigger>
                   <SelectContent className="rounded-none border-2 border-border">
                     {themeOptions.map((theme) => (
@@ -684,10 +730,10 @@ export default function Travel() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-bold font-mono uppercase">路线长度</label>
+                <label className="text-sm font-bold font-mono uppercase">{t("路线长度", "Route length")}</label>
                 <Select value={selectedDuration} onValueChange={(value) => setSelectedDuration(value as DurationKey)}>
                   <SelectTrigger className="w-full rounded-none border-2 border-border focus:ring-0 focus:border-primary bg-background">
-                    <SelectValue placeholder="选择路线长度" />
+                    <SelectValue placeholder={t("选择路线长度", "Choose duration")} />
                   </SelectTrigger>
                   <SelectContent className="rounded-none border-2 border-border">
                     {DURATIONS.map((duration) => (
@@ -705,7 +751,7 @@ export default function Travel() {
             <div className="border-2 border-border bg-card p-5 shadow-brutal space-y-4">
               <h3 className="font-mono font-bold text-lg uppercase flex items-center gap-2">
                 <Route className="w-5 h-5" />
-                旅游路线推荐
+                {t("旅游路线推荐", "Recommended route")}
               </h3>
               <div>
                 <h4 className="font-serif text-xl font-bold">{routePlan.title}</h4>
@@ -718,7 +764,7 @@ export default function Travel() {
                 </div>
                 <div className="border border-border p-3">
                   <Footprints className="w-4 h-4 mb-1" />
-                  {routePlan.stops.length} 个地点
+                  {routePlan.stops.length} {t("个地点", "stops")}
                 </div>
               </div>
               <div className="space-y-3 text-sm">
@@ -744,7 +790,7 @@ export default function Travel() {
             <div className="p-5 border-b-2 border-border flex items-center justify-between gap-4">
               <div>
                 <p className="font-mono text-xs text-muted-foreground uppercase">Interactive Route Map</p>
-                <h2 className="font-serif text-2xl font-bold">{cityData?.name || "历史现场"}</h2>
+                <h2 className="font-serif text-2xl font-bold">{cityData?.name || t("历史现场", "Historical Sites")}</h2>
               </div>
               <div className="hidden sm:flex items-center gap-2 font-mono text-xs border border-border px-3 py-2">
                 <MapIcon className="w-4 h-4" />
@@ -756,6 +802,7 @@ export default function Travel() {
               cityId={selectedCity}
               routePlan={routePlan}
               activeStopIndex={activeStopIndex}
+              language={language}
               onStopSelect={setActiveStopIndex}
             />
           </div>
@@ -764,7 +811,7 @@ export default function Travel() {
             <div className="border-2 border-border bg-card p-5 shadow-brutal">
               <h3 className="font-mono font-bold text-lg uppercase mb-4 flex items-center gap-2">
                 <BookOpen className="w-5 h-5" />
-                地点目录
+                {t("地点目录", "Location Slides")}
               </h3>
               <div className="space-y-2 max-h-[360px] overflow-auto pr-2">
                 {routePlan.stops.map((stop, index) => (
@@ -825,7 +872,7 @@ export default function Travel() {
                   ))}
                 </div>
                 <div className={`mt-3 inline-flex font-mono text-xs px-3 py-1 ${getTypeClass(activeStop.type)}`}>
-                  {activeStop.type}
+                  {getTypeLabel(activeStop.type, language)}
                 </div>
               </div>
 
@@ -839,16 +886,16 @@ export default function Travel() {
                 <div className="border-l-4 border-primary pl-4">
                   <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase mb-2">
                     <Eye className="w-4 h-4" />
-                    今天还能看到什么
+                    {t("今天还能看到什么", "What can you still see today?")}
                   </div>
-                  <p className="font-serif leading-relaxed">{getTraceText(activeStop)}</p>
+                  <p className="font-serif leading-relaxed">{getTraceText(activeStop, language)}</p>
                 </div>
 
                 {activeStop.tips && (
                   <div className="bg-secondary/30 border border-border p-4">
                     <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase mb-2">
                       <Sparkles className="w-4 h-4" />
-                      现场建议
+                      {t("现场建议", "On-site notes")}
                     </div>
                     <p className="text-sm text-muted-foreground font-typewriter leading-relaxed">{activeStop.tips}</p>
                   </div>
@@ -861,14 +908,14 @@ export default function Travel() {
                     onClick={previousStop}
                     disabled={activeStopIndex === 0}
                   >
-                    上一站
+                    {t("上一站", "Previous")}
                   </Button>
                   <Button
                     className="flex-1 rounded-none border-2 border-primary bg-primary text-primary-foreground hover:bg-primary/90 font-mono text-xs uppercase shadow-brutal-sm"
                     onClick={nextStop}
                     disabled={activeStopIndex === routePlan.stops.length - 1}
                   >
-                    下一站
+                    {t("下一站", "Next")}
                   </Button>
                 </div>
               </div>
@@ -876,8 +923,8 @@ export default function Travel() {
           ) : (
             <div className="border-2 border-dashed border-border bg-secondary/10 min-h-[420px] flex flex-col items-center justify-center text-center p-10 opacity-70">
               <MapIcon className="w-16 h-16 mb-4 text-muted-foreground" />
-              <h3 className="text-2xl font-serif font-bold mb-2">暂无路线</h3>
-              <p className="font-typewriter text-muted-foreground">请选择一个拥有路线数据的案例。</p>
+              <h3 className="text-2xl font-serif font-bold mb-2">{t("暂无路线", "No route available")}</h3>
+              <p className="font-typewriter text-muted-foreground">{t("请选择一个拥有路线数据的案例。", "Choose a case with route data.")}</p>
             </div>
           )}
         </div>

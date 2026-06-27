@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { HISTORICAL_EVENTS, ARCHIVE_CATEGORIES, ARCHIVE_TOPICS, ArchiveTopic, HistoricalEvent } from "@/data/historicalEvents";
 import { getImagePath } from "@/lib/utils";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const TOPICS_WITH_TRAVEL_ROUTES = new Set([
   "manchukuo",
@@ -38,6 +39,7 @@ const TOPICS_WITH_TRAVEL_ROUTES = new Set([
 ]);
 
 export default function Archive() {
+  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState("politics");
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<typeof HISTORICAL_EVENTS>([]);
@@ -85,7 +87,7 @@ export default function Archive() {
               <Input 
                 value={searchQuery}
                 onChange={(e) => handleGlobalSearch(e.target.value)}
-                placeholder="搜索任何历史事件、关键词或档案来源..." 
+                placeholder={t("搜索任何历史事件、关键词或档案来源...", "Search any historical event, keyword, or archive source...")} 
                 className="pl-12 pr-4 py-3 h-12 font-serif text-lg border-2 border-border rounded-none focus-visible:ring-0 focus-visible:border-primary bg-background shadow-brutal-sm"
               />
               {searchQuery && (
@@ -99,7 +101,7 @@ export default function Archive() {
             </div>
             {searchQuery && (
               <p className="text-xs font-mono text-muted-foreground mt-2">
-                {isSearching ? "搜索中..." : `找到 ${searchResults.length} 个相关事件`}
+                {isSearching ? t("搜索中...", "Searching...") : t(`找到 ${searchResults.length} 个相关事件`, `${searchResults.length} related events found`)}
               </p>
             )}
           </div>
@@ -112,7 +114,7 @@ export default function Archive() {
                   <>
                     <div className="flex items-center gap-3 mb-4">
                       <button onClick={() => setSelectedTopic(null)} className="inline-flex items-center gap-1 px-2 py-1 bg-secondary text-secondary-foreground font-mono text-xs font-bold border border-border hover:bg-primary hover:text-primary-foreground transition-colors">
-                        <ArrowLeft className="w-3 h-3" /> 返回档案库
+                        <ArrowLeft className="w-3 h-3" /> {t("返回档案库", "Back to Archive")}
                       </button>
                       <span className="px-2 py-1 bg-primary text-primary-foreground font-mono text-xs font-bold">
                         CASE ID: {selectedTopic.caseId}
@@ -126,9 +128,9 @@ export default function Archive() {
                     <div className="inline-block px-2 py-1 bg-primary text-primary-foreground font-mono text-xs font-bold mb-4">
                       10 GLOBAL ARCHIVES
                     </div>
-                    <h1 className="text-4xl md:text-6xl font-bold font-serif mb-4">全球多视角历史档案库</h1>
+                    <h1 className="text-4xl md:text-6xl font-bold font-serif mb-4">{t("全球多视角历史档案库", "Global Multi-Perspective Archive")}</h1>
                     <p className="text-lg text-muted-foreground font-typewriter max-w-2xl">
-                      跨越千年、横贯东西。10大历史专题，多国多视角档案，解构单一叙事。
+                      {t("跨越千年、横贯东西。10大历史专题，多国多视角档案，解构单一叙事。", "Across centuries and continents: ten historical themes, multiple national perspectives, and archive-driven challenges to single narratives.")}
                     </p>
                   </>
                 )}
@@ -154,9 +156,9 @@ export default function Archive() {
         // 搜索结果视图
         <div className="flex-1 container py-12">
           <div className="mb-8">
-            <h2 className="text-3xl font-bold font-serif mb-2">搜索结果</h2>
+            <h2 className="text-3xl font-bold font-serif mb-2">{t("搜索结果", "Search Results")}</h2>
             <p className="text-muted-foreground font-typewriter">
-              关键词: <span className="font-bold text-primary">"{searchQuery}"</span>
+              {t("关键词", "Keyword")}: <span className="font-bold text-primary">"{searchQuery}"</span>
             </p>
           </div>
 
@@ -187,7 +189,7 @@ export default function Archive() {
                     ))}
                   </div>
                   <div className="pt-4 border-t border-border/50">
-                    <p className="text-xs font-mono text-muted-foreground mb-2">档案来源:</p>
+                    <p className="text-xs font-mono text-muted-foreground mb-2">{t("档案来源", "Archive Sources")}:</p>
                     <div className="flex flex-wrap gap-1">
                       {event.sources.map((source, i) => (
                         <span key={i} className="text-[10px] font-mono bg-secondary/50 px-1.5 py-0.5 border border-border/30">
@@ -202,15 +204,15 @@ export default function Archive() {
           ) : (
             <div className="flex flex-col items-center justify-center py-20 text-center opacity-50">
               <Search className="w-16 h-16 mb-4 text-muted-foreground" />
-              <h3 className="text-2xl font-bold font-serif mb-2">未找到相关事件</h3>
+              <h3 className="text-2xl font-bold font-serif mb-2">{t("未找到相关事件", "No Related Events Found")}</h3>
               <p className="font-typewriter text-muted-foreground max-w-md">
-                请尝试其他关键词，或浏览下方的分类档案库。
+                {t("请尝试其他关键词，或浏览下方的分类档案库。", "Try another keyword or browse the categorized archive below.")}
               </p>
             </div>
           )}
 
           <div className="mt-12 pt-8 border-t-2 border-border">
-            <h3 className="text-2xl font-bold font-serif mb-6">浏览所有事件</h3>
+            <h3 className="text-2xl font-bold font-serif mb-6">{t("浏览所有事件", "Browse All Events")}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {ARCHIVE_CATEGORIES.map((cat) => (
                 <button
@@ -249,7 +251,7 @@ export default function Archive() {
                       {topic.caseId}
                     </div>
                     <div className="absolute top-2 right-2 px-2 py-0.5 bg-background/80 font-mono text-[10px] border border-border">
-                      {topic.events.length} 事件
+                      {topic.events.length} {t("事件", "events")}
                     </div>
                   </div>
                 </button>
@@ -268,7 +270,7 @@ export default function Archive() {
                           className="inline-flex items-center gap-1 text-xs font-mono font-bold text-primary hover:underline"
                         >
                           <Route className="w-3 h-3" />
-                          查看历史现场
+                          {t("查看历史现场", "View Story Map")}
                         </Link>
                       )}
                       <button
@@ -276,7 +278,7 @@ export default function Archive() {
                         onClick={() => setSelectedTopic(topic)}
                         className="text-xs font-mono font-bold text-primary hover:underline"
                       >
-                        进入档案 →
+                        {t("进入档案", "Enter Archive")} →
                       </button>
                     </div>
                   </div>
@@ -292,13 +294,13 @@ export default function Archive() {
           <div className="lg:col-span-3 space-y-8">
             {/* Context Card */}
             <div className="border-2 border-border bg-card p-6 shadow-brutal">
-              <h3 className="font-mono font-bold text-lg uppercase mb-4 border-b-2 border-border pb-2">宏观背景</h3>
+              <h3 className="font-mono font-bold text-lg uppercase mb-4 border-b-2 border-border pb-2">{t("宏观背景", "Macro Context")}</h3>
               <div className="space-y-4 font-serif text-sm text-muted-foreground">
                 <p>
-                  <strong className="text-foreground">全球局势：</strong> 1930年代初，大萧条席卷全球，法西斯主义兴起。凡尔赛-华盛顿体系面临挑战。
+                  <strong className="text-foreground">{t("全球局势：", "Global setting:")}</strong> {t("1930年代初，大萧条席卷全球，法西斯主义兴起。凡尔赛-华盛顿体系面临挑战。", "In the early 1930s, the Great Depression spread worldwide, fascism rose, and the Versailles-Washington order came under pressure.")}
                 </p>
                 <p>
-                  <strong className="text-foreground">地缘政治：</strong> 日本急需扩张以转嫁国内危机；苏联在远东力量增强；中国国民政府忙于内战。
+                  <strong className="text-foreground">{t("地缘政治：", "Geopolitics:")}</strong> {t("日本急需扩张以转嫁国内危机；苏联在远东力量增强；中国国民政府忙于内战。", "Japan sought expansion to externalize domestic crisis; Soviet power grew in the Far East; China's Nationalist government was consumed by internal conflict.")}
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-border/50">
@@ -309,7 +311,7 @@ export default function Archive() {
 
             {/* Quick Filter */}
             <div className="border-2 border-border bg-card p-6 shadow-brutal">
-              <h3 className="font-mono font-bold text-lg uppercase mb-4 border-b-2 border-border pb-2">快速筛选</h3>
+              <h3 className="font-mono font-bold text-lg uppercase mb-4 border-b-2 border-border pb-2">{t("快速筛选", "Quick Filter")}</h3>
               <div className="space-y-2">
                 {ARCHIVE_CATEGORIES.map((cat) => (
                   <button
@@ -334,7 +336,7 @@ export default function Archive() {
             {selectedEvent ? (
               <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-6">
                 <button onClick={() => setSelectedEvent(null)} className="flex items-center gap-2 px-3 py-1.5 border-2 border-border bg-background hover:bg-secondary transition-all font-mono text-xs font-bold shadow-brutal-sm">
-                  <ArrowLeft className="w-3 h-3" /> 返回事件列表
+                  <ArrowLeft className="w-3 h-3" /> {t("返回事件列表", "Back to Event List")}
                 </button>
                 <div className="border-2 border-border p-6 md:p-10 bg-card shadow-brutal-lg">
                   <div className="flex flex-wrap gap-3 items-center mb-4">
@@ -347,21 +349,21 @@ export default function Archive() {
                   {selectedEvent.details && (
                     <div className="space-y-6 mb-8">
                       <div className="bg-secondary/20 p-5 border-l-4 border-amber-600">
-                        <h4 className="font-mono font-bold text-amber-700 mb-2 uppercase text-sm">📜 背景前因</h4>
+                        <h4 className="font-mono font-bold text-amber-700 mb-2 uppercase text-sm">📜 {t("背景前因", "Background")}</h4>
                         <p className="font-serif leading-relaxed">{selectedEvent.details.background}</p>
                       </div>
                       <div className="bg-secondary/20 p-5 border-l-4 border-blue-600">
-                        <h4 className="font-mono font-bold text-blue-700 mb-2 uppercase text-sm">⏳ 事件过程</h4>
+                        <h4 className="font-mono font-bold text-blue-700 mb-2 uppercase text-sm">⏳ {t("事件过程", "Process")}</h4>
                         <p className="font-serif leading-relaxed">{selectedEvent.details.process}</p>
                       </div>
                       <div className="bg-secondary/20 p-5 border-l-4 border-emerald-600">
-                        <h4 className="font-mono font-bold text-emerald-700 mb-2 uppercase text-sm">⚖️ 结果与影响</h4>
+                        <h4 className="font-mono font-bold text-emerald-700 mb-2 uppercase text-sm">⚖️ {t("结果与影响", "Consequences")}</h4>
                         <p className="font-serif leading-relaxed">{selectedEvent.details.consequence}</p>
                       </div>
                     </div>
                   )}
                   <div className="pt-4 border-t border-border/50">
-                    <h4 className="font-mono font-bold text-sm mb-3">相关引证档案</h4>
+                    <h4 className="font-mono font-bold text-sm mb-3">{t("相关引证档案", "Related Source Files")}</h4>
                     <div className="flex flex-wrap gap-2">
                       {selectedEvent.sources.map((s,i) => (
                         <span key={i} className="text-xs bg-secondary/30 px-3 py-1.5 font-mono border border-border/50 flex items-center gap-1.5"><FileText className="w-3 h-3" />{s}</span>
@@ -401,7 +403,7 @@ export default function Archive() {
                   {/* Events Timeline */}
                   <div>
                     <h3 className="font-mono font-bold text-xl uppercase mb-6 flex items-center gap-2">
-                      <Database className="w-5 h-5" /> 事件档案 ({categoryEvents.length})
+                      <Database className="w-5 h-5" /> {t("事件档案", "Event Files")} ({categoryEvents.length})
                     </h3>
 
                     <div className="space-y-6 relative pl-8 border-l-2 border-border/30">
@@ -435,7 +437,7 @@ export default function Archive() {
                               ))}
                             </div>
                             <div className="pt-4 border-t border-border/50">
-                              <p className="text-xs font-mono text-muted-foreground mb-2">档案来源:</p>
+                              <p className="text-xs font-mono text-muted-foreground mb-2">{t("档案来源", "Archive Sources")}:</p>
                               <div className="flex flex-wrap gap-1">
                                 {event.sources.map((source, i) => (
                                   <span key={i} className="text-[10px] font-mono bg-secondary/50 px-1.5 py-0.5 border border-border/30">

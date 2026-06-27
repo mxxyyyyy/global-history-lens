@@ -100,7 +100,7 @@
 
 @media (min-width: 1024px) {
   :root {
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 
@@ -199,7 +199,7 @@
     .container {
       padding-left: 2rem;
       padding-right: 2rem;
-      max-width: 1706px;
+      max-width: 1506px;
     }
   }
   
