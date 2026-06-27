@@ -26,6 +26,7 @@ interface SessionPayload {
 
 const SESSION_COOKIE = "ghl_session";
 const GITHUB_STATE_COOKIE = "ghl_github_state";
+const GITHUB_PKCE_COOKIE = "ghl_github_pkce";
 const SESSION_MAX_AGE_SECONDS = 60 * 60 * 24 * 7;
 const ABSOLUTE_URL_PATTERN = /^https?:\/\//i;
 
@@ -104,6 +105,12 @@ function verifyPassword(password: string, storedHash?: string) {
 
 function sign(value: string) {
   return crypto.createHmac("sha256", authSecret).update(value).digest("base64url");
+}
+
+function createPkcePair() {
+  const verifier = crypto.randomBytes(32).toString("base64url");
+  const challenge = crypto.createHash("sha256").update(verifier).digest("base64url");
+  return { verifier, challenge };
 }
 
 function createSessionToken(userId: string) {
@@ -304,15 +311,21 @@ export function registerAuthRoutes(app: Express) {
     }
 
     const state = crypto.randomBytes(24).toString("base64url");
+    const pkce = createPkcePair();
     const redirectUri = `${getPublicBaseUrl(req)}/api/auth/github/callback`;
     const params = new URLSearchParams({
       client_id: clientId,
       redirect_uri: redirectUri,
       scope: "read:user user:email",
       state,
+      code_challenge: pkce.challenge,
+      code_challenge_method: "S256",
     });
 
-    res.setHeader("Set-Cookie", cookie(GITHUB_STATE_COOKIE, state, 60 * 10));
+    res.setHeader("Set-Cookie", [
+      cookie(GITHUB_STATE_COOKIE, state, 60 * 10),
+      cookie(GITHUB_PKCE_COOKIE, pkce.verifier, 60 * 10),
+    ]);
     res.redirect(`https://github.com/login/oauth/authorize?${params.toString()}`);
   });
 
@@ -320,26 +333,30 @@ export function registerAuthRoutes(app: Express) {
     try {
       const code = typeof req.query.code === "string" ? req.query.code : "";
       const state = typeof req.query.state === "string" ? req.query.state : "";
-      const savedState = parseCookies(req).get(GITHUB_STATE_COOKIE);
+      const cookies = parseCookies(req);
+      const savedState = cookies.get(GITHUB_STATE_COOKIE);
+      const codeVerifier = cookies.get(GITHUB_PKCE_COOKIE);
 
-      if (!code || !state || !savedState || state !== savedState) {
+      if (!code || !state || !savedState || state !== savedState || !codeVerifier) {
         redirectWithError(res, "GitHub 登录校验失败。");
         return;
       }
 
       const redirectUri = `${getPublicBaseUrl(req)}/api/auth/github/callback`;
+      const tokenParams = new URLSearchParams({
+        client_id: process.env.GITHUB_CLIENT_ID || "",
+        client_secret: process.env.GITHUB_CLIENT_SECRET || "",
+        code,
+        redirect_uri: redirectUri,
+        code_verifier: codeVerifier,
+      });
       const tokenResponse = await fetch("https://github.com/login/oauth/access_token", {
         method: "POST",
         headers: {
           Accept: "application/json",
-          "Content-Type": "application/json",
+          "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: JSON.stringify({
-          client_id: process.env.GITHUB_CLIENT_ID,
-          client_secret: process.env.GITHUB_CLIENT_SECRET,
-          code,
-          redirect_uri: redirectUri,
-        }),
+        body: tokenParams,
       });
       const tokenData = await tokenResponse.json() as { access_token?: string; error_description?: string };
 
@@ -372,6 +389,7 @@ export function registerAuthRoutes(app: Express) {
       res.setHeader("Set-Cookie", [
         cookie(SESSION_COOKIE, createSessionToken(user.id), SESSION_MAX_AGE_SECONDS),
         cookie(GITHUB_STATE_COOKIE, "", 0),
+        cookie(GITHUB_PKCE_COOKIE, "", 0),
       ]);
       res.redirect("/login?connected=github");
     } catch (error) {
