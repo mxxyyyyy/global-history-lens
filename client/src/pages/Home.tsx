@@ -3,19 +3,62 @@ import { ArrowRight, MessageSquare, Database, Map as MapIcon, ChevronRight } fro
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { getImagePath } from "@/lib/utils";
+import { useState, type CSSProperties, type PointerEvent } from "react";
 
 export default function Home() {
+  const heroImage = getImagePath("/images/hero-bg.jpg");
+  const [spotlight, setSpotlight] = useState({ x: 50, y: 50, active: false });
+
+  function handleHeroPointerMove(event: PointerEvent<HTMLElement>) {
+    const rect = event.currentTarget.getBoundingClientRect();
+    setSpotlight({
+      x: ((event.clientX - rect.left) / rect.width) * 100,
+      y: ((event.clientY - rect.top) / rect.height) * 100,
+      active: true,
+    });
+  }
+
+  const spotlightMask = `radial-gradient(circle 210px at ${spotlight.x}% ${spotlight.y}%, black 0%, rgba(0,0,0,0.9) 34%, rgba(0,0,0,0.28) 62%, transparent 78%)`;
+  const spotlightImageStyle: CSSProperties = {
+    backgroundImage: `url(${heroImage})`,
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    opacity: spotlight.active ? 0.82 : 0,
+    WebkitMaskImage: spotlightMask,
+    maskImage: spotlightMask,
+  };
+  const spotlightGlowStyle: CSSProperties = {
+    left: `${spotlight.x}%`,
+    top: `${spotlight.y}%`,
+    opacity: spotlight.active ? 1 : 0,
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section - Brutalist & Archival */}
-      <section className="relative min-h-[90vh] flex items-center border-b-2 border-border overflow-hidden">
+      <section
+        className="relative min-h-[90vh] flex items-center border-b-2 border-border overflow-hidden"
+        onPointerEnter={() => setSpotlight(current => ({ ...current, active: true }))}
+        onPointerMove={handleHeroPointerMove}
+        onPointerLeave={() => setSpotlight(current => ({ ...current, active: false }))}
+      >
         {/* Background Texture & Image */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-primary/10 mix-blend-multiply z-10"></div>
           <img 
-            src={getImagePath("/images/hero-bg.jpg")}
+            src={heroImage}
             alt="Historical Archive Texture" 
             className="w-full h-full object-cover opacity-40 grayscale contrast-125"
+          />
+          <div
+            className="absolute inset-0 z-10 pointer-events-none grayscale-0 contrast-150 brightness-125 transition-opacity duration-200"
+            style={spotlightImageStyle}
+            aria-hidden="true"
+          />
+          <div
+            className="absolute z-20 pointer-events-none h-[18rem] w-[18rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(240,230,210,0.35)_0%,rgba(240,230,210,0.16)_36%,transparent_70%)] mix-blend-screen blur-xl transition-opacity duration-200"
+            style={spotlightGlowStyle}
+            aria-hidden="true"
           />
           {/* Grid Overlay */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#2A2A2A_1px,transparent_1px),linear-gradient(to_bottom,#2A2A2A_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-[0.05] z-20 pointer-events-none"></div>
