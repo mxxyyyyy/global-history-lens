@@ -7,6 +7,6 @@ export function cn(...inputs: ClassValue[]) {
 
 export function getImagePath(path: string): string {
   const cleanPath = path.startsWith("/") ? path.slice(1) : path;
-  const base = import.meta.env.PROD ? "/global-history-lens/" : "/";
+  const base = import.meta.env.BASE_URL || "/";
   return `${base}${cleanPath}`;
 }
