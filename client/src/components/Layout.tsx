@@ -58,13 +58,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </Button>
             {!loading && (
               user ? (
-                <div className="hidden md:flex items-center gap-2">
+                <div className="flex items-center gap-2">
                   <Link
                     href="/account"
                     className="flex h-9 items-center gap-2 border-2 border-border bg-secondary px-3 font-mono text-xs font-bold hover:bg-primary hover:text-primary-foreground transition-colors"
                   >
                     <UserRound className="h-4 w-4" />
-                    <span className="max-w-28 truncate">{user.name}</span>
+                    <span className="hidden sm:inline max-w-28 truncate">{user.name}</span>
                   </Link>
                   <Button
                     variant="outline"
@@ -79,10 +79,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               ) : (
                 <Link
                   href="/login"
-                  className="hidden md:flex h-9 items-center gap-2 border-2 border-border bg-background px-3 font-mono text-xs font-bold hover:bg-primary hover:text-primary-foreground transition-colors shadow-brutal-sm"
+                  className="flex h-9 items-center gap-2 border-2 border-border bg-background px-3 font-mono text-xs font-bold hover:bg-primary hover:text-primary-foreground transition-colors shadow-brutal-sm"
                 >
                   <LogIn className="h-4 w-4" />
-                  登录
+                  <span className="hidden sm:inline">登录/注册</span>
                 </Link>
               )
             )}
