@@ -1,12 +1,14 @@
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Search, Globe, BookOpen, Map as MapIcon, Glasses } from "lucide-react";
+import { Menu, X, Search, Globe, BookOpen, Map as MapIcon, Glasses, LogIn, LogOut, UserRound } from "lucide-react";
 import { useState } from "react";
+import { useAuth } from "@/contexts/AuthContext";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [location] = useLocation();
+  const { user, loading, logout } = useAuth();
 
   const navItems = [
     { name: "首页", path: "/", icon: Globe },
@@ -54,6 +56,36 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <Search className="h-4 w-4" />
               <span className="sr-only">搜索档案</span>
             </Button>
+            {!loading && (
+              user ? (
+                <div className="hidden md:flex items-center gap-2">
+                  <Link
+                    href="/account"
+                    className="flex h-9 items-center gap-2 border-2 border-border bg-secondary px-3 font-mono text-xs font-bold hover:bg-primary hover:text-primary-foreground transition-colors"
+                  >
+                    <UserRound className="h-4 w-4" />
+                    <span className="max-w-28 truncate">{user.name}</span>
+                  </Link>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="border-2 border-border rounded-none hover:bg-secondary shadow-brutal-sm"
+                    onClick={() => logout()}
+                  >
+                    <LogOut className="h-4 w-4" />
+                    <span className="sr-only">退出登录</span>
+                  </Button>
+                </div>
+              ) : (
+                <Link
+                  href="/login"
+                  className="hidden md:flex h-9 items-center gap-2 border-2 border-border bg-background px-3 font-mono text-xs font-bold hover:bg-primary hover:text-primary-foreground transition-colors shadow-brutal-sm"
+                >
+                  <LogIn className="h-4 w-4" />
+                  登录
+                </Link>
+              )
+            )}
             <Button
               variant="ghost"
               size="icon"
@@ -83,6 +115,40 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   {item.name}
                 </Link>
               ))}
+              {!loading && (
+                user ? (
+                  <>
+                    <Link
+                      href="/account"
+                      className="flex items-center gap-3 px-4 py-3 font-mono text-sm font-medium border-2 border-border hover:bg-secondary hover:shadow-brutal-sm transition-all"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <UserRound className="w-4 h-4" />
+                      {user.name}
+                    </Link>
+                    <button
+                      type="button"
+                      className="flex items-center gap-3 px-4 py-3 font-mono text-sm font-medium border-2 border-border hover:bg-secondary hover:shadow-brutal-sm transition-all text-left"
+                      onClick={() => {
+                        void logout();
+                        setIsMenuOpen(false);
+                      }}
+                    >
+                      <LogOut className="w-4 h-4" />
+                      退出登录
+                    </button>
+                  </>
+                ) : (
+                  <Link
+                    href="/login"
+                    className="flex items-center gap-3 px-4 py-3 font-mono text-sm font-medium border-2 border-border hover:bg-secondary hover:shadow-brutal-sm transition-all"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <LogIn className="w-4 h-4" />
+                    登录
+                  </Link>
+                )
+              )}
             </nav>
           </div>
         )}

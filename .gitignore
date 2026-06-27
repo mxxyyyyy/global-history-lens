@@ -48,6 +48,8 @@ pids
 *.pid
 *.seed
 *.pid.lock
+.data/
+.npm-cache/
 
 # Coverage directory used by tools like istanbul
 coverage/
