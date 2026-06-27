@@ -23,16 +23,16 @@ export default function CredibilityAssessment({ perspective }: CredibilityAssess
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      className="space-y-4 bg-card border-2 border-border p-4"
+      className="space-y-3 bg-card border-2 border-border p-4 max-h-[34rem] overflow-y-auto"
     >
       {/* 可信度总体评分 */}
-      <div className="flex items-center justify-between pb-4 border-b border-border/30">
+      <div className="flex items-center justify-between gap-3 pb-3 border-b border-border/30">
         <div className="flex items-center gap-3">
           <TrendingUp className="w-5 h-5 text-muted-foreground" />
           <span className="font-mono text-sm font-bold uppercase">可信度评估</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="relative w-32 h-2 bg-background border border-border overflow-hidden">
+          <div className="relative w-24 h-2 bg-background border border-border overflow-hidden">
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: `${perspective.overallCredibility}%` }}
@@ -63,7 +63,7 @@ export default function CredibilityAssessment({ perspective }: CredibilityAssess
           <AlertCircle className="w-4 h-4" /> 潜在偏见
         </h4>
         <ul className="space-y-1">
-          {perspective.biasIndicators.map((bias, idx) => (
+          {perspective.biasIndicators.slice(0, 3).map((bias, idx) => (
             <li key={idx} className="text-xs text-muted-foreground font-typewriter pl-4 relative">
               <span className="absolute left-0">•</span>
               {bias}
@@ -78,7 +78,7 @@ export default function CredibilityAssessment({ perspective }: CredibilityAssess
           <BookOpen className="w-4 h-4" /> 主要来源 ({perspective.sources.length})
         </h4>
         <div className="space-y-2">
-          {perspective.sources.map((source) => (
+          {perspective.sources.slice(0, 2).map((source) => (
             <motion.div
               key={source.id}
               initial={{ opacity: 0, x: -10 }}
@@ -102,13 +102,18 @@ export default function CredibilityAssessment({ perspective }: CredibilityAssess
                   <span className="font-mono font-bold text-emerald-600">{source.credibilityScore}%</span>
                 </div>
               </div>
-              <p className="text-muted-foreground italic">{source.excerpt}</p>
+              <p className="text-muted-foreground italic line-clamp-2">{source.excerpt}</p>
               <p className="text-[10px] text-muted-foreground border-t border-border/30 pt-1">
                 <span className="font-mono">评价：</span>
                 {source.credibilityReason}
               </p>
             </motion.div>
           ))}
+          {perspective.sources.length > 2 && (
+            <p className="text-[10px] text-muted-foreground font-mono">
+              已显示前 2 条核心来源，更多来源保留在档案库中。
+            </p>
+          )}
         </div>
       </div>
 

@@ -98,6 +98,12 @@
   --sidebar-ring: oklch(0.25 0.02 280);
 }
 
+@media (min-width: 1024px) {
+  :root {
+    font-size: 12px;
+  }
+}
+
 .dark {
   /* Inverted mode: Dark Archive */
   --primary: oklch(0.92 0.02 90);
@@ -193,7 +199,7 @@
     .container {
       padding-left: 2rem;
       padding-right: 2rem;
-      max-width: 1280px;
+      max-width: 1706px;
     }
   }
   

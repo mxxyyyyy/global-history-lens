@@ -273,7 +273,7 @@ export default function Dialogue() {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-66px)] bg-background">
+    <div className="flex flex-col h-[calc(100vh-4rem)] bg-background">
       {/* Header */}
       <div className="border-b-2 border-border px-3 py-2 bg-secondary/30 shrink-0">
         <div className="flex justify-between items-center">
@@ -355,7 +355,7 @@ export default function Dialogue() {
         <div className="flex-1 flex flex-col w-full z-10 min-h-0">
           <ScrollArea className="flex-1 min-h-0" ref={scrollAreaRef}>
             {chatHistory.length === 0 ? (
-              <div className="h-full flex flex-col items-center justify-center text-center opacity-60 p-4 md:p-6">
+              <div className="min-h-[calc(100vh-15rem)] flex flex-col items-center justify-center text-center opacity-70 p-4 md:p-8">
                 <div className={`w-20 h-20 rounded-full flex items-center justify-center mb-6 border-2 border-border border-dashed ${mode === 'perspective' ? 'bg-secondary' : 'bg-amber-100'}`}>
                   {mode === 'perspective' ? (
                     <HelpCircle className="w-10 h-10 text-muted-foreground" />
@@ -363,15 +363,15 @@ export default function Dialogue() {
                     <User className="w-10 h-10 text-amber-700" />
                   )}
                 </div>
-                <h2 className="text-2xl font-serif font-bold mb-2">
+                <h2 className="text-3xl md:text-4xl font-serif font-bold mb-3 text-center">
                   {mode === 'perspective' ? '探索历史的多重面相' : '倾听历史亲历者的声音'}
                 </h2>
-                <p className="text-sm text-muted-foreground font-typewriter mb-8 max-w-md">
+                <p className="text-base text-muted-foreground font-typewriter mb-8 max-w-2xl mx-auto leading-relaxed">
                   {mode === 'perspective' ? '从不同国家、不同立场的档案中发掘历史真相，培养批判性思维。' : '与历史人物进行对话，感受大时代背景下的个人命运与抉择。'}
                 </p>
                 
                 {(mode === 'perspective' || selectedPersona) && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-2xl">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-4xl">
                     {(mode === 'perspective' ? SUGGESTED_QUESTIONS : PERSONA_SUGGESTED_QUESTIONS).map((q, i) => (
                       <button 
                         key={i}
@@ -385,11 +385,11 @@ export default function Dialogue() {
                 )}
               </div>
             ) : (
-              <div className="space-y-6 pb-8 p-4 md:p-6 max-w-6xl mx-auto w-full">
+              <div className="space-y-8 pb-10 p-4 md:p-8 max-w-[1500px] mx-auto w-full">
                 {chatHistory.map((msg, idx) => (
                   <div key={idx} ref={msg.type === 'bot' && idx === chatHistory.length - 1 ? lastMsgRef : undefined} className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}>
                     {msg.type === 'user' ? (
-                      <div className={`${mode === 'perspective' ? 'bg-primary' : 'bg-amber-700'} text-primary-foreground p-3 max-w-[85%] shadow-brutal-sm font-serif text-sm md:text-base rounded-sm`}>
+                      <div className={`${mode === 'perspective' ? 'bg-primary' : 'bg-amber-700'} text-primary-foreground p-4 max-w-[70%] shadow-brutal-sm font-serif text-sm md:text-base rounded-sm leading-relaxed`}>
                         {msg.content}
                       </div>
                     ) : (
@@ -426,7 +426,7 @@ export default function Dialogue() {
                             </motion.div>
                           ) : msg.content._data ? (
                           <>
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                            <div className="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-6 items-start">
                               {Object.keys(msg.content._data).map((key, pIdx) => {
                                 const perspective = msg.content._data[key];
                                 const flags: { [k: string]: string } = { china: "🇨🇳", japan: "🇯🇵", international: "🌍", britain: "🇬🇧", france: "🇫🇷", usa: "🇺🇸", soviet: "🇷🇺", german: "🇩🇪", western: "🌐", central_asia: "🏔️", american: "🇺🇸", british: "🇬🇧", workers: "⚒️", colonial: "🌍", allied: "🤝", chinese: "🇨🇳", european: "🇪🇺", indigenous: "🏛️" };
@@ -439,14 +439,29 @@ export default function Dialogue() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.1 * (pIdx + 1) }}
-                                    className="space-y-3"
+                                    className="space-y-4"
                                   >
                                     <div className="border-2 border-border bg-card p-0 shadow-brutal hover:shadow-brutal-lg transition-all">
-                                      <div className="bg-secondary/50 p-3 border-b-2 border-border">
-                                        <h3 className="font-mono font-bold text-sm uppercase text-primary">{flag} {perspective.title}</h3>
+                                      <div className="bg-secondary/50 p-4 border-b-2 border-border">
+                                        <h3 className="font-mono font-bold text-base uppercase text-primary leading-snug">{flag} {perspective.title}</h3>
                                       </div>
-                                      <div className="p-4">
-                                        <p className="font-serif text-sm leading-relaxed">{perspective.content}</p>
+                                      <div className="p-5 space-y-4">
+                                        <p className="font-serif text-base leading-8">{perspective.content}</p>
+                                        {perspective.source && (
+                                          <div className="border-t border-border/40 pt-3 text-xs font-typewriter text-muted-foreground">
+                                            <span className="font-mono font-bold text-foreground">主要来源：</span>
+                                            {perspective.source}
+                                          </div>
+                                        )}
+                                        {perspective.tags?.length > 0 && (
+                                          <div className="flex flex-wrap gap-2">
+                                            {perspective.tags.map((tag: string, tagIndex: number) => (
+                                              <span key={tagIndex} className="border border-border/40 bg-secondary/40 px-2 py-1 font-mono text-[10px] text-muted-foreground">
+                                                {tag}
+                                              </span>
+                                            ))}
+                                          </div>
+                                        )}
                                       </div>
                                     </div>
                                     {fullPerspective && <CredibilityAssessment perspective={fullPerspective} />}
@@ -545,7 +560,7 @@ export default function Dialogue() {
               if (questions.length === 0) return null;
               return (
                 <div className="px-4 pt-3 pb-1 border-t border-border/50 bg-secondary/10 shrink-0">
-                  <div className="flex gap-2 overflow-x-auto">
+                  <div className="max-w-[1500px] mx-auto flex gap-2 overflow-x-auto">
                     {questions.map((q: string, i: number) => (
                       <button key={i} onClick={() => handleSearch(q)} className="shrink-0 text-xs font-mono px-3 py-1.5 border border-border bg-secondary/50 hover:bg-secondary hover:border-primary transition-all whitespace-nowrap">{q}</button>
                     ))}
@@ -555,7 +570,7 @@ export default function Dialogue() {
             } else if (mode === 'persona' && lastBot?.content?._followUpHint) {
               return (
                 <div className="px-4 pt-3 pb-1 border-t border-amber-200/30 bg-amber-50/20 shrink-0">
-                  <div className="flex gap-2 overflow-x-auto">
+                  <div className="max-w-[1500px] mx-auto flex gap-2 overflow-x-auto">
                     <button onClick={() => handleSearch(lastBot.content._followUpHint)} className="shrink-0 text-xs font-mono px-3 py-1.5 border border-amber-300/50 bg-amber-50/50 hover:bg-amber-100/50 hover:border-amber-400 transition-all whitespace-nowrap text-amber-800">
                       💬 {lastBot.content._followUpHint}
                     </button>
@@ -568,7 +583,8 @@ export default function Dialogue() {
 
           {/* Save & Clear Buttons */}
           {chatHistory.length > 0 && (
-            <div className="px-4 py-2 border-t border-border/50 bg-secondary/20 flex gap-2 shrink-0">
+            <div className="px-4 py-2 border-t border-border/50 bg-secondary/20 shrink-0">
+              <div className="max-w-[1500px] mx-auto flex gap-2">
               <Button
                 size="sm"
                 className="flex-1 h-8 text-xs font-mono rounded-none bg-primary text-primary-foreground hover:opacity-90 border-2 border-primary"
@@ -586,6 +602,7 @@ export default function Dialogue() {
                 <RotateCcw className="w-3 h-3 mr-1" />
                 清空对话
               </Button>
+              </div>
             </div>
           )}
 
@@ -630,7 +647,7 @@ export default function Dialogue() {
           )}
 
           <div className="px-4 py-3 border-t-2 border-border bg-background relative shrink-0">
-            <div className="relative max-w-3xl mx-auto w-full">
+            <div className="relative max-w-[1100px] mx-auto w-full">
               <Input 
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
