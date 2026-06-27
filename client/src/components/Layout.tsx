@@ -35,11 +35,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden md:flex items-center gap-1 shrink-0">
             {navItems.map((item) => (
               <Link key={item.path} href={item.path}
                 className={cn(
-                  "flex items-center gap-2 px-4 py-2 font-mono text-sm font-medium transition-colors hover:bg-secondary border-2 border-transparent hover:border-border",
+                  "flex shrink-0 items-center gap-2 whitespace-nowrap px-3 lg:px-4 py-2 font-mono text-sm font-medium transition-colors hover:bg-secondary border-2 border-transparent hover:border-border",
                   location === item.path
                     ? "bg-primary text-primary-foreground border-primary hover:bg-primary/90 hover:border-primary"
                     : "text-foreground/80"
@@ -51,20 +51,21 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             ))}
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="flex shrink-0 items-center gap-2">
             <Button variant="outline" size="icon" className="border-2 border-border rounded-none hover:bg-secondary shadow-brutal-sm active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all">
               <Search className="h-4 w-4" />
               <span className="sr-only">搜索档案</span>
             </Button>
             {!loading && (
               user ? (
-                <div className="flex items-center gap-2">
+                <div className="flex shrink-0 items-center gap-2">
                   <Link
                     href="/account"
-                    className="flex h-9 items-center gap-2 border-2 border-border bg-secondary px-3 font-mono text-xs font-bold hover:bg-primary hover:text-primary-foreground transition-colors"
+                    className="flex h-9 w-9 shrink-0 items-center justify-center border-2 border-border bg-secondary font-mono text-xs font-bold hover:bg-primary hover:text-primary-foreground transition-colors"
+                    title={user.name}
+                    aria-label={`账号：${user.name}`}
                   >
                     <UserRound className="h-4 w-4" />
-                    <span className="hidden sm:inline max-w-28 truncate">{user.name}</span>
                   </Link>
                   <Button
                     variant="outline"
