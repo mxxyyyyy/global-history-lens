@@ -193,54 +193,50 @@ const STOP_COORDINATES: Record<string, LatLng> = {
 const STOP_IMAGE_OVERRIDES: Record<string, StopImage[]> = {
   广州十三行博物馆: [
     {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Canton_factories.jpg/800px-Canton_factories.jpg",
+      src: "/images/locations/guangzhou-canton-factories.jpg",
       label: "十三行历史图像",
     },
   ],
   粤海关博物馆: [
     {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/%E7%B2%A4%E6%B5%B7%E5%85%B3%E5%A4%A7%E6%A5%BC.jpg/800px-%E7%B2%A4%E6%B5%B7%E5%85%B3%E5%A4%A7%E6%A5%BC.jpg",
+      src: "/images/locations/guangzhou-custom-house.jpg",
       label: "粤海关大楼",
     },
   ],
   沙面岛: [
     {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/ShamianIsland.JPG/800px-ShamianIsland.JPG",
+      src: "/images/locations/guangzhou-shamian-island.jpg",
       label: "沙面岛滨水街区",
-    },
-    {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Shamian_buildings.jpg/800px-Shamian_buildings.jpg",
-      label: "沙面历史建筑",
     },
   ],
   上下九步行街: [
     {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Shangxj.jpg/800px-Shangxj.jpg",
+      src: "/images/locations/guangzhou-shangxiajiu.jpg",
       label: "上下九步行街",
     },
   ],
   南信牛奶甜品专家: [
     {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Shangxj.jpg/800px-Shangxj.jpg",
+      src: "/images/locations/guangzhou-shangxiajiu.jpg",
       label: "南信所在的上下九街区",
     },
   ],
   北京路商圈: [
     {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Beijing_Road%2C_Guangzhou.jpg/800px-Beijing_Road%2C_Guangzhou.jpg",
-      label: "北京路商圈",
+      src: "/images/locations/guangzhou-shangxiajiu.jpg",
+      label: "广州骑楼商业街区",
     },
   ],
   北京路步行街: [
     {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Beijing_Road%2C_Guangzhou.jpg/800px-Beijing_Road%2C_Guangzhou.jpg",
-      label: "北京路步行街",
+      src: "/images/locations/guangzhou-shangxiajiu.jpg",
+      label: "广州骑楼商业街区",
     },
   ],
   黄埔古港: [
     {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Huangpu_Ancient_Port.jpg/800px-Huangpu_Ancient_Port.jpg",
-      label: "黄埔古港",
+      src: "/images/locations/guangzhou-canton-factories.jpg",
+      label: "广州外贸历史图像",
     },
   ],
 };
@@ -298,6 +294,10 @@ function getStopImages(stop: RouteStop): StopImage[] {
           label: "地点图像待补充",
         },
       ];
+}
+
+function resolveImageSrc(src: string) {
+  return src.startsWith("/") ? getImagePath(src) : src;
 }
 
 function getTraceText(stop: RouteStop) {
@@ -808,7 +808,7 @@ export default function Travel() {
                       className="relative h-36 md:h-44 bg-secondary border-2 border-border overflow-hidden"
                     >
                       <img
-                        src={image.src}
+                        src={resolveImageSrc(image.src)}
                         alt={`${activeStop.title}：${image.label}`}
                         className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
                         onError={(event) => {
