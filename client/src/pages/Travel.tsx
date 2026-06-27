@@ -81,6 +81,11 @@ interface RoutePoint extends LatLng {
   isExact: boolean;
 }
 
+interface StopImage {
+  src: string;
+  label: string;
+}
+
 const CITY_CENTERS: Record<string, LatLng> = {
   beijing: { lat: 39.9042, lng: 116.4074 },
   "berlin-coldwar": { lat: 52.52, lng: 13.405 },
@@ -185,6 +190,61 @@ const STOP_COORDINATES: Record<string, LatLng> = {
   国家档案馆: { lat: 38.8929, lng: -77.0231 },
 };
 
+const STOP_IMAGE_OVERRIDES: Record<string, StopImage[]> = {
+  广州十三行博物馆: [
+    {
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Canton_factories.jpg/800px-Canton_factories.jpg",
+      label: "十三行历史图像",
+    },
+  ],
+  粤海关博物馆: [
+    {
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/%E7%B2%A4%E6%B5%B7%E5%85%B3%E5%A4%A7%E6%A5%BC.jpg/800px-%E7%B2%A4%E6%B5%B7%E5%85%B3%E5%A4%A7%E6%A5%BC.jpg",
+      label: "粤海关大楼",
+    },
+  ],
+  沙面岛: [
+    {
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/ShamianIsland.JPG/800px-ShamianIsland.JPG",
+      label: "沙面岛滨水街区",
+    },
+    {
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Shamian_buildings.jpg/800px-Shamian_buildings.jpg",
+      label: "沙面历史建筑",
+    },
+  ],
+  上下九步行街: [
+    {
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Shangxj.jpg/800px-Shangxj.jpg",
+      label: "上下九步行街",
+    },
+  ],
+  南信牛奶甜品专家: [
+    {
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Shangxj.jpg/800px-Shangxj.jpg",
+      label: "南信所在的上下九街区",
+    },
+  ],
+  北京路商圈: [
+    {
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Beijing_Road%2C_Guangzhou.jpg/800px-Beijing_Road%2C_Guangzhou.jpg",
+      label: "北京路商圈",
+    },
+  ],
+  北京路步行街: [
+    {
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Beijing_Road%2C_Guangzhou.jpg/800px-Beijing_Road%2C_Guangzhou.jpg",
+      label: "北京路步行街",
+    },
+  ],
+  黄埔古港: [
+    {
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Huangpu_Ancient_Port.jpg/800px-Huangpu_Ancient_Port.jpg",
+      label: "黄埔古港",
+    },
+  ],
+};
+
 function getTypeClass(type: string) {
   return TYPE_COLORS[type] || "bg-muted text-muted-foreground";
 }
@@ -213,6 +273,31 @@ function getFirstTheme(cityId: string) {
 function getStopImage(stop: RouteStop) {
   if (!stop.img) return getDefaultImage();
   return stop.img.startsWith("/") ? getImagePath(stop.img) : stop.img;
+}
+
+function getStopImages(stop: RouteStop): StopImage[] {
+  const overrideImages = STOP_IMAGE_OVERRIDES[stop.title] || [];
+  const originalImage = stop.img
+    ? [
+        {
+          src: getStopImage(stop),
+          label: "地点照片",
+        },
+      ]
+    : [];
+
+  const images = [...overrideImages, ...originalImage].filter((image, index, all) => {
+    return all.findIndex((item) => item.src === image.src) === index;
+  });
+
+  return images.length > 0
+    ? images.slice(0, 2)
+    : [
+        {
+          src: getDefaultImage(),
+          label: "地点图像待补充",
+        },
+      ];
 }
 
 function getTraceText(stop: RouteStop) {
@@ -514,6 +599,7 @@ export default function Travel() {
   );
 
   const activeStop = routePlan?.stops[activeStopIndex] || routePlan?.stops[0] || null;
+  const activeStopImages = activeStop ? getStopImages(activeStop) : [];
   const routeSummary = routePlan ? getRouteSummary(routePlan) : null;
 
   const nextStop = () => {
@@ -714,19 +800,31 @@ export default function Travel() {
               animate={{ opacity: 1, y: 0 }}
               className="border-2 border-border bg-card shadow-brutal-lg overflow-hidden sticky top-24"
             >
-              <div className="aspect-[4/3] bg-secondary relative overflow-hidden border-b-2 border-border">
-                <img
-                  src={getStopImage(activeStop)}
-                  alt={activeStop.title}
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                  onError={(event) => {
-                    event.currentTarget.src = getDefaultImage();
-                  }}
-                />
-                <div className="absolute top-4 left-4 bg-background text-foreground border-2 border-border px-3 py-1 font-mono text-xs font-bold">
-                  SLIDE {getSlideNumber(activeStopIndex)}
+              <div className="bg-secondary/30 border-b-2 border-border p-4">
+                <div className={activeStopImages.length > 1 ? "grid grid-cols-2 gap-3" : "grid grid-cols-1"}>
+                  {activeStopImages.map((image, index) => (
+                    <div
+                      key={`${image.src}-${index}`}
+                      className="relative h-36 md:h-44 bg-secondary border-2 border-border overflow-hidden"
+                    >
+                      <img
+                        src={image.src}
+                        alt={`${activeStop.title}：${image.label}`}
+                        className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                        onError={(event) => {
+                          event.currentTarget.src = getDefaultImage();
+                        }}
+                      />
+                      <div className="absolute left-2 top-2 bg-background/90 text-foreground border border-border px-2 py-1 font-mono text-[10px] font-bold">
+                        {index === 0 ? `SLIDE ${getSlideNumber(activeStopIndex)}` : "PHOTO 02"}
+                      </div>
+                      <div className="absolute left-2 bottom-2 max-w-[calc(100%-1rem)] bg-primary text-primary-foreground px-2 py-1 font-mono text-[10px] font-bold truncate">
+                        {image.label}
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                <div className={`absolute bottom-4 right-4 font-mono text-xs px-3 py-1 ${getTypeClass(activeStop.type)}`}>
+                <div className={`mt-3 inline-flex font-mono text-xs px-3 py-1 ${getTypeClass(activeStop.type)}`}>
                   {activeStop.type}
                 </div>
               </div>
