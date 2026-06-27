@@ -13,7 +13,7 @@ import Showcase from "./pages/Showcase";
 import DialogueHistory from "./pages/DialogueHistory";
 
 
-const base = import.meta.env.PROD ? "/global-history-lens/" : "/";
+const base = "/";
 
 function AppRouter() {
   return (

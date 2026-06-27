@@ -6,7 +6,7 @@ import { defineConfig } from "vite";
 const plugins = [react(), tailwindcss()];
 
 export default defineConfig({
-  base: "/global-history-lens/",
+  base: "/",
   plugins,
   resolve: {
     alias: {
