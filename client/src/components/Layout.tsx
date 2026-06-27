@@ -14,7 +14,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     { name: "首页", path: "/", icon: Globe },
     { name: "AI对话", path: "/dialogue", icon: Glasses },
     { name: "档案库", path: "/archive", icon: BookOpen },
-    { name: "历史行旅", path: "/travel", icon: MapIcon },
+    { name: "历史交互", path: "/travel", icon: MapIcon },
     { name: "对话历史", path: "/dialogue-history", icon: BookOpen },
   ];
 
@@ -200,7 +200,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <li><Link href="/archive" className="hover:underline decoration-primary decoration-2 underline-offset-4">历史档案库</Link></li>
                 <li><Link href="/dialogue-history" className="hover:underline decoration-primary decoration-2 underline-offset-4">对话历史</Link></li>
                 <li><Link href="/dialogue" className="hover:underline decoration-primary decoration-2 underline-offset-4">AI多视角对话</Link></li>
-                <li><Link href="/travel" className="hover:underline decoration-primary decoration-2 underline-offset-4">主题旅游线路</Link></li>
+                <li><Link href="/travel" className="hover:underline decoration-primary decoration-2 underline-offset-4">历史交互路线</Link></li>
                 <li><Link href="/vr" className="hover:underline decoration-primary decoration-2 underline-offset-4">VR情境体验</Link></li>
               </ul>
             </div>

@@ -62,7 +62,7 @@ export default function Login() {
             </div>
             <h1 className="mt-6 text-4xl md:text-6xl font-bold tracking-tighter">账号中心</h1>
             <p className="mt-4 max-w-xl text-muted-foreground font-typewriter leading-relaxed">
-              你已登录 Global History Lens，可以继续使用档案库、AI 对话和历史行旅功能。
+              你已登录 Global History Lens，可以继续使用档案库、AI 对话和历史交互功能。
             </p>
           </div>
 

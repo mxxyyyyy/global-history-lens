@@ -3,10 +3,39 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Search, Filter, Calendar, MapPin, FileText, Image as ImageIcon, Film, Mic, Database, X, ArrowLeft } from "lucide-react";
+import { Search, Filter, Calendar, MapPin, FileText, Image as ImageIcon, Film, Mic, Database, X, ArrowLeft, Route } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "wouter";
 import { HISTORICAL_EVENTS, ARCHIVE_CATEGORIES, ARCHIVE_TOPICS, ArchiveTopic, HistoricalEvent } from "@/data/historicalEvents";
 import { getImagePath } from "@/lib/utils";
+
+const TOPICS_WITH_TRAVEL_ROUTES = new Set([
+  "manchukuo",
+  "opium_war",
+  "meiji",
+  "french_revolution",
+  "cold_war",
+  "silk_road",
+  "american_revolution",
+  "industrial_revolution",
+  "ww1",
+  "age_of_exploration",
+  "american_civil_war",
+  "black_death",
+  "boxer_rebellion",
+  "cuban_missile_crisis",
+  "decolonization",
+  "first_sino_japanese_war",
+  "korean_war",
+  "mongol_empire",
+  "nanjing_massacre",
+  "reformation",
+  "renaissance",
+  "roman_empire",
+  "russian_revolution",
+  "slave_trade",
+  "ww2",
+]);
 
 export default function Archive() {
   const [activeTab, setActiveTab] = useState("politics");
@@ -206,33 +235,53 @@ export default function Archive() {
         <div className="flex-1 container py-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {ARCHIVE_TOPICS.map((topic, idx) => (
-              <motion.button
+              <motion.div
                 key={topic.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.05 }}
-                onClick={() => setSelectedTopic(topic)}
                 className="text-left border-2 border-border bg-card p-0 shadow-brutal hover:shadow-brutal-lg transition-all group overflow-hidden"
               >
-                <div className="h-32 bg-secondary/30 relative overflow-hidden">
-                  <img src={getImagePath(topic.coverImage)} alt={topic.title} className="w-full h-full object-cover opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-60 transition-all duration-500" />
-                  <div className="absolute bottom-2 left-2 px-2 py-0.5 bg-primary text-primary-foreground font-mono text-[10px] font-bold">
-                    {topic.caseId}
+                <button type="button" onClick={() => setSelectedTopic(topic)} className="w-full text-left">
+                  <div className="h-32 bg-secondary/30 relative overflow-hidden">
+                    <img src={getImagePath(topic.coverImage)} alt={topic.title} className="w-full h-full object-cover opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-60 transition-all duration-500" />
+                    <div className="absolute bottom-2 left-2 px-2 py-0.5 bg-primary text-primary-foreground font-mono text-[10px] font-bold">
+                      {topic.caseId}
+                    </div>
+                    <div className="absolute top-2 right-2 px-2 py-0.5 bg-background/80 font-mono text-[10px] border border-border">
+                      {topic.events.length} 事件
+                    </div>
                   </div>
-                  <div className="absolute top-2 right-2 px-2 py-0.5 bg-background/80 font-mono text-[10px] border border-border">
-                    {topic.events.length} 事件
-                  </div>
-                </div>
+                </button>
                 <div className="p-5">
+                  <button type="button" onClick={() => setSelectedTopic(topic)} className="text-left w-full">
                   <h3 className="text-xl font-bold font-serif mb-1 group-hover:text-primary transition-colors">{topic.title}</h3>
                   <p className="text-xs font-mono text-muted-foreground mb-3">{topic.subtitle} · {topic.period}</p>
                   <p className="text-sm text-muted-foreground font-typewriter leading-relaxed line-clamp-2">{topic.description}</p>
-                  <div className="mt-4 pt-3 border-t border-border/50 flex justify-between items-center">
+                  </button>
+                  <div className="mt-4 pt-3 border-t border-border/50 flex flex-wrap justify-between items-center gap-3">
                     <span className="text-xs font-mono text-muted-foreground">{topic.region}</span>
-                    <span className="text-xs font-mono font-bold text-primary group-hover:underline">进入档案 →</span>
+                    <div className="flex items-center gap-2">
+                      {TOPICS_WITH_TRAVEL_ROUTES.has(topic.id) && (
+                        <Link
+                          href={`/travel?case=${topic.id}`}
+                          className="inline-flex items-center gap-1 text-xs font-mono font-bold text-primary hover:underline"
+                        >
+                          <Route className="w-3 h-3" />
+                          查看历史现场
+                        </Link>
+                      )}
+                      <button
+                        type="button"
+                        onClick={() => setSelectedTopic(topic)}
+                        className="text-xs font-mono font-bold text-primary hover:underline"
+                      >
+                        进入档案 →
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </motion.button>
+              </motion.div>
             ))}
           </div>
         </div>
