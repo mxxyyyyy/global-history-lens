@@ -48,6 +48,8 @@
 }
 
 :root {
+  font-size: 17px;
+
   /* Digital Brutalism + Archival Aesthetics Palette */
   /* Main: Concrete Grey (#2A2A2A) & Archival Paper Yellow (#F0E6D2) */
   
@@ -100,7 +102,7 @@
 
 @media (min-width: 1024px) {
   :root {
-    font-size: 15.5px;
+    font-size: 18px;
   }
 }
 
@@ -199,7 +201,7 @@
     .container {
       padding-left: 2rem;
       padding-right: 2rem;
-      max-width: 1348px;
+      max-width: 1164px;
     }
   }
   
@@ -222,5 +224,22 @@
   
   .text-typewriter {
     @apply font-typewriter;
+  }
+}
+
+@layer utilities {
+  .text-\[9px\] {
+    font-size: 0.625rem;
+    line-height: 0.95rem;
+  }
+
+  .text-\[10px\] {
+    font-size: 0.7rem;
+    line-height: 1rem;
+  }
+
+  .text-\[11px\] {
+    font-size: 0.75rem;
+    line-height: 1.05rem;
   }
 }
