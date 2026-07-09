@@ -29,6 +29,7 @@ const TOPIC_QUESTIONS: { [topicId: string]: string[] } = {
   american_civil_war: ["美国内战的根本原因是什么？", "解放奴隶如何改变战争性质？", "重建时期为什么持续存在争议？"],
   black_death: ["黑死病如何改变中世纪社会？", "瘟疫之后公共卫生观念为何改变？", "不同群体如何解释灾难？"],
   cuban_missile_crisis: ["古巴导弹危机为什么会升级？", "各国领导人如何避免核战争？", "危机之后各方学到了什么？"],
+  ww2: ["珍珠港事件为什么改变了美国参战？", "珍珠港是战术成功还是战略失败？", "罗斯福是否早知道珍珠港会被袭击？"],
 };
 
 const TOPIC_QUESTIONS_EN: { [topicId: string]: string[] } = {
@@ -42,25 +43,36 @@ const TOPIC_QUESTIONS_EN: { [topicId: string]: string[] } = {
   american_civil_war: ["What caused the American Civil War?", "How did emancipation change the war?", "Why did Reconstruction remain contested?"],
   black_death: ["How did plague transform medieval society?", "Why did public health ideas change after plague?", "How did communities explain catastrophe?"],
   cuban_missile_crisis: ["Why did the Cuban Missile Crisis escalate?", "How did leaders avoid nuclear war?", "What did each side learn from the crisis?"],
+  ww2: ["How did Pearl Harbor change U.S. entry into World War II?", "Was Pearl Harbor a tactical success but strategic failure?", "Did Roosevelt know Pearl Harbor would be attacked?"],
 };
 
 const SUGGESTED_QUESTIONS = [
-  "法国大革命的根本原因是什么？",
+  "珍珠港事件为什么改变了美国参战？",
   "谁从工业革命中受益？",
   "古巴导弹危机为什么没有引发核战争？",
   "大航海时代是发现还是征服？",
 ];
 
 const SUGGESTED_QUESTIONS_EN = [
-  "What caused the French Revolution?",
+  "How did Pearl Harbor change U.S. entry into World War II?",
   "Who benefited from the Industrial Revolution?",
   "How did the Cuban Missile Crisis avoid nuclear war?",
   "Was the Age of Exploration discovery or conquest?",
 ];
 
-const PERSONA_SUGGESTED_QUESTIONS: string[] = [];
+const PERSONA_SUGGESTED_QUESTIONS: string[] = [
+  "珍珠港到底发生了什么？",
+  "山本五十六为什么把珍珠港当成战略赌博？",
+  "罗斯福是否早知道珍珠港会被袭击？",
+  "让水兵和日本飞行员谈谈责任与记忆。",
+];
 
-const PERSONA_SUGGESTED_QUESTIONS_EN: string[] = [];
+const PERSONA_SUGGESTED_QUESTIONS_EN: string[] = [
+  "What happened at Pearl Harbor?",
+  "Why did Yamamoto see Pearl Harbor as a strategic gamble?",
+  "Did Roosevelt know Pearl Harbor would be attacked?",
+  "Let the sailor and Japanese pilot discuss responsibility and memory.",
+];
 
 function getResponseForQuestion(question: string) {
   const normalized = question.toLowerCase();
@@ -231,11 +243,22 @@ export default function Dialogue() {
         }
       } catch (e: any) {
         setLlmError(e.message || "AI 调用失败");
-        // 降级到本地
-        const localResp = selectedPersona.responses[text] || selectedPersona.responses[Object.keys(selectedPersona.responses)[0]];
-        if (localResp) {
-          setChatHistory(prev => [...prev, { type: 'bot', content: localResp, mode: mode, persona: selectedPersona }]);
-        }
+        // 降级到本地人物节点引擎
+        const context = personaContext ?? createContext(selectedPersona.id);
+        const localResult = generateLocalResponse(text, context);
+        setPersonaContext(localResult.context);
+        setChatHistory(prev => [...prev, {
+          type: 'bot',
+          content: {
+            content: localResult.response,
+            mood: localResult.mood,
+            emotionScore: localResult.emotionScore,
+            character: selectedPersona.name,
+            _followUpHint: localResult.followUpHint,
+          },
+          mode: mode,
+          persona: selectedPersona,
+        }]);
       }
       setIsLoading(false);
       return;
@@ -273,20 +296,16 @@ export default function Dialogue() {
         }
       } else if (selectedPersona) {
         // 本地对话引擎 - 支持多轮对话
-        if (personaContext) {
-          const result = generateLocalResponse(text, personaContext);
-          setPersonaContext(result.context);
-          response = {
-            content: result.response,
-            mood: result.mood,
-            emotionScore: result.emotionScore,
-            character: selectedPersona.name,
-            _followUpHint: result.followUpHint,
-          };
-        } else {
-          // fallback: 旧逻辑
-          response = selectedPersona.responses[text] || selectedPersona.responses[Object.keys(selectedPersona.responses)[0]];
-        }
+        const context = personaContext ?? createContext(selectedPersona.id);
+        const result = generateLocalResponse(text, context);
+        setPersonaContext(result.context);
+        response = {
+          content: result.response,
+          mood: result.mood,
+          emotionScore: result.emotionScore,
+          character: selectedPersona.name,
+          _followUpHint: result.followUpHint,
+        };
       }
       
       if (response) {

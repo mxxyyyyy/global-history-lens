@@ -13,6 +13,14 @@ const ROLE_LABELS: { [key: string]: string } = {
   exile_student: "流亡学生",
   railway_worker: "铁路工人",
   civilian: "普通市民",
+  president: "国家元首",
+  admiral: "海军将领",
+  prime_minister: "战时首相",
+  diplomat: "外交观察者",
+  sailor: "现场水兵",
+  pilot: "舰载机飞行员",
+  minority_civilian: "族裔平民",
+  commentator: "争议评论员",
 };
 
 const ROLE_ICONS: { [key: string]: string } = {
@@ -20,6 +28,14 @@ const ROLE_ICONS: { [key: string]: string } = {
   exile_student: "📖",
   railway_worker: "🔧",
   civilian: "🏠",
+  president: "🏛️",
+  admiral: "⚓",
+  prime_minister: "🎙️",
+  diplomat: "🖋️",
+  sailor: "🌊",
+  pilot: "✈️",
+  minority_civilian: "🏠",
+  commentator: "📰",
 };
 
 const TRAIT_COLORS: { [key: string]: string } = {
@@ -97,6 +113,20 @@ export default function PersonaSelector({ personas, selectedPersona, onSelect }:
             {/* 身份档案 */}
             {'profile' in selectedPersona && selectedPersona.profile && (
               <>
+                <div className="bg-secondary/40 border border-border/50 p-2.5 space-y-1.5">
+                  <div className="flex flex-wrap gap-1">
+                    <span className="text-[10px] font-mono px-1.5 py-0.5 bg-amber-100 text-amber-900 border border-amber-200">
+                      {selectedPersona.personaType}
+                    </span>
+                    <span className="text-[10px] font-mono px-1.5 py-0.5 bg-background border border-border/50">
+                      {selectedPersona.credibilityType}
+                    </span>
+                  </div>
+                  <p className="text-[11px] font-typewriter text-muted-foreground leading-relaxed">
+                    {selectedPersona.stance}
+                  </p>
+                </div>
+
                 <div className="bg-amber-50/50 border border-amber-200/50 p-2.5 space-y-1.5">
                   <h5 className="font-mono text-[10px] font-bold uppercase text-amber-800 flex items-center gap-1">
                     <BookOpen className="w-3 h-3" /> 身份档案
@@ -173,6 +203,15 @@ export default function PersonaSelector({ personas, selectedPersona, onSelect }:
                   </h5>
                   <p className="text-[11px] font-serif text-foreground/70 leading-relaxed">
                     {selectedPersona.profile.innerConflict}
+                  </p>
+                </div>
+
+                <div className="bg-background border border-border/50 p-2.5 space-y-1.5">
+                  <h5 className="font-mono text-[10px] font-bold uppercase text-foreground/60 flex items-center gap-1">
+                    <BookOpen className="w-3 h-3" /> 话题节点
+                  </h5>
+                  <p className="text-[11px] font-typewriter text-muted-foreground leading-relaxed">
+                    已预置 {selectedPersona.topicNodes.length} 个珍珠港话题节点。知识边界：{selectedPersona.knowledgeBoundary}
                   </p>
                 </div>
               </>

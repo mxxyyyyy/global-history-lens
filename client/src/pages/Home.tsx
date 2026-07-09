@@ -205,46 +205,46 @@ export default function Home() {
           <div className="relative border-b-2 lg:border-b-0 lg:border-r-2 border-border overflow-hidden group">
             <div className="absolute inset-0 bg-primary/20 mix-blend-multiply z-10 group-hover:bg-transparent transition-all duration-500"></div>
             <img
-              src={getImagePath("/images/french-revolution-cover.jpg")}
-              alt="French Revolution archive cover"
+              src={getImagePath("/images/ww2-cover.jpg")}
+              alt="Pearl Harbor archive cover"
               className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
             />
             <div className="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/80 to-transparent z-20">
               <span className="inline-block px-3 py-1 bg-primary text-primary-foreground font-mono text-xs font-bold mb-2">{t("专题案例", "Featured Case")}</span>
-              <h3 className="text-3xl md:text-4xl font-bold text-white font-serif">{t("法国大革命（1789-1799）", "French Revolution (1789-1799)")}</h3>
+              <h3 className="text-3xl md:text-4xl font-bold text-white font-serif">{t("珍珠港事件（1941）", "Pearl Harbor (1941)")}</h3>
             </div>
           </div>
 
           <div className="p-12 lg:p-20 flex flex-col justify-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-mono uppercase">{t("全球视野中的", "Revolution in")}<br/>{t("革命时代", "Global Perspective")}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-mono uppercase">{t("跨时空对话中的", "Cross-Time Dialogue")}<br/>{t("珍珠港", "Pearl Harbor")}</h2>
             <div className="w-20 h-2 bg-primary mb-8"></div>
 
             <p className="text-lg text-muted-foreground mb-8 font-serif leading-relaxed">
-              {t("通过法国、英国、美国与现代学术视角，比较革命理想、国家暴力、社会断裂与政治记忆。", "Compare revolutionary ideals, state violence, social rupture, and political memory through French, British, American, and modern scholarly sources.")}
+              {t("以罗斯福、山本五十六、丘吉尔、胡适、现场水兵、舰载机飞行员、檀香山日裔居民和争议评论员为核心，重建现场经验、战略赌博、政治动员与战后记忆之间的多声部对话。", "Use Roosevelt, Yamamoto, Churchill, Hu Shih, a Pearl Harbor sailor, a Japanese pilot, a Honolulu Japanese American resident, and an isolationist critic to reconstruct the event through lived experience, strategy, mobilization, and memory.")}
             </p>
 
             <div className="grid grid-cols-2 gap-6 mb-10">
               <div className="border-l-2 border-primary pl-4">
-                <h4 className="font-bold font-mono text-sm uppercase mb-1">{t("政治", "Politics")}</h4>
-                <p className="text-sm text-muted-foreground">{t("主权、权利与革命制度", "Sovereignty, rights, and revolutionary institutions")}</p>
+                <h4 className="font-bold font-mono text-sm uppercase mb-1">{t("现场", "Scene")}</h4>
+                <p className="text-sm text-muted-foreground">{t("爆炸、浓烟、伤员与幸存者记忆", "Explosion, smoke, casualties, and survivor memory")}</p>
               </div>
               <div className="border-l-2 border-primary pl-4">
-                <h4 className="font-bold font-mono text-sm uppercase mb-1">{t("经济", "Economy")}</h4>
-                <p className="text-sm text-muted-foreground">{t("债务、匮乏、税制与社会压力", "Debt, scarcity, taxation, and social pressure")}</p>
+                <h4 className="font-bold font-mono text-sm uppercase mb-1">{t("战略", "Strategy")}</h4>
+                <p className="text-sm text-muted-foreground">{t("资源禁运、南进战略与航母奇袭", "Embargoes, southern strategy, and carrier attack")}</p>
               </div>
               <div className="border-l-2 border-primary pl-4">
-                <h4 className="font-bold font-mono text-sm uppercase mb-1">{t("社会", "Society")}</h4>
-                <p className="text-sm text-muted-foreground">{t("公民身份、阶级冲突与大众动员", "Citizenship, class conflict, and public mobilization")}</p>
+                <h4 className="font-bold font-mono text-sm uppercase mb-1">{t("动员", "Mobilization")}</h4>
+                <p className="text-sm text-muted-foreground">{t("国会宣战、工业转型与同盟国结构", "Declaration, industrial conversion, and Allied structure")}</p>
               </div>
               <div className="border-l-2 border-primary pl-4">
-                <h4 className="font-bold font-mono text-sm uppercase mb-1">{t("冲突", "Conflict")}</h4>
-                <p className="text-sm text-muted-foreground">{t("内战暴力、战争与记忆争夺", "Civil violence, war, and contested memory")}</p>
+                <h4 className="font-bold font-mono text-sm uppercase mb-1">{t("争议", "Controversy")}</h4>
+                <p className="text-sm text-muted-foreground">{t("情报失败、阴谋边界与公民权问题", "Intelligence failure, conspiracy boundaries, and civil rights")}</p>
               </div>
             </div>
 
-            <Link href="/archive" className="inline-block">
+            <Link href="/dialogue" className="inline-block">
               <Button size="lg" className="self-start rounded-none border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground shadow-brutal-sm hover:shadow-brutal transition-all">
-                {t("进入档案库", "Explore the archive")}
+                {t("进入人物对话", "Open persona dialogue")}
               </Button>
             </Link>
           </div>
