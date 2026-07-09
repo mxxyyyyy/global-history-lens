@@ -14,6 +14,7 @@ import Travel from "./pages/Travel";
 import Showcase from "./pages/Showcase";
 import DialogueHistory from "./pages/DialogueHistory";
 import Login from "./pages/Login";
+import About from "./pages/About";
 
 
 const base = "/";
@@ -30,6 +31,7 @@ function AppRouter() {
           <Route path={"/dialogue-history"} component={DialogueHistory} />
           <Route path={"/travel"} component={Travel} />
           <Route path={"/showcase"} component={Showcase} />
+          <Route path={"/about"} component={About} />
           <Route path={"/login"} component={Login} />
           <Route path={"/account"} component={Login} />
           <Route path={"/404"} component={NotFound} />
