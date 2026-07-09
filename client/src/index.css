@@ -12,7 +12,7 @@
   --radius-md: 0px;
   --radius-lg: 0px;
   --radius-xl: 0px;
-  
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -52,47 +52,47 @@
 
   /* Digital Brutalism + Archival Aesthetics Palette */
   /* Main: Concrete Grey (#2A2A2A) & Archival Paper Yellow (#F0E6D2) */
-  
+
   --primary: oklch(0.25 0.02 280); /* Dark Grey/Black for primary actions */
   --primary-foreground: oklch(0.92 0.02 90); /* Paper Yellow */
-  
+
   --sidebar-primary: oklch(0.25 0.02 280);
   --sidebar-primary-foreground: oklch(0.92 0.02 90);
-  
+
   --chart-1: oklch(0.45 0.15 30); /* Rust Red */
   --chart-2: oklch(0.55 0.12 85); /* Amber/Gold */
-  --chart-3: oklch(0.35 0.10 250); /* Deep Blue */
-  --chart-4: oklch(0.40 0.05 140); /* Olive Green */
-  --chart-5: oklch(0.30 0.02 280); /* Dark Grey */
-  
+  --chart-3: oklch(0.35 0.1 250); /* Deep Blue */
+  --chart-4: oklch(0.4 0.05 140); /* Olive Green */
+  --chart-5: oklch(0.3 0.02 280); /* Dark Grey */
+
   --radius: 0px; /* Brutalist style has no rounded corners */
-  
+
   --background: oklch(0.92 0.02 90); /* Archival Paper Yellow #F0E6D2 */
   --foreground: oklch(0.25 0.02 280); /* Concrete Grey #2A2A2A */
-  
+
   --card: oklch(0.94 0.01 90); /* Slightly lighter paper */
   --card-foreground: oklch(0.25 0.02 280);
-  
+
   --popover: oklch(0.94 0.01 90);
   --popover-foreground: oklch(0.25 0.02 280);
-  
+
   --secondary: oklch(0.85 0.03 90); /* Darker paper for secondary elements */
   --secondary-foreground: oklch(0.25 0.02 280);
-  
+
   --muted: oklch(0.88 0.02 90);
   --muted-foreground: oklch(0.45 0.02 280);
-  
+
   --accent: oklch(0.85 0.03 90);
   --accent-foreground: oklch(0.25 0.02 280);
-  
+
   --destructive: oklch(0.45 0.15 30); /* Rust Red */
   --destructive-foreground: oklch(0.95 0.01 90);
-  
+
   --border: oklch(0.25 0.02 280); /* High contrast borders */
   --input: oklch(0.25 0.02 280);
   --ring: oklch(0.25 0.02 280);
-  
-  --sidebar: oklch(0.90 0.02 90);
+
+  --sidebar: oklch(0.9 0.02 90);
   --sidebar-foreground: oklch(0.25 0.02 280);
   --sidebar-accent: oklch(0.85 0.03 90);
   --sidebar-accent-foreground: oklch(0.25 0.02 280);
@@ -110,47 +110,47 @@
   /* Inverted mode: Dark Archive */
   --primary: oklch(0.92 0.02 90);
   --primary-foreground: oklch(0.25 0.02 280);
-  
+
   --sidebar-primary: oklch(0.92 0.02 90);
   --sidebar-primary-foreground: oklch(0.25 0.02 280);
-  
-  --background: oklch(0.20 0.02 280); /* Darker Concrete */
-  --foreground: oklch(0.90 0.02 90); /* Aged Paper Text */
-  
+
+  --background: oklch(0.2 0.02 280); /* Darker Concrete */
+  --foreground: oklch(0.9 0.02 90); /* Aged Paper Text */
+
   --card: oklch(0.22 0.02 280);
-  --card-foreground: oklch(0.90 0.02 90);
-  
+  --card-foreground: oklch(0.9 0.02 90);
+
   --popover: oklch(0.22 0.02 280);
-  --popover-foreground: oklch(0.90 0.02 90);
-  
+  --popover-foreground: oklch(0.9 0.02 90);
+
   --secondary: oklch(0.28 0.02 280);
-  --secondary-foreground: oklch(0.90 0.02 90);
-  
+  --secondary-foreground: oklch(0.9 0.02 90);
+
   --muted: oklch(0.28 0.02 280);
   --muted-foreground: oklch(0.65 0.02 90);
-  
+
   --accent: oklch(0.28 0.02 280);
   --accent-foreground: oklch(0.95 0.02 90);
-  
+
   --destructive: oklch(0.45 0.15 30);
   --destructive-foreground: oklch(0.95 0.01 90);
-  
-  --border: oklch(0.40 0.02 280); /* Visible but not overwhelming borders */
-  --input: oklch(0.40 0.02 280);
-  --ring: oklch(0.60 0.02 90);
-  
+
+  --border: oklch(0.4 0.02 280); /* Visible but not overwhelming borders */
+  --input: oklch(0.4 0.02 280);
+  --ring: oklch(0.6 0.02 90);
+
   --chart-1: oklch(0.45 0.15 30);
   --chart-2: oklch(0.55 0.12 85);
-  --chart-3: oklch(0.35 0.10 250);
-  --chart-4: oklch(0.40 0.05 140);
-  --chart-5: oklch(0.30 0.02 280);
-  
+  --chart-3: oklch(0.35 0.1 250);
+  --chart-4: oklch(0.4 0.05 140);
+  --chart-5: oklch(0.3 0.02 280);
+
   --sidebar: oklch(0.18 0.02 280);
-  --sidebar-foreground: oklch(0.90 0.02 90);
+  --sidebar-foreground: oklch(0.9 0.02 90);
   --sidebar-accent: oklch(0.25 0.02 280);
   --sidebar-accent-foreground: oklch(0.95 0.02 90);
-  --sidebar-border: oklch(0.40 0.02 280);
-  --sidebar-ring: oklch(0.60 0.02 90);
+  --sidebar-border: oklch(0.4 0.02 280);
+  --sidebar-ring: oklch(0.6 0.02 90);
 }
 
 @layer base {
@@ -160,7 +160,12 @@
   body {
     @apply bg-background text-foreground font-sans;
   }
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-mono uppercase tracking-tight;
   }
   button:not(:disabled),
@@ -204,26 +209,775 @@
       max-width: 1164px;
     }
   }
-  
+
   /* Custom Utility Classes for Brutalist Style */
   .border-brutal {
     @apply border-2 border-border;
   }
-  
+
   .shadow-brutal {
     box-shadow: 4px 4px 0px 0px var(--color-border);
   }
-  
+
   .shadow-brutal-sm {
     box-shadow: 2px 2px 0px 0px var(--color-border);
   }
-  
+
   .shadow-brutal-lg {
     box-shadow: 8px 8px 0px 0px var(--color-border);
   }
-  
+
   .text-typewriter {
     @apply font-typewriter;
+  }
+
+  .archive-hero-title {
+    max-width: 38rem;
+    font-family: var(--font-mono);
+    font-size: clamp(4.25rem, 8.4vw, 8rem);
+    font-weight: 800;
+    line-height: 0.88;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .archive-hero-title-serif {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  .archive-hero-subtitle {
+    font-family: var(--font-sans);
+    letter-spacing: 0;
+  }
+
+  .archive-desk {
+    --drift-x: 0px;
+    --drift-y: 0px;
+    position: relative;
+    min-height: clamp(34rem, 64vh, 44rem);
+    perspective: 1400px;
+  }
+
+  .archive-paper {
+    --paper-open-x: var(--open-x);
+    --paper-open-y: var(--open-y);
+    position: absolute;
+    display: block;
+    width: clamp(17rem, 26vw, 24rem);
+    min-height: clamp(24rem, 55vh, 29rem);
+    padding: 1rem 1rem 1.2rem;
+    overflow: hidden;
+    isolation: isolate;
+    border: 1px solid rgba(31, 29, 26, 0.86);
+    outline: 1px solid rgba(245, 233, 200, 0.22);
+    background:
+      radial-gradient(
+        circle at 12% 18%,
+        rgba(91, 58, 35, 0.2),
+        transparent 18%
+      ),
+      radial-gradient(
+        circle at 78% 72%,
+        rgba(94, 69, 41, 0.16),
+        transparent 22%
+      ),
+      linear-gradient(
+        88deg,
+        rgba(255, 255, 255, 0.16) 0 1px,
+        transparent 1px 14px
+      ),
+      linear-gradient(
+        101deg,
+        transparent 0 46%,
+        rgba(255, 255, 255, 0.18) 48%,
+        rgba(31, 29, 26, 0.1) 49%,
+        transparent 53%
+      ),
+      linear-gradient(rgba(239, 225, 191, 0.88), rgba(224, 204, 154, 0.92)),
+      url("/images/archive-texture.jpg") center / cover;
+    background-blend-mode:
+      multiply, multiply, soft-light, overlay, normal, multiply;
+    clip-path: polygon(0.7% 0.4%, 99.3% 0, 100% 98.9%, 1% 100%, 0 1.2%);
+    color: #1f1d1a;
+    box-shadow:
+      16px 18px 0 rgba(0, 0, 0, 0.48),
+      0 18px 42px rgba(0, 0, 0, 0.36),
+      inset 0 0 0 1px rgba(31, 29, 26, 0.18),
+      inset 0 0 44px rgba(86, 59, 31, 0.24);
+    filter: sepia(0.22) saturate(0.86) contrast(1.05);
+    transform: translate3d(
+        calc(var(--paper-open-x) + var(--drift-x)),
+        calc(var(--paper-open-y) + var(--drift-y)),
+        0
+      )
+      rotate(var(--open-rotate)) rotateX(0deg) scale(1);
+    transform-origin: 50% 100%;
+    z-index: var(--base-z);
+    opacity: 0.94;
+    will-change: transform, filter;
+    transition:
+      transform 680ms cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 520ms ease,
+      filter 240ms ease,
+      box-shadow 240ms ease;
+  }
+
+  .archive-paper:hover,
+  .archive-paper.is-active,
+  .archive-paper:focus-visible {
+    z-index: 30;
+    opacity: 1;
+    filter: sepia(0.06) saturate(1.02) contrast(1.08) brightness(1.03);
+    box-shadow:
+      22px 24px 0 rgba(0, 0, 0, 0.45),
+      0 24px 58px rgba(0, 0, 0, 0.48),
+      inset 0 0 0 1px rgba(31, 29, 26, 0.2),
+      inset 0 0 34px rgba(86, 59, 31, 0.16);
+    transform: translate3d(
+        calc(var(--paper-open-x) + var(--drift-x)),
+        calc(var(--paper-open-y) + var(--drift-y) - 1rem),
+        0
+      )
+      rotate(calc(var(--open-rotate) / 2)) rotateX(0deg) scale(1.04);
+  }
+
+  .archive-paper:focus-visible {
+    outline: 3px solid var(--color-ring);
+    outline-offset: 4px;
+  }
+
+  .archive-paper > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  .archive-paper::before {
+    content: attr(data-code);
+    display: block;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.45rem;
+    border-bottom: 5px double rgba(31, 29, 26, 0.78);
+    font-family: var(--font-typewriter);
+    font-size: 0.67rem;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    line-height: 1.2;
+  }
+
+  .archive-paper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        rgba(31, 29, 26, 0.055) 0 1px,
+        transparent 1px 4px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent 0 18px,
+        rgba(31, 29, 26, 0.04) 18px 19px,
+        transparent 19px 38px
+      ),
+      radial-gradient(
+        circle at 28% 20%,
+        rgba(31, 29, 26, 0.16),
+        transparent 1px
+      ),
+      radial-gradient(
+        circle at 64% 68%,
+        rgba(31, 29, 26, 0.13),
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(31, 29, 26, 0.14),
+        transparent 5%,
+        transparent 95%,
+        rgba(31, 29, 26, 0.16)
+      );
+    background-size:
+      auto,
+      auto,
+      9px 9px,
+      13px 13px,
+      auto;
+    mix-blend-mode: multiply;
+    opacity: 0.68;
+  }
+
+  .archive-paper h2 {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2rem, 3.4vw, 2.75rem);
+    line-height: 0.92;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    text-shadow:
+      0.7px 0 rgba(31, 29, 26, 0.45),
+      -0.4px 0 rgba(31, 29, 26, 0.22);
+  }
+
+  .archive-paper h2::after {
+    content: "";
+    display: block;
+    height: 5px;
+    margin-top: 0.55rem;
+    border-top: 2px solid rgba(31, 29, 26, 0.72);
+    border-bottom: 1px solid rgba(31, 29, 26, 0.42);
+  }
+
+  .archive-paper p {
+    margin: 0.85rem 0 0;
+    color: rgba(31, 29, 26, 0.72);
+    font-family: var(--font-typewriter);
+    font-size: 0.76rem;
+    line-height: 1.55;
+  }
+
+  .archive-paper-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.55rem;
+    margin-top: 1rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(31, 29, 26, 0.42);
+  }
+
+  .archive-paper-columns span {
+    display: block;
+    min-height: 0.38rem;
+    margin-bottom: 0.38rem;
+    background: rgba(31, 29, 26, 0.58);
+  }
+
+  .archive-paper-columns span:nth-child(2) {
+    width: 84%;
+  }
+
+  .archive-paper-columns span:nth-child(3) {
+    width: 92%;
+  }
+
+  .archive-paper-columns span:nth-child(4) {
+    width: 66%;
+  }
+
+  .archive-paper-stamp {
+    position: absolute;
+    right: 0.85rem;
+    bottom: 0.9rem;
+    width: 5.2rem;
+    height: 5.2rem;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    border: 3px solid currentColor;
+    border-radius: 50%;
+    color: oklch(0.45 0.15 30);
+    font-family: var(--font-typewriter);
+    font-size: 0.58rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    line-height: 1.12;
+    text-align: center;
+    transform: rotate(-14deg) scale(0.78);
+    opacity: 0.18;
+    transition:
+      opacity 220ms ease,
+      transform 220ms ease;
+  }
+
+  .archive-paper-stamp span {
+    display: block;
+  }
+
+  .archive-paper:nth-child(2) .archive-paper-stamp {
+    color: oklch(0.35 0.1 250);
+  }
+
+  .archive-paper:nth-child(3) .archive-paper-stamp {
+    color: oklch(0.4 0.05 140);
+  }
+
+  .archive-paper:hover .archive-paper-stamp,
+  .archive-paper.is-active .archive-paper-stamp,
+  .archive-paper:focus-visible .archive-paper-stamp {
+    opacity: 0.78;
+    transform: rotate(-10deg) scale(0.96);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .archive-paper {
+      animation: archive-paper-unfold 900ms cubic-bezier(0.16, 1, 0.3, 1)
+        backwards;
+      animation-delay: var(--paper-delay, 0ms);
+    }
+  }
+
+  @keyframes archive-paper-unfold {
+    from {
+      opacity: 0;
+      transform: translate3d(var(--start-x), var(--start-y), 0)
+        rotate(var(--closed-rotate)) rotateX(68deg) scale(0.72);
+    }
+
+    to {
+      opacity: 0.58;
+      transform: translate3d(
+          calc(var(--paper-open-x) + var(--drift-x)),
+          calc(var(--paper-open-y) + var(--drift-y)),
+          0
+        )
+        rotate(var(--open-rotate)) rotateX(0deg) scale(1);
+    }
+  }
+
+  @media (max-width: 1023px) {
+    .archive-desk {
+      min-height: 34rem;
+      width: min(100%, 38rem);
+      margin: 0 auto;
+    }
+
+    .archive-paper {
+      --paper-open-x: var(--mobile-open-x);
+      --paper-open-y: var(--mobile-open-y);
+      width: min(74vw, 18rem);
+      min-height: 20rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .archive-desk {
+      min-height: 33rem;
+    }
+
+    .archive-paper {
+      width: min(78vw, 16.5rem);
+      min-height: 19.5rem;
+    }
+
+    .archive-paper h2 {
+      font-size: clamp(1.8rem, 9vw, 2.25rem);
+    }
+
+    .archive-paper p {
+      font-size: 0.72rem;
+    }
+  }
+
+  .archive-awakening-hero {
+    cursor: crosshair;
+    background:
+      radial-gradient(
+        ellipse at 30% 22%,
+        color-mix(in oklch, var(--background) 58%, white 6%),
+        transparent 38%
+      ),
+      color-mix(in oklch, var(--background) 78%, var(--foreground) 12%);
+  }
+
+  .archive-hero-base-image {
+    opacity: 0.48;
+    filter: grayscale(1) contrast(1.18) brightness(0.68);
+    transform: scale(1.04);
+  }
+
+  .archive-hero-reveal {
+    filter: sepia(0.34) saturate(1.02) contrast(1.08) brightness(1.02);
+  }
+
+  .archive-hero-sleep {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(25, 23, 20, 0.16),
+        rgba(25, 23, 20, 0.03) 42%,
+        rgba(25, 23, 20, 0.18)
+      ),
+      radial-gradient(
+        circle at 48% 35%,
+        transparent 0 36%,
+        rgba(25, 23, 20, 0.16) 78%
+      );
+    opacity: 0.82;
+    transition: opacity 240ms ease;
+  }
+
+  .archive-awakening-hero.is-awake .archive-hero-sleep {
+    opacity: 0.34;
+  }
+
+  .archive-hero-grain {
+    opacity: 0.22;
+    mix-blend-mode: multiply;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        rgba(31, 29, 26, 0.045) 0 1px,
+        transparent 1px 3px
+      ),
+      radial-gradient(
+        circle at 20% 30%,
+        rgba(31, 29, 26, 0.14),
+        transparent 1px
+      ),
+      radial-gradient(
+        circle at 78% 66%,
+        rgba(31, 29, 26, 0.12),
+        transparent 1px
+      );
+    background-size:
+      auto,
+      11px 11px,
+      17px 17px;
+  }
+
+  .archive-hero-lamp {
+    background: radial-gradient(
+      circle,
+      rgba(240, 230, 210, 0.34) 0%,
+      rgba(225, 204, 158, 0.18) 38%,
+      transparent 72%
+    );
+  }
+
+  .archive-desk::before {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    right: 9%;
+    bottom: 6%;
+    width: min(58%, 23rem);
+    height: 4.8rem;
+    border: 1px solid color-mix(in oklch, var(--foreground) 42%, transparent);
+    background:
+      linear-gradient(
+        180deg,
+        color-mix(in oklch, var(--secondary) 88%, var(--foreground) 5%),
+        color-mix(in oklch, var(--background) 84%, var(--foreground) 7%)
+      ),
+      url("/images/archive-texture.jpg") center / cover;
+    box-shadow:
+      10px 12px 0 rgba(31, 29, 26, 0.26),
+      inset 0 0 28px rgba(31, 29, 26, 0.12);
+    filter: grayscale(0.72) contrast(0.92);
+    opacity: 0;
+    transform: rotate(-3deg);
+    transition:
+      opacity 360ms ease,
+      transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .archive-awakening-hero.has-unfolded .archive-desk::before {
+    opacity: 0;
+    transform: translateY(2.5rem) rotate(-8deg) scale(0.9);
+  }
+
+  .archive-paper {
+    background:
+      radial-gradient(
+        circle at 12% 18%,
+        color-mix(in oklch, var(--foreground) 14%, transparent),
+        transparent 18%
+      ),
+      radial-gradient(
+        circle at 78% 72%,
+        color-mix(in oklch, var(--chart-2) 18%, transparent),
+        transparent 22%
+      ),
+      linear-gradient(
+        88deg,
+        rgba(255, 255, 255, 0.1) 0 1px,
+        transparent 1px 14px
+      ),
+      linear-gradient(
+        101deg,
+        transparent 0 46%,
+        rgba(255, 255, 255, 0.12) 48%,
+        rgba(31, 29, 26, 0.08) 49%,
+        transparent 53%
+      ),
+      linear-gradient(
+        color-mix(in oklch, var(--background) 92%, white 3%),
+        color-mix(in oklch, var(--secondary) 78%, var(--background) 22%)
+      ),
+      url("/images/archive-texture.jpg") center / cover;
+    background-blend-mode:
+      multiply, multiply, soft-light, overlay, normal, multiply;
+    border-color: color-mix(in oklch, var(--foreground) 78%, transparent);
+    color: var(--foreground);
+    filter: grayscale(0.62) sepia(0.08) saturate(0.62) contrast(0.96)
+      brightness(0.86);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate3d(var(--start-x), var(--start-y), 0)
+      rotate(var(--closed-rotate)) rotateX(68deg) scale(0.72);
+  }
+
+  .archive-awakening-hero.has-unfolded .archive-paper {
+    opacity: 0.58;
+    pointer-events: auto;
+    filter: grayscale(0.12) sepia(0.08) saturate(0.84) contrast(1.02)
+      brightness(0.96);
+    transform: translate3d(
+        calc(var(--paper-open-x) + var(--drift-x)),
+        calc(var(--paper-open-y) + var(--drift-y)),
+        0
+      )
+      rotate(var(--open-rotate)) rotateX(0deg) scale(1);
+  }
+
+  .archive-awakening-hero.has-unfolded .archive-paper:hover,
+  .archive-awakening-hero.has-unfolded .archive-paper.is-active,
+  .archive-awakening-hero.has-unfolded .archive-paper:focus-visible {
+    color: var(--foreground);
+    filter: grayscale(0) sepia(0.04) saturate(0.94) contrast(1.06)
+      brightness(1.01);
+    opacity: 1;
+    transform: translate3d(
+        calc(var(--paper-open-x) + var(--drift-x)),
+        calc(var(--paper-open-y) + var(--drift-y) - 1rem),
+        0
+      )
+      rotate(calc(var(--open-rotate) / 2)) rotateX(0deg) scale(1.05);
+    z-index: 30;
+  }
+
+  .archive-awakening-hero.has-unfolded .archive-paper.is-opening {
+    z-index: 50;
+    opacity: 1;
+    pointer-events: none;
+    filter: grayscale(0) sepia(0.02) saturate(1.02) contrast(1.1)
+      brightness(1.04);
+    box-shadow:
+      30px 34px 0 rgba(0, 0, 0, 0.42),
+      0 34px 72px rgba(0, 0, 0, 0.52),
+      inset 0 0 0 1px rgba(31, 29, 26, 0.22),
+      inset 0 0 30px rgba(86, 59, 31, 0.12);
+    transform: translate3d(
+        calc(var(--paper-open-x) + var(--drift-x) - 1.2rem),
+        calc(var(--paper-open-y) + var(--drift-y) - 2.2rem),
+        0
+      )
+      rotate(calc(var(--open-rotate) / 3)) rotateX(0deg) scale(1.18);
+    transition:
+      transform 340ms cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 220ms ease,
+      filter 220ms ease,
+      box-shadow 220ms ease;
+  }
+
+  .archive-awakening-hero:not(.has-unfolded) .archive-paper:hover {
+    opacity: 0;
+    transform: translate3d(var(--start-x), var(--start-y), 0)
+      rotate(var(--closed-rotate)) rotateX(68deg) scale(0.72);
+  }
+
+  .archive-paper::before {
+    content: attr(data-code) "\A" attr(data-year);
+    white-space: pre-line;
+    color: color-mix(in oklch, var(--foreground) 78%, transparent);
+    opacity: 0.62;
+  }
+
+  .archive-paper-kicker {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    padding: 0.2rem 0.35rem;
+    border: 1px solid color-mix(in oklch, var(--foreground) 54%, transparent);
+    color: color-mix(in oklch, var(--foreground) 88%, transparent);
+    background: color-mix(in oklch, var(--background) 72%, transparent);
+    font-family: var(--font-typewriter);
+    font-size: 0.66rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    opacity: 0;
+    transform: translateY(0.35rem);
+    transition:
+      opacity 220ms ease,
+      transform 220ms ease;
+  }
+
+  .archive-paper h2 {
+    opacity: 0.68;
+    color: color-mix(in oklch, var(--foreground) 88%, transparent);
+    transition:
+      color 220ms ease,
+      opacity 220ms ease,
+      transform 220ms ease;
+  }
+
+  .archive-paper:hover h2,
+  .archive-paper.is-active h2,
+  .archive-paper:focus-visible h2 {
+    opacity: 1;
+    color: var(--foreground);
+    transform: translateY(-0.08rem);
+  }
+
+  .archive-paper:hover .archive-paper-kicker,
+  .archive-paper.is-active .archive-paper-kicker,
+  .archive-paper:focus-visible .archive-paper-kicker {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .archive-paper-stamp {
+    color: color-mix(in oklch, var(--chart-1) 62%, var(--foreground) 38%);
+  }
+
+  .archive-paper:nth-child(2) .archive-paper-stamp {
+    color: color-mix(in oklch, var(--chart-3) 58%, var(--foreground) 42%);
+  }
+
+  .archive-paper:nth-child(3) .archive-paper-stamp {
+    color: color-mix(in oklch, var(--chart-4) 62%, var(--foreground) 38%);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .archive-paper {
+      animation: none;
+    }
+
+    .archive-awakening-hero.has-unfolded .archive-paper {
+      animation: archive-paper-unfold 900ms cubic-bezier(0.16, 1, 0.3, 1)
+        backwards;
+      animation-delay: var(--paper-delay, 0ms);
+    }
+  }
+
+  .archive-feature-section {
+    background:
+      linear-gradient(
+        180deg,
+        color-mix(in oklch, var(--secondary) 54%, var(--background) 46%) 0,
+        var(--background) 8rem
+      ),
+      var(--background);
+  }
+
+  .archive-feature-section::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 8rem;
+    pointer-events: none;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        color-mix(in oklch, var(--foreground) 7%, transparent) 0 1px,
+        transparent 1px 4rem
+      ),
+      linear-gradient(
+        180deg,
+        color-mix(in oklch, var(--foreground) 13%, transparent),
+        transparent
+      );
+    opacity: 0.7;
+  }
+
+  .archive-fold-rail {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .archive-fold-rail span {
+    height: 3.5rem;
+    border: 1px solid color-mix(in oklch, var(--foreground) 48%, transparent);
+    background:
+      linear-gradient(
+        100deg,
+        transparent 0 48%,
+        color-mix(in oklch, var(--foreground) 9%, transparent) 49%,
+        color-mix(in oklch, white 18%, transparent) 51%,
+        transparent 54%
+      ),
+      linear-gradient(
+        color-mix(in oklch, var(--background) 88%, white 4%),
+        color-mix(in oklch, var(--secondary) 78%, var(--background) 22%)
+      ),
+      url("/images/archive-texture.jpg") center / cover;
+    background-blend-mode: overlay, normal, multiply;
+    box-shadow: 3px 3px 0
+      color-mix(in oklch, var(--foreground) 52%, transparent);
+    transform: rotateX(34deg) translateY(-1.2rem);
+    transform-origin: 50% 0%;
+    animation: archive-fold-arrive 760ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    animation-delay: var(--fold-delay, 0ms);
+  }
+
+  .archive-feature-card {
+    background:
+      linear-gradient(
+        105deg,
+        transparent 0 46%,
+        color-mix(in oklch, var(--foreground) 6%, transparent) 48%,
+        color-mix(in oklch, white 18%, transparent) 50%,
+        transparent 54%
+      ),
+      linear-gradient(
+        color-mix(in oklch, var(--card) 86%, var(--background) 14%),
+        color-mix(in oklch, var(--secondary) 45%, var(--card) 55%)
+      );
+    transform-style: preserve-3d;
+  }
+
+  .archive-feature-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        color-mix(in oklch, var(--foreground) 5%, transparent) 0 1px,
+        transparent 1px 4px
+      ),
+      linear-gradient(
+        90deg,
+        color-mix(in oklch, var(--foreground) 9%, transparent),
+        transparent 9%,
+        transparent 91%,
+        color-mix(in oklch, var(--foreground) 8%, transparent)
+      );
+    opacity: 0.46;
+    mix-blend-mode: multiply;
+  }
+
+  @keyframes archive-fold-arrive {
+    from {
+      opacity: 0;
+      transform: rotateX(78deg) translateY(-4.5rem) scaleX(0.88);
+    }
+
+    to {
+      opacity: 1;
+      transform: rotateX(34deg) translateY(-1.2rem) scaleX(1);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .archive-fold-rail {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+
+    .archive-fold-rail span {
+      height: 2.2rem;
+    }
   }
 }
 
