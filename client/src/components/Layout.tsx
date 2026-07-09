@@ -244,7 +244,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               </h3>
               <ul className="space-y-2 text-sm font-typewriter">
                 <li><Link href="/about#vision" className="hover:underline decoration-primary decoration-2 underline-offset-4">{t("项目愿景", "Vision")}</Link></li>
-                <li><Link href="/about#team" className="hover:underline decoration-primary decoration-2 underline-offset-4">{t("研究团队", "Research Team")}</Link></li>
                 <li><Link href="/about#partners" className="hover:underline decoration-primary decoration-2 underline-offset-4">{t("合作伙伴", "Partners")}</Link></li>
                 <li><Link href="/about#contact" className="hover:underline decoration-primary decoration-2 underline-offset-4">{t("联系我们", "Contact")}</Link></li>
               </ul>

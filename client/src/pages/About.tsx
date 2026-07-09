@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { getImagePath } from "@/lib/utils";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { getImagePath } from "@/lib/utils";
 import {
   ArrowRight,
   BookOpenCheck,
@@ -54,49 +54,13 @@ export default function About() {
     },
   ];
 
-  const teamMembers = [
-    {
-      role: "PROJECT LEAD",
-      name: "马旭阳",
-      title: t("吉林大学经济学院 / 2025 级硕士", "School of Economics, Jilin University / 2025 Master's Student"),
-      body: t(
-        "负责项目策划、产品结构、人文经济与文旅转化方向。",
-        "Leads product planning, platform structure, humanistic economy, and cultural travel translation.",
-      ),
-      tags: [t("产品策划", "Product"), t("文旅转化", "Cultural Travel"), t("公共教育", "Public Education")],
-      tone: "bg-primary",
-    },
-    {
-      role: "RESEARCH MEMBER",
-      name: "黄滢滢",
-      title: t("吉林大学东北亚学院 / 2025 级硕士", "School of Northeast Asian Studies, Jilin University / 2025 Master's Student"),
-      body: t(
-        "参与跨文化历史叙事、东北亚区域议题与多视角案例研究。",
-        "Works on cross-cultural historical narratives, Northeast Asian topics, and multi-perspective case research.",
-      ),
-      tags: [t("东北亚研究", "Northeast Asia"), t("叙事比较", "Narrative Comparison"), t("案例研究", "Case Research")],
-      tone: "bg-[oklch(0.35_0.10_250)]",
-    },
-    {
-      role: "ACADEMIC SUPPORT",
-      name: "王达 教授",
-      title: t("吉林大学经济学院 / 教授、副院长", "School of Economics, Jilin University / Professor, Vice Dean"),
-      body: t(
-        "作为推荐专家提供学术方向、课题价值与项目申报支持。",
-        "Provides academic direction, topic value assessment, and application support as recommending expert.",
-      ),
-      tags: [t("推荐专家", "Recommending Expert"), t("学术支持", "Academic Support"), t("创新研究", "Innovation Research")],
-      tone: "bg-[oklch(0.40_0.05_140)]",
-    },
-  ];
-
   const partnerCards = [
     {
       icon: GraduationCap,
       title: t("学术与课题支持", "Academic and Program Support"),
       body: t(
-        "依托吉林大学经济学院、东北亚学院及研究生创新研究计划相关支持体系，推进项目研究与应用验证。",
-        "Supported by academic resources around Jilin University's School of Economics, School of Northeast Asian Studies, and graduate innovation programs.",
+        "依托吉林大学相关学科资源与研究生创新研究计划支持体系，推进项目研究与应用验证。",
+        "Supported by Jilin University's academic resources and graduate innovation programs for research and applied validation.",
       ),
     },
     {
@@ -121,11 +85,7 @@ export default function About() {
     <div className="min-h-screen bg-background text-foreground">
       <section className="relative min-h-[76vh] overflow-hidden border-b-2 border-border">
         <div className="absolute inset-0">
-          <img
-            src={heroImage}
-            alt=""
-            className="h-full w-full object-cover grayscale contrast-125"
-          />
+          <img src={heroImage} alt="" className="h-full w-full object-cover grayscale contrast-125" />
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(240,230,210,0.96)_0%,rgba(240,230,210,0.78)_48%,rgba(240,230,210,0.28)_100%)]" />
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(42,42,42,0.12)_1px,transparent_1px),linear-gradient(to_bottom,rgba(42,42,42,0.12)_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-40" />
         </div>
@@ -158,7 +118,7 @@ export default function About() {
                   className="h-14 rounded-none border-2 border-primary bg-background font-mono font-bold shadow-brutal-sm"
                 >
                   <Mail className="mr-2 h-5 w-5" />
-                  {t("联系团队", "Contact Team")}
+                  {t("联系项目组", "Contact Project")}
                 </Button>
               </a>
             </div>
@@ -241,42 +201,8 @@ export default function About() {
       </section>
 
       <SectionHeading
-        id="team"
-        index="02 / Team"
-        title={t("研究团队", "Research Team")}
-        note={t(
-          "以经济学、东北亚研究、数字人文和 AI 应用为交叉基础，推动历史研究、公共教育与文化产品设计结合。",
-          "An interdisciplinary team connecting economics, Northeast Asian studies, digital humanities, and AI applications.",
-        )}
-      />
-
-      <section className="border-b-2 border-border py-16 md:py-20">
-        <div className="container grid gap-5 md:grid-cols-3">
-          {teamMembers.map((member) => (
-            <article key={member.name} className="overflow-hidden border-2 border-border bg-card shadow-brutal-sm">
-              <div className={`${member.tone} min-h-36 p-6 text-primary-foreground`}>
-                <span className="font-mono text-xs font-black uppercase tracking-widest opacity-80">{member.role}</span>
-                <h3 className="mt-5 text-3xl font-black">{member.name}</h3>
-              </div>
-              <div className="p-6">
-                <strong className="text-sm">{member.title}</strong>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{member.body}</p>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {member.tags.map((tag) => (
-                    <span key={tag} className="border border-border px-2 py-1 font-mono text-xs font-bold">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <SectionHeading
         id="partners"
-        index="03 / Partners"
+        index="02 / Partners"
         title={t("合作伙伴", "Partners")}
         note={t(
           "将“已有学术支持”和“期待合作方向”分开表达，避免把潜在合作误写成已确定合作。",
@@ -298,7 +224,7 @@ export default function About() {
 
       <SectionHeading
         id="contact"
-        index="04 / Contact"
+        index="03 / Contact"
         title={t("联系我们", "Contact")}
         note={t(
           "适合承接项目演示、课程共建、文旅合作、文博合作、媒体采访和技术交流。",
@@ -341,7 +267,7 @@ export default function About() {
               <h3 className="text-2xl font-black">{t("公开联系信息", "Contact Information")}</h3>
               <div className="mt-6 grid gap-5">
                 <ContactItem icon={Mail} label="Email" value={CONTACT_EMAIL} href={`mailto:${CONTACT_EMAIL}`} />
-                <ContactItem icon={UsersRound} label="Team" value={t("全球历史透视镜项目组", "Global History Lens Team")} />
+                <ContactItem icon={UsersRound} label={t("项目组", "Project")} value={t("全球历史透视镜项目组", "Global History Lens Project")} />
                 <ContactItem icon={Building2} label="Location" value={t("吉林大学", "Jilin University")} />
               </div>
             </div>
