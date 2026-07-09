@@ -19,6 +19,19 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 // 根据专题生成建议问题
 const TOPIC_QUESTIONS: { [topicId: string]: string[] } = {
+  meiji: ["明治维新为什么能够成功？", "快速现代化如何重塑日本社会？", "国家主导的现代化付出了哪些代价？"],
+  french_revolution: ["法国大革命的根本原因是什么？", "恐怖统治是否不可避免？", "革命理想如何传播到法国之外？"],
+  cold_war: ["柏林墙为什么能存在那么久？", "古巴导弹危机为什么没有引发核战争？", "冷战是如何结束的？"],
+  american_revolution: ["美国革命的原因是什么？", "革命如何重新定义自由？", "外国盟友为什么重要？"],
+  industrial_revolution: ["工业化为什么首先发生在英国？", "谁从工业革命中受益？", "铁路如何改变社会？"],
+  ww1: ["谁应为第一次世界大战负责？", "堑壕战为什么如此惨烈？", "凡尔赛体系是否埋下了下一场战争的种子？"],
+  age_of_exploration: ["大航海时代是发现还是征服？", "海洋帝国如何改变全球贸易？", "哥伦布大交换带来了什么影响？"],
+  american_civil_war: ["美国内战的根本原因是什么？", "解放奴隶如何改变战争性质？", "重建时期为什么持续存在争议？"],
+  black_death: ["黑死病如何改变中世纪社会？", "瘟疫之后公共卫生观念为何改变？", "不同群体如何解释灾难？"],
+  cuban_missile_crisis: ["古巴导弹危机为什么会升级？", "各国领导人如何避免核战争？", "危机之后各方学到了什么？"],
+};
+
+const TOPIC_QUESTIONS_EN: { [topicId: string]: string[] } = {
   meiji: ["Why did the Meiji Restoration succeed?", "How did rapid modernization reshape Japanese society?", "What costs came with Japan's state-led modernization?"],
   french_revolution: ["What caused the French Revolution?", "Was the Terror inevitable?", "How did revolutionary ideals spread beyond France?"],
   cold_war: ["Why did the Berlin Wall last so long?", "How did the Cuban Missile Crisis avoid nuclear war?", "What ended the Cold War?"],
@@ -32,13 +45,18 @@ const TOPIC_QUESTIONS: { [topicId: string]: string[] } = {
 };
 
 const SUGGESTED_QUESTIONS = [
+  "法国大革命的根本原因是什么？",
+  "谁从工业革命中受益？",
+  "古巴导弹危机为什么没有引发核战争？",
+  "大航海时代是发现还是征服？",
+];
+
+const SUGGESTED_QUESTIONS_EN = [
   "What caused the French Revolution?",
   "Who benefited from the Industrial Revolution?",
   "How did the Cuban Missile Crisis avoid nuclear war?",
   "Was the Age of Exploration discovery or conquest?",
 ];
-
-const SUGGESTED_QUESTIONS_EN = SUGGESTED_QUESTIONS;
 
 const PERSONA_SUGGESTED_QUESTIONS: string[] = [];
 
@@ -46,26 +64,52 @@ const PERSONA_SUGGESTED_QUESTIONS_EN: string[] = [];
 
 function getResponseForQuestion(question: string) {
   const normalized = question.toLowerCase();
+  const allTopicQuestions: { [topicId: string]: string[] } = {};
+  const topicIds = Object.keys(TOPIC_QUESTIONS).concat(
+    Object.keys(TOPIC_QUESTIONS_EN).filter((topicId) => !TOPIC_QUESTIONS[topicId])
+  );
+  topicIds.forEach((topicId) => {
+    allTopicQuestions[topicId] = [
+      ...(TOPIC_QUESTIONS[topicId] || []),
+      ...(TOPIC_QUESTIONS_EN[topicId] || []),
+    ];
+  });
+  for (const [topicId, questions] of Object.entries(allTopicQuestions)) {
+    if (questions.some((q) => q.toLowerCase() === normalized)) {
+      const perspectives = ALL_PERSPECTIVES[topicId];
+      if (!perspectives) return null;
+      const result: any = {};
+      Object.keys(perspectives).forEach((key) => {
+        result[key] = {
+          title: perspectives[key].title,
+          content: perspectives[key].content,
+          source: perspectives[key].sources[0]?.title || "",
+          tags: perspectives[key].biasIndicators.slice(0, 2),
+        };
+      });
+      return { response: result, topicId, perspectives };
+    }
+  }
   const topicKeywords: { [key: string]: string[] } = {
-    meiji: ["meiji", "restoration", "modernization", "japan"],
-    french_revolution: ["french revolution", "france", "terror", "robespierre", "napoleon"],
-    cold_war: ["cold war", "berlin wall", "cuban missile", "nuclear", "soviet"],
-    american_revolution: ["american revolution", "independence", "boston", "washington", "constitution"],
-    industrial_revolution: ["industrial revolution", "steam", "factory", "railway", "workers"],
-    ww1: ["world war i", "ww1", "versailles", "trench", "sarajevo"],
-    age_of_exploration: ["exploration", "columbus", "atlantic", "maritime", "columbian exchange"],
-    american_civil_war: ["civil war", "emancipation", "lincoln", "confederacy"],
-    black_death: ["black death", "plague", "pandemic", "medieval"],
-    cuban_missile_crisis: ["cuban missile", "cuba", "kennedy", "khrushchev"],
-    decolonization: ["decolonization", "independence movement", "colonial empire"],
-    korean_war: ["korean war", "korea", "panmunjom", "armistice"],
-    mongol_empire: ["mongol", "steppe", "eurasia", "khan"],
-    reformation: ["reformation", "luther", "protestant", "catholic"],
-    renaissance: ["renaissance", "humanism", "florence", "leonardo"],
-    roman_empire: ["roman", "rome", "empire", "republic"],
-    russian_revolution: ["russian revolution", "bolshevik", "lenin", "soviet"],
-    slave_trade: ["slave trade", "abolition", "atlantic slavery"],
-    ww2: ["world war ii", "ww2", "second world war", "axis", "allies"],
+    meiji: ["meiji", "restoration", "modernization", "japan", "明治", "维新", "现代化", "日本"],
+    french_revolution: ["french revolution", "france", "terror", "robespierre", "napoleon", "法国大革命", "恐怖统治", "罗伯斯庇尔", "拿破仑"],
+    cold_war: ["cold war", "berlin wall", "cuban missile", "nuclear", "soviet", "冷战", "柏林墙", "古巴导弹", "核战争"],
+    american_revolution: ["american revolution", "independence", "boston", "washington", "constitution", "美国革命", "独立战争", "波士顿", "宪法"],
+    industrial_revolution: ["industrial revolution", "steam", "factory", "railway", "workers", "工业革命", "蒸汽", "工厂", "铁路", "工人"],
+    ww1: ["world war i", "ww1", "versailles", "trench", "sarajevo", "一战", "第一次世界大战", "凡尔赛", "堑壕", "萨拉热窝"],
+    age_of_exploration: ["exploration", "columbus", "atlantic", "maritime", "columbian exchange", "大航海", "哥伦布", "海洋帝国"],
+    american_civil_war: ["civil war", "emancipation", "lincoln", "confederacy", "美国内战", "解放奴隶", "林肯"],
+    black_death: ["black death", "plague", "pandemic", "medieval", "黑死病", "瘟疫", "中世纪"],
+    cuban_missile_crisis: ["cuban missile", "cuba", "kennedy", "khrushchev", "古巴导弹", "古巴", "肯尼迪", "赫鲁晓夫"],
+    decolonization: ["decolonization", "independence movement", "colonial empire", "非殖民化", "独立运动", "殖民帝国"],
+    korean_war: ["korean war", "korea", "panmunjom", "armistice", "朝鲜战争", "半岛", "板门店", "停战"],
+    mongol_empire: ["mongol", "steppe", "eurasia", "khan", "蒙古", "草原", "欧亚", "汗国"],
+    reformation: ["reformation", "luther", "protestant", "catholic", "宗教改革", "路德", "新教", "天主教"],
+    renaissance: ["renaissance", "humanism", "florence", "leonardo", "文艺复兴", "人文主义", "佛罗伦萨"],
+    roman_empire: ["roman", "rome", "empire", "republic", "罗马", "罗马帝国", "共和国"],
+    russian_revolution: ["russian revolution", "bolshevik", "lenin", "soviet", "俄国革命", "布尔什维克", "列宁", "苏维埃"],
+    slave_trade: ["slave trade", "abolition", "atlantic slavery", "奴隶贸易", "废奴", "大西洋奴隶制"],
+    ww2: ["world war ii", "ww2", "second world war", "axis", "allies", "二战", "第二次世界大战", "轴心国", "同盟国"],
   };
 
   let matchedTopic: string | null = null;
@@ -94,6 +138,7 @@ function getResponseForQuestion(question: string) {
 
 export default function Dialogue() {
   const { language, t } = useLanguage();
+  const topicQuestions = language === "en" ? TOPIC_QUESTIONS_EN : TOPIC_QUESTIONS;
   const [query, setQuery] = useState("");
   const [chatHistory, setChatHistory] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -425,7 +470,7 @@ export default function Dialogue() {
                                 </div>
                               </div>
                               <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-4">
-                                {Object.entries(TOPIC_QUESTIONS).slice(0, 6).map(([tid, questions]) => (
+                                {Object.entries(topicQuestions).slice(0, 6).map(([tid, questions]) => (
                                   <button
                                     key={tid}
                                     onClick={() => handleSearch(questions[0])}
@@ -565,7 +610,7 @@ export default function Dialogue() {
             const lastBot = [...chatHistory].reverse().find(m => m.type === 'bot');
             if (mode === 'perspective') {
               const llmFollowUp = lastBot?.content?._followUp || [];
-              const localQuestions = lastTopicId ? (TOPIC_QUESTIONS[lastTopicId] || []) : [];
+              const localQuestions = lastTopicId ? (topicQuestions[lastTopicId] || []) : [];
               const questions = (llmFollowUp.length > 0 ? llmFollowUp : localQuestions)
                 .filter((q: string) => !chatHistory.some(m => m.type === 'user' && m.content === q))
                 .slice(0, 3);

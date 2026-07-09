@@ -27,7 +27,7 @@ export default function Showcase() {
             transition={{ duration: 0.6 }}
           >
             <span className="inline-block px-3 py-1 border border-primary-foreground/30 font-mono text-xs font-bold mb-4 uppercase tracking-widest">
-              Interactive Design Report
+              交互设计报告
             </span>
             <h1 className="text-4xl md:text-6xl font-bold font-serif mb-6">全球历史透视镜</h1>
             <p className="text-xl opacity-90 font-typewriter max-w-2xl mx-auto mb-8">
@@ -105,10 +105,10 @@ export default function Showcase() {
                   </div>
                 </div>
                 <div className="relative aspect-video bg-secondary border-2 border-border shadow-brutal-lg overflow-hidden group">
-                  <img src={getImagePath("/images/hero-bg.jpg")} alt="Project Overview" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+                  <img src={getImagePath("/images/hero-bg.jpg")} alt="项目概览" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
                   <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-transparent transition-all">
                     <div className="bg-background/90 backdrop-blur px-6 py-3 border-2 border-primary shadow-lg">
-                      <span className="font-mono font-bold text-primary uppercase tracking-widest">Project Vision</span>
+                      <span className="font-mono font-bold text-primary uppercase tracking-widest">项目愿景</span>
                     </div>
                   </div>
                 </div>
@@ -296,7 +296,7 @@ export default function Showcase() {
                     <li className="flex items-start gap-3">
                       <div className="w-6 h-6 bg-primary text-primary-foreground flex items-center justify-center font-mono text-xs mt-1">03</div>
                       <div>
-                        <h4 className="font-bold font-mono">Archival Reveal (档案揭示)</h4>
+                        <h4 className="font-bold font-mono">档案揭示</h4>
                         <p className="text-sm text-muted-foreground">图片和文档采用去色处理，悬停时恢复色彩，象征"拂去历史的尘埃"。</p>
                       </div>
                     </li>
@@ -306,13 +306,13 @@ export default function Showcase() {
                 <div className="border-2 border-border bg-secondary/20 p-8 flex items-center justify-center">
                   <div className="space-y-6 w-full max-w-xs">
                     <Button className="w-full h-14 text-lg font-mono border-2 border-primary bg-primary text-primary-foreground shadow-brutal hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal-lg active:translate-x-[0px] active:translate-y-[0px] active:shadow-brutal transition-all">
-                      Primary Button
+                      主要按钮
                     </Button>
                     <Button variant="outline" className="w-full h-14 text-lg font-mono border-2 border-primary bg-transparent shadow-brutal-sm hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal active:translate-x-[0px] active:translate-y-[0px] active:shadow-brutal-sm transition-all">
-                      Secondary Button
+                      次要按钮
                     </Button>
                     <div className="p-4 border-2 border-border bg-card shadow-brutal hover:shadow-brutal-lg transition-all cursor-pointer group">
-                      <span className="font-mono font-bold group-hover:text-primary transition-colors">Hover Card Interaction</span>
+                      <span className="font-mono font-bold group-hover:text-primary transition-colors">悬停卡片交互</span>
                     </div>
                   </div>
                 </div>

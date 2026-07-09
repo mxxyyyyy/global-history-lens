@@ -30,7 +30,7 @@ export function createContext(personaId: string): ConversationContext {
     discussedTopics: [],
     lastTopicId: null,
     turnCount: 0,
-    currentMood: "unavailable",
+    currentMood: "不可用",
     currentEmotion: 50,
   };
 }
@@ -46,13 +46,13 @@ export function generateLocalResponse(
   context: ConversationContext;
 } {
   return {
-    response: "Historical persona dialogue is unavailable for the current archive set.",
-    mood: "unavailable",
+    response: "当前档案集中暂未开放历史人物对话。",
+    mood: "不可用",
     emotionScore: 50,
     context: {
       ...context,
       turnCount: context.turnCount + 1,
-      currentMood: "unavailable",
+      currentMood: "不可用",
       currentEmotion: 50,
     },
   };

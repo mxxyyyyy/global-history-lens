@@ -75,7 +75,7 @@ export default function Home() {
               className="inline-block mb-6 border-2 border-primary px-4 py-1 bg-background shadow-brutal-sm"
             >
               <span className="font-mono text-sm font-bold tracking-widest uppercase text-primary">
-                Global History Lens Project
+                {t("全球历史透视镜项目", "Global History Lens Project")}
               </span>
             </motion.div>
             
@@ -85,8 +85,8 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.9] mb-8 text-primary mix-blend-hard-light"
             >
-              HISTORY IS <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/70 italic font-serif">NOT SINGULAR</span>
+              {t("历史并非", "HISTORY IS")} <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/70 italic font-serif">{t("单一叙事", "NOT SINGULAR")}</span>
             </motion.h1>
             
             <motion.p 
@@ -128,9 +128,9 @@ export default function Home() {
           className="absolute bottom-0 left-0 w-full border-t-2 border-border bg-background/80 backdrop-blur py-4"
         >
           <div className="container flex justify-between items-center font-mono text-xs uppercase tracking-widest">
-            <span>Scroll to explore</span>
+            <span>{t("向下探索", "Scroll to explore")}</span>
             <div className="h-12 w-[1px] bg-primary animate-pulse"></div>
-            <span>Est. 2025</span>
+            <span>{t("创立于 2025", "Est. 2025")}</span>
           </div>
         </motion.div>
       </section>
@@ -146,7 +146,7 @@ export default function Home() {
               </p>
             </div>
             <div className="hidden md:block font-mono text-sm border border-border px-3 py-1">
-              INDEX: 01-03
+              {t("索引：01-03", "INDEX: 01-03")}
             </div>
           </div>
 
@@ -210,41 +210,41 @@ export default function Home() {
               className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
             />
             <div className="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/80 to-transparent z-20">
-              <span className="inline-block px-3 py-1 bg-primary text-primary-foreground font-mono text-xs font-bold mb-2">{t("Featured Case", "Featured Case")}</span>
-              <h3 className="text-3xl md:text-4xl font-bold text-white font-serif">{t("French Revolution (1789-1799)", "French Revolution (1789-1799)")}</h3>
+              <span className="inline-block px-3 py-1 bg-primary text-primary-foreground font-mono text-xs font-bold mb-2">{t("专题案例", "Featured Case")}</span>
+              <h3 className="text-3xl md:text-4xl font-bold text-white font-serif">{t("法国大革命（1789-1799）", "French Revolution (1789-1799)")}</h3>
             </div>
           </div>
 
           <div className="p-12 lg:p-20 flex flex-col justify-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-mono uppercase">{t("Revolution in", "Revolution in")}<br/>{t("Global Perspective", "Global Perspective")}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-mono uppercase">{t("全球视野中的", "Revolution in")}<br/>{t("革命时代", "Global Perspective")}</h2>
             <div className="w-20 h-2 bg-primary mb-8"></div>
 
             <p className="text-lg text-muted-foreground mb-8 font-serif leading-relaxed">
-              {t("Compare revolutionary ideals, state violence, social rupture, and political memory through French, British, American, and modern scholarly sources.", "Compare revolutionary ideals, state violence, social rupture, and political memory through French, British, American, and modern scholarly sources.")}
+              {t("通过法国、英国、美国与现代学术视角，比较革命理想、国家暴力、社会断裂与政治记忆。", "Compare revolutionary ideals, state violence, social rupture, and political memory through French, British, American, and modern scholarly sources.")}
             </p>
 
             <div className="grid grid-cols-2 gap-6 mb-10">
               <div className="border-l-2 border-primary pl-4">
-                <h4 className="font-bold font-mono text-sm uppercase mb-1">{t("Politics", "Politics")}</h4>
-                <p className="text-sm text-muted-foreground">{t("Sovereignty, rights, and revolutionary institutions", "Sovereignty, rights, and revolutionary institutions")}</p>
+                <h4 className="font-bold font-mono text-sm uppercase mb-1">{t("政治", "Politics")}</h4>
+                <p className="text-sm text-muted-foreground">{t("主权、权利与革命制度", "Sovereignty, rights, and revolutionary institutions")}</p>
               </div>
               <div className="border-l-2 border-primary pl-4">
-                <h4 className="font-bold font-mono text-sm uppercase mb-1">{t("Economy", "Economy")}</h4>
-                <p className="text-sm text-muted-foreground">{t("Debt, scarcity, taxation, and social pressure", "Debt, scarcity, taxation, and social pressure")}</p>
+                <h4 className="font-bold font-mono text-sm uppercase mb-1">{t("经济", "Economy")}</h4>
+                <p className="text-sm text-muted-foreground">{t("债务、匮乏、税制与社会压力", "Debt, scarcity, taxation, and social pressure")}</p>
               </div>
               <div className="border-l-2 border-primary pl-4">
-                <h4 className="font-bold font-mono text-sm uppercase mb-1">{t("Society", "Society")}</h4>
-                <p className="text-sm text-muted-foreground">{t("Citizenship, class conflict, and public mobilization", "Citizenship, class conflict, and public mobilization")}</p>
+                <h4 className="font-bold font-mono text-sm uppercase mb-1">{t("社会", "Society")}</h4>
+                <p className="text-sm text-muted-foreground">{t("公民身份、阶级冲突与大众动员", "Citizenship, class conflict, and public mobilization")}</p>
               </div>
               <div className="border-l-2 border-primary pl-4">
-                <h4 className="font-bold font-mono text-sm uppercase mb-1">{t("Conflict", "Conflict")}</h4>
-                <p className="text-sm text-muted-foreground">{t("Civil violence, war, and contested memory", "Civil violence, war, and contested memory")}</p>
+                <h4 className="font-bold font-mono text-sm uppercase mb-1">{t("冲突", "Conflict")}</h4>
+                <p className="text-sm text-muted-foreground">{t("内战暴力、战争与记忆争夺", "Civil violence, war, and contested memory")}</p>
               </div>
             </div>
 
             <Link href="/archive" className="inline-block">
               <Button size="lg" className="self-start rounded-none border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground shadow-brutal-sm hover:shadow-brutal transition-all">
-                {t("Explore the archive", "Explore the archive")}
+                {t("进入档案库", "Explore the archive")}
               </Button>
             </Link>
           </div>

@@ -229,10 +229,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </div>
           
           <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono text-muted-foreground">
-            <p>&copy; 2025 Global History Lens. All rights reserved.</p>
+            <p>{t("© 2025 全球历史透视镜。保留所有权利。", "© 2025 Global History Lens. All rights reserved.")}</p>
             <div className="flex gap-6">
-              <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-foreground transition-colors">Terms of Service</a>
+              <a href="#" className="hover:text-foreground transition-colors">{t("隐私政策", "Privacy Policy")}</a>
+              <a href="#" className="hover:text-foreground transition-colors">{t("服务条款", "Terms of Service")}</a>
             </div>
           </div>
         </div>

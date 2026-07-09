@@ -120,7 +120,7 @@ export default function Archive() {
                 ) : (
                   <>
                     <div className="inline-block px-2 py-1 bg-primary text-primary-foreground font-mono text-xs font-bold mb-4">
-                      {ARCHIVE_TOPICS.length} GLOBAL ARCHIVES
+                      {t(`${ARCHIVE_TOPICS.length} 个全球档案`, `${ARCHIVE_TOPICS.length} GLOBAL ARCHIVES`)}
                     </div>
                     <h1 className="text-4xl md:text-6xl font-bold font-serif mb-4">{t("全球多视角历史档案库", "Global Multi-Perspective Archive")}</h1>
                     <p className="text-lg text-muted-foreground font-typewriter max-w-2xl">
@@ -291,15 +291,15 @@ export default function Archive() {
               <h3 className="font-mono font-bold text-lg uppercase mb-4 border-b-2 border-border pb-2">{t("宏观背景", "Macro Context")}</h3>
               <div className="space-y-4 font-serif text-sm text-muted-foreground">
                 <p>
-                  <strong className="text-foreground">{t("Global setting:", "Global setting:")}</strong> {t("Each archive is framed through international context, primary-source evidence, and competing historical interpretations.", "Each archive is framed through international context, primary-source evidence, and competing historical interpretations.")}
+                  <strong className="text-foreground">{t("全球背景：", "Global setting:")}</strong> {t("每个档案都通过国际背景、一手证据和相互竞争的历史解释来呈现。", "Each archive is framed through international context, primary-source evidence, and competing historical interpretations.")}
                 </p>
                 <p>
-                  <strong className="text-foreground">{t("Geopolitics:", "Geopolitics:")}</strong> {t("Use the selected case files to compare state power, social change, conflict, and memory without relying on a single national narrative.", "Use the selected case files to compare state power, social change, conflict, and memory without relying on a single national narrative.")}
+                  <strong className="text-foreground">{t("地缘政治：", "Geopolitics:")}</strong> {t("通过所选案例比较国家权力、社会变迁、冲突与记忆，避免依赖单一国家叙事。", "Use the selected case files to compare state power, social change, conflict, and memory without relying on a single national narrative.")}
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-border/50">
-                <div className="w-full h-32 border border-border bg-secondary/40 flex items-center justify-center font-mono text-[10px] text-muted-foreground mb-2">ARCHIVE CONTEXT</div>
-                <span className="text-[10px] font-mono text-muted-foreground block text-right">FIG 1.1: COMPARATIVE CASE CONTEXT</span>
+                <div className="w-full h-32 border border-border bg-secondary/40 flex items-center justify-center font-mono text-[10px] text-muted-foreground mb-2">{t("档案背景", "ARCHIVE CONTEXT")}</div>
+                <span className="text-[10px] font-mono text-muted-foreground block text-right">{t("图 1.1：比较案例背景", "FIG 1.1: COMPARATIVE CASE CONTEXT")}</span>
               </div>
             </div>
 

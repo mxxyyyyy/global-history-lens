@@ -53,7 +53,7 @@ export type DurationKey = "1day" | "2days" | "3days";
 export const DURATIONS: { value: DurationKey; label: string }[] = [
   { value: "1day", label: "1日（紧凑）" },
   { value: "2days", label: "2日（深度）" },
-  { value: "3days", label: "3日+（全景）" },
+  { value: "3days", label: "3日（全景）" },
 ];
 """
 

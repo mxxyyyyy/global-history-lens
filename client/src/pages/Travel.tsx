@@ -464,7 +464,9 @@ function RealRouteMap({
       })}
 
       <div className="absolute left-4 top-4 z-40 border-2 border-border bg-background/95 p-3 shadow-brutal max-w-[260px]">
-        <p className="font-mono text-[10px] uppercase text-muted-foreground">Story Map</p>
+        <p className="font-mono text-[10px] uppercase text-muted-foreground">
+          {language === "en" ? "Story Map" : "故事地图"}
+        </p>
         <p className="font-serif text-lg font-bold leading-tight">
           {activeProjectedPoint?.stop.title || (language === "en" ? "Historical Site" : "历史现场")}
         </p>
@@ -694,7 +696,7 @@ export default function Travel() {
           <div className="border-2 border-border bg-card shadow-brutal-lg overflow-hidden">
             <div className="p-5 border-b-2 border-border flex items-center justify-between gap-4">
               <div>
-                <p className="font-mono text-xs text-muted-foreground uppercase">Interactive Route Map</p>
+                <p className="font-mono text-xs text-muted-foreground uppercase">{t("交互路线地图", "Interactive Route Map")}</p>
                 <h2 className="font-serif text-2xl font-bold">{cityData?.name || t("历史现场", "Historical Sites")}</h2>
               </div>
               <div className="hidden sm:flex items-center gap-2 font-mono text-xs border border-border px-3 py-2">

@@ -41,7 +41,7 @@ export type DurationKey = "1day" | "2days" | "3days";
 export const DURATIONS: { value: DurationKey; label: string }[] = [
   { value: "1day", label: "1日（紧凑）" },
   { value: "2days", label: "2日（深度）" },
-  { value: "3days", label: "3日+（全景）" },
+  { value: "3days", label: "3日（全景）" },
 ];
 
 export const TRAVEL_ROUTES: Record<string, CityRoute> = {
@@ -4220,7 +4220,7 @@ export const TRAVEL_ROUTES: Record<string, CityRoute> = {
           "duration": "1日",
           "practicalInfo": {
             "transport": "乌兰巴托Dragon Bus Station有班车到哈拉和林约6-7小时；推荐包车或参加当地3日游更省心。",
-            "accommodation": "哈拉和林镇有家庭旅馆与蒙古包营地，推荐local guesthouses or Anja Ger Camp。",
+            "accommodation": "哈拉和林镇有家庭旅馆与蒙古包营地，推荐当地家庭旅馆或 Anja Ger Camp。",
             "food": "手扒肉、石头烤肉、蒸饺、炸肉饼、奶茶、马奶酒；可在营地或牧民家用餐。",
             "budget": "1天约80-150美元，2天约200-350美元，3天约350-600美元（多含交通住宿）。",
             "bestTime": "6-9月草原绿意盎然；5月、10月人少但夜间寒冷；冬季极寒仅适合探险。",
@@ -4335,7 +4335,7 @@ export const TRAVEL_ROUTES: Record<string, CityRoute> = {
           "duration": "2日",
           "practicalInfo": {
             "transport": "乌兰巴托Dragon Bus Station有班车到哈拉和林约6-7小时；推荐包车或参加当地3日游更省心。",
-            "accommodation": "哈拉和林镇有家庭旅馆与蒙古包营地，推荐local guesthouses or Anja Ger Camp。",
+            "accommodation": "哈拉和林镇有家庭旅馆与蒙古包营地，推荐当地家庭旅馆或 Anja Ger Camp。",
             "food": "手扒肉、石头烤肉、蒸饺、炸肉饼、奶茶、马奶酒；可在营地或牧民家用餐。",
             "budget": "1天约80-150美元，2天约200-350美元，3天约350-600美元（多含交通住宿）。",
             "bestTime": "6-9月草原绿意盎然；5月、10月人少但夜间寒冷；冬季极寒仅适合探险。",
@@ -4490,7 +4490,7 @@ export const TRAVEL_ROUTES: Record<string, CityRoute> = {
           "duration": "3日",
           "practicalInfo": {
             "transport": "乌兰巴托Dragon Bus Station有班车到哈拉和林约6-7小时；推荐包车或参加当地3日游更省心。",
-            "accommodation": "哈拉和林镇有家庭旅馆与蒙古包营地，推荐local guesthouses or Anja Ger Camp。",
+            "accommodation": "哈拉和林镇有家庭旅馆与蒙古包营地，推荐当地家庭旅馆或 Anja Ger Camp。",
             "food": "手扒肉、石头烤肉、蒸饺、炸肉饼、奶茶、马奶酒；可在营地或牧民家用餐。",
             "budget": "1天约80-150美元，2天约200-350美元，3天约350-600美元（多含交通住宿）。",
             "bestTime": "6-9月草原绿意盎然；5月、10月人少但夜间寒冷；冬季极寒仅适合探险。",
@@ -6522,7 +6522,7 @@ export const TRAVEL_ROUTES: Record<string, CityRoute> = {
             },
             {
               "time": "19:30",
-              "title": "City-center dinner",
+              "title": "市中心晚餐",
               "type": "美食",
               "desc": "在欧洲最古老华人社区吃中餐，了解华人海员与利物浦港口贸易史。",
               "img": "/images/liverpool_Liverpool_city-centre.jpg",
@@ -6810,7 +6810,7 @@ export const TRAVEL_ROUTES: Record<string, CityRoute> = {
             },
             {
               "time": "18:30",
-              "title": "City-center dinner",
+              "title": "市中心晚餐",
               "type": "美食",
               "desc": "了解华人海员与利物浦港口史，也是全球劳工迁徙的一部分。",
               "img": "/images/liverpool_Liverpool_city-centre.jpg",
@@ -7194,7 +7194,7 @@ export const TRAVEL_ROUTES: Record<string, CityRoute> = {
             },
             {
               "time": "20:00",
-              "title": "City-center dinner",
+              "title": "市中心晚餐",
               "type": "美食",
               "desc": "欧洲最古老华人社区的中餐。",
               "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Three_Graces_Liverpool.jpg",
@@ -7588,7 +7588,7 @@ export const TRAVEL_ROUTES: Record<string, CityRoute> = {
               "time": "13:00",
               "title": "金融城午餐",
               "type": "美食",
-              "desc": "Lloyd's of London、Gherkin、Walkie-Talkie等现代建筑 surround 传统pub，可体验新旧碰撞。",
+              "desc": "Lloyd's of London、Gherkin、Walkie-Talkie等现代建筑环绕传统pub，可体验新旧碰撞。",
               "img": "/images/pub.jpg",
               "tips": " Leadenhall Market 有维多利亚拱廊；周日冷清。"
             },
@@ -7655,7 +7655,7 @@ export const TRAVEL_ROUTES: Record<string, CityRoute> = {
               "time": "13:00",
               "title": "金融城午餐",
               "type": "美食",
-              "desc": "Lloyd's of London、Gherkin、Walkie-Talkie等现代建筑 surround 传统pub，可体验新旧碰撞。",
+              "desc": "Lloyd's of London、Gherkin、Walkie-Talkie等现代建筑环绕传统pub，可体验新旧碰撞。",
               "img": "/images/pub.jpg",
               "tips": " Leadenhall Market 有维多利亚拱廊；周日冷清。"
             },
@@ -7719,7 +7719,7 @@ export const TRAVEL_ROUTES: Record<string, CityRoute> = {
               "time": "17:30",
               "title": "国家剧院",
               "type": "核心",
-              "desc": "Denys Lasdun的 brutalist 杰作，伦敦战后公共文化建筑代表，可参加建筑导览。#历史必打卡 建议预留1-2小时，避开人潮拍照体验更佳。",
+              "desc": "Denys Lasdun的粗野主义杰作，伦敦战后公共文化建筑代表，可参加建筑导览。#历史必打卡 建议预留1-2小时，避开人潮拍照体验更佳。",
               "img": "/images/experience.jpg",
               "tips": "建筑导览官网预约； backstage tour 很受欢迎。"
             },
@@ -7770,7 +7770,7 @@ export const TRAVEL_ROUTES: Record<string, CityRoute> = {
               "time": "13:00",
               "title": "金融城午餐",
               "type": "美食",
-              "desc": "Lloyd's of London、Gherkin、Walkie-Talkie等现代建筑 surround 传统pub，可体验新旧碰撞。",
+              "desc": "Lloyd's of London、Gherkin、Walkie-Talkie等现代建筑环绕传统pub，可体验新旧碰撞。",
               "img": "/images/pub.jpg",
               "tips": " Leadenhall Market 有维多利亚拱廊；周日冷清。"
             },
@@ -7834,7 +7834,7 @@ export const TRAVEL_ROUTES: Record<string, CityRoute> = {
               "time": "17:30",
               "title": "国家剧院",
               "type": "核心",
-              "desc": "Denys Lasdun的 brutalist 杰作，伦敦战后公共文化建筑代表，可参加建筑导览。#历史必打卡 建议预留1-2小时，避开人潮拍照体验更佳。",
+              "desc": "Denys Lasdun的粗野主义杰作，伦敦战后公共文化建筑代表，可参加建筑导览。#历史必打卡 建议预留1-2小时，避开人潮拍照体验更佳。",
               "img": "/images/experience.jpg",
               "tips": "建筑导览官网预约； backstage tour 很受欢迎。"
             },
@@ -15007,7 +15007,7 @@ export const TRAVEL_ROUTES: Record<string, CityRoute> = {
               "time": "14:00",
               "title": "Morica Han驿站",
               "type": "核心",
-              "desc": "奥斯曼时期商旅驿站，庭院被改造为咖啡馆与地毯店，是overland trade routes商旅文化的活化石。无论是历史爱好者还是普通游客，都能在这里找到属于自己的感动。",
+              "desc": "奥斯曼时期商旅驿站，庭院被改造为咖啡馆与地毯店，是陆上商路商旅文化的活化石。无论是历史爱好者还是普通游客，都能在这里找到属于自己的感动。",
               "img": "/images/sarajevo-han.jpg",
               "tips": "庭院免费开放；喝咖啡约3马克。"
             },
@@ -18208,9 +18208,9 @@ export const TRAVEL_ROUTES: Record<string, CityRoute> = {
             },
             {
               "time": "18:30",
-              "title": "City-center dinner",
+              "title": "市中心晚餐",
               "type": "美食",
-              "desc": "A nearby international dining district offers quick, varied restaurants after the museum circuit.",
+              "desc": "博物馆参观后，可前往附近的国际餐饮街区，快速选择多样化餐厅用餐。",
               "img": "/images/dc-food.jpg",
               "tips": "人均20-40美元；地铁Gallery Place站。"
             }
@@ -18218,7 +18218,7 @@ export const TRAVEL_ROUTES: Record<string, CityRoute> = {
           "practicalInfo": {
             "transport": "博物馆均在国家广场，地铁Smithsonian、L'Enfant Plaza、Federal Triangle站最方便。",
             "accommodation": "Penn Quarter或Foggy Bottom，步行可达博物馆群。",
-            "food": "博物馆咖啡厅、餐车、International Quarter、Georgetown cupcake。",
+            "food": "博物馆咖啡厅、餐车、国际餐饮区、乔治城甜点。",
             "budget": "人均每日80-180美元，绝大多数博物馆免费，主要花费在餐饮。",
             "bestTime": "全年皆宜；夏季室内凉爽，冬季避开寒流。",
             "tips": [
@@ -18275,9 +18275,9 @@ export const TRAVEL_ROUTES: Record<string, CityRoute> = {
             },
             {
               "time": "18:30",
-              "title": "City-center dinner",
+              "title": "市中心晚餐",
               "type": "美食",
-              "desc": "A nearby international dining district offers quick, varied restaurants after the museum circuit.",
+              "desc": "博物馆参观后，可前往附近的国际餐饮街区，快速选择多样化餐厅用餐。",
               "img": "/images/dc-food.jpg",
               "tips": "人均20-40美元；地铁Gallery Place站。"
             },
@@ -18325,7 +18325,7 @@ export const TRAVEL_ROUTES: Record<string, CityRoute> = {
           "practicalInfo": {
             "transport": "博物馆均在国家广场，地铁Smithsonian、L'Enfant Plaza、Federal Triangle站最方便。",
             "accommodation": "Penn Quarter或Foggy Bottom，步行可达博物馆群。",
-            "food": "博物馆咖啡厅、餐车、International Quarter、Georgetown cupcake。",
+            "food": "博物馆咖啡厅、餐车、国际餐饮区、乔治城甜点。",
             "budget": "人均每日80-180美元，绝大多数博物馆免费，主要花费在餐饮。",
             "bestTime": "全年皆宜；夏季室内凉爽，冬季避开寒流。",
             "tips": [
@@ -18382,9 +18382,9 @@ export const TRAVEL_ROUTES: Record<string, CityRoute> = {
             },
             {
               "time": "18:30",
-              "title": "City-center dinner",
+              "title": "市中心晚餐",
               "type": "美食",
-              "desc": "A nearby international dining district offers quick, varied restaurants after the museum circuit.",
+              "desc": "博物馆参观后，可前往附近的国际餐饮街区，快速选择多样化餐厅用餐。",
               "img": "/images/dc-food.jpg",
               "tips": "人均20-40美元；地铁Gallery Place站。"
             },
@@ -18472,7 +18472,7 @@ export const TRAVEL_ROUTES: Record<string, CityRoute> = {
           "practicalInfo": {
             "transport": "博物馆均在国家广场，地铁Smithsonian、L'Enfant Plaza、Federal Triangle站最方便。",
             "accommodation": "Penn Quarter或Foggy Bottom，步行可达博物馆群。",
-            "food": "博物馆咖啡厅、餐车、International Quarter、Georgetown cupcake。",
+            "food": "博物馆咖啡厅、餐车、国际餐饮区、乔治城甜点。",
             "budget": "人均每日80-180美元，绝大多数博物馆免费，主要花费在餐饮。",
             "bestTime": "全年皆宜；夏季室内凉爽，冬季避开寒流。",
             "tips": [
