@@ -132,6 +132,7 @@ interface UserQuestionFrame {
   asksForCause: boolean;
   asksForResponsibility: boolean;
   asksForEmotion: boolean;
+  asksForMoralJudgment: boolean;
   asksDirectly: boolean;
   targetPersonaIds: string[];
 }
@@ -752,6 +753,126 @@ const ROLE_DEFAULT_LENSES: Partial<Record<HistoricalPersona["role"], string[]>> 
   commentator: ["我会继续追问权力，因为悲痛不该成为停止调查的理由。"],
 };
 
+const HUMAN_TOPIC_OPENINGS: Partial<Record<HistoricalPersona["role"], Partial<Record<string, string[]>>>> = {
+  president: {
+    what_happened: [
+      "消息传到白宫时，它不是一条冷冰冰的战报，而是一串会让家庭破碎的名字和数字。",
+      "我听到珍珠港这个名字时，先想到的不是演说词，而是美国军人和他们家人的震惊。",
+    ],
+    conspiracy_boundary: [
+      "我知道这个问题会回来，而且每回来一次，珍珠港的死者都会把它变得更沉。",
+    ],
+    japanese_american: [
+      "如果国家安全后来压到无辜公民身上，那不是可以被一句战时需要轻轻带过的事。",
+    ],
+  },
+  admiral: {
+    what_happened: [
+      "我没有站在珍珠港的岸边看见火光；我看见的是作战图上的航线、时间表，以及后来传回的一页页损毁报告。",
+      "在海军会议桌上，港口常被画成目标；可报告送回来时，目标后面就变成了人的死亡。",
+    ],
+    strategic_gamble: [
+      "我从一开始就知道，这不是胜利的保证，而是把国家命运押进短暂主动权里的险棋。",
+    ],
+    strategic_failure: [
+      "最让我沉默的，不是奇袭是否周密，而是它可能唤醒一个日本无法承受的对手。",
+    ],
+    responsibility: [
+      "军令会把许多声音压下去，但压下去不等于那些声音从来不存在。",
+    ],
+  },
+  prime_minister: {
+    what_happened: [
+      "伦敦没有听见珍珠港的爆炸声，但我们懂得城市被火光照亮时，国家会怎样改变呼吸。",
+    ],
+    allied_war: [
+      "我不会假装美国人的伤亡让我轻松；可我也不能否认，那一刻改变了英国苦撑的前景。",
+    ],
+  },
+  diplomat: {
+    what_happened: [
+      "我没有亲历港口的火光，但我知道亚洲战争终于以美国人无法回避的方式抵达他们面前。",
+    ],
+    allied_war: [
+      "在华盛顿的空气里，我能感觉到一件事变了：中国多年想说明的侵略问题，突然不再遥远。",
+    ],
+  },
+  sailor: {
+    what_happened: [
+      "我记得的不是历史标题，是警报声、发烫的甲板，还有有人喊同伴名字却再也等不到回答。",
+      "那天早上我没时间想世界大战，我只知道油在水面烧，身边的人需要被拖出来。",
+    ],
+    attack_morning: [
+      "混乱不是一个形容词，它是你弯腰救人时手上沾到的油、血和灰。",
+    ],
+    conspiracy_boundary: [
+      "说实话，我听见这种问题会生气，因为如果真有人早该提醒我们，那些没回家的弟兄就不只是死于炸弹。",
+    ],
+  },
+  pilot: {
+    what_happened: [
+      "我在空中看见港口起火，训练让我继续执行动作，可那不代表我心里没有一瞬间发冷。",
+      "起飞前我们说的是目标、航向和高度；飞到港口上空以后，目标下面变成了火、烟和人。",
+    ],
+    attack_morning: [
+      "从座舱往下看，港口先像一张地图；爆炸升起来后，我知道那不是地图。",
+    ],
+    responsibility: [
+      "我可以说我是奉命起飞，但炸弹离开飞机的那一刻，命令就不再替我挡住一切。",
+    ],
+    victim_executor: [
+      "如果那位水兵站在我面前，我很难要求他先理解我的命令；他先失去的是朋友。",
+    ],
+  },
+  minority_civilian: {
+    what_happened: [
+      "我听见爆炸时也害怕日本飞机；第二天走到街上，我又开始害怕别人看我的眼神。",
+      "珍珠港对我不是远处的军港，它也到了我们家的小店门口、学校走廊和邻居的沉默里。",
+    ],
+    japanese_american: [
+      "我最难受的地方是，我明明也害怕袭击，却还要一遍遍证明自己不是敌人。",
+    ],
+    conspiracy_boundary: [
+      "白宫知道多少，我不能作证；但我知道每当人们急着找一个敌人，长着日本面孔的人会先被盯住。",
+    ],
+  },
+  commentator: {
+    what_happened: [
+      "现场的惨烈我不会否认，正因为惨烈，我才不愿让悲痛把所有追问都堵住。",
+    ],
+    conspiracy_boundary: [
+      "我愿意怀疑政府，也愿意承认一句难听的话：怀疑不是证据，证据不足就不能装成定案。",
+    ],
+  },
+};
+
+const HUMAN_DEFAULT_OPENINGS: Partial<Record<HistoricalPersona["role"], string[]>> = {
+  president: [
+    "我不能把这个问题只放进文件夹里，它背后有人在等亲人的消息。",
+  ],
+  admiral: [
+    "在舰队的位置上，人很容易说航线和吨位；可战争不会只停在航线和吨位上。",
+  ],
+  prime_minister: [
+    "我说这件事时，总会听见伦敦空袭后的回声。",
+  ],
+  diplomat: [
+    "我更愿意慢一点说，因为外交语言一旦太轻，就会遮住真实苦难。",
+  ],
+  sailor: [
+    "我说不出漂亮的大词，我只能从那天身体记住的东西说起。",
+  ],
+  pilot: [
+    "我受过训练，要把恐惧压成动作；可压下去，不等于恐惧不存在。",
+  ],
+  minority_civilian: [
+    "这个问题到我这里，会先变成家门口的眼神和盘查。",
+  ],
+  commentator: [
+    "我说话尖锐，是因为战时最容易把复杂问题压成一句口号。",
+  ],
+};
+
 function analyzeUserQuestion(
   query: string,
   context: ConversationContext,
@@ -762,6 +883,7 @@ function analyzeUserQuestion(
   const asksForCause = includesAny(normalizedQuery, ["为什么", "为何", "原因", "怎么会", "如何导致"]);
   const asksForResponsibility = includesAny(normalizedQuery, ["责任", "负责", "罪", "错", "道德", "正当", "背叛", "开脱"]);
   const asksForEmotion = includesAny(normalizedQuery, ["感受", "害怕", "后悔", "痛苦", "怎么看", "心情", "记得"]);
+  const asksForMoralJudgment = includesAny(normalizedQuery, ["怎么看", "看法", "评价", "认可", "认同", "赞成", "支持", "同意", "正当", "合理", "可接受", "该不该"]);
   const asksDirectly = includesAny(normalizedQuery, ["是否", "是不是", "有没有", "会不会", "能不能", "难道", "吗"]);
   const targetPersonaIds = PERSONA_MENTION_ALIASES
     .filter((entry) => entry.terms.some((term) => normalizedQuery.includes(normalize(term))))
@@ -769,7 +891,7 @@ function analyzeUserQuestion(
 
   let mode: QuestionMode = "open";
   if (asksForEvidence) mode = "evidence";
-  else if (asksForResponsibility) mode = "responsibility";
+  else if (asksForResponsibility || asksForMoralJudgment) mode = "responsibility";
   else if (asksForEmotion) mode = "emotion";
   else if (asksForCause) mode = "cause";
   else if (asksDirectly) mode = "direct";
@@ -785,6 +907,7 @@ function analyzeUserQuestion(
     asksForCause,
     asksForResponsibility,
     asksForEmotion,
+    asksForMoralJudgment,
     asksDirectly,
     targetPersonaIds,
   };
@@ -1015,9 +1138,54 @@ function createGroundedTopicPoint(persona: HistoricalPersona, topic: PersonaTopi
   return `${asPersonaText(spokenFocus)} ${asPersonaText(topic.response)}`;
 }
 
+function createMoralJudgmentAnswer(persona: HistoricalPersona, topic: PersonaTopicNode, context: ConversationContext) {
+  const roleAnswers: Partial<Record<HistoricalPersona["role"], string[]>> = {
+    president: [
+      "我不能认可这场袭击。它不是一次可以被包装成勇敢的军事行动，而是对美国主权、和平谈判和无戒备军人的突然打击。",
+    ],
+    admiral: [
+      "若你问我认不认可，我只能说得更沉一点：我把它视为一场为日本争取时间的军事赌博，但我不能把它称作荣耀。港口里的死亡不是作战图上可以抹掉的线。",
+      "我曾把它看作海军必须抢出的时间窗口，可这不等于我能把那天的死亡说成干净的胜利。",
+    ],
+    prime_minister: [
+      "我不可能把它说成正当。它把美国卷入战争，也让英国看到希望，但那份希望建立在许多人的死亡之上。",
+    ],
+    diplomat: [
+      "我不能认可侵略者以困境为名发动突然袭击。国际秩序若允许这种理由，亚洲多年承受的苦难就会被再次轻描淡写。",
+    ],
+    sailor: [
+      "我不可能认可。那天我看见的是火、油、血和没能回家的同伴；如果有人把它说成漂亮行动，那只是离现场太远。",
+    ],
+    pilot: [
+      "当时我把它当任务，服从命令，也相信它能为日本争取主动；可后来再问我认不认可，我不能轻易点头。下面的人不是抽象目标。",
+      "我可以解释自己为什么起飞，却不能把解释当成赦免。那一天的火光，后来一直压在我心里。",
+    ],
+    minority_civilian: [
+      "我不认可日本的袭击。可我也害怕，美国社会会把这份愤怒直接压到我们这些日裔居民身上，仿佛我的脸就能替军国主义认罪。",
+    ],
+    commentator: [
+      "我不认可日本的袭击，但我也不愿让这份愤怒变成政府免于追问的护身符。受害是真实的，责任也必须被查清。",
+    ],
+  };
+
+  const answer = roleAnswers[persona.role]?.length
+    ? pickByTurn(roleAnswers[persona.role]!, context.turnCount)
+    : asPersonaText(persona.stance);
+
+  if (topic.id.endsWith("-japanese_american") && persona.role !== "minority_civilian") {
+    return `${answer} 但战争之后如何对待无辜公民，也同样要接受审视。`;
+  }
+
+  return answer;
+}
+
 function createDirectAnswerSentence(persona: HistoricalPersona, topic: PersonaTopicNode, context: ConversationContext, frame: UserQuestionFrame) {
   const seedId = getTopicSeedId(topic);
   const knowledge = TOPIC_KNOWLEDGE_GRAPH[seedId];
+  if (frame.asksForMoralJudgment) {
+    return createMoralJudgmentAnswer(persona, topic, context);
+  }
+
   const answer = knowledge?.directAnswers.length
     ? pickByTurn(knowledge.directAnswers, context.turnCount + frame.repeatCount - 1)
     : asPersonaText(topic.topicFocus);
@@ -1046,6 +1214,10 @@ function createBoundarySentence(persona: HistoricalPersona, topic: PersonaTopicN
   const knowledge = TOPIC_KNOWLEDGE_GRAPH[seedId];
   const mentionedOtherPersona = frame.targetPersonaIds.some((personaId) => personaId !== persona.id);
 
+  if (frame.asksForMoralJudgment && !frame.asksForEvidence) {
+    return "";
+  }
+
   if (knowledge?.evidenceBoundary && (frame.asksForEvidence || frame.asksDirectly || seedId === "conspiracy_boundary" || seedId === "japanese_american")) {
     return knowledge.evidenceBoundary;
   }
@@ -1070,6 +1242,24 @@ function createRoleLensSentence(persona: HistoricalPersona, topic: PersonaTopicN
   if (defaultLens?.length) return pickByTurn(defaultLens, context.turnCount);
 
   return "我只能从自己站的位置说起。";
+}
+
+function createHumanOpening(
+  persona: HistoricalPersona,
+  topic: PersonaTopicNode,
+  context: ConversationContext,
+  frame: UserQuestionFrame,
+) {
+  const seedId = getTopicSeedId(topic);
+  const topicOpenings = HUMAN_TOPIC_OPENINGS[persona.role]?.[seedId];
+  if (topicOpenings?.length) return pickByTurn(topicOpenings, context.turnCount + frame.repeatCount - 1);
+
+  const defaultOpenings = HUMAN_DEFAULT_OPENINGS[persona.role];
+  if (defaultOpenings?.length && (context.turnCount === 0 || frame.asksDirectly || frame.asksForEmotion || frame.asksForResponsibility)) {
+    return pickByTurn(defaultOpenings, context.turnCount + frame.repeatCount - 1);
+  }
+
+  return "";
 }
 
 function isNearDuplicateSentence(a: string, b: string) {
@@ -1123,19 +1313,25 @@ function createQuestionAwareResponse(
   const knowledge = TOPIC_KNOWLEDGE_GRAPH[seedId];
   const directAnswer = createDirectAnswerSentence(persona, topic, context, frame);
   const boundary = createBoundarySentence(persona, topic, frame);
-  const roleLens = createRoleLensSentence(persona, topic, context);
+  const roleLens = frame.asksForMoralJudgment ? "" : createRoleLensSentence(persona, topic, context);
+  const humanOpening = createHumanOpening(persona, topic, context, frame);
   const relationship = createRelationshipSentence(context, intent);
   const personalDetail = createPersonalDetail(persona, context, intent);
   const rawTopicPoint = pickByTurn(SPOKEN_TOPIC_FOCUS[seedId] ?? [asPersonaText(topic.topicFocus)], context.turnCount + 1);
-  const topicPoint = intent === "continue" || isNearDuplicateSentence(rawTopicPoint, directAnswer) || isNearDuplicateSentence(rawTopicPoint, roleLens)
+  const topicPoint = intent === "continue"
+    || frame.asksForMoralJudgment
+    || isNearDuplicateSentence(rawTopicPoint, directAnswer)
+    || isNearDuplicateSentence(rawTopicPoint, roleLens)
+    || isNearDuplicateSentence(rawTopicPoint, humanOpening)
     ? ""
     : rawTopicPoint;
   const questionFrame = frame.repeatCount > 1
     ? `你又问到这里，我这次不重复上一句，而从${getRepeatAngle(frame.repeatCount)}说。`
-    : knowledge?.questionFrame ?? "";
+    : (frame.mode === "evidence" || seedId === "conspiracy_boundary" ? knowledge?.questionFrame ?? "" : "");
 
   const pieces = [
     relationship,
+    humanOpening,
     questionFrame,
     directAnswer,
     boundary,
@@ -1168,7 +1364,7 @@ function createIntentResponse(
   }
 
   if (intent === "stance") {
-    return `${asPersonaText(persona.stance)} 这不是一句摆在纸上的立场，它连着我的处境：${personalDetail}`;
+    return createQuestionAwareResponse(persona, topic, context, query, intent);
   }
 
   if (intent === "emotion") {
