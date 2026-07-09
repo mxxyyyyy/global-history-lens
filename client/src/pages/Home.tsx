@@ -85,8 +85,8 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.9] mb-8 text-primary mix-blend-hard-light"
             >
-              {t("历史并非", "HISTORY IS")} <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/70 italic font-serif">{t("单一叙事", "NOT SINGULAR")}</span>
+              HISTORY IS <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/70 italic font-serif">NOT SINGULAR</span>
             </motion.h1>
             
             <motion.p 
