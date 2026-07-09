@@ -255,6 +255,7 @@ export default function Dialogue() {
             emotionScore: localResult.emotionScore,
             character: selectedPersona.name,
             _followUpHint: localResult.followUpHint,
+            _narration: localResult.narration,
           },
           mode: mode,
           persona: selectedPersona,
@@ -305,6 +306,7 @@ export default function Dialogue() {
           emotionScore: result.emotionScore,
           character: selectedPersona.name,
           _followUpHint: result.followUpHint,
+          _narration: result.narration,
         };
       }
       
@@ -581,6 +583,22 @@ export default function Dialogue() {
                                 <p className="font-serif text-sm leading-relaxed italic text-foreground/90">
                                   "{msg.content.content}"
                                 </p>
+                                {msg.content._narration && (
+                                  <div className="mt-4 border-t border-border/40 pt-3 space-y-1.5 text-[11px] leading-relaxed text-muted-foreground font-typewriter not-italic">
+                                    {msg.content._narration.fallbackNote && (
+                                      <p>{msg.content._narration.fallbackNote}</p>
+                                    )}
+                                    <p>
+                                      <span className="font-mono text-foreground/60">旁白 · {msg.content._narration.matchedTopic}</span>
+                                      ：{msg.content._narration.background}
+                                    </p>
+                                    <p>
+                                      <span className="font-mono text-foreground/60">{msg.content._narration.credibilityType}</span>
+                                      ：{msg.content._narration.credibilityBoundary}
+                                    </p>
+                                    <p>{msg.content._narration.exchangeCue}</p>
+                                  </div>
+                                )}
                               </div>
                             </div>
 

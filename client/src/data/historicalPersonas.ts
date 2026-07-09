@@ -29,6 +29,14 @@ export type HistoricalPersonaRole =
   | "minority_civilian"
   | "commentator";
 
+export interface PersonaTopicNarration {
+  matchedTopic: string;
+  background: string;
+  credibilityBoundary: string;
+  credibilityType: string;
+  exchangeCue: string;
+}
+
 export interface PersonaTopicNode {
   id: string;
   label: string;
@@ -37,6 +45,7 @@ export interface PersonaTopicNode {
   mood: string;
   emotionScore: number;
   relatedTopics: string[];
+  narration: PersonaTopicNarration;
   credibilityNote?: string;
 }
 
@@ -121,7 +130,7 @@ const PEARL_HARBOR_TOPIC_SEEDS: TopicSeed[] = [
     id: "what_happened",
     label: "珍珠港到底发生了什么",
     axis: "scene",
-    keywords: ["珍珠港发生了什么", "到底发生了什么", "pearl harbor", "12月7日", "袭击概况", "偷袭"],
+    keywords: ["珍珠港发生了什么", "珍珠港事件是什么", "珍珠港是什么", "珍珠港事件", "到底发生了什么", "pearl harbor", "12月7日", "袭击概况", "偷袭"],
     prompt: "这个问题要先把历史从抽象名词拉回1941年12月7日清晨：飞机、警报、舰队、浓烟和猝不及防的伤亡同时出现。",
     relatedTopics: ["attack_morning", "american_entry", "postwar_memory"],
   },
@@ -243,7 +252,7 @@ const PEARL_HARBOR_TOPIC_SEEDS: TopicSeed[] = [
     axis: "alliance",
     keywords: ["同盟国", "全球战争", "英美同盟", "反法西斯", "德国对美宣战", "全球化"],
     prompt: "珍珠港让太平洋战争、欧洲战争和亚洲战场更加紧密地接在一起，世界大战的结构由此改变。",
-    relatedTopics: ["britain_view", "china_war", "war_mobilization"],
+    relatedTopics: ["britain_view", "war_mobilization", "postwar_memory"],
   },
   {
     id: "britain_view",
@@ -252,14 +261,6 @@ const PEARL_HARBOR_TOPIC_SEEDS: TopicSeed[] = [
     keywords: ["英国", "丘吉尔", "伦敦", "英国孤军", "大西洋宪章", "援英"],
     prompt: "对英国而言，美国参战意味着长期苦撑终于获得决定性盟友，但这份希望建立在美国遭袭的震惊之上。",
     relatedTopics: ["allied_war", "war_mobilization", "postwar_memory"],
-  },
-  {
-    id: "china_war",
-    label: "中国战场如何进入全球结构",
-    axis: "alliance",
-    keywords: ["中国战场", "胡适", "驻美大使", "援华", "亚洲战争", "长期抗战"],
-    prompt: "珍珠港以后，亚洲战争不再只是遥远的地区冲突，中国长期抗战被更明确地纳入同盟国战争结构。",
-    relatedTopics: ["allied_war", "resource_embargo", "postwar_memory"],
   },
   {
     id: "war_mobilization",
@@ -311,6 +312,16 @@ const PEARL_HARBOR_TOPIC_SEEDS: TopicSeed[] = [
   },
 ];
 
+const TOPIC_EXCHANGE_CUES: Record<TopicAxis, string> = {
+  scene: "可继续让现场水兵、舰载机飞行员和总统分别补足同一天的不同经验。",
+  strategy: "可切换到山本五十六、罗斯福或温斯顿·丘吉尔，比较战略计算、国家动员和盟友判断。",
+  politics: "可继续追问罗斯福、哈罗德·米勒或温斯顿·丘吉尔，观察公共语言如何把震惊转成行动。",
+  controversy: "可让罗斯福、哈罗德·米勒和詹姆斯·卡特分别回应情报警讯、责任归属和证据边界。",
+  alliance: "可切换到丘吉尔、罗斯福或外交观察者，比较盟友视角、全球战争结构和外交期待。",
+  society: "可继续追问现场水兵、森田惠子和执行命令者，讨论普通人代价与个人责任。",
+  memory: "可把问题交给受害者、执行者和战后评论员，形成记忆、责任与解释的交叉对话。",
+};
+
 const clampEmotion = (value: number) => Math.max(0, Math.min(100, value));
 
 function createTopicNodes(seed: PersonaSeed): PersonaTopicNode[] {
@@ -318,10 +329,17 @@ function createTopicNodes(seed: PersonaSeed): PersonaTopicNode[] {
     id: `${seed.id}-${topic.id}`,
     label: topic.label,
     keywords: topic.keywords,
-    response: `${topic.prompt}\n\n${seed.axisResponses[topic.axis]}\n\n【可信度边界】${seed.knowledgeBoundary}`,
+    response: seed.axisResponses[topic.axis],
     mood: seed.axisMoods[topic.axis],
     emotionScore: clampEmotion(seed.axisEmotion[topic.axis]),
     relatedTopics: topic.relatedTopics,
+    narration: {
+      matchedTopic: topic.label,
+      background: topic.prompt,
+      credibilityBoundary: seed.knowledgeBoundary,
+      credibilityType: seed.credibilityType,
+      exchangeCue: TOPIC_EXCHANGE_CUES[topic.axis],
+    },
     credibilityNote: seed.credibilityType,
   }));
 }

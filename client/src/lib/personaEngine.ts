@@ -1,4 +1,4 @@
-import { HISTORICAL_PERSONAS, type PersonaTopicNode } from "@/data/historicalPersonas";
+import { HISTORICAL_PERSONAS, type PersonaTopicNarration, type PersonaTopicNode } from "@/data/historicalPersonas";
 
 export interface TopicNode {
   id: string;
@@ -24,6 +24,10 @@ export interface ConversationContext {
   turnCount: number;
   currentMood: string;
   currentEmotion: number;
+}
+
+export interface PersonaResponseNarration extends PersonaTopicNarration {
+  fallbackNote?: string;
 }
 
 const normalize = (value: string) =>
@@ -102,6 +106,7 @@ export function generateLocalResponse(
   mood: string;
   emotionScore: number;
   followUpHint?: string;
+  narration?: PersonaResponseNarration;
   context: ConversationContext;
 } {
   const persona = findPersona(context.personaId);
@@ -138,17 +143,19 @@ export function generateLocalResponse(
     };
   }
 
-  const response = isFallback
-    ? `你的问题没有精确命中我的预置话题节点，我先从“${selectedTopic.label}”回应。\n\n${selectedTopic.response}`
-    : selectedTopic.response;
+  const narration: PersonaResponseNarration = {
+    ...selectedTopic.narration,
+    fallbackNote: isFallback ? `未精确命中问题，已转入话题节点：${selectedTopic.label}` : undefined,
+  };
 
   const nextDiscussed = Array.from(new Set([...context.discussedTopics, selectedTopic.id]));
 
   return {
-    response,
+    response: selectedTopic.response,
     mood: selectedTopic.mood,
     emotionScore: selectedTopic.emotionScore,
     followUpHint: createFollowUpHint(selectedTopic, persona.topicNodes),
+    narration,
     context: {
       ...context,
       discussedTopics: nextDiscussed,
