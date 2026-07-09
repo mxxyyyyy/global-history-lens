@@ -1,11 +1,11 @@
-import { useState, useMemo } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Search, Filter, Calendar, MapPin, FileText, Image as ImageIcon, Film, Mic, Database, X, ArrowLeft, Route } from "lucide-react";
 import { motion } from "framer-motion";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { HISTORICAL_EVENTS, ARCHIVE_CATEGORIES, ARCHIVE_TOPICS, ArchiveTopic, HistoricalEvent } from "@/data/historicalEvents";
 import { getImagePath } from "@/lib/utils";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -34,12 +34,39 @@ const TOPICS_WITH_TRAVEL_ROUTES = new Set([
 
 export default function Archive() {
   const { t } = useLanguage();
+  const [location, navigate] = useLocation();
   const [activeTab, setActiveTab] = useState("politics");
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<typeof HISTORICAL_EVENTS>([]);
   const [isSearching, setIsSearching] = useState(false);
   const [selectedTopic, setSelectedTopic] = useState<ArchiveTopic | null>(null);
   const [selectedEvent, setSelectedEvent] = useState<HistoricalEvent | null>(null);
+
+  const routedTopic = useMemo(() => {
+    const match = location.match(/^\/archive\/([^/?#]+)/);
+    if (!match) return null;
+
+    const topicId = decodeURIComponent(match[1]);
+    return ARCHIVE_TOPICS.find(topic => topic.id === topicId) ?? null;
+  }, [location]);
+
+  useEffect(() => {
+    setSelectedTopic(routedTopic);
+    setSelectedEvent(null);
+  }, [routedTopic?.id]);
+
+  const openTopic = (topic: ArchiveTopic) => {
+    setSelectedTopic(topic);
+    setSelectedEvent(null);
+    navigate(`/archive/${topic.id}`);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const closeTopic = () => {
+    setSelectedTopic(null);
+    setSelectedEvent(null);
+    navigate("/archive");
+  };
 
   // 全局搜索功能
   const handleGlobalSearch = (query: string) => {
@@ -107,7 +134,7 @@ export default function Archive() {
                 {selectedTopic ? (
                   <>
                     <div className="flex items-center gap-3 mb-4">
-                      <button onClick={() => setSelectedTopic(null)} className="inline-flex items-center gap-1 px-2 py-1 bg-secondary text-secondary-foreground font-mono text-xs font-bold border border-border hover:bg-primary hover:text-primary-foreground transition-colors">
+                      <button onClick={closeTopic} className="inline-flex items-center gap-1 px-2 py-1 bg-secondary text-secondary-foreground font-mono text-xs font-bold border border-border hover:bg-primary hover:text-primary-foreground transition-colors">
                         <ArrowLeft className="w-3 h-3" /> {t("返回档案库", "Back to Archive")}
                       </button>
                       <span className="px-2 py-1 bg-primary text-primary-foreground font-mono text-xs font-bold">
@@ -238,7 +265,7 @@ export default function Archive() {
                 transition={{ delay: idx * 0.05 }}
                 className="text-left border-2 border-border bg-card p-0 shadow-brutal hover:shadow-brutal-lg transition-all group overflow-hidden"
               >
-                <button type="button" onClick={() => setSelectedTopic(topic)} className="w-full text-left">
+                <button type="button" onClick={() => openTopic(topic)} className="w-full text-left">
                   <div className="h-32 bg-secondary/30 relative overflow-hidden">
                     <img src={getImagePath(topic.coverImage)} alt={topic.title} className="w-full h-full object-cover opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-60 transition-all duration-500" />
                     <div className="absolute bottom-2 left-2 px-2 py-0.5 bg-primary text-primary-foreground font-mono text-[10px] font-bold">
@@ -250,7 +277,7 @@ export default function Archive() {
                   </div>
                 </button>
                 <div className="p-5">
-                  <button type="button" onClick={() => setSelectedTopic(topic)} className="text-left w-full">
+                  <button type="button" onClick={() => openTopic(topic)} className="text-left w-full">
                   <h3 className="text-xl font-bold font-serif mb-1 group-hover:text-primary transition-colors">{topic.title}</h3>
                   <p className="text-xs font-mono text-muted-foreground mb-3">{topic.subtitle} · {topic.period}</p>
                   <p className="text-sm text-muted-foreground font-typewriter leading-relaxed line-clamp-2">{topic.description}</p>
@@ -269,7 +296,7 @@ export default function Archive() {
                       )}
                       <button
                         type="button"
-                        onClick={() => setSelectedTopic(topic)}
+                        onClick={() => openTopic(topic)}
                         className="text-xs font-mono font-bold text-primary hover:underline"
                       >
                         {t("进入档案", "Enter Archive")} →

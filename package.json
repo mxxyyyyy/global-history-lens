@@ -10,7 +10,9 @@
     "start": "NODE_ENV=production node dist/index.js",
     "preview": "vite preview --host",
     "check": "tsc --noEmit",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "generate:personas": "python scripts/persona_dialogue_tools/generate_personas.py",
+    "generate:personas:js": "node scripts/generate_persona_dialogue.cjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

@@ -4,9 +4,10 @@ import path from "path";
 import { defineConfig } from "vite";
 
 const plugins = [react(), tailwindcss()];
+const base = process.env.GITHUB_PAGES === "true" ? "/global-history-lens/" : "/";
 
 export default defineConfig({
-  base: "/",
+  base,
   plugins,
   resolve: {
     alias: {

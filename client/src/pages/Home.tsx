@@ -9,6 +9,7 @@ import {
 import { Link, useLocation } from "wouter";
 import { motion } from "framer-motion";
 import { getImagePath } from "@/lib/utils";
+import { ARCHIVE_TOPICS } from "@/data/historicalEvents";
 import {
   useRef,
   useState,
@@ -17,6 +18,28 @@ import {
   type PointerEvent,
 } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
+
+const caseOrbitSpots = [
+  { x: 12, y: 14, size: "5.2rem", tilt: -7 },
+  { x: 26, y: 7, size: "4.6rem", tilt: 6 },
+  { x: 44, y: 10, size: "5.5rem", tilt: -3 },
+  { x: 67, y: 8, size: "4.9rem", tilt: 8 },
+  { x: 86, y: 16, size: "5.1rem", tilt: -5 },
+  { x: 92, y: 38, size: "4.7rem", tilt: 4 },
+  { x: 84, y: 62, size: "5.7rem", tilt: -9 },
+  { x: 70, y: 82, size: "4.8rem", tilt: 7 },
+  { x: 51, y: 88, size: "5.2rem", tilt: -4 },
+  { x: 31, y: 82, size: "4.9rem", tilt: 5 },
+  { x: 14, y: 68, size: "5.4rem", tilt: -8 },
+  { x: 7, y: 45, size: "4.7rem", tilt: 6 },
+  { x: 20, y: 31, size: "4.4rem", tilt: 9 },
+  { x: 36, y: 26, size: "5rem", tilt: -6 },
+  { x: 61, y: 25, size: "4.6rem", tilt: 5 },
+  { x: 78, y: 34, size: "5.3rem", tilt: -4 },
+  { x: 66, y: 66, size: "4.5rem", tilt: 7 },
+  { x: 39, y: 67, size: "5rem", tilt: -5 },
+  { x: 24, y: 53, size: "4.6rem", tilt: 4 },
+] as const;
 
 export default function Home() {
   const { t } = useLanguage();
@@ -27,6 +50,16 @@ export default function Home() {
   const [hasExploredHero, setHasExploredHero] = useState(false);
   const [openingPaper, setOpeningPaper] = useState<string | null>(null);
   const heroEntryPoint = useRef<{ x: number; y: number } | null>(null);
+  const caseConstellationTopics = ARCHIVE_TOPICS.slice(
+    0,
+    caseOrbitSpots.length
+  ).map((topic, index) => ({ ...topic, spot: caseOrbitSpots[index] }));
+  const [activeCaseId, setActiveCaseId] = useState(
+    caseConstellationTopics[0]?.id ?? ""
+  );
+  const activeCase =
+    caseConstellationTopics.find(topic => topic.id === activeCaseId) ??
+    caseConstellationTopics[0];
   const archivePapers = [
     {
       id: "dialogue",
@@ -356,39 +389,100 @@ export default function Home() {
             </motion.div>
           </div>
         </div>
+      </section>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-0 left-0 w-full border-t-2 border-border bg-background/80 backdrop-blur py-4"
-        >
-          <div className="container flex justify-between items-center font-mono text-xs uppercase tracking-widest">
-            <span>{t("向下探索", "Scroll to explore")}</span>
-            <div className="h-12 w-[1px] bg-primary animate-pulse"></div>
-            <span>{t("创立于 2025", "Est. 2025")}</span>
+      {/* Anthropic-inspired case constellation */}
+      <section
+        id="case-constellation"
+        className="case-constellation-section relative min-h-[100svh] overflow-hidden border-b-2 border-border"
+      >
+        <div className="case-constellation-bg" aria-hidden="true" />
+        <div className="container relative z-10 flex min-h-[100svh] flex-col justify-start py-10 md:py-12">
+          <motion.div
+            className="case-constellation-intro"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
+            <span className="case-constellation-kicker">
+              {t("案例库星图", "Case Library Constellation")}
+            </span>
+            <h2>
+              {t(
+                "把同一个世界史问题，放进多重证据与记忆之中。",
+                "Place one world-history question inside many layers of evidence and memory."
+              )}
+            </h2>
+          </motion.div>
+
+          <div className="case-constellation-stage">
+            <svg
+              className="case-constellation-lines"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              {caseConstellationTopics.map((topic, index) => (
+                <line
+                  key={topic.id}
+                  x1="50"
+                  y1="38"
+                  x2={topic.spot.x}
+                  y2={topic.spot.y}
+                  className={activeCaseId === topic.id ? "is-active" : ""}
+                  style={{ "--line-delay": `${index * 35}ms` } as CSSProperties}
+                />
+              ))}
+            </svg>
+
+            <motion.div
+              className="history-lens-core"
+              initial={{ opacity: 0, scale: 0.92 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.45 }}
+              transition={{ duration: 0.65, ease: "easeOut" }}
+            >
+              <span>Global History Lens</span>
+              <strong>{activeCase?.title}</strong>
+              <em>
+                {activeCase?.period} / {activeCase?.region}
+              </em>
+            </motion.div>
+
+            {caseConstellationTopics.map((topic, index) => (
+              <a
+                key={topic.id}
+                href={`/archive/${topic.id}`}
+                className={`case-constellation-node ${
+                  activeCaseId === topic.id ? "is-active" : ""
+                }`}
+                style={
+                  {
+                    "--x": `${topic.spot.x}%`,
+                    "--y": `${topic.spot.y}%`,
+                    "--node-size": topic.spot.size,
+                    "--node-tilt": `${topic.spot.tilt}deg`,
+                    "--node-delay": `${index * 42}ms`,
+                  } as CSSProperties
+                }
+                aria-label={`${topic.title} ${topic.period}`}
+                onMouseEnter={() => setActiveCaseId(topic.id)}
+                onFocus={() => setActiveCaseId(topic.id)}
+              >
+                <img src={getImagePath(topic.coverImage)} alt={topic.title} />
+                <span className="case-node-meta">
+                  <span>{topic.title}</span>
+                  <small>{topic.period}</small>
+                </span>
+              </a>
+            ))}
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* Core Features Section - Grid Layout */}
       <section className="archive-feature-section py-24 bg-background relative overflow-hidden">
-        <motion.div
-          className="archive-fold-rail container"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.35 }}
-          transition={{ duration: 0.75, ease: "easeOut" }}
-          aria-hidden="true"
-        >
-          {archivePapers.map((paper, index) => (
-            <span
-              key={paper.id}
-              style={{ "--fold-delay": `${index * 90}ms` } as CSSProperties}
-            ></span>
-          ))}
-        </motion.div>
         <div className="container">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 border-b-2 border-border pb-8">
             <div>

@@ -37,6 +37,8 @@ jobs:
 
       - name: Build
         run: pnpm build:client
+        env:
+          GITHUB_PAGES: "true"
 
       - name: Add SPA fallback and disable Jekyll
         run: |
