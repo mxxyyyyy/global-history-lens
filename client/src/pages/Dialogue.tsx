@@ -6,7 +6,6 @@ import { Send, RotateCcw, BookOpen, AlertCircle, HelpCircle, User, Users } from 
 import { motion, AnimatePresence } from "framer-motion";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import PersonaSelector from "@/components/PersonaSelector";
-import EmotionVisualization from "@/components/EmotionVisualization";
 import CredibilityAssessment from "@/components/CredibilityAssessment";
 import CrossPerspectiveQuestions from "@/components/CrossPerspectiveQuestions";
 import LLMSettings from "@/components/LLMSettings";
@@ -14,7 +13,14 @@ import { HISTORICAL_PERSONAS, HistoricalPersona } from "@/data/historicalPersona
 import { ALL_PERSPECTIVES } from "@/data/perspectiveCredibility";
 import { createDialogueRecord, saveDialogueHistory, loadDialogueHistory } from "@/data/dialogueHistory";
 import { loadLLMConfig, askPerspective, askPersona, type LLMConfig } from "@/lib/llm";
-import { createContext, generateLocalResponse, type ConversationContext } from "@/lib/personaEngine";
+import {
+  applyPersonaStructuredResponse,
+  createContext,
+  createPersonaDialogueRequest,
+  generateLocalResponse,
+  toPersonaRecentMessages,
+  type ConversationContext,
+} from "@/lib/personaEngine";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 // 根据专题生成建议问题
@@ -73,6 +79,14 @@ const PERSONA_SUGGESTED_QUESTIONS_EN: string[] = [
   "Did Roosevelt know Pearl Harbor would be attacked?",
   "Let the sailor and Japanese pilot discuss responsibility and memory.",
 ];
+
+function getPersonaAuraClass(score?: number) {
+  if (typeof score !== "number") return "ring-2 ring-amber-300/30";
+  if (score < 35) return "ring-2 ring-red-500/60";
+  if (score < 55) return "ring-2 ring-amber-500/50";
+  if (score < 70) return "ring-2 ring-yellow-500/40";
+  return "ring-2 ring-emerald-500/50";
+}
 
 function getResponseForQuestion(question: string) {
   const normalized = question.toLowerCase();
@@ -186,8 +200,10 @@ export default function Dialogue() {
 
   const handleSearch = async (text: string) => {
     if (!text.trim()) return;
-    
-    setChatHistory(prev => [...prev, { type: 'user', content: text, mode: mode }]);
+
+    const historyBeforeRequest = chatHistory;
+    const userEntry = { type: 'user', content: text, mode: mode };
+    setChatHistory(prev => [...prev, userEntry]);
     setQuery("");
     setIsLoading(true);
     setLlmError(null);
@@ -226,25 +242,35 @@ export default function Dialogue() {
 
     // 人物对话 LLM 模式
     if (mode === 'persona' && llmConfig && selectedPersona) {
+      const context = personaContext ?? createContext(selectedPersona.id);
       try {
-        const result = await askPersona(
-          llmConfig,
-          selectedPersona.name,
-          selectedPersona.title,
-          selectedPersona.year,
-          selectedPersona.location,
-          selectedPersona.bio,
+        const request = createPersonaDialogueRequest(
+          selectedPersona,
+          context,
+          toPersonaRecentMessages(historyBeforeRequest),
           text,
         );
+        const result = await askPersona(llmConfig, request);
         if (result) {
-          setChatHistory(prev => [...prev, { type: 'bot', content: result, mode: mode, persona: selectedPersona }]);
+          const nextContext = applyPersonaStructuredResponse(selectedPersona, context, text, result);
+          setPersonaContext(nextContext);
+          setChatHistory(prev => [...prev, {
+            type: 'bot',
+            content: {
+              content: result.dialogue,
+              mood: result.emotion,
+              emotionScore: nextContext.currentEmotion,
+              character: selectedPersona.name,
+            },
+            mode: mode,
+            persona: selectedPersona,
+          }]);
         } else {
           throw new Error("AI 返回格式异常");
         }
       } catch (e: any) {
         setLlmError(e.message || "AI 调用失败");
         // 降级到本地人物节点引擎
-        const context = personaContext ?? createContext(selectedPersona.id);
         const localResult = generateLocalResponse(text, context);
         setPersonaContext(localResult.context);
         setChatHistory(prev => [...prev, {
@@ -254,8 +280,6 @@ export default function Dialogue() {
             mood: localResult.mood,
             emotionScore: localResult.emotionScore,
             character: selectedPersona.name,
-            _followUpHint: localResult.followUpHint,
-            _narration: localResult.narration,
           },
           mode: mode,
           persona: selectedPersona,
@@ -305,8 +329,6 @@ export default function Dialogue() {
           mood: result.mood,
           emotionScore: result.emotionScore,
           character: selectedPersona.name,
-          _followUpHint: result.followUpHint,
-          _narration: result.narration,
         };
       }
       
@@ -344,6 +366,9 @@ export default function Dialogue() {
     if (confirm(t('确定要清空当前对话吗?', 'Clear this conversation?'))) {
       setChatHistory([]);
       setQuery("");
+      if (mode === 'persona' && selectedPersona) {
+        setPersonaContext(createContext(selectedPersona.id));
+      }
     }
   };
 
@@ -567,7 +592,7 @@ export default function Dialogue() {
                           >
                             {/* 人物对话气泡 */}
                             <div className="flex gap-4 max-w-4xl">
-                              <div className={`w-12 h-12 rounded-full shrink-0 flex items-center justify-center text-white font-bold text-sm shadow-brutal border-2 border-border ${msg.persona?.avatar_color}`}>
+                              <div className={`w-12 h-12 rounded-full shrink-0 flex items-center justify-center text-white font-bold text-sm shadow-brutal border-2 border-border ${msg.persona?.avatar_color} ${getPersonaAuraClass(msg.content.emotionScore)}`}>
                                 {msg.persona?.name.charAt(0)}
                               </div>
                               <div className="flex-1 bg-card border-2 border-border p-4 shadow-brutal relative">
@@ -576,42 +601,12 @@ export default function Dialogue() {
                                 
                                 <div className="flex justify-between items-baseline mb-3 border-b border-border/50 pb-2">
                                   <h3 className="font-bold font-serif text-sm text-amber-900">{msg.content.character}</h3>
-                                  <span className="text-xs font-mono text-muted-foreground bg-secondary px-2 py-0.5">
-                                    {msg.content.mood}
-                                  </span>
                                 </div>
                                 <p className="font-serif text-sm leading-relaxed italic text-foreground/90">
                                   "{msg.content.content}"
                                 </p>
-                                {msg.content._narration && (
-                                  <div className="mt-4 border-t border-border/40 pt-3 space-y-1.5 text-[11px] leading-relaxed text-muted-foreground font-typewriter not-italic">
-                                    {msg.content._narration.fallbackNote && (
-                                      <p>{msg.content._narration.fallbackNote}</p>
-                                    )}
-                                    <p>
-                                      <span className="font-mono text-foreground/60">旁白 · {msg.content._narration.matchedTopic}</span>
-                                      ：{msg.content._narration.background}
-                                    </p>
-                                    <p>
-                                      <span className="font-mono text-foreground/60">{msg.content._narration.credibilityType}</span>
-                                      ：{msg.content._narration.credibilityBoundary}
-                                    </p>
-                                    <p>{msg.content._narration.exchangeCue}</p>
-                                  </div>
-                                )}
                               </div>
                             </div>
-
-                            {/* 情感波动可视化 */}
-                            {msg.persona && (
-                              <div className="ml-16">
-                                <EmotionVisualization 
-                                  emotionScore={msg.content.emotionScore || 65}
-                                  mood={msg.content.mood}
-                                  personaName={msg.persona.name}
-                                />
-                              </div>
-                            )}
                           </motion.div>
                         )}
                       </div>
@@ -658,16 +653,6 @@ export default function Dialogue() {
                     {questions.map((q: string, i: number) => (
                       <button key={i} onClick={() => handleSearch(q)} className="shrink-0 text-xs font-mono px-3 py-1.5 border border-border bg-secondary/50 hover:bg-secondary hover:border-primary transition-all whitespace-nowrap">{q}</button>
                     ))}
-                  </div>
-                </div>
-              );
-            } else if (mode === 'persona' && lastBot?.content?._followUpHint) {
-              return (
-                <div className="px-4 pt-3 pb-1 border-t border-amber-200/30 bg-amber-50/20 shrink-0">
-                  <div className="max-w-[1500px] mx-auto flex gap-2 overflow-x-auto">
-                    <button onClick={() => handleSearch(lastBot.content._followUpHint)} className="shrink-0 text-xs font-mono px-3 py-1.5 border border-amber-300/50 bg-amber-50/50 hover:bg-amber-100/50 hover:border-amber-400 transition-all whitespace-nowrap text-amber-800">
-                      💬 {lastBot.content._followUpHint}
-                    </button>
                   </div>
                 </div>
               );

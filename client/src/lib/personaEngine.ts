@@ -1,4 +1,9 @@
-import { HISTORICAL_PERSONAS, type PersonaTopicNarration, type PersonaTopicNode } from "@/data/historicalPersonas";
+import {
+  HISTORICAL_PERSONAS,
+  type HistoricalPersona,
+  type PersonaTopicNarration,
+  type PersonaTopicNode,
+} from "@/data/historicalPersonas";
 
 export interface TopicNode {
   id: string;
@@ -24,10 +29,118 @@ export interface ConversationContext {
   turnCount: number;
   currentMood: string;
   currentEmotion: number;
+  stage: DialogueStage;
+  attitudeToUser: string;
+  revealedMemories: string[];
+  usedArguments: string[];
+  lastDialogueSummary: string;
+  relationshipScore: number;
+  lastResponse: string;
+  lastUserMessage: string;
+  repeatedQuestionCount: number;
 }
 
 export interface PersonaResponseNarration extends PersonaTopicNarration {
   fallbackNote?: string;
+}
+
+export type DialogueStage = "试探期" | "交锋期" | "深层博弈期";
+
+export interface PersonaRecentMessage {
+  role: "user" | "character";
+  content: string;
+}
+
+export interface PersonaCharacterProfile {
+  name: string;
+  title: string;
+  scene: string;
+  time_anchor: string;
+  core_obsession: string;
+  personality_conflict: string;
+  language_style: string;
+  hidden_memories: string[];
+  knowledge_boundary: string;
+  historical_stance: string;
+  forbidden_style: string[];
+}
+
+export interface PersonaSessionState {
+  round: number;
+  stage: DialogueStage;
+  emotion: string;
+  attitude_to_user: string;
+  revealed_memories: string[];
+  used_arguments: string[];
+  last_dialogue_summary: string;
+  relationship_score: number;
+  last_response: string;
+  repeated_question_count: number;
+}
+
+export interface PersonaTopicGuide {
+  matched_topic: string | null;
+  matched_topic_background: string | null;
+  suggested_new_angle: string;
+  avoid_repeating_topics: string[];
+}
+
+export interface PersonaDialogueRequest {
+  characterProfile: PersonaCharacterProfile;
+  sessionState: PersonaSessionState;
+  recentMessages: PersonaRecentMessage[];
+  userMessage: string;
+  topicGuide: PersonaTopicGuide;
+}
+
+export interface PersonaStructuredResponse {
+  narrative_background: string | null;
+  dialogue: string;
+  emotion: string;
+  attitude_shift: string;
+  memory_update: {
+    revealed_memories?: string[];
+    used_arguments?: string[];
+    last_dialogue_summary?: string;
+    relationship_delta?: number;
+  };
+  next_hook: string;
+}
+
+type LocalUserIntent =
+  | "greeting"
+  | "identity"
+  | "stance"
+  | "emotion"
+  | "responsibility"
+  | "praise"
+  | "criticism"
+  | "continue"
+  | "farewell"
+  | "repeat"
+  | "topic"
+  | "open";
+
+export interface PersonaCorpusChunk {
+  id: string;
+  topicId?: string;
+  title: string;
+  text: string;
+  keywords: string[];
+  kind: "profile" | "topic" | "memory" | "boundary";
+  weight: number;
+}
+
+interface RankedCorpusChunk {
+  chunk: PersonaCorpusChunk;
+  score: number;
+}
+
+export interface CrossTimeDialogueSkill {
+  personaId: string;
+  topics: PersonaTopicNode[];
+  corpus: PersonaCorpusChunk[];
+  getStage: (round: number) => DialogueStage;
 }
 
 const normalize = (value: string) =>
@@ -37,6 +150,12 @@ const normalize = (value: string) =>
 
 function findPersona(personaId: string) {
   return HISTORICAL_PERSONAS.find((persona) => persona.id === personaId) ?? null;
+}
+
+export function getDialogueStage(round: number): DialogueStage {
+  if (round <= 5) return "试探期";
+  if (round <= 15) return "交锋期";
+  return "深层博弈期";
 }
 
 function scoreTopic(query: string, topic: PersonaTopicNode) {
@@ -67,8 +186,61 @@ function findBestTopic(query: string, topics: PersonaTopicNode[]) {
   return ranked[0]?.score > 0 ? ranked[0].topic : null;
 }
 
+function unique(values: Array<string | null | undefined>) {
+  return Array.from(new Set(values.map((value) => value?.trim()).filter((value): value is string => Boolean(value))));
+}
+
+function clampScore(value: number, min: number, max: number) {
+  return Math.max(min, Math.min(max, value));
+}
+
+function getQuestionRepeatCount(context: ConversationContext, query: string) {
+  const normalizedQuery = normalize(query);
+  if (!normalizedQuery) return 1;
+  return normalizedQuery === context.lastUserMessage ? context.repeatedQuestionCount + 1 : 1;
+}
+
+function getRepeatAngle(repeatCount: number) {
+  const angles = ["事实", "代价", "心理阴影", "对后世的反问", "私人记忆"];
+  return angles[Math.min(repeatCount, angles.length) - 1] ?? angles[angles.length - 1];
+}
+
+function scoreUserAttitude(query: string) {
+  const normalizedQuery = normalize(query);
+  const supportive = ["赞同", "理解", "敬佩", "伟大", "英明", "谢谢", "认同", "respect", "admire"];
+  const hostile = ["质疑", "错误", "罪", "残忍", "阴谋", "背叛", "荒谬", "谎言", "负责", "难道", "为什么"];
+  const supportScore = supportive.some((word) => normalizedQuery.includes(normalize(word))) ? 1 : 0;
+  const hostileScore = hostile.some((word) => normalizedQuery.includes(normalize(word))) ? -1 : 0;
+  return supportScore + hostileScore;
+}
+
+function scoreEmotionText(emotion: string, fallback: number) {
+  if (/(绝望|崩溃|恐惧|悲痛|震怒)/.test(emotion)) return 25;
+  if (/(愤怒|不安|压抑|警惕|沉重|怀疑)/.test(emotion)) return 40;
+  if (/(克制|冷峻|复杂|平静|谨慎)/.test(emotion)) return 55;
+  if (/(认可|希望|坚定|欣赏|释然)/.test(emotion)) return 72;
+  return fallback;
+}
+
+function summarizeDialogue(query: string, response: PersonaStructuredResponse) {
+  const hook = response.next_hook ? `，并把问题推向“${response.next_hook}”` : "";
+  return `用户追问“${query.slice(0, 40)}”，角色以${response.emotion || "复杂情绪"}回应${hook}。`;
+}
+
+function getAttitudeByRelationship(score: number) {
+  if (score <= -3) return "强烈警惕，把用户视作带有敌意的审问者";
+  if (score < 0) return "保持戒备，但愿意继续交锋";
+  if (score >= 3) return "开始认可用户的胆识与理解力，但仍不完全信任";
+  if (score > 0) return "略微放下戒心，愿意给出更深一层的解释";
+  return "保持距离，试探用户真正意图";
+}
+
 function findTopicBySeedId(topics: PersonaTopicNode[], seedId: string) {
   return topics.find((topic) => topic.id.endsWith(`-${seedId}`)) ?? null;
+}
+
+function findTopicById(topics: PersonaTopicNode[], topicId: string | null) {
+  return topicId ? topics.find((topic) => topic.id === topicId) ?? null : null;
 }
 
 function pickFallbackTopic(topics: PersonaTopicNode[], context: ConversationContext) {
@@ -81,7 +253,10 @@ function pickFallbackTopic(topics: PersonaTopicNode[], context: ConversationCont
     if (related) return related;
   }
 
-  return topics.find((topic) => !context.discussedTopics.includes(topic.id)) ?? topics[0] ?? null;
+  const nextUnvisited = topics.find((topic) => !context.discussedTopics.includes(topic.id));
+  if (nextUnvisited) return nextUnvisited;
+
+  return topics[context.turnCount % topics.length] ?? topics[0] ?? null;
 }
 
 function createFollowUpHint(topic: PersonaTopicNode, topics: PersonaTopicNode[], discussedTopicIds: string[]) {
@@ -94,21 +269,650 @@ function createFollowUpHint(topic: PersonaTopicNode, topics: PersonaTopicNode[],
   const nextUnvisited = topics.find((candidate) => !discussed.has(candidate.id));
   const nextTopic = related ?? nextUnvisited;
 
-  return nextTopic ? `继续追问：${nextTopic.label}` : undefined;
+  return nextTopic ? nextTopic.label : undefined;
 }
 
-function createTurnBridge(topic: PersonaTopicNode, context: ConversationContext, topics: PersonaTopicNode[]) {
-  if (context.turnCount === 0) return "";
+function createHiddenMemories(persona: HistoricalPersona) {
+  return unique([
+    persona.profile.dailyLife,
+    persona.profile.innerConflict,
+    persona.innerConflict,
+    persona.futureArc,
+    persona.sampleLine,
+  ]).slice(0, 5);
+}
 
-  const alreadyDiscussed = context.discussedTopics.includes(topic.id);
-  if (alreadyDiscussed) {
-    return `这个话题我们已经碰过一次了，我换一个角度把“${topic.label}”说清楚。`;
+function tokenizeSearchText(value: string) {
+  const normalized = normalize(value);
+  const tokens: string[] = [];
+  if (!normalized) return tokens;
+
+  for (let index = 0; index < normalized.length - 1; index += 1) {
+    tokens.push(normalized.slice(index, index + 2));
+  }
+  for (let index = 0; index < normalized.length - 2; index += 1) {
+    tokens.push(normalized.slice(index, index + 3));
   }
 
-  const lastTopic = context.lastTopicId ? topics.find((candidate) => candidate.id === context.lastTopicId) : null;
-  if (!lastTopic) return `你把问题推进到“${topic.label}”了，我接着往下说。`;
+  return unique(tokens);
+}
 
-  return `你刚才问的是“${lastTopic.label}”，现在追到“${topic.label}”；这一步要把视线再收窄。`;
+function expandQueryTerms(query: string, intent: LocalUserIntent) {
+  const terms = [query];
+  const normalizedQuery = normalize(query);
+
+  if (intent === "continue" || includesAny(normalizedQuery, ["然后", "接着", "后来", "下一步"])) {
+    terms.push("后果", "接下来", "长期影响", "战争动员", "战后记忆", "同盟");
+  }
+  if (intent === "criticism" || includesAny(normalizedQuery, ["不对", "错", "质疑", "借口"])) {
+    terms.push("争议", "责任", "证据", "边界", "反驳", "道德判断");
+  }
+  if (intent === "emotion") {
+    terms.push("感受", "创伤", "恐惧", "记忆", "内心冲突");
+  }
+  if (intent === "responsibility") {
+    terms.push("责任", "服从", "命令", "道德", "个人责任");
+  }
+
+  return unique(terms);
+}
+
+function buildPersonaCorpus(persona: HistoricalPersona): PersonaCorpusChunk[] {
+  const chunks: PersonaCorpusChunk[] = [
+    {
+      id: `${persona.id}-profile-identity`,
+      title: "身份与背景",
+      kind: "profile",
+      weight: 1.2,
+      keywords: ["身份", "你是谁", "介绍", persona.name, persona.title, persona.location, persona.year],
+      text: `${persona.bio} ${persona.personaType} ${persona.credibilityType} ${persona.timeAnchor}`,
+    },
+    {
+      id: `${persona.id}-profile-stance`,
+      title: "核心立场",
+      kind: "profile",
+      weight: 1.4,
+      keywords: ["立场", "观点", "看法", "你怎么看", "为什么"],
+      text: `${persona.stance} ${persona.profile.beliefs}`,
+    },
+    {
+      id: `${persona.id}-profile-conflict`,
+      title: "内心冲突",
+      kind: "memory",
+      weight: 1.2,
+      keywords: ["感受", "害怕", "后悔", "痛苦", "记忆", "创伤", "矛盾"],
+      text: `${persona.innerConflict} ${persona.profile.innerConflict} ${persona.sampleLine}`,
+    },
+    {
+      id: `${persona.id}-profile-life`,
+      title: "生活细节",
+      kind: "memory",
+      weight: 1,
+      keywords: ["日常", "生活", "家庭", "教育", "经历"],
+      text: `${persona.profile.dailyLife} 家庭：${persona.profile.family} 教育：${persona.profile.education} 籍贯：${persona.profile.origin}`,
+    },
+    {
+      id: `${persona.id}-profile-boundary`,
+      title: "知识边界",
+      kind: "boundary",
+      weight: 0.9,
+      keywords: ["知道", "不知道", "证据", "边界", "史料", "阴谋"],
+      text: persona.knowledgeBoundary,
+    },
+  ];
+
+  persona.topicNodes.forEach((topic) => {
+    chunks.push({
+      id: `${topic.id}-topic`,
+      topicId: topic.id,
+      title: topic.label,
+      kind: "topic",
+      weight: 1.5,
+      keywords: unique([topic.label, ...topic.keywords, topic.narration.matchedTopic]),
+      text: `${topic.label}。${topic.topicFocus} ${topic.narration.background} ${topic.response} ${topic.narration.credibilityBoundary}`,
+    });
+  });
+
+  return chunks;
+}
+
+export function createCrossTimeDialogueSkill(persona: HistoricalPersona): CrossTimeDialogueSkill {
+  return {
+    personaId: persona.id,
+    topics: persona.topicNodes,
+    corpus: buildPersonaCorpus(persona),
+    getStage: getDialogueStage,
+  };
+}
+
+function scoreCorpusChunk(query: string, chunk: PersonaCorpusChunk, intent: LocalUserIntent, context: ConversationContext) {
+  const queryTerms = expandQueryTerms(query, intent);
+  const normalizedQuery = normalize(queryTerms.join(" "));
+  const queryTokens = tokenizeSearchText(queryTerms.join(" "));
+  const normalizedTitle = normalize(chunk.title);
+  const normalizedText = normalize(chunk.text);
+  let score = 0;
+
+  if (normalizedQuery && normalizedTitle.includes(normalizedQuery)) score += 24;
+  if (normalizedQuery && normalizedText.includes(normalizedQuery)) score += 12;
+
+  chunk.keywords.forEach((keyword) => {
+    const normalizedKeyword = normalize(keyword);
+    if (!normalizedKeyword) return;
+    if (normalizedQuery.includes(normalizedKeyword)) score += normalizedKeyword.length >= 4 ? 18 : 10;
+    if (normalizedText.includes(normalizedKeyword) && queryTokens.includes(normalizedKeyword)) score += 8;
+  });
+
+  queryTokens.forEach((token) => {
+    if (token.length < 2) return;
+    if (normalizedTitle.includes(token)) score += 3;
+    if (normalizedText.includes(token)) score += 1;
+  });
+
+  if (chunk.topicId && chunk.topicId === context.lastTopicId) {
+    if (intent === "criticism" || intent === "responsibility" || intent === "emotion" || intent === "repeat") score += 24;
+    if (intent === "continue") score += 8;
+  }
+
+  return score * chunk.weight;
+}
+
+function retrievePersonaCorpus(skill: CrossTimeDialogueSkill, query: string, context: ConversationContext, intent: LocalUserIntent) {
+  return skill.corpus
+    .map((chunk) => ({ chunk, score: scoreCorpusChunk(query, chunk, intent, context) }))
+    .filter((entry) => entry.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 5);
+}
+
+function firstRetrievedTopic(skill: CrossTimeDialogueSkill, retrievedChunks: RankedCorpusChunk[]) {
+  const topicChunk = retrievedChunks.find((entry) => entry.chunk.topicId);
+  return topicChunk?.chunk.topicId ? findTopicById(skill.topics, topicChunk.chunk.topicId) : null;
+}
+
+function selectTopicForLocalResponse(
+  skill: CrossTimeDialogueSkill,
+  context: ConversationContext,
+  exactTopic: PersonaTopicNode | null,
+  retrievedChunks: RankedCorpusChunk[],
+  intent: LocalUserIntent,
+) {
+  if (exactTopic) return exactTopic;
+
+  const lastTopic = findTopicById(skill.topics, context.lastTopicId);
+  if (lastTopic && ["criticism", "praise", "emotion", "responsibility", "repeat"].includes(intent)) {
+    return lastTopic;
+  }
+
+  if (intent === "continue" && lastTopic) {
+    const relatedTopic = lastTopic.relatedTopics
+      .map((seedId) => findTopicBySeedId(skill.topics, seedId))
+      .filter((topic): topic is PersonaTopicNode => Boolean(topic))
+      .find((topic) => !context.discussedTopics.includes(topic.id));
+    if (relatedTopic) return relatedTopic;
+
+    const nextUnvisited = skill.topics.find((topic) => !context.discussedTopics.includes(topic.id));
+    if (nextUnvisited) return nextUnvisited;
+
+    const lastIndex = skill.topics.findIndex((topic) => topic.id === lastTopic.id);
+    return skill.topics[(lastIndex + 1) % skill.topics.length] ?? lastTopic;
+  }
+
+  return firstRetrievedTopic(skill, retrievedChunks) ?? pickFallbackTopic(skill.topics, context);
+}
+
+function includesAny(normalizedQuery: string, keywords: string[]) {
+  return keywords.some((keyword) => normalizedQuery.includes(normalize(keyword)));
+}
+
+function detectUserIntent(query: string, context: ConversationContext, exactTopic: PersonaTopicNode | null): LocalUserIntent {
+  const normalizedQuery = normalize(query);
+  if (!normalizedQuery) return "open";
+  if (includesAny(normalizedQuery, ["你好", "您好", "在吗", "hello", "hi", "嗨"])) return "greeting";
+  if (includesAny(normalizedQuery, ["再见", "告别", "回头见", "bye", "结束"])) return "farewell";
+  if (includesAny(normalizedQuery, ["然后", "然后呢", "接着", "继续", "后来呢", "还有呢", "下一步", "接下来"])) return "continue";
+  if (getQuestionRepeatCount(context, query) > 1) return "repeat";
+  if (includesAny(normalizedQuery, ["你是谁", "介绍自己", "你的身份", "你是什么人", "你叫什么", "身份"])) return "identity";
+  if (includesAny(normalizedQuery, ["你怎么看", "你的观点", "你认为", "立场", "看法", "为什么"])) return exactTopic ? "topic" : "stance";
+  if (includesAny(normalizedQuery, ["害怕", "后悔", "痛苦", "感受", "心情", "难过", "愤怒", "记忆", "创伤"])) return "emotion";
+  if (includesAny(normalizedQuery, ["责任", "负责", "罪", "道德", "服从", "命令", "错了吗", "错么"])) return "responsibility";
+  if (includesAny(normalizedQuery, ["伟大", "英明", "敬佩", "佩服", "赞同", "理解你", "支持你", "做得对"])) return "praise";
+  if (includesAny(normalizedQuery, ["残忍", "荒谬", "借口", "谎言", "背叛", "冷血", "不对", "错误", "质疑", "阴谋"])) return "criticism";
+  return exactTopic ? "topic" : "open";
+}
+
+function pickByTurn(values: string[], turnCount: number) {
+  return values[turnCount % values.length] ?? "";
+}
+
+function polishResponseText(text: string) {
+  return text
+    .replace(/\s+/g, " ")
+    .replace(/\s+([，。！？；：])/g, "$1")
+    .replace(/([，。！？；：])\s+/g, "$1")
+    .trim();
+}
+
+function getTopicSeedId(topic: PersonaTopicNode) {
+  return topic.id.slice(topic.id.lastIndexOf("-") + 1);
+}
+
+const SPOKEN_TOPIC_FOCUS: Record<string, string[]> = {
+  what_happened: [
+    "珍珠港不是一个干净的名词。它先是清晨的飞机、火光和伤亡，随后才变成把国家推入战争的门槛。",
+    "那一天不能只从国会记录里看。先有港口里的混乱和死亡，后面才有宣战、动员和漫长的太平洋战争。",
+  ],
+  attack_morning: [
+    "如果只说战果，就把那天早晨说轻了。真正压在人身上的，是警报、浓烟、找不到同伴的慌乱。",
+    "清晨的混乱不是地图上的箭头。人是在火里、油里、喊声里才明白战争已经落到自己身上。",
+  ],
+  japanese_pilot: [
+    "飞行员不是一句国家口号。他们有训练、命令和恐惧，也有必须面对的个人责任。",
+    "我不能让“执行命令”四个字把人遮住。飞机下面不是抽象目标，是会流血的人。",
+  ],
+  strategic_gamble: [
+    "这不是稳操胜券的计划，而是一场把国家命运押进短暂主动权里的赌博。",
+    "所谓战略，在这里带着赌徒的味道：想用一击换时间，却未必能承受被唤醒的对手。",
+  ],
+  resource_embargo: [
+    "资源压力确实存在，可压力不是免责书。石油、橡胶和南进路线，只能解释困境，不能洗白选择。",
+    "禁运把决策者逼进窄路，但真正跨过战争门槛的，仍是人的判断和命令。",
+  ],
+  diplomacy: [
+    "谈判不是突然断掉的绳子，它是一点点被猜疑、拖延和军事部署磨断的。",
+    "到最后，照会还在桌上，舰队已经在海上。外交失败最冷的地方就在这里。",
+  ],
+  pacific_fleet: [
+    "太平洋舰队成为目标，不是偶然。它挡在南进战略的想象路线上，也挡住了日本军方想抢出的时间。",
+    "打珍珠港，是为了先压住美国海军的反应能力；可被击中的不只是舰队，还有美国社会的神经。",
+  ],
+  carrier_tactics: [
+    "航母奇袭的危险在于，它把距离、隐蔽、分波攻击和浅水鱼雷压进同一个清晨。",
+    "从军事上说，那是一次周密的行动；从人的角度说，周密并不会让爆炸变得正当。",
+  ],
+  tactical_success: [
+    "当天的破坏当然巨大。可战术上的火光，很快照出了更长战争里的代价。",
+    "如果只看清晨，它像成功；如果看后来，它更像把一头工业巨兽叫醒的钟声。",
+  ],
+  strategic_failure: [
+    "它没有结束美国的战争能力，反而给了美国动员工业、民意和同盟的理由。",
+    "珍珠港最尖锐的反讽，是一次成功袭击反而打开了长期失败的门。",
+  ],
+  american_entry: [
+    "美国参战不是一句愤怒口号。它是国会表决、公众情绪、总统语言和战争机器一起转动。",
+    "遭袭让犹豫变得困难，也让一个民主国家必须公开说明自己为何开战。",
+  ],
+  day_of_infamy: [
+    "演说的作用，是把分散的震惊整理成共同语言，让人知道悲痛将被带往何处。",
+    "那不是修辞练习。国家需要语言把恐惧、愤怒和行动接在一起。",
+  ],
+  isolationism: [
+    "孤立主义不是被一句话击碎的，而是被港口里的火光夺走了原来的政治支点。",
+    "袭击之前，美国人仍在争论是否参战；袭击之后，争论的地面变了。",
+  ],
+  intelligence_failure: [
+    "情报失败要分层看：知道战争风险、知道具体地点和完成有效戒备，不是一回事。",
+    "警讯存在，判断却没有落到足够清楚的行动上；这正是最该追问的地方。",
+  ],
+  conspiracy_boundary: [
+    "你问我是否早知道，就必须把警讯、误判和阴谋分开说。",
+    "我可以接受对情报处理的质疑，但不能把没有证据链的推断说成事实。",
+  ],
+  allied_war: [
+    "珍珠港把太平洋、欧洲和更广阔的战场接到了一起，战争从此不再能分开理解。",
+    "美国从援助者变成参战者，工业、海军、金融和士兵都被接进同盟结构里。",
+  ],
+  britain_view: [
+    "从英国看，这既是残酷的震惊，也是战争前景的转折。",
+    "美国不是被礼貌地请进战争的，它是被战争击中了。",
+  ],
+  war_mobilization: [
+    "战争动员就是把情绪变成制度：造船、飞机、征兵、税收和宣传全都开始重新排列。",
+    "愤怒如果只停在胸口，成不了战争；它必须被工厂、国会和军队接住。",
+  ],
+  civilian_cost: [
+    "普通人的代价最容易被宏大叙事盖住：烧伤、失踪、家书，还有很久以后仍会回来的噩梦。",
+    "国家说战略，家庭承受空椅子。历史最沉的地方，常常就在那里。",
+  ],
+  japanese_american: [
+    "战争动员不只召唤团结，也会把怀疑压到无辜公民和社区身上。",
+    "安全一旦变成万能理由，公民权就会先在少数人身上变得脆弱。",
+  ],
+  responsibility: [
+    "责任不能只停在国家或个人一端。命令、服从、恐惧、选择和事后解释，都要被追问。",
+    "谁下令，谁执行，谁承受后果，这些问题不能互相替对方开脱。",
+  ],
+  victim_executor: [
+    "受害者和执行者真正相遇时，谁都不能躲进抽象词里。",
+    "一个人在港口逃生，一个人在空中执行命令；跨时空对话要让他们都听见对方的具体经验。",
+  ],
+  postwar_memory: [
+    "战后记忆不会自动安静。纪念、胜利叙事、创伤和责任争论会继续拉扯同一个事件。",
+    "如果只留下庄严，就会忘记追问；如果只剩追问，也会忘记那些真实的伤亡。",
+  ],
+};
+
+function asPersonaText(text: string) {
+  return text
+    .replace(/总统必须/g, "我必须")
+    .replace(/他的/g, "我的")
+    .replace(/她的/g, "我的")
+    .replace(/他为/g, "我为")
+    .replace(/她为/g, "我为")
+    .replace(/他需要/g, "我需要")
+    .replace(/她需要/g, "我需要")
+    .replace(/他知道/g, "我知道")
+    .replace(/她知道/g, "我知道")
+    .replace(/他想/g, "我想")
+    .replace(/她想/g, "我想")
+    .replace(/她既是/g, "我既是")
+    .replace(/她是谁/g, "我是谁")
+    .replace(/他早已/g, "我早已")
+    .replace(/他|她/g, "我");
+}
+
+function createRoleOpening(persona: HistoricalPersona) {
+  const openings: Partial<Record<HistoricalPersona["role"], string>> = {
+    president: "我从白宫接到消息时，先听见的不是历史名词，而是伤亡报告。",
+    admiral: "我只能从舰队、时间和风险说起，不能把它说成荣耀。",
+    prime_minister: "我没有站在珍珠港的甲板上，但我知道一个国家被战争击中的滋味。",
+    diplomat: "我在华盛顿看见这一天，也看见亚洲战争忽然被美国人切身感到。",
+    sailor: "我不从地图说起，我从甲板说起。",
+    pilot: "我只能从座舱、命令和那片港口说起。",
+    minority_civilian: "我听见爆炸，也听见第二天街上的沉默。",
+    commentator: "我先说清楚：惨烈不能取消追问，国旗也不能盖住问题。",
+  };
+
+  return openings[persona.role] ?? "我只能从自己站的位置说起。";
+}
+
+function createTopicLead(persona: HistoricalPersona, topic: PersonaTopicNode, context: ConversationContext, intent: LocalUserIntent) {
+  if (intent === "criticism") {
+    return pickByTurn([
+      "你的质疑我听见了，我不能只用口号挡回去。",
+      "别急着接受我的说法，也别急着把一切判成阴谋。",
+      "你问得尖锐，这正是历史该受的审问。",
+    ], context.turnCount);
+  }
+
+  if (intent === "praise") {
+    return pickByTurn([
+      "先别急着称赞我，称赞如果不连着代价一起看，就太轻了。",
+      "我不需要空泛的称颂，我更愿意把判断说清楚。",
+      "若你真理解我，就要连我的迟疑和责任一并听完。",
+    ], context.turnCount);
+  }
+
+  if (intent === "responsibility") {
+    return pickByTurn([
+      "责任这两个字，不能被我轻轻放过去。",
+      "要谈责任，就不能只看命令，也不能只看结果。",
+      "我不会把责任全推给抽象的时代。",
+    ], context.turnCount);
+  }
+
+  if (context.turnCount === 0) {
+    return createRoleOpening(persona);
+  }
+
+  return pickByTurn([
+    "我只能从自己站的位置说起。",
+    "这件事不能只看一个结论。",
+    "从我的位置看，事情没有那么平整。",
+    "你问到的不是小事，我不能轻轻带过。",
+  ], context.turnCount);
+}
+
+function createPersonalDetail(persona: HistoricalPersona, context: ConversationContext, intent: LocalUserIntent) {
+  if (intent === "continue" && context.turnCount % 2 === 1) return "";
+
+  const detail = asPersonaText(pickByTurn([
+    persona.profile.beliefs,
+    persona.profile.innerConflict,
+    persona.innerConflict,
+    persona.sampleLine,
+    persona.profile.dailyLife,
+    persona.futureArc,
+  ], context.turnCount));
+
+  if (intent === "criticism") return `你可以继续逼问我；${detail}`;
+  if (intent === "emotion") return detail;
+  if (context.turnCount < 2) return "";
+  return detail;
+}
+
+function createGroundedTopicPoint(persona: HistoricalPersona, topic: PersonaTopicNode, context: ConversationContext) {
+  const seedId = getTopicSeedId(topic);
+  const spokenFocus = pickByTurn(
+    SPOKEN_TOPIC_FOCUS[seedId] ?? [asPersonaText(topic.topicFocus)],
+    context.turnCount,
+  );
+  return `${asPersonaText(spokenFocus)} ${asPersonaText(topic.response)}`;
+}
+
+function createIntentResponse(
+  persona: HistoricalPersona,
+  topic: PersonaTopicNode,
+  context: ConversationContext,
+  query: string,
+  intent: LocalUserIntent,
+) {
+  const personalDetail = createPersonalDetail(persona, context, intent);
+
+  if (intent === "greeting") {
+    return `${asPersonaText(persona.sampleLine)} 我是${persona.title}，此刻我能给你的不是后世课本里的定论，而是从${persona.location}望出去的判断：${asPersonaText(persona.stance)}`;
+  }
+
+  if (intent === "identity") {
+    return `${asPersonaText(persona.bio)} 若只问我的身份，那还不够；真正决定我如何说话的，是这份矛盾：${asPersonaText(persona.innerConflict)} ${asPersonaText(persona.profile.beliefs)}`;
+  }
+
+  if (intent === "stance") {
+    return `${asPersonaText(persona.stance)} 这不是一句摆在纸上的立场，它连着我的处境：${personalDetail}`;
+  }
+
+  if (intent === "emotion") {
+    return `害怕当然有，迟疑也有。${asPersonaText(persona.innerConflict)} ${asPersonaText(persona.profile.innerConflict)} ${asPersonaText(persona.sampleLine)}`;
+  }
+
+  if (intent === "responsibility") {
+    return `${createTopicLead(persona, topic, context, intent)}${createGroundedTopicPoint(persona, topic, context)} ${asPersonaText(persona.profile.innerConflict)} 责任若只说成胜败，就太便宜了。`;
+  }
+
+  if (intent === "praise") {
+    return `${createTopicLead(persona, topic, context, intent)}${createGroundedTopicPoint(persona, topic, context)} ${asPersonaText(persona.innerConflict)} 若只称赞决断而不看代价，那样的理解太容易，也太冷。`;
+  }
+
+  if (intent === "criticism") {
+    return `${createTopicLead(persona, topic, context, intent)}${createGroundedTopicPoint(persona, topic, context)} ${asPersonaText(persona.stance)} ${personalDetail}`;
+  }
+
+  if (intent === "farewell") {
+    return `若我们的谈话到这里停下，我仍要留下这一句：${asPersonaText(persona.stance)} 历史不会因为人转身离开就安静下来，它会在幸存者、执行者和旁观者身上继续回响。`;
+  }
+
+  if (intent === "repeat") {
+    return createVariantResponse(persona, topic, context, query);
+  }
+
+  if (intent === "continue") {
+    const continueLead = pickByTurn([
+      "那就顺着这条线往下看。",
+      "如果继续追下去，就会碰到下一层。",
+      "再往深处走，问题会变得更沉。",
+      "下一层问题，不该被跳过去。",
+      "把前面的话接住，我继续说。",
+    ], context.turnCount);
+    return `${continueLead}${createGroundedTopicPoint(persona, topic, context)} ${personalDetail}`;
+  }
+
+  return `${createTopicLead(persona, topic, context, intent)}${createGroundedTopicPoint(persona, topic, context)} ${personalDetail}`;
+}
+
+export function createCharacterProfile(persona: HistoricalPersona): PersonaCharacterProfile {
+  return {
+    name: persona.name,
+    title: persona.title,
+    scene: `${persona.location}，时间锚点：${persona.timeAnchor}`,
+    time_anchor: persona.timeAnchor,
+    core_obsession: persona.stance,
+    personality_conflict: persona.innerConflict,
+    language_style: persona.voiceStyle,
+    hidden_memories: createHiddenMemories(persona),
+    knowledge_boundary: persona.knowledgeBoundary,
+    historical_stance: persona.stance,
+    forbidden_style: ["百科式解释", "现代旁白口吻", "作为AI", "我无法回答", "机械重复上一轮观点"],
+  };
+}
+
+export function createSessionState(context: ConversationContext, userMessage = ""): PersonaSessionState {
+  const round = context.turnCount + 1;
+  return {
+    round,
+    stage: getDialogueStage(round),
+    emotion: context.currentMood,
+    attitude_to_user: context.attitudeToUser,
+    revealed_memories: context.revealedMemories,
+    used_arguments: context.usedArguments,
+    last_dialogue_summary: context.lastDialogueSummary,
+    relationship_score: context.relationshipScore,
+    last_response: context.lastResponse,
+    repeated_question_count: userMessage ? getQuestionRepeatCount(context, userMessage) : context.repeatedQuestionCount,
+  };
+}
+
+function createTopicGuide(persona: HistoricalPersona, context: ConversationContext, userMessage: string): PersonaTopicGuide {
+  const matchedTopic = findBestTopic(userMessage, persona.topicNodes);
+  const repeatCount = getQuestionRepeatCount(context, userMessage);
+  return {
+    matched_topic: matchedTopic?.label ?? null,
+    matched_topic_background: matchedTopic?.narration.background ?? null,
+    suggested_new_angle: getRepeatAngle(repeatCount),
+    avoid_repeating_topics: context.usedArguments,
+  };
+}
+
+export function createPersonaDialogueRequest(
+  persona: HistoricalPersona,
+  context: ConversationContext,
+  recentMessages: PersonaRecentMessage[],
+  userMessage: string,
+): PersonaDialogueRequest {
+  return {
+    characterProfile: createCharacterProfile(persona),
+    sessionState: createSessionState(context, userMessage),
+    recentMessages,
+    userMessage,
+    topicGuide: createTopicGuide(persona, context, userMessage),
+  };
+}
+
+export function toPersonaRecentMessages(messages: Array<{ type: string; content: any; mode?: string }>, limit = 10): PersonaRecentMessage[] {
+  return messages
+    .filter((message) => message.mode === "persona")
+    .slice(-limit)
+    .map((message) => {
+      if (message.type === "user") {
+        return { role: "user" as const, content: String(message.content ?? "") };
+      }
+
+      const content = typeof message.content?.content === "string"
+        ? message.content.content
+        : typeof message.content?.dialogue === "string"
+          ? message.content.dialogue
+          : typeof message.content === "string"
+            ? message.content
+            : "";
+
+      return { role: "character" as const, content };
+    })
+    .filter((message) => message.content.trim().length > 0);
+}
+
+function createVariantResponse(persona: HistoricalPersona, topic: PersonaTopicNode, context: ConversationContext, query: string) {
+  const repeatCount = getQuestionRepeatCount(context, query);
+  const angle = getRepeatAngle(repeatCount);
+  const hiddenMemories = createHiddenMemories(persona);
+  const unrevealedMemory = hiddenMemories.find((memory) => !context.revealedMemories.includes(memory));
+
+  if (!context.discussedTopics.includes(topic.id)) {
+    return `${createTopicLead(persona, topic, context, "topic")}${createGroundedTopicPoint(persona, topic, context)} ${createPersonalDetail(persona, context, "topic")}`;
+  }
+
+  if (angle === "代价") {
+    return `代价从来不是写在战报末尾的数字，而是落在人的身体、家庭和良心上。${topic.narration.background} 在我的位置上，我必须承认这件事带来的不是一个干净的结论，而是必须面对的伤亡、动员与责任。${asPersonaText(persona.stance)}`;
+  }
+
+  if (angle === "心理阴影") {
+    return `${asPersonaText(unrevealedMemory ?? persona.profile.innerConflict)} 这正是我看待“${topic.label}”时绕不开的阴影。它不是一条干净的因果链，而是恐惧、愤怒、责任和自辩交缠在一起的历史。`;
+  }
+
+  if (angle === "对后世的反问") {
+    return `后世总愿意把这件事放进清楚的格子里，可若站在${persona.year}的${persona.location}，掌握我的边界、我的恐惧和我的责任，就不会轻易把它说成单一答案。${asPersonaText(persona.stance)}`;
+  }
+
+  if (angle === "私人记忆") {
+    return `${asPersonaText(persona.sampleLine)} 这不是百科答案，而是我记忆里最难被整理的部分。历史落到一个人身上时，不只是在说明事件如何发生，也在逼人承受它如何留下来。`;
+  }
+
+  return `${createTopicLead(persona, topic, context, "topic")}${createGroundedTopicPoint(persona, topic, context)} ${createPersonalDetail(persona, context, "topic")}`;
+}
+
+function updateLocalMemory(
+  persona: HistoricalPersona,
+  context: ConversationContext,
+  topic: PersonaTopicNode,
+  query: string,
+  response: string,
+) {
+  const round = context.turnCount + 1;
+  const hiddenMemories = createHiddenMemories(persona);
+  const shouldRevealMemory = round > 5 || context.discussedTopics.includes(topic.id);
+  const nextMemory = shouldRevealMemory ? hiddenMemories.find((memory) => !context.revealedMemories.includes(memory)) : null;
+  const relationshipScore = clampScore(context.relationshipScore + scoreUserAttitude(query), -5, 5);
+  const repeatedQuestionCount = getQuestionRepeatCount(context, query);
+
+  return {
+    discussedTopics: Array.from(new Set([...context.discussedTopics, topic.id])),
+    revealedMemories: unique([...context.revealedMemories, nextMemory]),
+    usedArguments: unique([...context.usedArguments, topic.label]),
+    relationshipScore,
+    repeatedQuestionCount,
+    attitudeToUser: getAttitudeByRelationship(relationshipScore),
+    lastDialogueSummary: `用户追问“${query.slice(0, 40)}”，${persona.name}围绕“${topic.label}”推进到${getDialogueStage(round)}。`,
+    lastResponse: response,
+  };
+}
+
+export function applyPersonaStructuredResponse(
+  persona: HistoricalPersona,
+  context: ConversationContext,
+  userMessage: string,
+  response: PersonaStructuredResponse,
+): ConversationContext {
+  const topic = findBestTopic(userMessage, persona.topicNodes);
+  const round = context.turnCount + 1;
+  const relationshipDelta = response.memory_update?.relationship_delta ?? scoreUserAttitude(userMessage);
+  const relationshipScore = clampScore(context.relationshipScore + relationshipDelta, -5, 5);
+  const repeatedQuestionCount = getQuestionRepeatCount(context, userMessage);
+
+  return {
+    ...context,
+    discussedTopics: topic ? Array.from(new Set([...context.discussedTopics, topic.id])) : context.discussedTopics,
+    lastTopicId: topic?.id ?? context.lastTopicId,
+    turnCount: round,
+    currentMood: response.emotion || context.currentMood,
+    currentEmotion: scoreEmotionText(response.emotion, context.currentEmotion),
+    stage: getDialogueStage(round),
+    attitudeToUser: response.attitude_shift || getAttitudeByRelationship(relationshipScore),
+    revealedMemories: unique([...context.revealedMemories, ...(response.memory_update?.revealed_memories ?? [])]),
+    usedArguments: unique([...context.usedArguments, ...(response.memory_update?.used_arguments ?? []), topic?.label]),
+    lastDialogueSummary: response.memory_update?.last_dialogue_summary || summarizeDialogue(userMessage, response),
+    relationshipScore,
+    lastResponse: response.dialogue,
+    lastUserMessage: normalize(userMessage),
+    repeatedQuestionCount,
+  };
 }
 
 export function createContext(personaId: string): ConversationContext {
@@ -120,6 +924,15 @@ export function createContext(personaId: string): ConversationContext {
     turnCount: 0,
     currentMood: persona?.emotion ?? "待进入对话",
     currentEmotion: persona?.emotionScore ?? 50,
+    stage: "试探期",
+    attitudeToUser: "保持距离，试探用户真正意图",
+    revealedMemories: [],
+    usedArguments: [],
+    lastDialogueSummary: "对话尚未开始。",
+    relationshipScore: 0,
+    lastResponse: "",
+    lastUserMessage: "",
+    repeatedQuestionCount: 0,
   };
 }
 
@@ -150,9 +963,12 @@ export function generateLocalResponse(
     };
   }
 
-  const exactTopic = findBestTopic(query, persona.topicNodes);
-  const selectedTopic = exactTopic ?? pickFallbackTopic(persona.topicNodes, context);
-  const isFallback = !exactTopic;
+  const skill = createCrossTimeDialogueSkill(persona);
+  const exactTopic = findBestTopic(query, skill.topics);
+  const userIntent = detectUserIntent(query, context, exactTopic);
+  const retrievedChunks = retrievePersonaCorpus(skill, query, context, userIntent);
+  const selectedTopic = selectTopicForLocalResponse(skill, context, exactTopic, retrievedChunks, userIntent);
+  const isFallback = !exactTopic && !retrievedChunks.some((entry) => entry.chunk.topicId === selectedTopic?.id);
 
   if (!selectedTopic) {
     return {
@@ -174,22 +990,31 @@ export function generateLocalResponse(
   };
 
   const nextDiscussed = Array.from(new Set([...context.discussedTopics, selectedTopic.id]));
+  const response = polishResponseText(createIntentResponse(persona, selectedTopic, context, query, userIntent));
+  const localMemory = updateLocalMemory(persona, context, selectedTopic, query, response);
 
   return {
-    response: [createTurnBridge(selectedTopic, context, persona.topicNodes), selectedTopic.response]
-      .filter(Boolean)
-      .join("\n\n"),
+    response,
     mood: selectedTopic.mood,
     emotionScore: selectedTopic.emotionScore,
     followUpHint: createFollowUpHint(selectedTopic, persona.topicNodes, nextDiscussed),
-    narration,
+    narration: context.turnCount === 0 ? narration : undefined,
     context: {
       ...context,
-      discussedTopics: nextDiscussed,
+      discussedTopics: localMemory.discussedTopics,
       lastTopicId: selectedTopic.id,
       turnCount: context.turnCount + 1,
       currentMood: selectedTopic.mood,
       currentEmotion: selectedTopic.emotionScore,
+      stage: skill.getStage(context.turnCount + 1),
+      attitudeToUser: localMemory.attitudeToUser,
+      revealedMemories: localMemory.revealedMemories,
+      usedArguments: localMemory.usedArguments,
+      lastDialogueSummary: localMemory.lastDialogueSummary,
+      relationshipScore: localMemory.relationshipScore,
+      lastResponse: localMemory.lastResponse,
+      lastUserMessage: normalize(query),
+      repeatedQuestionCount: localMemory.repeatedQuestionCount,
     },
   };
 }

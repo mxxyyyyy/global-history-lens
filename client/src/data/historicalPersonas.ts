@@ -41,6 +41,7 @@ export interface PersonaTopicNode {
   id: string;
   label: string;
   keywords: string[];
+  topicFocus: string;
   response: string;
   mood: string;
   emotionScore: number;
@@ -257,7 +258,7 @@ const PEARL_HARBOR_TOPIC_SEEDS: TopicSeed[] = [
     id: "conspiracy_boundary",
     label: "罗斯福是否早知道的争议边界",
     axis: "controversy",
-    keywords: ["罗斯福早知道", "是否早知道", "早知道", "预知", "被袭击", "阴谋论", "故意放任", "等日本来炸", "政府隐瞒", "修正主义"],
+    keywords: ["罗斯福早知道", "是否早知道", "早知道", "早就知道", "提前知道", "知道日本会打", "知道日本会袭击", "预知", "被袭击", "阴谋论", "故意放任", "等日本来炸", "政府隐瞒", "修正主义"],
     prompt: "这个话题必须标明证据边界：可以讨论警讯与政治争议，但不能把没有证实的推断当成平台结论。",
     replyFocus: "问罗斯福是否早知道，必须先把证据和猜测分开；可以质疑警讯处理，却不能把未证实推断当成事实。",
     relatedTopics: ["intelligence_failure", "isolationism", "responsibility"],
@@ -349,7 +350,7 @@ const TOPIC_EXCHANGE_CUES: Record<TopicAxis, string> = {
 const clampEmotion = (value: number) => Math.max(0, Math.min(100, value));
 
 function buildTopicResponse(seed: PersonaSeed, topic: TopicSeed) {
-  return `${topic.replyFocus}\n\n${seed.axisResponses[topic.axis]}`;
+  return seed.axisResponses[topic.axis];
 }
 
 function createTopicNodes(seed: PersonaSeed): PersonaTopicNode[] {
@@ -357,6 +358,7 @@ function createTopicNodes(seed: PersonaSeed): PersonaTopicNode[] {
     id: `${seed.id}-${topic.id}`,
     label: topic.label,
     keywords: topic.keywords,
+    topicFocus: topic.replyFocus,
     response: buildTopicResponse(seed, topic),
     mood: seed.axisMoods[topic.axis],
     emotionScore: clampEmotion(seed.axisEmotion[topic.axis]),
@@ -439,7 +441,7 @@ const personaSeeds: PersonaSeed[] = [
       controversy: "我承认战争风险早已升高，警讯也确实存在；但警讯不等于我明确知道12月7日珍珠港会被袭击，更不等于故意放任美国军人去死。",
       alliance: "珍珠港使美国从援助者变成参战者。此后，美国的工业、海军、金融与士兵都将进入同盟国战争结构，欧洲和太平洋不再能分开理解。",
       society: "战争动员会要求牺牲，也会带来社会管制。我愿意谈国家安全，但不能让安全成为后来所有不公的免罪牌。",
-      memory: "“国耻日”是一种动员语言，也是一种记忆责任。它提醒美国人为什么参战，也要求后人继续追问战争如何改变公民权与国家权力。",
+      memory: "“国耻日”是一种动员语言，也是一种记忆责任。它提醒美国人为什么参战，也要求后人持续审视战争如何改变公民权与国家权力。",
     },
     axisMoods: {
       scene: "沉痛与克制",

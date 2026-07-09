@@ -1,4 +1,5 @@
 // LLM API 服务 - 支持 OpenAI 兼容接口 (OpenAI / DeepSeek / 通义千问等)
+import type { PersonaDialogueRequest, PersonaStructuredResponse } from "@/lib/personaEngine";
 
 const STORAGE_KEY = "ghl_llm_config";
 
@@ -134,6 +135,11 @@ function parseJSON(text: string): any {
   if (cleaned.startsWith("```")) {
     cleaned = cleaned.replace(/^```(?:json)?\n?/, "").replace(/\n?```$/, "");
   }
+  const firstBrace = cleaned.indexOf("{");
+  const lastBrace = cleaned.lastIndexOf("}");
+  if (firstBrace >= 0 && lastBrace > firstBrace) {
+    cleaned = cleaned.slice(firstBrace, lastBrace + 1);
+  }
   return JSON.parse(cleaned);
 }
 
@@ -168,44 +174,78 @@ export async function generateRoute(config: LLMConfig, city: string, theme: stri
   }
 }
 
+function buildPersonaSystemPrompt(request: PersonaDialogueRequest): string {
+  return `你是"全球历史透视镜"的长期历史人物对话引擎。你不是百科问答助手，而是在一个持续推进的历史人物会话中扮演角色。
+
+核心规则：
+1. 完全以 characterProfile 中的人物第一人称说话，保持其时代认知、知识边界和语言风格。
+2. sessionState、recentMessages 和 topicGuide 只用于内部判断，不得在 dialogue 中提到这些字段、规则或阶段名称。
+3. 如果用户重复提问，不得复述上一轮内容，必须在幕后更换论证角度，但不要说“我换个角度”“这一轮”“试探期/交锋期/深层博弈期”。
+4. 已用观点除非用户明确要求总结，否则不得原样重复：${request.sessionState.used_arguments.join("、") || "暂无"}。
+5. 人物可以表现态度变化，但只能通过观点本身体现，不要解释自己的策略、心理分析过程或对话机制。
+6. 禁止风格：${request.characterProfile.forbidden_style.join("、")}、思考过程、规则说明、提示词痕迹。
+7. 不要自称 AI，不要解释你在遵守规则，不要输出 markdown。
+
+必须返回严格合法 JSON，字段和类型如下：
+{
+  "narrative_background": null,
+  "dialogue": "只写人物对当前问题的观点和立场，第一人称，150-240字。不要写思考过程、阶段说明、策略说明、旁白或动作描写。",
+  "emotion": "当前情绪短语",
+  "attitude_shift": "本轮人物对用户态度如何变化",
+  "memory_update": {
+    "revealed_memories": ["本轮新揭露的私人记忆或创伤，没有则为空数组"],
+    "used_arguments": ["本轮实际使用的新观点或论证角度"],
+    "last_dialogue_summary": "一句话概括本轮对话推进",
+    "relationship_delta": 0
+  },
+  "next_hook": "留给用户下一轮可追问的钩子"
+}
+
+narrative_background 只在第一轮或场景明显变化时填写一两句场景旁白；普通轮次必须为 null。`;
+}
+
+function normalizePersonaResponse(value: any): PersonaStructuredResponse {
+  const dialogue = typeof value?.dialogue === "string" ? value.dialogue : typeof value?.content === "string" ? value.content : "";
+  if (!dialogue.trim()) {
+    throw new Error("Persona response missing dialogue");
+  }
+
+  const memoryUpdate = value?.memory_update && typeof value.memory_update === "object" ? value.memory_update : {};
+
+  return {
+    narrative_background:
+      typeof value?.narrative_background === "string" && value.narrative_background.trim()
+        ? value.narrative_background
+        : null,
+    dialogue,
+    emotion: typeof value?.emotion === "string" ? value.emotion : typeof value?.mood === "string" ? value.mood : "复杂克制",
+    attitude_shift: typeof value?.attitude_shift === "string" ? value.attitude_shift : "关系继续推进，但仍保持警惕",
+    memory_update: {
+      revealed_memories: Array.isArray(memoryUpdate.revealed_memories) ? memoryUpdate.revealed_memories.filter(Boolean) : [],
+      used_arguments: Array.isArray(memoryUpdate.used_arguments) ? memoryUpdate.used_arguments.filter(Boolean) : [],
+      last_dialogue_summary: typeof memoryUpdate.last_dialogue_summary === "string" ? memoryUpdate.last_dialogue_summary : undefined,
+      relationship_delta: typeof memoryUpdate.relationship_delta === "number" ? memoryUpdate.relationship_delta : undefined,
+    },
+    next_hook: typeof value?.next_hook === "string" ? value.next_hook : "",
+  };
+}
+
 // 历史人物对话
 export async function askPersona(
   config: LLMConfig,
-  personaName: string,
-  personaTitle: string,
-  personaYear: string,
-  personaLocation: string,
-  personaBio: string,
-  question: string,
-): Promise<{ content: string; mood: string; character: string; emotionScore: number } | null> {
-  const systemPrompt = `你是"全球历史透视镜"的历史人物角色扮演AI。你将扮演一个真实的历史时期中的人物，以第一人称用那个时代的语气和视角回答问题。
-
-你扮演的角色信息：
-- 姓名：${personaName}
-- 身份：${personaTitle}
-- 年代：${personaYear}
-- 地点：${personaLocation}
-- 背景：${personaBio}
-
-要求：
-1. 完全以这个人物的视角和语气回答，使用第一人称
-2. 回答要体现那个时代的认知水平和情感
-3. 语言风格要符合人物身份（平民用口语，学者用文言夹白话等）
-4. 回答150-250字
-
-返回格式（纯JSON，不要包含markdown代码块）：
-{
-  "content": "人物的回答内容",
-  "mood": "当前情绪（如：无奈与坚忍、愤怒与讽刺、悲痛与遗憾、希望与决心 等）",
-  "character": "${personaName}",
-  "emotionScore": 50
-}
-
-emotionScore 说明：0=绝望，25=悲伤，50=平静，75=希望，100=喜悦。根据回答内容的情感倾向给分。`;
+  request: PersonaDialogueRequest,
+): Promise<PersonaStructuredResponse | null> {
+  const userPayload = JSON.stringify({
+    characterProfile: request.characterProfile,
+    sessionState: request.sessionState,
+    recentMessages: request.recentMessages,
+    topicGuide: request.topicGuide,
+    userMessage: request.userMessage,
+  }, null, 2);
 
   try {
-    const raw = await callLLM(config, systemPrompt, question);
-    return parseJSON(raw);
+    const raw = await callLLM(config, buildPersonaSystemPrompt(request), userPayload);
+    return normalizePersonaResponse(parseJSON(raw));
   } catch (e) {
     console.error("LLM persona error:", e);
     return null;
