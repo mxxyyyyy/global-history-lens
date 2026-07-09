@@ -384,10 +384,10 @@ export default function DialogueHistory() {
                         ) : (
                           <div className="font-typewriter text-muted-foreground">
                             <p className="font-bold mb-1">
-                              {msg.content.china?.title || msg.content.character || "系统回复"}
+                              {msg.content.primary?.title || msg.content.title || msg.content.character || "系统回复"}
                             </p>
                             <p className="text-xs">
-                              {msg.content.china?.content || msg.content.content || ""}
+                              {msg.content.primary?.content || msg.content.content || ""}
                             </p>
                           </div>
                         )}

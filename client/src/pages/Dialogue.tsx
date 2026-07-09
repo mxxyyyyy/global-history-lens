@@ -11,8 +11,7 @@ import CredibilityAssessment from "@/components/CredibilityAssessment";
 import CrossPerspectiveQuestions from "@/components/CrossPerspectiveQuestions";
 import LLMSettings from "@/components/LLMSettings";
 import { HISTORICAL_PERSONAS, HistoricalPersona } from "@/data/historicalPersonas";
-import { ALL_PERSPECTIVES, MANCHUKUO_PERSPECTIVES } from "@/data/perspectiveCredibility";
-import { ARCHIVE_TOPICS } from "@/data/historicalEvents";
+import { ALL_PERSPECTIVES } from "@/data/perspectiveCredibility";
 import { createDialogueRecord, saveDialogueHistory, loadDialogueHistory } from "@/data/dialogueHistory";
 import { loadLLMConfig, askPerspective, askPersona, type LLMConfig } from "@/lib/llm";
 import { createContext, generateLocalResponse, type ConversationContext } from "@/lib/personaEngine";
@@ -20,76 +19,69 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 // 根据专题生成建议问题
 const TOPIC_QUESTIONS: { [topicId: string]: string[] } = {
-  manchukuo: ["如何看待1932年伪满洲国的建立？", "东北抗联的斗争有何历史意义？", "伪满时期的经济建设是'现代化'还是'掠夺'？", "五族协和理想与现实的差距如何？"],
-  opium_war: ["鸦片战争的根本原因是什么？", "林则徐禁烟是否处理得当？", "《南京条约》如何改变了中国命运？", "英国国内对鸦片战争有何争议？"],
-  meiji: ["明治维新为何能成功？", "日本'脱亚入欧'战略的代价是什么？", "甲午战争如何改变了东亚格局？", "中日维新为何一成一败？"],
-  french_revolution: ["法国大革命的根源是什么？", "恐怖统治是否是革命的必然？", "《人权宣言》的历史意义何在？", "拿破仑是革命的继承者还是背叛者？"],
-  cold_war: ["柏林墙为何能维持28年？", "古巴导弹危机如何避免了核战？", "冷战的终结是否证明了某种制度的优越？", "柏林墙倒塌对东德人意味着什么？"],
-  silk_road: ["丝绸之路的本质是贸易还是文化交流？", "粟特人在丝路中扮演什么角色？", "佛教如何沿丝路传入中国？", "为何丝绸之路最终衰落？"],
-  american_revolution: ["美国独立的根本原因是什么？", "'人人平等'为何不包括黑人和女性？", "法国为何支持美国独立？", "联邦宪法如何平衡各方利益？"],
-  industrial_revolution: ["工业革命为何首先发生在英国？", "工业化对工人阶级意味着什么？", "铁路如何改变了世界？", "殖民地在工业革命中扮演什么角色？"],
-  ww1: ["一战爆发谁应负主要责任？", "壕沟战为何如此残酷？", "《凡尔赛条约》是否注定了二战？", "中国参战却为何在和会上被出卖？"],
-  age_of_exploration: ["哥伦布'发现'美洲是否准确？", "郑和与哥伦布的航海有何本质区别？", "大西洋奴隶贸易的规模有多大？", "哥伦布大交换如何改变了世界？"],
+  meiji: ["Why did the Meiji Restoration succeed?", "How did rapid modernization reshape Japanese society?", "What costs came with Japan's state-led modernization?"],
+  french_revolution: ["What caused the French Revolution?", "Was the Terror inevitable?", "How did revolutionary ideals spread beyond France?"],
+  cold_war: ["Why did the Berlin Wall last so long?", "How did the Cuban Missile Crisis avoid nuclear war?", "What ended the Cold War?"],
+  american_revolution: ["What caused the American Revolution?", "How did the revolution define liberty?", "Why did foreign alliances matter?"],
+  industrial_revolution: ["Why did industrialization begin in Britain?", "Who benefited from industrialization?", "How did railways change society?"],
+  ww1: ["Who bears responsibility for World War I?", "Why was trench warfare so destructive?", "Did Versailles make another war more likely?"],
+  age_of_exploration: ["Was the Age of Exploration discovery or conquest?", "How did maritime empires change global trade?", "What was the Columbian Exchange?"],
+  american_civil_war: ["What caused the American Civil War?", "How did emancipation change the war?", "Why did Reconstruction remain contested?"],
+  black_death: ["How did plague transform medieval society?", "Why did public health ideas change after plague?", "How did communities explain catastrophe?"],
+  cuban_missile_crisis: ["Why did the Cuban Missile Crisis escalate?", "How did leaders avoid nuclear war?", "What did each side learn from the crisis?"],
 };
 
 const SUGGESTED_QUESTIONS = [
-  "如何看待1932年伪满洲国的建立？",
-  "鸦片战争的根本原因是什么？",
-  "法国大革命的人权理念为何排斥了黑人和女性？",
-  "工业革命的受益者和受害者分别是谁？"
+  "What caused the French Revolution?",
+  "Who benefited from the Industrial Revolution?",
+  "How did the Cuban Missile Crisis avoid nuclear war?",
+  "Was the Age of Exploration discovery or conquest?",
 ];
 
-const SUGGESTED_QUESTIONS_EN = [
-  "How should we understand the founding of Manchukuo in 1932?",
-  "What were the deeper causes of the Opium War?",
-  "Why did the French Revolution's idea of rights exclude Black people and women?",
-  "Who benefited from the Industrial Revolution, and who paid the price?"
-];
+const SUGGESTED_QUESTIONS_EN = SUGGESTED_QUESTIONS;
 
-const PERSONA_SUGGESTED_QUESTIONS = [
-  "您当时为何选择留在东北？",
-  "您如何看待当时的'五族协和'口号？",
-  "战乱对您的家庭造成了什么影响？",
-  "您对未来有什么期望？"
-];
+const PERSONA_SUGGESTED_QUESTIONS: string[] = [];
 
-const PERSONA_SUGGESTED_QUESTIONS_EN = [
-  "Why did you choose to stay in Northeast China at that time?",
-  "How did you understand the slogan of 'harmony among five races'?",
-  "How did war change your family life?",
-  "What hopes did you still have for the future?"
-];
+const PERSONA_SUGGESTED_QUESTIONS_EN: string[] = [];
 
-// 根据问题匹配专题并返回视角数据
 function getResponseForQuestion(question: string) {
-  // 匹配关键词到专题
+  const normalized = question.toLowerCase();
   const topicKeywords: { [key: string]: string[] } = {
-    manchukuo: ["伪满", "满洲国", "五族协和", "东北抗联", "抗日联军", "九一八"],
-    opium_war: ["鸦片", "林则徐", "南京条约", "虎门销烟", "通商"],
-    meiji: ["明治", "维新", "脱亚入欧", "甲午", "日本现代化"],
-    french_revolution: ["法国大革命", "巴士底", "人权宣言", "恐怖统治", "罗伯斯庇尔", "拿破仑"],
-    cold_war: ["柏林墙", "冷战", "古巴导弹", "铁幕", "苏联解体"],
-    silk_road: ["丝绸之路", "丝路", "张骞", "敦煌", "粟特"],
-    american_revolution: ["美国独立", "独立宣言", "波士顿", "华盛顿", "联邦宪法"],
-    industrial_revolution: ["工业革命", "蒸汽机", "瓦特", "工厂", "铁路"],
-    ww1: ["一战", "凡尔赛", "萨拉热窝", "壕沟战", "五四运动"],
-    age_of_exploration: ["航海", "哥伦布", "郑和", "奴隶贸易", "大发现"],
+    meiji: ["meiji", "restoration", "modernization", "japan"],
+    french_revolution: ["french revolution", "france", "terror", "robespierre", "napoleon"],
+    cold_war: ["cold war", "berlin wall", "cuban missile", "nuclear", "soviet"],
+    american_revolution: ["american revolution", "independence", "boston", "washington", "constitution"],
+    industrial_revolution: ["industrial revolution", "steam", "factory", "railway", "workers"],
+    ww1: ["world war i", "ww1", "versailles", "trench", "sarajevo"],
+    age_of_exploration: ["exploration", "columbus", "atlantic", "maritime", "columbian exchange"],
+    american_civil_war: ["civil war", "emancipation", "lincoln", "confederacy"],
+    black_death: ["black death", "plague", "pandemic", "medieval"],
+    cuban_missile_crisis: ["cuban missile", "cuba", "kennedy", "khrushchev"],
+    decolonization: ["decolonization", "independence movement", "colonial empire"],
+    korean_war: ["korean war", "korea", "panmunjom", "armistice"],
+    mongol_empire: ["mongol", "steppe", "eurasia", "khan"],
+    reformation: ["reformation", "luther", "protestant", "catholic"],
+    renaissance: ["renaissance", "humanism", "florence", "leonardo"],
+    roman_empire: ["roman", "rome", "empire", "republic"],
+    russian_revolution: ["russian revolution", "bolshevik", "lenin", "soviet"],
+    slave_trade: ["slave trade", "abolition", "atlantic slavery"],
+    ww2: ["world war ii", "ww2", "second world war", "axis", "allies"],
   };
 
-  let matchedTopic = "manchukuo"; // 默认
+  let matchedTopic: string | null = null;
   for (const [topicId, keywords] of Object.entries(topicKeywords)) {
-    if (keywords.some((kw) => question.includes(kw))) {
+    if (keywords.some((kw) => normalized.includes(kw))) {
       matchedTopic = topicId;
       break;
     }
   }
 
+  if (!matchedTopic) return null;
   const perspectives = ALL_PERSPECTIVES[matchedTopic];
   if (!perspectives) return null;
 
-  const keys = Object.keys(perspectives);
   const result: any = {};
-  keys.forEach((key) => {
+  Object.keys(perspectives).forEach((key) => {
     result[key] = {
       title: perspectives[key].title,
       content: perspectives[key].content,
@@ -106,7 +98,7 @@ export default function Dialogue() {
   const [chatHistory, setChatHistory] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [mode, setMode] = useState("perspective"); // 'perspective' or 'persona'
-  const [selectedPersona, setSelectedPersona] = useState<HistoricalPersona | null>(HISTORICAL_PERSONAS[0]);
+  const [selectedPersona, setSelectedPersona] = useState<HistoricalPersona | null>(HISTORICAL_PERSONAS[0] ?? null);
   const [showSaveDialog, setShowSaveDialog] = useState(false);
   const [saveTitle, setSaveTitle] = useState("");
   const [saveSuccess, setSaveSuccess] = useState(false);
@@ -260,6 +252,7 @@ export default function Dialogue() {
   };
 
   const switchMode = (newMode: string) => {
+    if (newMode === 'persona' && HISTORICAL_PERSONAS.length === 0) return;
     setMode(newMode);
     setChatHistory([]);
     setQuery("");
@@ -309,7 +302,7 @@ export default function Dialogue() {
                 <TabsTrigger value="perspective" className="rounded-none data-[state=active]:bg-primary data-[state=active]:text-primary-foreground font-mono text-[10px] md:text-xs px-1 md:px-3">
                   <Users className="w-3 h-3 mr-1 hidden md:inline" /> {t('多视角', 'Perspectives')}
                 </TabsTrigger>
-                <TabsTrigger value="persona" className="rounded-none data-[state=active]:bg-amber-600 data-[state=active]:text-white font-mono text-[10px] md:text-xs px-1 md:px-3">
+                <TabsTrigger value="persona" disabled={HISTORICAL_PERSONAS.length === 0} className="rounded-none data-[state=active]:bg-amber-600 data-[state=active]:text-white font-mono text-[10px] md:text-xs px-1 md:px-3">
                   <User className="w-3 h-3 mr-1 hidden md:inline" /> {t('人物', 'Personas')}
                 </TabsTrigger>
               </TabsList>
@@ -448,7 +441,7 @@ export default function Dialogue() {
                             <div className="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-6 items-start">
                               {Object.keys(msg.content._data).map((key, pIdx) => {
                                 const perspective = msg.content._data[key];
-                                const flags: { [k: string]: string } = { china: "🇨🇳", japan: "🇯🇵", international: "🌍", britain: "🇬🇧", france: "🇫🇷", usa: "🇺🇸", soviet: "🇷🇺", german: "🇩🇪", western: "🌐", central_asia: "🏔️", american: "🇺🇸", british: "🇬🇧", workers: "⚒️", colonial: "🌍", allied: "🤝", chinese: "🇨🇳", european: "🇪🇺", indigenous: "🏛️" };
+                                const flags: { [k: string]: string } = { japan: "JP", international: "INT", britain: "UK", france: "FR", usa: "US", soviet: "SU", german: "DE", western: "WEST", central_asia: "CA", american: "US", british: "UK", workers: "LAB", colonial: "COL", allied: "ALL", european: "EU", indigenous: "IND" };
                                 const flag = flags[key] || "📜";
                                 const topicId = msg.content._topicId;
                                 const fullPerspective = topicId && ALL_PERSPECTIVES[topicId] ? ALL_PERSPECTIVES[topicId][key] : null;

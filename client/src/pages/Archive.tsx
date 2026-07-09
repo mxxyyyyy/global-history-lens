@@ -11,25 +11,19 @@ import { getImagePath } from "@/lib/utils";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const TOPICS_WITH_TRAVEL_ROUTES = new Set([
-  "manchukuo",
-  "opium_war",
   "meiji",
   "french_revolution",
   "cold_war",
-  "silk_road",
   "american_revolution",
   "industrial_revolution",
   "ww1",
   "age_of_exploration",
   "american_civil_war",
   "black_death",
-  "boxer_rebellion",
   "cuban_missile_crisis",
   "decolonization",
-  "first_sino_japanese_war",
   "korean_war",
   "mongol_empire",
-  "nanjing_massacre",
   "reformation",
   "renaissance",
   "roman_empire",
@@ -126,7 +120,7 @@ export default function Archive() {
                 ) : (
                   <>
                     <div className="inline-block px-2 py-1 bg-primary text-primary-foreground font-mono text-xs font-bold mb-4">
-                      10 GLOBAL ARCHIVES
+                      {ARCHIVE_TOPICS.length} GLOBAL ARCHIVES
                     </div>
                     <h1 className="text-4xl md:text-6xl font-bold font-serif mb-4">{t("全球多视角历史档案库", "Global Multi-Perspective Archive")}</h1>
                     <p className="text-lg text-muted-foreground font-typewriter max-w-2xl">
@@ -297,15 +291,15 @@ export default function Archive() {
               <h3 className="font-mono font-bold text-lg uppercase mb-4 border-b-2 border-border pb-2">{t("宏观背景", "Macro Context")}</h3>
               <div className="space-y-4 font-serif text-sm text-muted-foreground">
                 <p>
-                  <strong className="text-foreground">{t("全球局势：", "Global setting:")}</strong> {t("1930年代初，大萧条席卷全球，法西斯主义兴起。凡尔赛-华盛顿体系面临挑战。", "In the early 1930s, the Great Depression spread worldwide, fascism rose, and the Versailles-Washington order came under pressure.")}
+                  <strong className="text-foreground">{t("Global setting:", "Global setting:")}</strong> {t("Each archive is framed through international context, primary-source evidence, and competing historical interpretations.", "Each archive is framed through international context, primary-source evidence, and competing historical interpretations.")}
                 </p>
                 <p>
-                  <strong className="text-foreground">{t("地缘政治：", "Geopolitics:")}</strong> {t("日本急需扩张以转嫁国内危机；苏联在远东力量增强；中国国民政府忙于内战。", "Japan sought expansion to externalize domestic crisis; Soviet power grew in the Far East; China's Nationalist government was consumed by internal conflict.")}
+                  <strong className="text-foreground">{t("Geopolitics:", "Geopolitics:")}</strong> {t("Use the selected case files to compare state power, social change, conflict, and memory without relying on a single national narrative.", "Use the selected case files to compare state power, social change, conflict, and memory without relying on a single national narrative.")}
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-border/50">
-                <img src={getImagePath("/images/map-bg.jpg")} alt="Context Map" className="w-full h-32 object-cover grayscale hover:grayscale-0 transition-all mb-2 border border-border" />
-                <span className="text-[10px] font-mono text-muted-foreground block text-right">FIG 1.1: GEOPOLITICAL MAP 1931</span>
+                <div className="w-full h-32 border border-border bg-secondary/40 flex items-center justify-center font-mono text-[10px] text-muted-foreground mb-2">ARCHIVE CONTEXT</div>
+                <span className="text-[10px] font-mono text-muted-foreground block text-right">FIG 1.1: COMPARATIVE CASE CONTEXT</span>
               </div>
             </div>
 
@@ -393,10 +387,10 @@ export default function Archive() {
                   <div className="bg-secondary/20 border-l-4 border-primary p-6">
                     <h2 className="text-2xl font-bold font-serif mb-2">{cat.label}: {cat.sub}</h2>
                     <p className="text-muted-foreground font-typewriter leading-relaxed">
-                      {cat.id === "politics" && "围绕伪满洲国的建立、国际认可与外交博弈，中、日及国际社会展开了激烈的法理与政治斗争。"}
-                      {cat.id === "economy" && "日本通过满铁等机构，系统性地掠夺东北的煤铁资源，为其扩张战争提供物资支撑。"}
-                      {cat.id === "society" && "伪满洲国推行皇民化、日语教育等文化同化政策，遭到中国民众的坚决抵抗。"}
-                      {cat.id === "military" && "东北抗日联军在长白山等地坚持游击战争，与日本占领军展开长期对抗。"}
+                      {cat.id === "politics" && "Political files trace institutions, legitimacy, diplomacy, and state power across the selected archive."}
+                      {cat.id === "economy" && "Economic files connect resources, labor, technology, trade, and material constraints."}
+                      {cat.id === "society" && "Social files examine communities, belief, identity, daily life, and public memory."}
+                      {cat.id === "military" && "Conflict files follow strategic decisions, battlefield change, violence, and long-term consequences."}
                     </p>
                   </div>
 

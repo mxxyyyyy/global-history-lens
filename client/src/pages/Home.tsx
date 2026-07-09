@@ -204,47 +204,47 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[600px]">
           <div className="relative border-b-2 lg:border-b-0 lg:border-r-2 border-border overflow-hidden group">
             <div className="absolute inset-0 bg-primary/20 mix-blend-multiply z-10 group-hover:bg-transparent transition-all duration-500"></div>
-            <img 
-              src={getImagePath("/images/map-bg.jpg")}
-              alt="Manchuria Map 1930s" 
+            <img
+              src={getImagePath("/images/french-revolution-cover.jpg")}
+              alt="French Revolution archive cover"
               className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
             />
             <div className="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/80 to-transparent z-20">
-              <span className="inline-block px-3 py-1 bg-primary text-primary-foreground font-mono text-xs font-bold mb-2">{t("标杆案例", "Featured Case")}</span>
-              <h3 className="text-3xl md:text-4xl font-bold text-white font-serif">{t("伪满洲国 (1932-1945)", "Manchukuo (1932-1945)")}</h3>
+              <span className="inline-block px-3 py-1 bg-primary text-primary-foreground font-mono text-xs font-bold mb-2">{t("Featured Case", "Featured Case")}</span>
+              <h3 className="text-3xl md:text-4xl font-bold text-white font-serif">{t("French Revolution (1789-1799)", "French Revolution (1789-1799)")}</h3>
             </div>
           </div>
-          
+
           <div className="p-12 lg:p-20 flex flex-col justify-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-mono uppercase">{t("全球视野下的", "Manchukuo in")}<br/>{t("伪满洲国实录", "Global Perspective")}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-mono uppercase">{t("Revolution in", "Revolution in")}<br/>{t("Global Perspective", "Global Perspective")}</h2>
             <div className="w-20 h-2 bg-primary mb-8"></div>
-            
+
             <p className="text-lg text-muted-foreground mb-8 font-serif leading-relaxed">
-              {t("这是我们的首个标杆案例。我们聚合了中国、日本、美国、英国、苏联等多国的官方档案、学术研究与民间记忆，深度解构这一复杂的历史时期。", "Our first flagship case brings together official archives, scholarship, textbooks, and public memory from China, Japan, the United States, Britain, the Soviet Union, and international institutions.")}
+              {t("Compare revolutionary ideals, state violence, social rupture, and political memory through French, British, American, and modern scholarly sources.", "Compare revolutionary ideals, state violence, social rupture, and political memory through French, British, American, and modern scholarly sources.")}
             </p>
-            
+
             <div className="grid grid-cols-2 gap-6 mb-10">
               <div className="border-l-2 border-primary pl-4">
-                <h4 className="font-bold font-mono text-sm uppercase mb-1">{t("政治外交", "Politics")}</h4>
-                <p className="text-sm text-muted-foreground">{t("傀儡政权的合法性危机与国际博弈", "Legitimacy, diplomacy, and international contestation")}</p>
+                <h4 className="font-bold font-mono text-sm uppercase mb-1">{t("Politics", "Politics")}</h4>
+                <p className="text-sm text-muted-foreground">{t("Sovereignty, rights, and revolutionary institutions", "Sovereignty, rights, and revolutionary institutions")}</p>
               </div>
               <div className="border-l-2 border-primary pl-4">
-                <h4 className="font-bold font-mono text-sm uppercase mb-1">{t("经济资源", "Economy")}</h4>
-                <p className="text-sm text-muted-foreground">{t("工业化背后的殖民输血与掠夺", "Colonial extraction behind industrial development")}</p>
+                <h4 className="font-bold font-mono text-sm uppercase mb-1">{t("Economy", "Economy")}</h4>
+                <p className="text-sm text-muted-foreground">{t("Debt, scarcity, taxation, and social pressure", "Debt, scarcity, taxation, and social pressure")}</p>
               </div>
               <div className="border-l-2 border-primary pl-4">
-                <h4 className="font-bold font-mono text-sm uppercase mb-1">{t("社会文化", "Society")}</h4>
-                <p className="text-sm text-muted-foreground">{t("身份认同的撕裂与皇民化教育", "Identity fracture and assimilation policies")}</p>
+                <h4 className="font-bold font-mono text-sm uppercase mb-1">{t("Society", "Society")}</h4>
+                <p className="text-sm text-muted-foreground">{t("Citizenship, class conflict, and public mobilization", "Citizenship, class conflict, and public mobilization")}</p>
               </div>
               <div className="border-l-2 border-primary pl-4">
-                <h4 className="font-bold font-mono text-sm uppercase mb-1">{t("军事冲突", "Conflict")}</h4>
-                <p className="text-sm text-muted-foreground">{t("冰雪中的游击战与国际援助", "Guerrilla resistance, occupation, and wartime collapse")}</p>
+                <h4 className="font-bold font-mono text-sm uppercase mb-1">{t("Conflict", "Conflict")}</h4>
+                <p className="text-sm text-muted-foreground">{t("Civil violence, war, and contested memory", "Civil violence, war, and contested memory")}</p>
               </div>
             </div>
-            
-            <Link href="/archive/manchukuo" className="inline-block">
+
+            <Link href="/archive" className="inline-block">
               <Button size="lg" className="self-start rounded-none border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground shadow-brutal-sm hover:shadow-brutal transition-all">
-                {t("深入探索此案例", "Explore this case")}
+                {t("Explore the archive", "Explore the archive")}
               </Button>
             </Link>
           </div>

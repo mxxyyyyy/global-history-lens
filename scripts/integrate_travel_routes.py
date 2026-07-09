@@ -113,18 +113,15 @@ def normalize_duration_order(themes: dict) -> dict:
 def main() -> None:
     routes_dir = ROOT / "temp_routes"
     merged = {}
-    for i in range(1, 6):
-        path = routes_dir / f"group{i}.json"
-        if not path.exists():
-            print(f"Warning: {path} not found, skipping.")
-            continue
+    for path in sorted(routes_dir.glob("group*.json")):
+        group_name = path.stem
         with path.open(encoding="utf-8") as f:
             group = json.load(f)
         for key, value in group.items():
             if key.startswith("_"):
                 continue
             if key in merged:
-                print(f"Warning: duplicate city {key}; overwriting with group {i}.")
+                print(f"Warning: duplicate city {key}; overwriting with {group_name}.")
             merged[key] = {
                 "id": key,
                 "name": value.get("name", key),

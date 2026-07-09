@@ -5,10 +5,11 @@ export interface SourceReference {
   title: string;
   author?: string;
   year: string;
-  type: "official_archive" | "academic" | "media" | "memoir" | "international";
+  type: "official_archive" | "academic" | "media" | "memoir" | "international" | "literature";
   credibilityScore: number;
   excerpt: string;
   credibilityReason: string;
+  originalUrl?: string;
 }
 
 export interface PerspectiveAnalysis {
@@ -24,324 +25,6 @@ export interface PerspectiveAnalysis {
 export interface TopicPerspectives {
   [key: string]: PerspectiveAnalysis;
 }
-
-// ========== 伪满洲国视角 ==========
-
-export const MANCHUKUO_PERSPECTIVES: TopicPerspectives = {
-  china: {
-    title: "中国视角",
-    content:
-      "1932年伪满洲国的建立是日本帝国主义侵略中国东北的产物。九一八事变后，日本关东军扶植末代皇帝溥仪建立傀儡政权，对东北进行殖民统治和经济掠夺。东北人民在中国共产党领导下组建抗日联军，进行了长达十四年的艰苦抗战。",
-    sources: [
-      {
-        id: "mk-cn-1",
-        title: "《九一八事变史》",
-        author: "中国社会科学院近代史研究所",
-        year: "1991",
-        type: "academic",
-        credibilityScore: 82,
-        excerpt: "日本关东军蓄意制造柳条湖事件，以此为借口发动侵略战争。",
-        credibilityReason: "学术机构研究成果，引用大量原始档案，但部分叙述带有民族主义倾向。",
-      },
-      {
-        id: "mk-cn-2",
-        title: "《东北抗日联军史》",
-        author: "中共中央党史研究室",
-        year: "2005",
-        type: "official_archive",
-        credibilityScore: 78,
-        excerpt: "抗联将士在极端艰苦条件下坚持斗争，体现了中华民族不屈不挠的抗争精神。",
-        credibilityReason: "官方史料，文献详实，但作为党史出版物存在政治叙事框架。",
-      },
-    ],
-    overallCredibility: 80,
-    credibilityAssessment:
-      "中国视角基于大量历史文献和亲历者证词，基本事实可靠，但在评价体系上受民族主义叙事影响，对日方动机的分析可能过于简化。",
-    biasIndicators: [
-      "民族主义叙事框架可能简化复杂的历史动因",
-      "对伪满时期经济建设的评价倾向于全面否定",
-      "抗联历史可能存在英雄化叙事倾向",
-    ],
-    recommendedQuestions: [
-      "伪满时期东北的工业化是否对当地产生了客观影响？",
-      "普通东北民众的日常生活究竟如何？",
-    ],
-  },
-  japan: {
-    title: "日本视角",
-    content:
-      "日本方面长期存在将伪满洲国描述为'满蒙独立运动'产物的论述。部分学者认为满洲国是日本为解决国内经济危机和对抗苏联威胁而推动的'大陆政策'的产物，但也有学者开始反思这段殖民历史的侵略本质。",
-    sources: [
-      {
-        id: "mk-jp-1",
-        title: "《满洲事变と国際連盟》",
-        author: "入江昭",
-        year: "1981",
-        type: "academic",
-        credibilityScore: 85,
-        excerpt: "满洲事变是日本军部独走的结果，但也反映了日本社会深层的大陆扩张欲望。",
-        credibilityReason: "国际学者视角，同时使用日本和国际档案，分析较为客观。",
-      },
-      {
-        id: "mk-jp-2",
-        title: "《昭和史》",
-        author: "半藤一利",
-        year: "2004",
-        type: "academic",
-        credibilityScore: 80,
-        excerpt: "关东军的行动超越了东京政府的控制，但政府最终选择了追认。",
-        credibilityReason: "日本知名历史学家著作，较为客观但仍受日本学界视角局限。",
-      },
-    ],
-    overallCredibility: 75,
-    credibilityAssessment:
-      "日本学界对伪满历史的研究逐渐趋向反思和客观，但仍有部分论述淡化侵略性质。优秀的日本学者提供了关于决策过程的珍贵视角。",
-    biasIndicators: [
-      "部分论述仍使用'满洲国'而非'伪满洲国'，暗示某种合法性",
-      "对殖民统治的破坏性评价可能不够充分",
-      "倾向于将责任归咎于军部而非国家整体",
-    ],
-    recommendedQuestions: [
-      "日本国内对侵略战争的反思是否充分？",
-      "关东军的'独走'与政府的'追认'哪个更值得关注？",
-    ],
-  },
-  international: {
-    title: "国际/国联视角",
-    content:
-      "国际联盟于1931年12月任命由英、美、法、德、意五国组成的李顿调查团赴东北实地调查。1932年10月公布的《李顿报告》明确指出：日本军事行动并非合法自卫，满洲国并非当地人民自发运动，而是日本军事占领和操纵的结果。1933年2月24日，国联大会以42票赞成、1票反对通过该报告，要求日本撤军。日本随即退席并于3月27日正式退出国联。",
-    sources: [
-      {
-        id: "mk-intl-1",
-        title: "Lytton Report (李顿调查团报告)",
-        author: "League of Nations Commission of Enquiry",
-        year: "1932",
-        type: "international",
-        credibilityScore: 90,
-        excerpt:
-          "调查团认定，满洲国并非出于当地人民的自发运动，而是日本军事行动的结果。",
-        credibilityReason:
-          "国际调查机构的第一手报告，基于长达数月的实地考察和大量证据，包括1500余封中文来信和400余封俄文来信。",
-      },
-      {
-        id: "mk-intl-2",
-        title: "League of Nations Covenant and Assembly Records",
-        author: "League of Nations",
-        year: "1931-1933",
-        type: "official_archive",
-        credibilityScore: 92,
-        excerpt:
-          "1933年2月24日，国联大会以42票赞成、1票反对通过李顿报告，要求日本将满洲归还中国。",
-        credibilityReason:
-          "国际联盟官方档案，记录投票结果和各国立场，是研究集体安全机制失效的一手材料。",
-      },
-      {
-        id: "mk-intl-3",
-        title: "Japan's Total Empire: Manchuria and the Culture of Wartime Imperialism",
-        author: "Louise Young",
-        year: "1998",
-        type: "academic",
-        credibilityScore: 90,
-        excerpt:
-          "满洲国是日本'总力战'体制的试验场，其建设服务于日本帝国的整体战略。",
-        credibilityReason: "美国学者使用多国档案，分析深入全面，被学界广泛引用。",
-      },
-    ],
-    overallCredibility: 89,
-    credibilityAssessment:
-      "国际/国联视角基于第一手调查报告和官方档案，对事件性质的判断较为客观。但其局限性在于：国联未能采取有效行动制止日本，反映了当时国际政治的现实主义逻辑而非理想主义。",
-    biasIndicators: [
-      "西方调查团对东亚社会内部状况的理解存在局限",
-      "报告提出的'国际共管'方案忽视中国主权完整",
-      "国联行动受制于大国政治利益",
-    ],
-    recommendedQuestions: [
-      "国际联盟为何未能阻止日本的侵略行为？",
-      "李顿报告对满洲国性质的认定为何具有历史意义？",
-      "如果国联对日本实施有效制裁，历史是否会不同？",
-    ],
-  },
-  usa: {
-    title: "美国视角",
-    content:
-      "美国视角强调日本军国主义势力的崛起和大萧条背景下的对外扩张。美国教科书将满洲事变描述为日本军部绕过文官政府、为获取铁煤资源和市场而发动的侵略。美国政府在1932年1月7日由国务卿史汀生发出照会，宣布'不承认'任何违反条约权利和'门户开放'政策的既成事实，即'史汀生主义'。然而，受孤立主义影响，美国未加入国联，也未对日本采取军事或经济制裁。",
-    sources: [
-      {
-        id: "mk-us-1",
-        title: "World History: Patterns of Interaction",
-        author: "McDougal Littell / Houghton Mifflin",
-        year: "2009",
-        type: "academic",
-        credibilityScore: 78,
-        excerpt:
-          "1931年，日本军队占领了满洲，尽管日本议会反对。随后军队建立了傀儡政府。日本工程师和技术人员开始大量抵达，建造矿山和工厂。",
-        credibilityReason:
-          "美国中学历史教科书，反映美国主流教育体系对事件的叙述框架，简明但可能过于简化。",
-      },
-      {
-        id: "mk-us-2",
-        title: "Stimson Doctrine Non-Recognition Note",
-        author: "Henry L. Stimson, U.S. Secretary of State",
-        year: "1932",
-        type: "official_archive",
-        credibilityScore: 90,
-        excerpt:
-          "美国政府不能承认任何既成事实的合法性，也不能承认任何可能损害美国及其公民在华条约权益的条约或协定。",
-        credibilityReason:
-          "美国国务院正式外交文件，确立了美国不承认伪满洲国的立场，具有重要法理意义。",
-      },
-      {
-        id: "mk-us-3",
-        title: "Japanese Imperialism in Manchuria",
-        author: "L. Magyar",
-        year: "1932",
-        type: "media",
-        credibilityScore: 75,
-        excerpt:
-          "满洲所有的经济主导权都掌握在日本帝国主义手中。日本资本控制着对外贸易、主要铁路、最好的煤矿、现代化钢铁厂。",
-        credibilityReason:
-          "当代左翼报刊分析，提供了对日本经济扩张的批判视角，但带有明确的意识形态立场。",
-      },
-    ],
-    overallCredibility: 82,
-    credibilityAssessment:
-      "美国视角提供了关于日本决策动机和美国外交反应的重要记录，'史汀生主义'成为国际不承认伪满的重要法理基础。但美国当时奉行孤立主义，未采取实质性行动制止日本，其口头谴责与实际政策之间存在明显差距。",
-    biasIndicators: [
-      "教科书叙事可能过度强调日本军部'独走'，淡化国家整体责任",
-      "孤立主义叙事可能为美国不干预开脱",
-      "'门户开放'政策背后有美国经济利益考量",
-    ],
-    recommendedQuestions: [
-      "史汀生主义为何没有伴以军事或经济制裁？",
-      "美国'门户开放'政策如何影响了对满洲危机的反应？",
-      "如果美国在1932年采取更强硬立场，日本会否退却？",
-    ],
-  },
-  britain: {
-    title: "英国视角",
-    content:
-      "英国视角高度关注国际联盟的软弱和英国自身的利益计算。英国教科书指出，1931-1933年的满洲危机是对国联集体安全机制的严重考验。李顿调查团的报告详尽客观，结论明确：日本行为不合法，满洲应归还中国。然而，英国和法国在大萧条中无力也不愿对日本实施经济制裁，更不愿冒险与日本开战。英国似乎更热衷于维持对日良好关系，国联最终无能为力。日本未受惩罚退出的结果，被希特勒和墨索里尼密切关注。",
-    sources: [
-      {
-        id: "mk-uk-1",
-        title: "AQA GCSE History: Understanding the Modern World",
-        author: "AQA / Oxford University Press",
-        year: "2016",
-        type: "academic",
-        credibilityScore: 79,
-        excerpt:
-          "国联无能为力。它讨论了实施经济制裁，但美国作为日本的主要贸易伙伴不参与的话，制裁将毫无意义。此外，英国似乎更热衷于与日本保持良好关系。",
-        credibilityReason:
-          "英国中学历史教科书，反映英国主流教育对国联失败和本国政策的反思。",
-      },
-      {
-        id: "mk-uk-2",
-        title: "Cambridge International AS Level International History 1871-1945",
-        author: "Cambridge University Press",
-        year: "2014",
-        type: "academic",
-        credibilityScore: 82,
-        excerpt:
-          "根据《国际联盟盟约》条款，国际联盟本应对日本采取行动。然而，在全球大萧条最严重的时候，英国和法国无力对日本实施经济制裁，而且两国都不愿因这一问题发动战争。",
-        credibilityReason:
-          "国际课程教材，较为平衡地分析了国联失败的结构性原因和英国的政策选择。",
-      },
-      {
-        id: "mk-uk-3",
-        title: "Oxford AQA History for GCSE: Conflict and Tension 1918-1939",
-        author: "Oxford University Press",
-        year: "2016",
-        type: "academic",
-        credibilityScore: 80,
-        excerpt:
-          "李顿报告得出结论：日本是过错方。即使南满铁路曾遭攻击，日本的反应也过度了，不应入侵。",
-        credibilityReason:
-          "英国GCSE教材，简明呈现李顿调查团结论，适合基础历史教育。",
-      },
-    ],
-    overallCredibility: 81,
-    credibilityAssessment:
-      "英国视角对国联失败和英国政策选择的反思较为坦率，承认英国因经济困难和战略顾虑未能有效制止日本。这种自我批评性的叙述有助于理解绥靖政策的早期根源。但英国视角有时可能过度强调国联机制本身的缺陷，而淡化大国自私的决策。",
-    biasIndicators: [
-      "可能为英国不制裁日本的政策进行合理化",
-      "强调国联机制缺陷，转移对大国责任的批评",
-      "对李顿报告的国际法意义评价可能不足",
-    ],
-    recommendedQuestions: [
-      "英国为何不愿对日本实施经济制裁？",
-      "满洲危机中英国的政策选择是否预示了后来的绥靖主义？",
-      "李顿报告如果得到英国更强硬支持，结果会否不同？",
-    ],
-  },
-};
-
-// ========== 鸦片战争视角 ==========
-
-const OPIUM_WAR_PERSPECTIVES: TopicPerspectives = {
-  china: {
-    title: "中国视角",
-    content:
-      "鸦片战争是西方列强对中国发动的侵略战争，标志着中国近代屈辱史的开端。英国为保护非法鸦片贸易利益，悍然发动战争，迫使清政府签订丧权辱国的《南京条约》，开启了中国半殖民地化进程。林则徐的禁烟运动体现了中华民族反抗外来侵略的正义精神。",
-    sources: [
-      {
-        id: "ow-cn-1",
-        title: "《鸦片战争》",
-        author: "茅海建",
-        year: "1995",
-        type: "academic",
-        credibilityScore: 88,
-        excerpt: "清朝在军事技术和制度上的全面落后，是战败的根本原因。",
-        credibilityReason: "中国学界经典著作，史料详实，分析客观深入。",
-      },
-    ],
-    overallCredibility: 82,
-    credibilityAssessment: "中国视角将鸦片战争定性为侵略战争，基本事实准确，但'百年屈辱'叙事可能过度简化了清朝自身的问题。",
-    biasIndicators: ["'百年屈辱'叙事框架影响", "对清朝自身腐败的反思可能不够", "倾向于将鸦片战争与近代所有不平等关联"],
-    recommendedQuestions: ["清朝自身的制度问题在战争中扮演了什么角色？", "如果没有鸦片问题，中英冲突是否可以避免？"],
-  },
-  britain: {
-    title: "英国视角",
-    content:
-      "英国方面将鸦片战争定义为'贸易战争'或'通商战争'，强调英国追求的是自由贸易权利和外交平等。英国认为清政府的闭关锁国政策和对英国商人的不公正待遇是冲突的根源，鸦片只是导火索而非根本原因。",
-    sources: [
-      {
-        id: "ow-uk-1",
-        title: "The Opium War: Drugs, Dreams and the Making of Modern China",
-        author: "Julia Lovell",
-        year: "2011",
-        type: "academic",
-        credibilityScore: 85,
-        excerpt: "鸦片战争既是一场帝国主义冲突，也是两种世界观的碰撞。",
-        credibilityReason: "英国学者使用中英双方档案，视角较为平衡。",
-      },
-    ],
-    overallCredibility: 72,
-    credibilityAssessment: "英国视角提供了关于贸易和外交的重要背景，但'自由贸易'叙事有为鸦片贸易辩护之嫌。",
-    biasIndicators: ["将鸦片贸易包装为'自由贸易'", "淡化鸦片对中国社会的破坏", "殖民主义视角残余"],
-    recommendedQuestions: ["'自由贸易'能否为鸦片贸易正名？", "英国议会中反战声音为何未能阻止战争？"],
-  },
-  international: {
-    title: "国际视角",
-    content:
-      "国际学界普遍将鸦片战争视为全球化早期阶段东西方文明碰撞的标志性事件。战争暴露了农业文明面对工业文明时的脆弱性，同时也揭示了早期自由贸易理念中的帝国主义本质。",
-    sources: [
-      {
-        id: "ow-intl-1",
-        title: "The Cambridge History of China, Vol. 10",
-        author: "John K. Fairbank",
-        year: "1978",
-        type: "academic",
-        credibilityScore: 86,
-        excerpt: "鸦片战争代表了两种不同国际秩序观念的冲突。",
-        credibilityReason: "费正清学派的代表作，综合性强但部分观点已被后来研究修正。",
-      },
-    ],
-    overallCredibility: 84,
-    credibilityAssessment: "国际视角提供了超越中英双边关系的宏观分析框架，但不同学派之间存在显著分歧。",
-    biasIndicators: ["早期'冲击-回应'模式过于简化中国能动性", "西方中心论残余", "部分学者对中国内部视角理解不足"],
-    recommendedQuestions: ["'冲击-回应'模式是否低估了中国自身的现代化动力？", "鸦片战争的全球影响超越了中英关系吗？"],
-  },
-};
 
 // ========== 明治维新视角 ==========
 
@@ -367,27 +50,6 @@ const MEIJI_PERSPECTIVES: TopicPerspectives = {
     biasIndicators: ["倾向于美化明治领导人", "对'脱亚入欧'的代价讨论不足", "淡化对外扩张的侵略性"],
     recommendedQuestions: ["明治维新的现代化是否以牺牲邻国为代价？", "日本底层民众在维新中获益了吗？"],
   },
-  china: {
-    title: "中国视角",
-    content:
-      "中国视角下的明治维新常与中国自身的洋务运动和戊戌变法对比。中日维新'一成一败'的结果引发了深刻反思：为何同样面对西方冲击，日本能够成功转型而中国未能做到？甲午战争的惨败更使这一对比刻骨铭心。",
-    sources: [
-      {
-        id: "mj-cn-1",
-        title: "《中日近代化比较研究》",
-        author: "汤重南",
-        year: "2002",
-        type: "academic",
-        credibilityScore: 80,
-        excerpt: "中日维新的不同结局根源于两国政治体制和社会结构的差异。",
-        credibilityReason: "比较研究视角，分析较为系统但受中国学术传统影响。",
-      },
-    ],
-    overallCredibility: 78,
-    credibilityAssessment: "中国视角提供了有价值的比较分析，但可能过度简化了两国不同的历史条件。",
-    biasIndicators: ["'为何中国不能'的问题设定本身带有预设", "对明治维新的负面后果关注不足", "比较框架可能忽略各自独特性"],
-    recommendedQuestions: ["中日维新的比较是否公平？两国的起点是否可比？", "甲午战争的结果是否完全由维新成败决定？"],
-  },
   western: {
     title: "西方视角",
     content:
@@ -408,7 +70,7 @@ const MEIJI_PERSPECTIVES: TopicPerspectives = {
     credibilityAssessment: "西方视角提供了较为客观的外部观察，但可能过度强调西方模式的影响力。",
     biasIndicators: ["现代化等同于西化的隐含假设", "对日本军国主义根源的分析可能不够深入", "文化差异理解有限"],
     recommendedQuestions: ["明治维新是'西化'还是'日本化的现代化'？", "西方学者是否过度简化了日本的能动性？"],
-  },
+  }
 };
 
 // ========== 法国大革命视角 ==========
@@ -544,74 +206,6 @@ const COLD_WAR_PERSPECTIVES: TopicPerspectives = {
     credibilityAssessment: "德国视角提供了冷战最直接的人类经验，对分裂与统一的反思深刻而真实。",
     biasIndicators: ["'统一叙事'可能掩盖东西德之间持续的社会裂痕", "对东德体制的评价受统一后政治影响", "个人记忆的选择性"],
     recommendedQuestions: ["德国统一是否真正弥合了东西德之间的裂痕？", "柏林墙的记忆在当今政治中如何被利用？"],
-  },
-};
-
-// ========== 丝绸之路视角 ==========
-
-const SILK_ROAD_PERSPECTIVES: TopicPerspectives = {
-  china: {
-    title: "中国视角",
-    content:
-      "中国视角强调丝绸之路是中华文明向西方传播先进技术和文化的重要通道。张骞'凿空'西域开辟了这条伟大的贸易和文化交流之路，丝绸、瓷器、造纸术和火药等通过这条路线传向世界。",
-    sources: [
-      {
-        id: "sr-cn-1",
-        title: "《丝绸之路：一部全新的世界史》中文版导读",
-        author: "荣新江",
-        year: "2016",
-        type: "academic",
-        credibilityScore: 83,
-        excerpt: "丝绸之路不仅是商路，更是文明交汇的走廊。",
-        credibilityReason: "北京大学丝路研究权威学者，考古与文献并重。",
-      },
-    ],
-    overallCredibility: 79,
-    credibilityAssessment: "中国视角提供了丰富的东端视角，但可能过度强调中国在丝路中的主导地位。",
-    biasIndicators: ["倾向于强调中国文明的输出而非双向交流", "与当代'一带一路'倡议的关联可能影响叙事", "对中亚民族的主体性关注不足"],
-    recommendedQuestions: ["丝绸之路上中国是否只是输出方？", "当代'一带一路'叙事如何影响了对古代丝路的理解？"],
-  },
-  central_asia: {
-    title: "中亚视角",
-    content:
-      "中亚并非丝绸之路的被动过境地带，而是重要的文化创造和商业中心。粟特人作为丝路上最活跃的商人群体，建立了横跨欧亚的商业网络。撒马尔罕、布哈拉等城市是重要的文明交汇点。",
-    sources: [
-      {
-        id: "sr-ca-1",
-        title: "The Silk Road: A Very Short Introduction",
-        author: "James A. Millward",
-        year: "2013",
-        type: "academic",
-        credibilityScore: 85,
-        excerpt: "丝绸之路的真正主角是中亚的商人、僧侣和旅行者。",
-        credibilityReason: "中亚研究专家，挑战了以中国为中心的丝路叙事。",
-      },
-    ],
-    overallCredibility: 82,
-    credibilityAssessment: "中亚视角有效地纠正了以两端（中国/罗马）为中心的叙事，但相关原始文献较少。",
-    biasIndicators: ["可用的原始文献相对有限", "部分内容依赖考古推测", "现代中亚民族主义可能影响历史叙事"],
-    recommendedQuestions: ["粟特人为何能主导丝路贸易长达数个世纪？", "中亚城市在丝路网络中的作用被低估了吗？"],
-  },
-  western: {
-    title: "西方视角",
-    content:
-      "西方学者将丝绸之路视为古代全球化的典范，强调东西方之间的双向交流。罗马帝国对中国丝绸的需求、宗教（佛教、伊斯兰教、景教）的传播、以及技术和疾病的流动，共同构成了一幅复杂的交流图景。",
-    sources: [
-      {
-        id: "sr-w-1",
-        title: "The Silk Roads: A New History of the World",
-        author: "Peter Frankopan",
-        year: "2015",
-        type: "academic",
-        credibilityScore: 86,
-        excerpt: "数千年来，世界的十字路口不在西方，而在东方。",
-        credibilityReason: "牛津大学学者的畅销学术著作，视野宏大但部分论述被批评过于概括。",
-      },
-    ],
-    overallCredibility: 83,
-    credibilityAssessment: "西方视角提供了全球性的分析框架，近年来显著改善了早期的欧洲中心论倾向。",
-    biasIndicators: ["'丝绸之路'这一概念本身是19世纪德国地理学家的建构", "可能过度浪漫化古代贸易", "对东方社会的内部视角理解有限"],
-    recommendedQuestions: ["'丝绸之路'这个概念是否准确反映了历史现实？", "古代全球化与现代全球化有何异同？"],
   },
 };
 
@@ -795,28 +389,7 @@ const WW1_PERSPECTIVES: TopicPerspectives = {
     credibilityAssessment: "德国视角在二战后经历了深刻转变，当代德国史学的自我反思精神值得肯定。",
     biasIndicators: ["魏玛时期的'背后捅刀'神话", "冷战时期的分裂影响了历史叙事", "对普通士兵经历的记录可能被政治化"],
     recommendedQuestions: ["德国的战争责任争论对当代德国社会有何影响？", "《凡尔赛条约》的严厉条款是否合理？"],
-  },
-  chinese: {
-    title: "中国视角",
-    content:
-      "中国以战胜国身份参加巴黎和会，却未能收回山东权益，反而被要求将德国在山东的特权转让给日本。这一外交失败直接引发了五四运动，成为中国现代民族主义觉醒的关键节点，深刻改变了中国的政治走向。",
-    sources: [
-      {
-        id: "ww1-cn-1",
-        title: "《巴黎和会与中国外交》",
-        author: "唐启华",
-        year: "2014",
-        type: "academic",
-        credibilityScore: 85,
-        excerpt: "巴黎和会的失败不仅是外交的挫折，更是旧秩序的破产。",
-        credibilityReason: "使用中国和国际档案的学术研究，分析较为全面。",
-      },
-    ],
-    overallCredibility: 83,
-    credibilityAssessment: "中国视角记录了一战对中国的深远影响，但可能过度聚焦山东问题而忽视战争的全球维度。",
-    biasIndicators: ["五四叙事的政治化", "对中国参战贡献的评价可能被放大", "民族主义情感影响历史分析"],
-    recommendedQuestions: ["中国十四万华工的贡献为何长期被忽视？", "五四运动是否改变了中国的历史轨迹？"],
-  },
+  }
 };
 
 // ========== 大航海时代视角 ==========
@@ -863,28 +436,7 @@ const AGE_OF_EXPLORATION_PERSPECTIVES: TopicPerspectives = {
     credibilityAssessment: "原住民视角提供了被长期忽视的历史经验，是纠正殖民叙事的必要补充。",
     biasIndicators: ["部分论述可能将殖民前社会理想化", "不同原住民群体的经历差异可能被统一化", "当代政治诉求可能影响历史叙事"],
     recommendedQuestions: ["大航海时代如何改变了原住民的世界？", "殖民者的'文明使命'论述如何被解构？"],
-  },
-  chinese: {
-    title: "中国视角",
-    content:
-      "郑和下西洋（1405-1433）早于哥伦布数十年，其舰队规模远超欧洲航海家。然而，明朝选择了'禁海'而非扩张。中国视角常将郑和与哥伦布对比，探讨为何中国未走上殖民扩张道路，以及这一选择的历史意义。",
-    sources: [
-      {
-        id: "ae-cn-1",
-        title: "When China Ruled the Seas",
-        author: "Louise Levathes",
-        year: "1994",
-        type: "academic",
-        credibilityScore: 82,
-        excerpt: "郑和的航行是和平外交和贸易的使命，而非征服。",
-        credibilityReason: "使用中国和东南亚资料的综合研究，但部分结论有争议。",
-      },
-    ],
-    overallCredibility: 77,
-    credibilityAssessment: "中国视角提供了重要的比较框架，但'和平航海'叙事可能过于理想化郑和的远航动机。",
-    biasIndicators: ["郑和航海的'和平'性质可能被夸大", "中国禁海政策的内部原因分析不足", "民族自豪感影响客观评价"],
-    recommendedQuestions: ["郑和航海真的是完全'和平'的吗？", "如果明朝继续航海，世界历史会怎样改变？"],
-  },
+  }
 };
 
 
@@ -1097,7 +649,7 @@ export const BLACK_DEATH_PERSPECTIVES: TopicPerspectives = {
   modern_historian: {
     title: "现代医学史视角",
     content:
-      "现代医学史和流行病学研究表明，14世纪黑死病主要由鼠疫耶尔森菌（Yersinia pestis）引起，通过跳蚤和鼠类传播。研究通过古DNA分析确认了致病菌，并揭示瘟疫沿丝绸之路和海上贸易路线扩散的路径。黑死病被视为中世纪向近代过渡的关键催化剂。",
+      "现代医学史和流行病学研究表明，14世纪黑死病主要由鼠疫耶尔森菌（Yersinia pestis）引起，通过跳蚤和鼠类传播。研究通过古DNA分析确认了致病菌，并揭示瘟疫沿陆路商道和海上贸易路线扩散的路径。黑死病被视为中世纪向近代过渡的关键催化剂。",
     sources: [
       {
         id: "bld-mh-1",
@@ -1126,131 +678,6 @@ export const BLACK_DEATH_PERSPECTIVES: TopicPerspectives = {
     credibilityAssessment: "现代医学史视角结合了文献、考古和科学分析，对瘟疫病因、传播路径和社会影响的理解最为全面，但可能低估当时人的精神体验。",
     biasIndicators: ["过度强调人口和经济数据","可能忽视宗教和精神层面","对历史记录的解读受现代观念影响"],
     recommendedQuestions: ["黑死病为何传播如此迅速？","鼠疫杆菌的基因研究如何改变我们对黑死病的认识？","黑死病对文艺复兴和宗教改革有何影响？"],
-  },
-};
-
-// ========== 义和团运动视角 ==========
-
-export const BOXER_REBELLION_PERSPECTIVES: TopicPerspectives = {
-  china: {
-    title: "中国视角：义和团与清政府",
-    content:
-      "从中国本土视角看，义和团运动是甲午战后民族危机加深、教案频发与天灾叠加下，农民和手工业者自发的反帝斗争。“扶清灭洋”口号既表达了对列强瓜分、传教特权的愤怒，也体现了传统华夷观念与民间宗教的结合。清政府内部对义和团的态度分裂：地方督抚如袁世凯主张镇压，朝中刚毅、载漪等则欲借拳民排外。慈禧先抚后剿，最终与列强联合绞杀义和团，显示出王朝为维系统治而牺牲民众利益的工具化逻辑。",
-    sources: [
-      {
-        id: "boxer_rebellion-persp-1",
-        title: "《庚子国变记》",
-        author: "李希圣",
-        year: "1902",
-        type: "memoir",
-        credibilityScore: 72,
-        excerpt: "拳匪驱童稚为前敌，直犯敌军，排枪起，恒毙数百人。……德军愤使臣之被害……故德军淫掠殊甚。",
-        credibilityReason: "作者为清末亲历官员，记录详尽但带有士大夫对拳民的鄙夷，对八国联军暴行亦有客观记述。",
-        originalUrl: "https://ctext.org/wiki.pl?if=gb&chapter=971168&remap=gb",
-      },
-      {
-        id: "boxer_rebellion-persp-2",
-        title: "《义和团档案史料》",
-        author: "故宫博物院明清档案部",
-        year: "1959",
-        type: "official_archive",
-        credibilityScore: 85,
-        excerpt: "所辑史料反映了义和团运动由山东、直隶逐步发展到全国许多地区的经过；八国联军发动侵华战争屠杀义和团及广大中国人民的罪行。",
-        credibilityReason: "系清代军机处、上谕档等原始档案整理，材料原始可靠，但选材受时代意识形态影响。",
-        originalUrl: "https://www.zgbk.com/ecph/words?ID=38099&SiteID=1&SubID=47587&Type=bkzyb",
-      },
-      {
-        id: "boxer_rebellion-persp-3",
-        title: "《义和团运动史》",
-        author: "路遥等",
-        year: "1981",
-        type: "academic",
-        credibilityScore: 78,
-        excerpt: "义和团运动是当时全国广大人民反对外国侵略运动的一个表现，沉重打击了帝国主义瓜分中国的狂妄野心。",
-        credibilityReason: "运用档案与调查资料，学术性强，但部分评价仍带革命史观色彩。",
-      },
-    ],
-    overallCredibility: 78,
-    credibilityAssessment: "本土视角依赖清代官方档案与亲历笔记，能呈现决策过程与民众情绪，但士大夫记载多贬低拳民，现代著作又受意识形态影响，需交叉比对。",
-    biasIndicators: ["士大夫阶层对农民拳民的轻视","现代革命叙事对反帝意义的强调","清廷档案为自身开脱的倾向"],
-    recommendedQuestions: ["慈禧对义和团态度转变的真实动机是什么？","“扶清灭洋”口号如何影响义和团的政治命运？"],
-  },
-  foreign_powers: {
-    title: "列强与八国联军视角",
-    content:
-      "在列强叙事中，义和团运动被视为针对外国侨民、传教士和中国基督徒的暴力排外运动。各国以保护使馆、营救侨民为由组成八国联军，强调自身行动的“人道主义”与“国际法”正当性。外交档案、军事报告和传教士回忆录详细记录了使馆围攻、教民被害及联军解围过程，但往往淡化列强在华特权、瓜分企图和联军劫掠平民的责任。德皇威廉二世“匈奴演说”与瓦德西元帅的命令，则暴露出报复性与殖民主义动机。",
-    sources: [
-      {
-        id: "boxer_rebellion-persp-4",
-        title: "U.S. Marines in the Boxer Rebellion",
-        author: "Trevor K. Plante / U.S. National Archives",
-        year: "1999",
-        type: "official_archive",
-        credibilityScore: 80,
-        excerpt: "To our Marines fell the most difficult and dangerous portion of the defense... the bravest and most successful event of the whole siege was an attack led by Captain Myers...",
-        credibilityReason: "基于美国国家档案馆藏军事记录，事实具体，但侧重美军英勇与使馆防御，缺乏对义和团动因的同情。",
-        originalUrl: "https://www.archives.gov/publications/prologue/1999/winter/boxer-rebellion-1.html",
-      },
-      {
-        id: "boxer_rebellion-persp-5",
-        title: "Martyred Missionaries of The China Inland Mission",
-        author: "Marshall Broomhall",
-        year: "1901",
-        type: "memoir",
-        credibilityScore: 70,
-        excerpt: "In 1900, attacks took place across China... The China Inland Mission lost more members than any other agency: 58 adults and 21 children were killed.",
-        credibilityReason: "同时代传教机构记录，情感真挚但立场鲜明，对义和团和当地社会背景的解释带有宗教偏见。",
-        originalUrl: "https://archive.org/details/martyredmissiona00broo",
-      },
-      {
-        id: "boxer_rebellion-persp-6",
-        title: "Boxer Protocol (Peking, 7 September 1901)",
-        author: "十一国全权代表与李鸿章、奕劻",
-        year: "1901",
-        type: "official_archive",
-        credibilityScore: 88,
-        excerpt: "The Chinese Government has agreed to pay the Powers an indemnity of 450,000,000 taels... to raze the forts of Taku... to maintain a permanent guard in the Legation quarter.",
-        credibilityReason: "条约文本为国际法层面的原始文件，条款明确，但完全从战胜国立场书写，忽略中国主权与民众损失。",
-        originalUrl: "https://china.usc.edu/boxer-protocol-1901",
-      },
-    ],
-    overallCredibility: 79,
-    credibilityAssessment: "列强视角依赖外交、军事与传教记录，史料丰富且时间接近事件，但普遍存在文化中心主义，对义和团的正当诉求与联军暴行记录不足。",
-    biasIndicators: ["“文明使命”与“人道干预”话语","对传教士死亡的过度强调","淡化联军劫掠与报复性杀戮"],
-    recommendedQuestions: ["列强以保护侨民为名的军事行动在多大程度上掩盖了瓜分意图？","联军占领北京期间的暴行如何被当时的公众舆论呈现？"],
-  },
-  international: {
-    title: "国际学术与第三方观察视角",
-    content:
-      "当代国际学术界倾向于将义和团运动置于全球帝国主义、民族主义和民间宗教的交叉点加以考察。学者们既承认义和团反帝运动的合理性，也批判其盲目排外与暴力；同时揭露八国联军作为帝国主义联合行动的本质，以及《辛丑条约》对中国主权的长期损害。档案、照片与跨文化比较研究强调，这场冲突并非简单的“文明与野蛮”对立，而是晚清国家建构失败、地方社会危机与国际权力博弈共同作用的结果。",
-    sources: [
-      {
-        id: "boxer_rebellion-persp-7",
-        title: "The Origins of the Boxer Uprising",
-        author: "Joseph W. Esherick",
-        year: "1987",
-        type: "academic",
-        credibilityScore: 82,
-        excerpt: "The Boxers were a product of social ecology and popular culture in the Shandong peninsula, not simply the latest in a long line of anti-dynastic sects.",
-        credibilityReason: "运用地方志、档案与田野调查，从社会史角度重构起源，学术权威，但英文写作面向西方读者。",
-        originalUrl: "https://www.fulcrum.org/concern/monographs/hq37vn67v",
-      },
-      {
-        id: "boxer_rebellion-persp-8",
-        title: "Boxer Rebellion, 1900 (Library of Congress stereographs)",
-        author: "Library of Congress, Prints & Photographs Division",
-        year: "c.1900-1914",
-        type: "official_archive",
-        credibilityScore: 76,
-        excerpt: "216 photoprints : stereographs... Rights Advisory: No known restrictions on publication.",
-        credibilityReason: "图像档案提供直观视觉证据，但多为外国摄影师拍摄，视角单一且部分为摆拍或商业宣传。",
-        originalUrl: "https://www.loc.gov/pictures/item/2004676390/",
-      },
-    ],
-    overallCredibility: 79,
-    credibilityAssessment: "国际学术视角综合中外档案与比较研究，力求平衡，但受语言、可获取史料及理论框架影响，仍需警惕“东方主义”与反帝国主义叙事的张力。",
-    biasIndicators: ["西方学术话语中的理论预设","图像资料由外国摄影师主导","对清政府复杂动因的解释不足"],
-    recommendedQuestions: ["义和团的“刀枪不入”信仰与华北民间宗教有何关联？","如何在全球史框架下重新评估八国联军的性质？"],
   },
 };
 
@@ -1528,161 +955,13 @@ export const DECOLONIZATION_PERSPECTIVES: TopicPerspectives = {
   },
 };
 
-// ========== 甲午战争视角 ==========
-
-export const FIRST_SINO_JAPANESE_WAR_PERSPECTIVES: TopicPerspectives = {
-  qing_china: {
-    title: "清朝/中国视角",
-    content:
-      "中国视角强调日本蓄谋已久的侵略、朝鲜宗藩关系的正当性，以及战争失败暴露的洋务运动局限。清政府将战争视为维护朝贡体系与领土完整的防御性战争，但腐败、指挥失灵和海军建设落后导致惨败。甲午战败被视为中华民族觉醒的重要转折点。",
-    sources: [
-      {
-        id: "fsj-ch-1",
-        title: "清德宗实录与光绪朝东华录",
-        author: "清宫档案",
-        year: "1894-1895",
-        type: "official_archive",
-        credibilityScore: 88,
-        excerpt: "日本不遵条约，不守公法，任意鸱张，专行诡计，衅开自彼，公理昭然。",
-        credibilityReason: "清朝官方档案，记录宣战诏书、上谕和奏折，反映清政府立场。",
-        originalUrl: "https://ctext.org/wiki.pl?if=gb&res=620437&remap=gb",
-      },
-      {
-        id: "fsj-ch-2",
-        title: "李文忠公全集",
-        author: "李鸿章",
-        year: "1905",
-        type: "memoir",
-        credibilityScore: 82,
-        excerpt: "以北洋一隅之力，搏倭人全国之师。",
-        credibilityReason: "李鸿章亲历战争与谈判，提供一手决策视角，但带有自我辩护色彩。",
-        originalUrl: "https://ctext.org/library.pl?if=gb&res=4980",
-      },
-    ],
-    overallCredibility: 84,
-    credibilityAssessment: "中国视角基于官方档案和当事人记录，对战争责任和失败原因有深刻反思，但也存在将战败归咎于李鸿章等个人的倾向。",
-    biasIndicators: ["强调日本侵略的非正义性","对清廷决策失误的批评相对谨慎","民族情感影响对战争后果的评价"],
-    recommendedQuestions: ["洋务运动为何未能使中国战胜日本？","李鸿章在甲午战争中应承担多大责任？","甲午战败如何影响中国近代化进程？"],
-  },
-  japan: {
-    title: "日本视角",
-    content:
-      "日本视角将甲午战争视为摆脱不平等条约、确立朝鲜独立和扩大日本在东亚势力的'正义之战'。明治政府认为清朝阻碍朝鲜改革，日本出兵是为了'保护朝鲜独立'和'维护东洋和平'。战争胜利被塑造为日本近代化的成功证明，强化了对外扩张的自信。",
-    sources: [
-      {
-        id: "fsj-jp-1",
-        title: "明治天皇宣战诏书",
-        author: "日本天皇",
-        year: "1894",
-        type: "official_archive",
-        credibilityScore: 85,
-        excerpt: "朝鲜乃帝国首先启发使就与列国为伍之独立国，清国始终暗中百计妨碍。",
-        credibilityReason: "日本官方宣战文书，体现当时政府战争理由，具有重要史料价值。",
-        originalUrl: "https://www.jacar.archives.go.jp/",
-      },
-      {
-        id: "fsj-jp-2",
-        title: "日清战争实记",
-        author: "日本战时记者",
-        year: "1894-1895",
-        type: "media",
-        credibilityScore: 75,
-        excerpt: "皇军英勇奋战，清兵一触即溃，东洋和平指日可期。",
-        credibilityReason: "战时宣传刊物，反映日本国内舆论，但带有明显民族主义和夸大色彩。",
-        originalUrl: "https://www.jacar.go.jp/english/exhibition/jacarbl-fsjwar-e/",
-      },
-    ],
-    overallCredibility: 78,
-    credibilityAssessment: "日本视角对战争动机多有粉饰，将侵略包装为解放和保护，但官方文书和战史资料对军事行动过程的记录较为详尽。",
-    biasIndicators: ["将侵略表述为维护朝鲜独立","淡化战争的非正义性","强调日本文明开化对清朝的优越性"],
-    recommendedQuestions: ["日本发动甲午战争的真实目的是什么？","明治政府如何利用战争推动国内民族主义？","甲午胜利如何影响日本后来对外扩张？"],
-  },
-  western: {
-    title: "西方/国际观察视角",
-    content:
-      "西方视角多从军事技术、国际关系和条约体系角度分析甲午战争。英国、德国等国关注北洋水师与联合舰队的战术差异；美国舆论对旅顺屠杀表示谴责但整体保持中立；俄国则借机扩大在东北的影响。整体上，西方认为战争标志着日本作为新兴强国的崛起和清朝的衰落。",
-    sources: [
-      {
-        id: "fsj-w-1",
-        title: "The Sino-Japanese War of 1894-1895: Perceptions, Power, and Primacy",
-        author: "S.C.M. Paine",
-        year: "2003",
-        type: "academic",
-        credibilityScore: 90,
-        excerpt: "甲午战争不仅是中日两国军事力量的较量，更是两国现代化道路和国家建构能力的全面对比。",
-        credibilityReason: "美国学者综合多方档案，军事与外交分析并重，被学界广泛引用。",
-        originalUrl: "https://www.cambridge.org/core/books/sinojapanese-war-of-18941895/",
-      },
-      {
-        id: "fsj-w-2",
-        title: "英国海军情报报告",
-        author: "British Naval Intelligence",
-        year: "1894-1895",
-        type: "official_archive",
-        credibilityScore: 86,
-        excerpt: "日本舰队在速度、射速和弹药质量上均优于北洋水师，清军虽有两艘铁甲舰，但战术协调不足。",
-        credibilityReason: "英国作为中立国和海军强国，其军事观察较为专业和客观。",
-        originalUrl: "https://www.nationalarchives.gov.uk/",
-      },
-    ],
-    overallCredibility: 86,
-    credibilityAssessment: "西方学术和军事情报视角对战争军事技术和国际格局的分析较为客观，但早期观察可能带有欧洲中心主义倾向，对中日双方社会动因理解有限。",
-    biasIndicators: ["侧重军事技术和制度比较","可能低估战争的帝国主义性质","受当时大国利益影响"],
-    recommendedQuestions: ["西方列强如何看待甲午战争的胜负？","英国的'中立'立场如何影响战争结局？","甲午战争如何重塑东亚国际秩序？"],
-  },
-};
-
 // ========== 朝鲜战争视角 ==========
 
 export const KOREAN_WAR_PERSPECTIVES: TopicPerspectives = {
-  chinese: {
-    title: "中国视角：抗美援朝，保家卫国",
-    content:
-      "中国官方与主流史学界将1950年10月后的参战称为“抗美援朝战争”。这一叙事强调：朝鲜战争是美国操纵下的侵略战争，美军越过三八线、轰炸中国东北、第七舰队进入台湾海峡，严重威胁新生共和国的安全。应朝鲜劳动党和政府请求，中国人民志愿军在“保家卫国”旗帜下入朝，与朝鲜人民军并肩作战。经过五次战役，中朝军队将战线稳定在三八线附近，最终迫使美国在停战协定上签字。该视角突出战争的正义性、中国在国际舞台的崛起以及志愿军官兵的牺牲精神，也强调战争巩固了新生政权、推动了国内动员与工业化建设。",
-    sources: [
-      {
-        id: "korean_war-persp-1",
-        title: "《关于组成中国人民志愿军的命令》",
-        author: "毛泽东 / 中国人民革命军事委员会",
-        year: "1950",
-        type: "official_archive",
-        credibilityScore: 88,
-        excerpt: "为了援助朝鲜人民解放战争，反对美帝国主义及其走狗们的进攻，借以保卫朝鲜人民、中国人民及东方各国人民的利益，着将东北边防军改为中国人民志愿军，迅即向朝鲜境内出动，协同朝鲜同志向侵略者作战并争取光荣的胜利。",
-        credibilityReason: "原始军事命令，内容明确记录出兵目的、编制与指挥体系，属于一手档案；但作为政治文件，其措辞带有鲜明的立场色彩。",
-        originalUrl: "https://www.hxw.gov.cn/content/2012/10/08/392183.html",
-      },
-      {
-        id: "korean_war-persp-2",
-        title: "《中国人民志愿军抗美援朝战史》",
-        author: "军事科学院军事历史研究部",
-        year: "1988",
-        type: "academic",
-        credibilityScore: 82,
-        excerpt: "志愿军与朝鲜人民军一道，把以美国为首的‘联合国军’从鸭绿江边打回到三八线附近，迫使敌人由战略进攻转入战略防御。",
-        credibilityReason: "由中国军方权威机构编写，史料基础扎实，战术叙述详尽；但在战争起因、伤亡数字等议题上受官方叙事框架影响。",
-        originalUrl: "https://www.mfa.gov.cn/web/ziliao_674904/wjs_674919/2159_674923/200011/t20001107_7950018.shtml",
-      },
-      {
-        id: "korean_war-persp-3",
-        title: "《关于美国武装侵略中国领土台湾的声明》",
-        author: "周恩来",
-        year: "1950",
-        type: "official_archive",
-        credibilityScore: 85,
-        excerpt: "美国政府借口朝鲜战争，公然派遣海军第七舰队侵入台湾海峡……这是对中国领土的武装侵略，对联合国宪章的彻底破坏。",
-        credibilityReason: "中国外交部正式声明，反映当时中国政府对美行动的定性；是研究中国参战决策动因的重要档案，但属一方立场文件。",
-        originalUrl: "https://www.mfa.gov.cn/web/ziliao_674904/wjs_674919/2159_674923/200011/t20001107_7950018.shtml",
-      },
-    ],
-    overallCredibility: 82,
-    credibilityAssessment: "中国视角在军事战役层面资料详实，官方档案与战史著作相互印证；但在战争起源、敌方伤亡与战争责任等议题上存在明显的政治叙事框架，需与苏、美、韩等多方史料交叉比对。",
-    biasIndicators: ["将美国定性为侵略者与战争发动者","强调中国参战的防御性与正义性","对志愿军损失与战术失误披露有限"],
-    recommendedQuestions: ["中国为何在建国之初选择出兵朝鲜？","“志愿军”名义背后有哪些外交与军事考量？","中国视角如何解释长津湖等战役的代价？"],
-  },
   un_allied: {
     title: "联合国军/美韩视角：制止侵略，恢复和平",
     content:
-      "在美国及西方盟国的主流叙事中，朝鲜战争始于朝鲜人民军对韩国的“无端武装侵略”。联合国安理会认定朝鲜破坏和平，授权会员国援助韩国。联合国军在仁川登陆后扭转战局，后因中国大规模介入而陷入僵持。该视角强调联合国集体安全机制的作用、自由世界对共产扩张的遏制，以及战争最终通过谈判实现停火的成果。韩国方面则更突出国家存亡危机、联合国军的救援以及战争造成的民族分裂与平民苦难。美国史学界对战争决策、麦克阿瑟解职、战俘遣返等问题存在多元讨论，但普遍承认这是一场“被遗忘的战争”。",
+      "在美国及西方盟国的主流叙事中，朝鲜战争始于朝鲜人民军对韩国的“无端武装侵略”。联合国安理会认定朝鲜破坏和平，授权会员国援助韩国。联合国军在仁川登陆后扭转战局，随后战争扩大并陷入长期僵持。该视角强调联合国集体安全机制的作用、自由世界对共产扩张的遏制，以及战争最终通过谈判实现停火的成果。韩国方面则更突出国家存亡危机、联合国军的救援以及战争造成的民族分裂与平民苦难。美国史学界对战争决策、麦克阿瑟解职、战俘遣返等问题存在多元讨论，但普遍承认这是一场“被遗忘的战争”。",
     sources: [
       {
         id: "korean_war-persp-4",
@@ -1726,7 +1005,7 @@ export const KOREAN_WAR_PERSPECTIVES: TopicPerspectives = {
   north_korean: {
     title: "朝鲜/社会主义阵营视角：祖国解放战争",
     content:
-      "在朝鲜官方叙事中，这场战争被称为“祖国解放战争”。朝鲜声称李承晚政权在美国扶植下不断挑衅三八线，北方被迫自卫反击、解放南方。苏联解密档案显示，金日成早在1950年初即向斯大林提出统一计划，经斯大林同意后取得中国方面的默许或支持。战争爆发后，苏联提供武器、顾问与空中支援，但刻意避免与美国发生直接冲突。中国参战后，社会主义阵营形成中朝苏协同作战的格局。朝鲜视角将金日成塑造为民族统一与反帝斗争的领袖，强调美军轰炸与细菌战等暴行，对战争初期的战略失误与巨大人员伤亡则较少提及。",
+      "在朝鲜官方叙事中，这场战争被称为“祖国解放战争”。朝鲜声称李承晚政权在美国扶植下不断挑衅三八线，北方被迫自卫反击、解放南方。苏联解密档案显示，金日成早在1950年初即向斯大林提出统一计划，并争取社会主义阵营支持。战争爆发后，苏联提供武器、顾问与空中支援，但刻意避免与美国发生直接冲突。随着战争扩大，社会主义阵营形成跨国协同作战格局。朝鲜视角将金日成塑造为民族统一与反帝斗争的领袖，强调美军轰炸与细菌战等暴行，对战争初期的战略失误与巨大人员伤亡则较少提及。",
     sources: [
       {
         id: "korean_war-persp-7",
@@ -1756,7 +1035,7 @@ export const KOREAN_WAR_PERSPECTIVES: TopicPerspectives = {
         year: "1945-1950",
         type: "official_archive",
         credibilityScore: 88,
-        excerpt: "Collection of declassified documents from Russian archives on the origins of the Korean War, including communications between Stalin, Kim Il Sung, and Mao.",
+        excerpt: "Collection of declassified documents from Russian archives on the origins of the Korean War, including communications among socialist-bloc leaders.",
         credibilityReason: "汇集多国解密档案，来源包括俄国总统档案馆、外交部档案等，是冷战国际史研究的核心平台；部分文件为英译摘要，需核对原文。",
         originalUrl: "https://digitalarchive.wilsoncenter.org/collection/47/korean-war-origins-1945-1950",
       },
@@ -1765,7 +1044,7 @@ export const KOREAN_WAR_PERSPECTIVES: TopicPerspectives = {
     credibilityAssessment: "朝鲜官方叙事政治宣传色彩浓厚，可信度较低；但苏联解密档案与威尔逊中心档案显著提升了社会主义阵营视角的可靠性，使研究者得以重构斯大林、金日成与毛泽东之间的决策链条。",
     biasIndicators: ["将南方定性为“美帝国主义傀儡”","将战争起因完全归责于李承晚挑衅","高度神化金日成的领导作用"],
     recommendedQuestions: ["斯大林在何时、以何种条件批准金日成的进攻计划？","苏联空军在朝鲜战争中扮演了怎样的秘密角色？","朝鲜官方叙事如何解释战争初期的迅速溃败与长期僵持？"],
-  },
+  }
 };
 
 // ========== 蒙古帝国的扩张视角 ==========
@@ -1774,11 +1053,11 @@ export const MONGOL_EMPIRE_PERSPECTIVES: TopicPerspectives = {
   mongol: {
     title: "蒙古/草原视角",
     content:
-      "蒙古传统叙事将成吉思汗视为统一分裂部落、结束血亲复仇、建立法制与秩序的伟大英雄。《蒙古秘史》强调铁木真从逆境中崛起，以天命与才能凝聚各部；元代官方史书则突出蒙古对『天下』的统治合法性与宗教宽容。草原视角较少关注被征服者的苦难，而着重于千户制、怯薛军、驿站网络等国家建构成就，以及蒙古法（扎撒）对欧亚和平贸易的维护。",
+      "蒙古传统叙事将成吉思汗视为统一分裂部落、结束血亲复仇、建立法制与秩序的伟大英雄。《蒙古秘史》强调铁木真从逆境中崛起，以天命与才能凝聚各部；后世帝国编年材料则突出蒙古统治的合法性与宗教宽容。草原视角较少关注被征服者的苦难，而着重于千户制、怯薛军、驿站网络等国家建构成就，以及蒙古法（扎撒）对欧亚和平贸易的维护。",
     sources: [
       {
         id: "mongol_empire-persp-1",
-        title: "《蒙古秘史》（元朝秘史）",
+        title: "The Secret History of the Mongols",
         author: "佚名（蒙古宫廷史官）",
         year: "约1240年",
         type: "official_archive",
@@ -1789,13 +1068,13 @@ export const MONGOL_EMPIRE_PERSPECTIVES: TopicPerspectives = {
       },
       {
         id: "mongol_empire-persp-2",
-        title: "《元史·太祖本纪》",
+        title: "Later Mongol imperial chronicles",
         author: "宋濂等（明初史官）",
         year: "1370年",
         type: "official_archive",
         credibilityScore: 82,
         excerpt: "『帝深沉有大略，用兵如神，故能灭国四十，遂平西夏。』",
-        credibilityReason: "依据元朝实录编纂，政治与军事纪事较为系统，但明朝史官的汉族正统观影响对蒙古统治的评价。",
+        credibilityReason: "依据后世宫廷编年材料整理，政治与军事纪事较为系统，但编纂者的王朝正统观会影响对蒙古统治的评价。",
         originalUrl: "http://www.24-shi.com/24shi_jianti/23_1.thtml",
       },
       {
@@ -1814,50 +1093,6 @@ export const MONGOL_EMPIRE_PERSPECTIVES: TopicPerspectives = {
     credibilityAssessment: "蒙古/草原视角掌握帝国制度与军事运作的第一手信息，对成吉思汗的个人魅力与国家建构有独到理解，但对征服造成的破坏与异族苦难记述不足，且存在天命论与英雄化倾向。",
     biasIndicators: ["强调天命与英雄叙事，淡化屠杀与破坏","以蒙古中心观叙述欧亚各文明","将游牧征服正当化为恢复秩序"],
     recommendedQuestions: ["《蒙古秘史》中的神话叙事在多大程度上反映历史真实？","蒙古帝国的统治是否真正促进了欧亚和平？","草原视角如何解释帝国的快速分裂？"],
-  },
-  chinese: {
-    title: "中国/中原视角",
-    content:
-      "中国史籍将蒙古征服视为北方游牧民族对农耕文明的又一次冲击，元朝则是一个外族王朝。宋元之际的文人强调崖山之后『山河破碎』的亡国之痛，明清史家更从华夷之辨出发批判元朝的民族等级政策。但《元史》等官方史书也承认元朝结束分裂、重建大一统、开创行省制度、促进中外交通的客观作用。现代中国史学则倾向于将元朝纳入中国多民族统一国家发展的历史脉络中评价。",
-    sources: [
-      {
-        id: "mongol_empire-persp-4",
-        title: "《元史》",
-        author: "宋濂、王祎等",
-        year: "1370年",
-        type: "official_archive",
-        credibilityScore: 84,
-        excerpt: "『元之有天下，太根于太祖，而成于世祖。』",
-        credibilityReason: "明代官修正史，系统记载元朝政治、军事、制度，是研究元代史的基础文献，但对元末社会矛盾记载受明初政治影响。",
-        originalUrl: "http://www.gushufang.com/shishu/yuanshi/2714.html",
-      },
-      {
-        id: "mongol_empire-persp-5",
-        title: "《元朝名臣事略》",
-        author: "苏天爵",
-        year: "约1335年",
-        type: "academic",
-        credibilityScore: 79,
-        excerpt: "『世祖皇帝，以天纵之资，混一区宇。』",
-        credibilityReason: "元代文人苏天爵所编传记集，保存大量元初名臣碑传资料，价值较高，但人物评价带有士大夫褒贬色彩。",
-        originalUrl: "https://www.guoxuedashi.com/a/10/2666.html",
-      },
-      {
-        id: "mongol_empire-persp-6",
-        title: "《剑桥中国史·辽西夏金元史》",
-        author: "傅海波、崔瑞德编",
-        year: "1994年",
-        type: "academic",
-        credibilityScore: 86,
-        excerpt: "『元朝统治下，中国重新成为一个欧亚大陆帝国的核心，而不仅仅是一个文化区域。』",
-        credibilityReason: "西方汉学界的综合研究成果，引用多语种史料，视角较为平衡，但部分观点带有西方中心论色彩。",
-        originalUrl: "https://www.cambridge.org/core/books/cambridge-history-of-china/9780521243315",
-      },
-    ],
-    overallCredibility: 83,
-    credibilityAssessment: "中原视角保存了关于征服过程、制度承续与社会变迁的丰富记载，对元朝政治得失的评价较为全面。但其华夷观念与明清正统论容易将蒙古统治简单化为外来压迫，忽视元朝在多民族治理与跨文化交流中的复杂角色。",
-    biasIndicators: ["华夷之辨影响对蒙古统治的道德评判","明清史家强调亡国之痛，可能低估元朝制度创新","现代民族主义叙事倾向于将元朝『中国化』"],
-    recommendedQuestions: ["元朝的行省制度对后世中国地方行政有何影响？","宋元之际的士大夫如何调和忠君与仕元的矛盾？","将元朝视为中国正统王朝是否恰当？"],
   },
   persian: {
     title: "波斯/伊斯兰视角",
@@ -1899,147 +1134,10 @@ export const MONGOL_EMPIRE_PERSPECTIVES: TopicPerspectives = {
       },
     ],
     overallCredibility: 83,
-    credibilityAssessment: "波斯/伊斯兰视角是理解蒙古西征破坏性最深刻的声音，其城市毁灭、人口损失与社会断裂的记载具有不可替代的价值。但该视角早期充满创伤记忆，后期又因部分蒙古统治者皈依伊斯兰而转向调和，需结合蒙古与中国史料综合判断。",
+    credibilityAssessment: "波斯/伊斯兰视角是理解蒙古西征破坏性最深刻的声音，其城市毁灭、人口损失与社会断裂的记载具有不可替代的价值。但该视角早期充满创伤记忆，后期又因部分蒙古统治者皈依伊斯兰而转向调和，需结合蒙古与其他区域史料综合判断。",
     biasIndicators: ["创伤叙事可能夸大屠杀规模","将蒙古人视为『上帝惩罚』带有宗教解释框架","后期史料因蒙古伊斯兰化而淡化早期冲突"],
     recommendedQuestions: ["蒙古征服对中东城市文明造成了哪些不可逆的破坏？","伊尔汗国为何最终选择皈依伊斯兰教？","波斯史料中的蒙古形象经历了怎样的转变？"],
-  },
-};
-
-// ========== 南京大屠杀视角 ==========
-
-export const NANJING_MASSACRE_PERSPECTIVES: TopicPerspectives = {
-  china: {
-    title: "中国视角：受害与纪念",
-    content:
-      "中国官方与主流学界将南京大屠杀定性为日本军国主义在侵华战争中犯下的反人类罪行，强调遇难人数超过30万，依据为南京军事法庭判决、幸存者证言、第三方档案以及2015年入选联合国教科文组织《世界记忆名录》的11组档案。该事件被视为中华民族集体创伤的核心符号，1985年建纪念馆、2014年设立国家公祭日，旨在铭记历史、捍卫真相、警示未来。叙述中常突出受害与抵抗，兼具爱国主义教育与和平诉求功能。",
-    sources: [
-      {
-        id: "nanjing_massacre-persp-1",
-        title: "侵华日军南京大屠杀遇难同胞纪念馆官网",
-        author: "侵华日军南京大屠杀遇难同胞纪念馆",
-        year: "1985—",
-        type: "official_archive",
-        credibilityScore: 85,
-        excerpt: "纪念馆收藏幸存者证言、日军自摄影像、审判档案等，认定遇难同胞30万以上。",
-        credibilityReason: "官方机构，档案与实物丰富，但带有国家纪念与政治教育目的。",
-        originalUrl: "https://www.19371213.com.cn/",
-      },
-      {
-        id: "nanjing_massacre-persp-2",
-        title: "《南京大屠杀史料集》",
-        author: "张宪文等主编",
-        year: "2005—2011",
-        type: "academic",
-        credibilityScore: 88,
-        excerpt: "汇集中、日、英、德等多语种原始文献约4000万字，系统整理东京审判、西方传教士日记、日军官兵回忆等。",
-        credibilityReason: "跨语种大规模原始资料汇编，学术规范较强；部分卷册为节选或转引，需核对原件。",
-        originalUrl: "https://xiaobao.nju.edu.cn/aa/35/c18185a371253/page.htm",
-      },
-      {
-        id: "nanjing_massacre-persp-3",
-        title: "《程瑞芳日记》",
-        author: "程瑞芳",
-        year: "1937—1938",
-        type: "memoir",
-        credibilityScore: 82,
-        excerpt: "金陵女子文理学院舍监记录安全区内日军暴行与难民遭遇，被誉为“中国的安妮日记”。",
-        credibilityReason: "亲历者第一手日记，细节具体；个人视角有限，带有情感与道德评判。",
-        originalUrl: "https://www.unescoicdh.org/eng/sub.php?menukey=289&mod=view&no=24568&listCnt=10&code1=00000003&code2=00000024",
-      },
-    ],
-    overallCredibility: 85,
-    credibilityAssessment: "中方档案与学术整理证据链完整，但官方叙事在遇难人数与定性上高度一致，可能弱化内部差异；幸存者证言受创伤记忆影响，需与第三方资料互证。",
-    biasIndicators: ["强调国家受害与民族创伤","遇难人数采用30万这一最高估计","纪念话语带有和平教育与反战诉求"],
-    recommendedQuestions: ["南京军事法庭如何统计遇难人数？","30万数字的来源与学术争议是什么？","幸存者证言在历史研究中的作用与局限？"],
-  },
-  japan: {
-    title: "日本视角：加害、反省与否认",
-    content:
-      "日本社会对南京大屠杀的认知分裂。政府官方立场承认日军进入南京后发生杀害非战斗人员与掠夺，但称遇难人数“众说纷纭、难以确定”，教科书多使用“南京事件”并淡化规模。以笠原十九司、本多胜一为代表的进步学者通过发掘第三方史料与老兵证言，确认大规模屠杀与性暴力；而田中正明等右翼人士则主张屠杀为东京审判编造的“虚构”。这种分裂反映战后日本对侵略责任的反省与民族主义修正主义之间的持续张力。",
-    sources: [
-      {
-        id: "nanjing_massacre-persp-4",
-        title: "日本外务省《历史问题Q&A》",
-        author: "日本外务省",
-        year: "2018",
-        type: "official_archive",
-        credibilityScore: 60,
-        excerpt: "政府认为日军进入南京后杀害非战斗人员、发生掠夺的事实不可否认，但关于遇难人数存在各种说法，难以确定具体数字。",
-        credibilityReason: "代表日本官方立场，承认基本事实但回避具体规模；受外交与国内政治影响，措辞模糊。",
-        originalUrl: "https://www.mofa.go.jp/policy/q_a/faq16.html",
-      },
-      {
-        id: "nanjing_massacre-persp-5",
-        title: "《南京事件》",
-        author: "笠原十九司",
-        year: "1997",
-        type: "academic",
-        credibilityScore: 86,
-        excerpt: "基于东京审判档案、西方记者报道与日军士兵证言，论证1937年12月至次年2月间日军在南京实施大规模不法杀害、强奸与掠夺。",
-        credibilityReason: "日本主流进步学者代表作，史料扎实；因政治压力长期受右翼攻击，但仍被学界广泛引用。",
-        originalUrl: "https://www.iwanami.co.jp/author/a107758.html",
-      },
-      {
-        id: "nanjing_massacre-persp-6",
-        title: "《“南京虐杀”之虚构》",
-        author: "田中正明",
-        year: "1984",
-        type: "memoir",
-        credibilityScore: 25,
-        excerpt: "作者声称南京大屠杀是东京审判为复仇而编造的谎言，城内未发现尸体，日军军纪严明。",
-        credibilityReason: "作者曾任松井石根秘书，属战后丙级战犯，立场极端；其论据已被多方史料与法庭判决否定。",
-        originalUrl: "https://ndlsearch.ndl.go.jp/books/R100000002-I000001685941",
-      },
-    ],
-    overallCredibility: 55,
-    credibilityAssessment: "日本进步学者与官方承认基本事实，但右翼否认派通过媒体与教科书影响公众认知；因政治压力和史料损毁，日本社会对规模的共识较低，整体可信度受立场分裂影响。",
-    biasIndicators: ["官方表述将事件称为“南京事件”以淡化屠杀性质","右翼否认派受民族主义与战犯辩护动机驱动","进步学者强调加害者责任，面临国内政治压力"],
-    recommendedQuestions: ["日本政府为何在遇难人数上采取“不可确定”立场？","日本教科书如何叙述南京大屠杀？","右翼否认论的主要论据与反驳是什么？"],
-  },
-  international: {
-    title: "国际第三方视角：见证与审判",
-    content:
-      "南京大屠杀发生时，留在南京的西方传教士、医生、商人和记者构成关键第三方见证群体。他们以中立身份记录日军暴行、建立安全区庇护难民，并向世界媒体与本国政府报告。战后，远东国际军事法庭依据其证词、影像与外交电报，判定日军在南京屠杀逾20万平民与战俘。美国传教士约翰·马吉的16毫米影片、拉贝与魏特琳的日记，以及《纽约时报》《芝加哥每日新闻》的报道，构成独立于中日双方之外的重要证据链，被学界视为可信度较高的第一手资料。",
-    sources: [
-      {
-        id: "nanjing_massacre-persp-7",
-        title: "Yale Nanking Massacre Project",
-        author: "Yale Divinity School Library",
-        year: "2008—",
-        type: "international",
-        credibilityScore: 90,
-        excerpt: "数字化保存马吉、魏特琳、贝茨等美国传教士的日记、书信、照片与影片，提供大量第三方一手资料。",
-        credibilityReason: "独立学术机构数字档案，史料原始且多元；传教士带有宗教人道主义立场，但记录详尽、相互印证。",
-        originalUrl: "https://web.library.yale.edu/divinity/nanking",
-      },
-      {
-        id: "nanjing_massacre-persp-8",
-        title: "《远东国际军事法庭判决书》",
-        author: "International Military Tribunal for the Far East",
-        year: "1948",
-        type: "official_archive",
-        credibilityScore: 92,
-        excerpt: "判决书第八章认定：日军占领南京后六周内，杀害平民与战俘超过20万人，强奸约2万起，发生大规模抢劫与纵火。",
-        credibilityReason: "战后国际司法文件，证据经过控辩双方质证；但部分程序与证据选择存在争议，且为法律结论而非纯史学结论。",
-        originalUrl: "https://tile.loc.gov/storage-services/service/ll/llmlp/Judgment-IMTFE-Vol-II-PartB-Chapter-VIII/Judgment-IMTFE-Vol-II-PartB-Chapter-VIII.pdf",
-      },
-      {
-        id: "nanjing_massacre-persp-9",
-        title: "《约翰·马吉南京暴行影像》",
-        author: "John G. Magee",
-        year: "1937—1938",
-        type: "media",
-        credibilityScore: 88,
-        excerpt: "马吉用16毫米摄影机秘密拍摄占领初期难民、伤员与街道惨状，是现存最早的动态影像证据之一。",
-        credibilityReason: "现场拍摄影像，直观可信；拍摄受日军禁令限制，仅为片段，不能完整呈现全部暴行。",
-        originalUrl: "https://web.library.yale.edu/divinity/nanking/photographs",
-      },
-    ],
-    overallCredibility: 90,
-    credibilityAssessment: "第三方档案与战期影像相对独立于中日政治叙事，可信度较高；但传教士见证受限于活动范围与安全区视角，国际法庭判决亦受冷战与政治因素一定影响。",
-    biasIndicators: ["传教士记录带有基督教人道主义关怀","西方媒体报道侧重西方读者关注的暴行细节","东京审判受盟军胜利者司法框架影响"],
-    recommendedQuestions: ["西方传教士为何能留在南京并记录暴行？","东京审判对南京大屠杀的证据采信标准是什么？","马吉影片的拍摄限制如何影响历史还原？"],
-  },
+  }
 };
 
 // ========== 宗教改革视角 ==========
@@ -2766,31 +1864,25 @@ export const WW2_PERSPECTIVES: TopicPerspectives = {
 // ========== ALL_PERSPECTIVES 汇总 ==========
 
 export const ALL_PERSPECTIVES: { [topicId: string]: TopicPerspectives } = {
-  manchukuo: MANCHUKUO_PERSPECTIVES,
-  opium_war: OPIUM_WAR_PERSPECTIVES,
   meiji: MEIJI_PERSPECTIVES,
   french_revolution: FRENCH_REVOLUTION_PERSPECTIVES,
   cold_war: COLD_WAR_PERSPECTIVES,
-  silk_road: SILK_ROAD_PERSPECTIVES,
   american_revolution: AMERICAN_REVOLUTION_PERSPECTIVES,
   industrial_revolution: INDUSTRIAL_REVOLUTION_PERSPECTIVES,
   ww1: WW1_PERSPECTIVES,
   age_of_exploration: AGE_OF_EXPLORATION_PERSPECTIVES,
   american_civil_war: AMERICAN_CIVIL_WAR_PERSPECTIVES,
   black_death: BLACK_DEATH_PERSPECTIVES,
-  boxer_rebellion: BOXER_REBELLION_PERSPECTIVES,
   cuban_missile_crisis: CUBAN_MISSILE_CRISIS_PERSPECTIVES,
   decolonization: DECOLONIZATION_PERSPECTIVES,
-  first_sino_japanese_war: FIRST_SINO_JAPANESE_WAR_PERSPECTIVES,
   korean_war: KOREAN_WAR_PERSPECTIVES,
   mongol_empire: MONGOL_EMPIRE_PERSPECTIVES,
-  nanjing_massacre: NANJING_MASSACRE_PERSPECTIVES,
   reformation: REFORMATION_PERSPECTIVES,
   renaissance: RENAISSANCE_PERSPECTIVES,
   roman_empire: ROMAN_EMPIRE_PERSPECTIVES,
   russian_revolution: RUSSIAN_REVOLUTION_PERSPECTIVES,
   slave_trade: SLAVE_TRADE_PERSPECTIVES,
-  ww2: WW2_PERSPECTIVES,
+  ww2: WW2_PERSPECTIVES
 };
 
 // ========== 跨视角思考问题 ==========
@@ -2801,11 +1893,6 @@ export const CROSS_PERSPECTIVE_QUESTIONS: {
   relatedPerspectives: string[];
 }[] = [
   {
-    question: "为什么同一事件在不同国家的教科书中会有截然不同的描述？",
-    difficulty: "easy",
-    relatedPerspectives: ["manchukuo", "opium_war", "ww1"],
-  },
-  {
     question: "历史上的'现代化'是否总是以某些群体的牺牲为代价？",
     difficulty: "medium",
     relatedPerspectives: ["meiji", "industrial_revolution", "age_of_exploration"],
@@ -2814,30 +1901,5 @@ export const CROSS_PERSPECTIVE_QUESTIONS: {
     question: "革命是推动社会进步的最好方式，还是渐进改良更优？",
     difficulty: "medium",
     relatedPerspectives: ["french_revolution", "american_revolution", "meiji"],
-  },
-  {
-    question: "如何区分'文明交流'和'文化侵略'？",
-    difficulty: "hard",
-    relatedPerspectives: ["silk_road", "age_of_exploration", "opium_war"],
-  },
-  {
-    question: "战胜国书写的历史是否可信？如何识别胜利者叙事中的偏见？",
-    difficulty: "hard",
-    relatedPerspectives: ["ww1", "cold_war", "manchukuo"],
-  },
-  {
-    question: "一个国家的'崛起'是否必然意味着另一个国家的'衰落'？",
-    difficulty: "medium",
-    relatedPerspectives: ["meiji", "opium_war", "cold_war"],
-  },
-  {
-    question: "殖民主义的'现代化遗产'能否为殖民统治正名？",
-    difficulty: "hard",
-    relatedPerspectives: ["manchukuo", "industrial_revolution", "age_of_exploration"],
-  },
-  {
-    question: "为什么有些国家更容易接受历史反思，而另一些国家则更抗拒？",
-    difficulty: "medium",
-    relatedPerspectives: ["ww1", "manchukuo", "age_of_exploration"],
-  },
+  }
 ];

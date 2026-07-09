@@ -30,31 +30,25 @@ import {
 import { useLanguage, type Language } from "@/contexts/LanguageContext";
 
 const CASE_TO_CITY: Record<string, string> = {
-  manchukuo: "changchun",
-  opium_war: "guangzhou",
   meiji: "tokyo-meiji",
   french_revolution: "paris-revolution",
   cold_war: "berlin-coldwar",
-  silk_road: "dunhuang",
   american_revolution: "boston",
   industrial_revolution: "manchester-industrial",
   ww1: "sarajevo",
   age_of_exploration: "lisbon",
   american_civil_war: "washington",
   black_death: "florence",
-  boxer_rebellion: "beijing",
   cuban_missile_crisis: "havana",
   decolonization: "new_delhi",
-  first_sino_japanese_war: "weihai",
   korean_war: "seoul",
   mongol_empire: "kharkhorin",
-  nanjing_massacre: "nanjing",
   reformation: "wittenberg",
   renaissance: "florence",
   roman_empire: "rome",
   russian_revolution: "saint_petersburg",
   slave_trade: "liverpool",
-  ww2: "london-ww2",
+  ww2: "london-ww2"
 };
 
 const TYPE_COLORS: Record<string, string> = {
@@ -88,20 +82,15 @@ interface StopImage {
 }
 
 const CITY_CENTERS: Record<string, LatLng> = {
-  beijing: { lat: 39.9042, lng: 116.4074 },
   "berlin-coldwar": { lat: 52.52, lng: 13.405 },
   boston: { lat: 42.3601, lng: -71.0589 },
-  changchun: { lat: 43.8171, lng: 125.3235 },
-  dunhuang: { lat: 40.1421, lng: 94.6618 },
   florence: { lat: 43.7696, lng: 11.2558 },
-  guangzhou: { lat: 23.1291, lng: 113.2644 },
   havana: { lat: 23.1136, lng: -82.3666 },
   kharkhorin: { lat: 47.1975, lng: 102.8238 },
   lisbon: { lat: 38.7223, lng: -9.1393 },
   liverpool: { lat: 53.4084, lng: -2.9916 },
   "london-ww2": { lat: 51.5072, lng: -0.1276 },
   "manchester-industrial": { lat: 53.4808, lng: -2.2426 },
-  nanjing: { lat: 32.0603, lng: 118.7969 },
   new_delhi: { lat: 28.6139, lng: 77.209 },
   "paris-revolution": { lat: 48.8566, lng: 2.3522 },
   philadelphia: { lat: 39.9526, lng: -75.1652 },
@@ -111,53 +100,20 @@ const CITY_CENTERS: Record<string, LatLng> = {
   seoul: { lat: 37.5665, lng: 126.978 },
   "tokyo-meiji": { lat: 35.6762, lng: 139.6503 },
   washington: { lat: 38.9072, lng: -77.0369 },
-  weihai: { lat: 37.5131, lng: 122.1204 },
-  wittenberg: { lat: 51.8661, lng: 12.6469 },
-  xian: { lat: 34.3416, lng: 108.9398 },
+  wittenberg: { lat: 51.8661, lng: 12.6469 }
 };
 
 const CITY_ZOOM: Record<string, number> = {
-  guangzhou: 13,
-  beijing: 13,
-  changchun: 13,
   "berlin-coldwar": 13,
   "tokyo-meiji": 12,
   rome: 13,
   florence: 14,
-  nanjing: 13,
   seoul: 12,
   washington: 13,
-  "london-ww2": 12,
+  "london-ww2": 12
 };
 
 const STOP_COORDINATES: Record<string, LatLng> = {
-  广州十三行博物馆: { lat: 23.1103, lng: 113.2562 },
-  粤海关博物馆: { lat: 23.1095, lng: 113.2498 },
-  沙面岛: { lat: 23.1107, lng: 113.2398 },
-  上下九步行街: { lat: 23.1169, lng: 113.2462 },
-  南信牛奶甜品专家: { lat: 23.1166, lng: 113.2461 },
-  北京路商圈: { lat: 23.124, lng: 113.2692 },
-  北京路步行街: { lat: 23.124, lng: 113.2692 },
-  黄埔古港: { lat: 23.0971, lng: 113.3955 },
-  "广州博物馆（镇海楼）": { lat: 23.1391, lng: 113.2644 },
-  光孝寺: { lat: 23.1256, lng: 113.256 },
-  点都德: { lat: 23.1249, lng: 113.2708 },
-  珠江夜游天字码头: { lat: 23.1159, lng: 113.2735 },
-  东交民巷: { lat: 39.9009, lng: 116.4106 },
-  西什库教堂: { lat: 39.9252, lng: 116.3726 },
-  正阳门与前门大街: { lat: 39.8994, lng: 116.3976 },
-  天安门广场: { lat: 39.9037, lng: 116.3977 },
-  前门大街: { lat: 39.8956, lng: 116.3972 },
-  王府井天主教堂: { lat: 39.9155, lng: 116.4115 },
-  故宫: { lat: 39.9163, lng: 116.3972 },
-  景山公园: { lat: 39.925, lng: 116.3967 },
-  南锣鼓巷: { lat: 39.9372, lng: 116.4031 },
-  什刹海: { lat: 39.9394, lng: 116.3848 },
-  伪满皇宫博物院: { lat: 43.9084, lng: 125.3548 },
-  长影旧址博物馆: { lat: 43.8797, lng: 125.301 },
-  新民大街: { lat: 43.8822, lng: 125.3142 },
-  南湖公园: { lat: 43.8557, lng: 125.3108 },
-  长春世界雕塑园: { lat: 43.8176, lng: 125.3428 },
   勃兰登堡门: { lat: 52.5163, lng: 13.3777 },
   国会大厦: { lat: 52.5186, lng: 13.3762 },
   查理检查站: { lat: 52.5075, lng: 13.3904 },
@@ -179,67 +135,16 @@ const STOP_COORDINATES: Record<string, LatLng> = {
   古罗马广场: { lat: 41.8925, lng: 12.4853 },
   "帕拉蒂尼山 Palatino": { lat: 41.8896, lng: 12.4873 },
   万神殿: { lat: 41.8986, lng: 12.4769 },
-  南京大屠杀遇难同胞纪念馆: { lat: 32.0352, lng: 118.7423 },
-  中山陵: { lat: 32.0612, lng: 118.8487 },
-  总统府: { lat: 32.047, lng: 118.7926 },
   景福宫: { lat: 37.5796, lng: 126.977 },
   战争纪念馆: { lat: 37.5365, lng: 126.977 },
   国立中央博物馆: { lat: 37.5238, lng: 126.9804 },
   独立纪念馆: { lat: 37.5736, lng: 126.9601 },
   美国国会大厦: { lat: 38.8899, lng: -77.0091 },
   林肯纪念堂: { lat: 38.8893, lng: -77.05 },
-  国家档案馆: { lat: 38.8929, lng: -77.0231 },
+  国家档案馆: { lat: 38.8929, lng: -77.0231 }
 };
 
 const STOP_IMAGE_OVERRIDES: Record<string, StopImage[]> = {
-  广州十三行博物馆: [
-    {
-      src: "/images/locations/guangzhou-canton-factories.jpg",
-      label: "十三行历史图像",
-    },
-  ],
-  粤海关博物馆: [
-    {
-      src: "/images/locations/guangzhou-custom-house.jpg",
-      label: "粤海关大楼",
-    },
-  ],
-  沙面岛: [
-    {
-      src: "/images/locations/guangzhou-shamian-island.jpg",
-      label: "沙面岛滨水街区",
-    },
-  ],
-  上下九步行街: [
-    {
-      src: "/images/locations/guangzhou-shangxiajiu.jpg",
-      label: "上下九步行街",
-    },
-  ],
-  南信牛奶甜品专家: [
-    {
-      src: "/images/locations/guangzhou-shangxiajiu.jpg",
-      label: "南信所在的上下九街区",
-    },
-  ],
-  北京路商圈: [
-    {
-      src: "/images/locations/guangzhou-shangxiajiu.jpg",
-      label: "广州骑楼商业街区",
-    },
-  ],
-  北京路步行街: [
-    {
-      src: "/images/locations/guangzhou-shangxiajiu.jpg",
-      label: "广州骑楼商业街区",
-    },
-  ],
-  黄埔古港: [
-    {
-      src: "/images/locations/guangzhou-canton-factories.jpg",
-      label: "广州外贸历史图像",
-    },
-  ],
 };
 
 function getTypeClass(type: string) {
@@ -251,7 +156,7 @@ function getDefaultImage() {
 }
 
 function getInitialCity() {
-  if (typeof window === "undefined") return CITY_OPTIONS[0]?.value || "changchun";
+  if (typeof window === "undefined") return CITY_OPTIONS[0]?.value || "berlin-coldwar";
   const params = new URLSearchParams(window.location.search);
   const city = params.get("city");
   if (city && TRAVEL_ROUTES[city]) return city;
@@ -259,7 +164,7 @@ function getInitialCity() {
   if (caseId && CASE_TO_CITY[caseId] && TRAVEL_ROUTES[CASE_TO_CITY[caseId]]) {
     return CASE_TO_CITY[caseId];
   }
-  return CITY_OPTIONS[0]?.value || "changchun";
+  return CITY_OPTIONS[0]?.value || "berlin-coldwar";
 }
 
 function getFirstTheme(cityId: string) {
@@ -376,7 +281,7 @@ function getStopCoordinate(cityId: string, stop: RouteStop, index: number): Rout
     return { ...exact, stop, index, isExact: true };
   }
 
-  const center = CITY_CENTERS[cityId] || CITY_CENTERS.changchun;
+  const center = CITY_CENTERS[cityId] || CITY_CENTERS["berlin-coldwar"];
   const angle = index * 1.85;
   const radius = 0.012 + index * 0.004;
   const lngScale = Math.max(Math.cos((center.lat * Math.PI) / 180), 0.35);
@@ -463,7 +368,7 @@ function RealRouteMap({
 }) {
   const points = useMemo(() => getRoutePoints(cityId, routePlan), [cityId, routePlan]);
   const activePoint = points[activeStopIndex] || points[0] || {
-    ...(CITY_CENTERS[cityId] || CITY_CENTERS.changchun),
+    ...(CITY_CENTERS[cityId] || CITY_CENTERS["berlin-coldwar"]),
     stop: null,
     index: 0,
     isExact: false,

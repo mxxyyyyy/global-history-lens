@@ -44,7 +44,7 @@ function buildPerspectiveSystemPrompt(): string {
 {
   "perspectives": {
     "视角key1": {
-      "title": "视角名称（如：中国视角）",
+      "title": "视角名称（如：区域视角）",
       "content": "该视角对此问题的分析（150-250字，基于真实史料）",
       "credibility": 80,
       "assessment": "可信度评估说明",
@@ -61,7 +61,7 @@ function buildPerspectiveSystemPrompt(): string {
 1. 每个视角必须基于真实的历史文献和学术研究
 2. 客观呈现各方立场，标注潜在偏见
 3. 可信度分数0-100，基于史料质量
-4. 视角key用英文如 china, japan, usa, britain, france, germany, soviet, international 等
+4. 视角key用英文如 regional, japan, usa, britain, france, germany, soviet, international 等
 5. 回复语言为中文`;
 }
 
