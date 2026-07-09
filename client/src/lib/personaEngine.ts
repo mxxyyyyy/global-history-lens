@@ -42,7 +42,13 @@ function findPersona(personaId: string) {
 function scoreTopic(query: string, topic: PersonaTopicNode) {
   const normalizedQuery = normalize(query);
   const normalizedLabel = normalize(topic.label);
-  let score = normalizedQuery.includes(normalizedLabel) ? 8 : 0;
+  let score = 0;
+
+  if (normalizedQuery === normalizedLabel) {
+    score += 40 + normalizedLabel.length;
+  } else if (normalizedQuery.includes(normalizedLabel)) {
+    score += 20 + normalizedLabel.length;
+  }
 
   topic.keywords.forEach((keyword) => {
     const normalizedKeyword = normalize(keyword);
@@ -78,12 +84,31 @@ function pickFallbackTopic(topics: PersonaTopicNode[], context: ConversationCont
   return topics.find((topic) => !context.discussedTopics.includes(topic.id)) ?? topics[0] ?? null;
 }
 
-function createFollowUpHint(topic: PersonaTopicNode, topics: PersonaTopicNode[]) {
+function createFollowUpHint(topic: PersonaTopicNode, topics: PersonaTopicNode[], discussedTopicIds: string[]) {
+  const discussed = new Set(discussedTopicIds);
   const related = topic.relatedTopics
     .map((seedId) => findTopicBySeedId(topics, seedId))
-    .find((candidate): candidate is PersonaTopicNode => Boolean(candidate));
+    .filter((candidate): candidate is PersonaTopicNode => Boolean(candidate))
+    .find((candidate) => !discussed.has(candidate.id));
 
-  return related ? `继续追问：${related.label}` : undefined;
+  const nextUnvisited = topics.find((candidate) => !discussed.has(candidate.id));
+  const nextTopic = related ?? nextUnvisited;
+
+  return nextTopic ? `继续追问：${nextTopic.label}` : undefined;
+}
+
+function createTurnBridge(topic: PersonaTopicNode, context: ConversationContext, topics: PersonaTopicNode[]) {
+  if (context.turnCount === 0) return "";
+
+  const alreadyDiscussed = context.discussedTopics.includes(topic.id);
+  if (alreadyDiscussed) {
+    return `这个话题我们已经碰过一次了，我换一个角度把“${topic.label}”说清楚。`;
+  }
+
+  const lastTopic = context.lastTopicId ? topics.find((candidate) => candidate.id === context.lastTopicId) : null;
+  if (!lastTopic) return `你把问题推进到“${topic.label}”了，我接着往下说。`;
+
+  return `你刚才问的是“${lastTopic.label}”，现在追到“${topic.label}”；这一步要把视线再收窄。`;
 }
 
 export function createContext(personaId: string): ConversationContext {
@@ -151,10 +176,12 @@ export function generateLocalResponse(
   const nextDiscussed = Array.from(new Set([...context.discussedTopics, selectedTopic.id]));
 
   return {
-    response: selectedTopic.response,
+    response: [createTurnBridge(selectedTopic, context, persona.topicNodes), selectedTopic.response]
+      .filter(Boolean)
+      .join("\n\n"),
     mood: selectedTopic.mood,
     emotionScore: selectedTopic.emotionScore,
-    followUpHint: createFollowUpHint(selectedTopic, persona.topicNodes),
+    followUpHint: createFollowUpHint(selectedTopic, persona.topicNodes, nextDiscussed),
     narration,
     context: {
       ...context,

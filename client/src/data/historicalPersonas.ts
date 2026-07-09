@@ -96,6 +96,7 @@ interface TopicSeed {
   axis: TopicAxis;
   keywords: string[];
   prompt: string;
+  replyFocus: string;
   relatedTopics: string[];
 }
 
@@ -132,6 +133,7 @@ const PEARL_HARBOR_TOPIC_SEEDS: TopicSeed[] = [
     axis: "scene",
     keywords: ["珍珠港发生了什么", "珍珠港事件是什么", "珍珠港是什么", "珍珠港事件", "到底发生了什么", "pearl harbor", "12月7日", "袭击概况", "偷袭"],
     prompt: "这个问题要先把历史从抽象名词拉回1941年12月7日清晨：飞机、警报、舰队、浓烟和猝不及防的伤亡同时出现。",
+    replyFocus: "如果你问珍珠港到底发生了什么，我会先把它分成两层：清晨的突然打击，以及这次打击如何把许多人拖进一场更大的战争。",
     relatedTopics: ["attack_morning", "american_entry", "postwar_memory"],
   },
   {
@@ -140,6 +142,7 @@ const PEARL_HARBOR_TOPIC_SEEDS: TopicSeed[] = [
     axis: "scene",
     keywords: ["袭击清晨", "现场", "爆炸", "火焰", "浓烟", "港口混乱", "警报"],
     prompt: "如果只看战略地图，就会漏掉清晨的混乱：许多人还没有进入战斗状态，救援、灭火、辨认敌机几乎同时发生。",
+    replyFocus: "谈那天清晨，不能只报战果；警报、火焰、辨认敌机、寻找同伴和救援迟缓，才是现场真正压到人身上的东西。",
     relatedTopics: ["what_happened", "civilian_cost", "victim_executor"],
   },
   {
@@ -148,6 +151,7 @@ const PEARL_HARBOR_TOPIC_SEEDS: TopicSeed[] = [
     axis: "scene",
     keywords: ["飞行员", "执行命令", "起飞", "航母", "服从", "荣誉", "投弹"],
     prompt: "执行者并不等于能解释全部国家政策；飞行员通常理解的是训练、目标、命令和任务纪律。",
+    replyFocus: "问到飞行员，我会把目光落在训练、简报、起飞和执行命令那一刻，而不是让国家口号替个人经验说话。",
     relatedTopics: ["carrier_tactics", "responsibility", "victim_executor"],
   },
   {
@@ -156,6 +160,7 @@ const PEARL_HARBOR_TOPIC_SEEDS: TopicSeed[] = [
     axis: "strategy",
     keywords: ["战略赌博", "山本五十六", "赌博", "先发制人", "争取时间", "半年", "一年"],
     prompt: "珍珠港不是一场相信长期必胜的计划，而是一场试图以短期主动权抵消长期劣势的战略赌博。",
+    replyFocus: "这里的关键词不是荣耀，而是赌博：用一次极高风险的先发制人，去换取一段也许很短的主动时间。",
     relatedTopics: ["resource_embargo", "strategic_failure", "pacific_fleet"],
   },
   {
@@ -164,6 +169,7 @@ const PEARL_HARBOR_TOPIC_SEEDS: TopicSeed[] = [
     axis: "strategy",
     keywords: ["资源禁运", "石油", "橡胶", "南进", "东南亚", "经济制裁", "禁运"],
     prompt: "资源禁运、石油压力和南进战略构成战争前的压力链条，但压力并不会自动等于必须偷袭。",
+    replyFocus: "资源禁运能解释压力，却不能自动洗掉选择；石油、橡胶和南进路线只是把决策者推到更窄的走廊里。",
     relatedTopics: ["diplomacy", "strategic_gamble", "pacific_fleet"],
   },
   {
@@ -172,6 +178,7 @@ const PEARL_HARBOR_TOPIC_SEEDS: TopicSeed[] = [
     axis: "strategy",
     keywords: ["外交谈判", "谈判", "最后通牒", "赫尔照会", "和平谈判", "外交失败"],
     prompt: "战争前仍有谈判、照会和误判；关键在于各方把谈判当作避免战争，还是当作争取部署时间。",
+    replyFocus: "外交失败不是一个瞬间，而是一连串照会、误判、等待和军事准备互相缠住，直到谈判桌不再能挡住舰队。",
     relatedTopics: ["resource_embargo", "intelligence_failure", "american_entry"],
   },
   {
@@ -180,6 +187,7 @@ const PEARL_HARBOR_TOPIC_SEEDS: TopicSeed[] = [
     axis: "strategy",
     keywords: ["太平洋舰队", "战列舰", "夏威夷", "军事目标", "舰队威胁", "基地"],
     prompt: "珍珠港的军事目标是太平洋舰队和基地设施；这一选择源自日本南进时对美国海军干预的担忧。",
+    replyFocus: "太平洋舰队成为目标，是因为它挡在南进战略的想象路线上；打击基地，是为了先压住美国海军的反应能力。",
     relatedTopics: ["carrier_tactics", "tactical_success", "strategic_gamble"],
   },
   {
@@ -188,6 +196,7 @@ const PEARL_HARBOR_TOPIC_SEEDS: TopicSeed[] = [
     axis: "strategy",
     keywords: ["航母", "舰载机", "鱼雷", "奇袭", "战术创新", "第一波", "第二波"],
     prompt: "航母编队远距离隐蔽接近、舰载机分波攻击，是珍珠港作为军事行动最突出的战术创新。",
+    replyFocus: "航母奇袭的关键，是把距离、隐蔽、分波攻击和浅水鱼雷技术压在同一个时间窗口里。",
     relatedTopics: ["japanese_pilot", "tactical_success", "strategic_failure"],
   },
   {
@@ -196,6 +205,7 @@ const PEARL_HARBOR_TOPIC_SEEDS: TopicSeed[] = [
     axis: "strategy",
     keywords: ["战术成功", "击沉", "重创", "飞机损失", "胜利", "短期效果"],
     prompt: "从当天的破坏效果看，袭击造成巨大损失；但战术结果并不能单独决定战争结局。",
+    replyFocus: "如果只看当天，袭击确实打出了战术效果；但问题在于，战术上的火光很快照出了更长战争里的代价。",
     relatedTopics: ["strategic_failure", "pacific_fleet", "postwar_memory"],
   },
   {
@@ -204,6 +214,7 @@ const PEARL_HARBOR_TOPIC_SEEDS: TopicSeed[] = [
     axis: "strategy",
     keywords: ["战略失败", "长期战争", "工业力", "中途岛", "美国工业", "消耗战"],
     prompt: "珍珠港最尖锐的反讽在于：它打痛了美国舰队，却帮助形成了美国全民参战与工业动员的政治共识。",
+    replyFocus: "战术成功转成战略失败，关键在于它没有结束美国的战争能力，反而给了美国动员工业、民意和同盟的理由。",
     relatedTopics: ["war_mobilization", "allied_war", "postwar_memory"],
   },
   {
@@ -212,6 +223,7 @@ const PEARL_HARBOR_TOPIC_SEEDS: TopicSeed[] = [
     axis: "politics",
     keywords: ["美国参战", "为什么参战", "宣战", "国会", "战争决策", "参战理由"],
     prompt: "美国参战不只是军事反击，也是一场国会表决、公众动员和国家身份转变。",
+    replyFocus: "美国参战不是一句愤怒口号就能解释的，它还包括国会表决、公众情绪、总统语言和战争机器的启动。",
     relatedTopics: ["day_of_infamy", "isolationism", "allied_war"],
   },
   {
@@ -220,6 +232,7 @@ const PEARL_HARBOR_TOPIC_SEEDS: TopicSeed[] = [
     axis: "politics",
     keywords: ["国耻日", "演说", "罗斯福演讲", "day of infamy", "国家共识", "动员语言"],
     prompt: "《国耻日》演说把袭击转化为公共记忆和政治共识：语言在这里也是战争动员的一部分。",
+    replyFocus: "国耻日演说的力量，在于它把分散的震惊整理成共同语言，让一个国家知道自己为什么进入战争。",
     relatedTopics: ["american_entry", "isolationism", "postwar_memory"],
   },
   {
@@ -228,6 +241,7 @@ const PEARL_HARBOR_TOPIC_SEEDS: TopicSeed[] = [
     axis: "politics",
     keywords: ["孤立主义", "反战", "美国优先", "不参战", "国内舆论", "民意"],
     prompt: "袭击之前，美国社会并非一致要求参战；珍珠港改变了反战、援英和正式参战之间的政治边界。",
+    replyFocus: "珍珠港击碎孤立主义，不是因为所有争论突然消失，而是因为遭袭让反战立场失去了原先的政治支点。",
     relatedTopics: ["day_of_infamy", "conspiracy_boundary", "american_entry"],
   },
   {
@@ -236,6 +250,7 @@ const PEARL_HARBOR_TOPIC_SEEDS: TopicSeed[] = [
     axis: "controversy",
     keywords: ["情报失败", "警讯", "预警", "戒备", "雷达", "破译", "为什么没准备"],
     prompt: "情报失败必须拆开看：知道战争风险、截获部分信号、判断具体地点与时间，是不同层级的问题。",
+    replyFocus: "情报失败要拆开说：有战争风险，不等于知道地点；有零散警讯，也不等于基层完成了有效戒备。",
     relatedTopics: ["conspiracy_boundary", "diplomacy", "responsibility"],
   },
   {
@@ -244,6 +259,7 @@ const PEARL_HARBOR_TOPIC_SEEDS: TopicSeed[] = [
     axis: "controversy",
     keywords: ["罗斯福早知道", "是否早知道", "早知道", "预知", "被袭击", "阴谋论", "故意放任", "等日本来炸", "政府隐瞒", "修正主义"],
     prompt: "这个话题必须标明证据边界：可以讨论警讯与政治争议，但不能把没有证实的推断当成平台结论。",
+    replyFocus: "问罗斯福是否早知道，必须先把证据和猜测分开；可以质疑警讯处理，却不能把未证实推断当成事实。",
     relatedTopics: ["intelligence_failure", "isolationism", "responsibility"],
   },
   {
@@ -252,6 +268,7 @@ const PEARL_HARBOR_TOPIC_SEEDS: TopicSeed[] = [
     axis: "alliance",
     keywords: ["同盟国", "全球战争", "英美同盟", "反法西斯", "德国对美宣战", "全球化"],
     prompt: "珍珠港让太平洋战争、欧洲战争和亚洲战场更加紧密地接在一起，世界大战的结构由此改变。",
+    replyFocus: "同盟国战争的成形，是太平洋、欧洲和更广阔战场被同一套资源、工业和外交承诺接起来。",
     relatedTopics: ["britain_view", "war_mobilization", "postwar_memory"],
   },
   {
@@ -260,6 +277,7 @@ const PEARL_HARBOR_TOPIC_SEEDS: TopicSeed[] = [
     axis: "alliance",
     keywords: ["英国", "丘吉尔", "伦敦", "英国孤军", "大西洋宪章", "援英"],
     prompt: "对英国而言，美国参战意味着长期苦撑终于获得决定性盟友，但这份希望建立在美国遭袭的震惊之上。",
+    replyFocus: "从英国视角看，珍珠港带来的不是单纯欣慰，而是残酷现实里的转折：美国终于无法站在战争门外。",
     relatedTopics: ["allied_war", "war_mobilization", "postwar_memory"],
   },
   {
@@ -268,6 +286,7 @@ const PEARL_HARBOR_TOPIC_SEEDS: TopicSeed[] = [
     axis: "politics",
     keywords: ["战争动员", "工业转型", "军工", "生产", "全民动员", "战时经济"],
     prompt: "美国参战后的关键变化之一，是把愤怒转化为造船、飞机、兵员、税收和社会管制。",
+    replyFocus: "战争动员把情绪变成制度：造船、飞机、征兵、税收、宣传和社会管制都开始围绕战争重新排列。",
     relatedTopics: ["strategic_failure", "civilian_cost", "american_entry"],
   },
   {
@@ -276,6 +295,7 @@ const PEARL_HARBOR_TOPIC_SEEDS: TopicSeed[] = [
     axis: "society",
     keywords: ["普通人", "伤亡", "创伤", "家庭", "平民", "士兵", "代价"],
     prompt: "宏大叙事背后是普通人的身体和家庭：伤员、家书、恐惧、愤怒和长期创伤。",
+    replyFocus: "普通人的代价，往往藏在宏大叙事下面：烧伤、失踪、家书、身份怀疑和很久以后仍会回来的记忆。",
     relatedTopics: ["attack_morning", "japanese_american", "postwar_memory"],
   },
   {
@@ -284,6 +304,7 @@ const PEARL_HARBOR_TOPIC_SEEDS: TopicSeed[] = [
     axis: "society",
     keywords: ["日裔", "日裔美国人", "檀香山", "夏威夷戒严", "拘禁", "忠诚证明", "公民权"],
     prompt: "珍珠港后的社会后果不仅是爱国动员，也包括族裔怀疑、戒严、拘押和公民权边界。",
+    replyFocus: "日裔美国人的处境提醒我们：战争动员不只会召唤团结，也可能把怀疑压到无辜公民和社区身上。",
     relatedTopics: ["civilian_cost", "responsibility", "postwar_memory"],
   },
   {
@@ -292,6 +313,7 @@ const PEARL_HARBOR_TOPIC_SEEDS: TopicSeed[] = [
     axis: "society",
     keywords: ["责任", "服从命令", "道德", "罪责", "执行者", "个人责任"],
     prompt: "人物对话最难的地方，是把国家决策、军人服从和个人道德放在同一个问题里讨论。",
+    replyFocus: "责任问题不能只停在国家或个人一端；命令、服从、恐惧、选择和事后解释都要一起接受追问。",
     relatedTopics: ["victim_executor", "conspiracy_boundary", "postwar_memory"],
   },
   {
@@ -300,6 +322,7 @@ const PEARL_HARBOR_TOPIC_SEEDS: TopicSeed[] = [
     axis: "memory",
     keywords: ["跨时空对话", "水兵和飞行员", "水兵", "日本飞行员", "飞行员", "受害者", "执行者", "互相质问", "对话"],
     prompt: "一个人在港口逃生，一个人在空中执行命令；跨时空对话要让他们都受到对方经验的逼问。",
+    replyFocus: "受害者和执行者对话时，真正困难的是不让任何一方躲进抽象词里；每个人都要面对对方的具体经验。",
     relatedTopics: ["attack_morning", "japanese_pilot", "responsibility"],
   },
   {
@@ -308,6 +331,7 @@ const PEARL_HARBOR_TOPIC_SEEDS: TopicSeed[] = [
     axis: "memory",
     keywords: ["战后记忆", "纪念", "历史解释", "回望", "1945", "纪念馆", "历史意义"],
     prompt: "珍珠港既是美国参战起点，也是太平洋战争、社会管制和战后记忆争夺的交汇点。",
+    replyFocus: "战后记忆不会自动稳定下来；纪念、胜利叙事、受害者创伤和责任争论会在同一个事件上继续拉扯。",
     relatedTopics: ["what_happened", "japanese_american", "strategic_failure"],
   },
 ];
@@ -324,12 +348,16 @@ const TOPIC_EXCHANGE_CUES: Record<TopicAxis, string> = {
 
 const clampEmotion = (value: number) => Math.max(0, Math.min(100, value));
 
+function buildTopicResponse(seed: PersonaSeed, topic: TopicSeed) {
+  return `${topic.replyFocus}\n\n${seed.axisResponses[topic.axis]}`;
+}
+
 function createTopicNodes(seed: PersonaSeed): PersonaTopicNode[] {
   return PEARL_HARBOR_TOPIC_SEEDS.map((topic) => ({
     id: `${seed.id}-${topic.id}`,
     label: topic.label,
     keywords: topic.keywords,
-    response: seed.axisResponses[topic.axis],
+    response: buildTopicResponse(seed, topic),
     mood: seed.axisMoods[topic.axis],
     emotionScore: clampEmotion(seed.axisEmotion[topic.axis]),
     relatedTopics: topic.relatedTopics,
