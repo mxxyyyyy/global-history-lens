@@ -16,8 +16,7 @@ import DialogueHistory from "./pages/DialogueHistory";
 import Login from "./pages/Login";
 import About from "./pages/About";
 
-
-const base = "/";
+const base = import.meta.env.BASE_URL === "/" ? "/" : import.meta.env.BASE_URL.replace(/\/$/, "");
 
 function AppRouter() {
   return (
