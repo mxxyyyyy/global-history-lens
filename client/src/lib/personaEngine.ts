@@ -121,6 +121,28 @@ type LocalUserIntent =
   | "topic"
   | "open";
 
+type QuestionMode = "direct" | "cause" | "process" | "evidence" | "responsibility" | "emotion" | "comparison" | "open";
+
+interface UserQuestionFrame {
+  intent: LocalUserIntent;
+  mode: QuestionMode;
+  normalizedQuery: string;
+  repeatCount: number;
+  asksForEvidence: boolean;
+  asksForCause: boolean;
+  asksForResponsibility: boolean;
+  asksForEmotion: boolean;
+  asksDirectly: boolean;
+  targetPersonaIds: string[];
+}
+
+interface TopicKnowledgeNode {
+  directAnswers: string[];
+  evidenceBoundary?: string;
+  questionFrame?: string;
+  followUps: string[];
+}
+
 export interface PersonaCorpusChunk {
   id: string;
   topicId?: string;
@@ -270,6 +292,43 @@ function createFollowUpHint(topic: PersonaTopicNode, topics: PersonaTopicNode[],
   const nextTopic = related ?? nextUnvisited;
 
   return nextTopic ? nextTopic.label : undefined;
+}
+
+function createPersonaFollowUpQuestions(
+  persona: HistoricalPersona,
+  topic: PersonaTopicNode,
+  topics: PersonaTopicNode[],
+  context: ConversationContext,
+  query: string,
+  intent: LocalUserIntent,
+) {
+  const seedId = getTopicSeedId(topic);
+  const discussed = Array.from(new Set([...context.discussedTopics, topic.id]));
+  const nextTopicLabel = createFollowUpHint(topic, topics, discussed);
+  const knowledgeQuestions = TOPIC_KNOWLEDGE_GRAPH[seedId]?.followUps ?? [];
+  const roleQuestion: Partial<Record<HistoricalPersona["role"], string>> = {
+    president: "如果站在总统的位置，这个决定最难辩护的地方是什么？",
+    admiral: "如果战争拖长，你最担心的后果是什么？",
+    prime_minister: "从盟友角度看，这件事怎样改变全球战争？",
+    diplomat: "从国际法和亚洲战场看，这件事还应怎样理解？",
+    sailor: "作为现场水兵，你最想追问谁的责任？",
+    pilot: "作为执行命令的人，你后来如何面对责任？",
+    minority_civilian: "这种战争怀疑后来怎样落到日裔居民身上？",
+    commentator: "你能质疑到哪里，哪里又证据不足？",
+  };
+
+  const repeatQuestion = intent === "repeat" || getQuestionRepeatCount(context, query) > 1
+    ? `如果不重复刚才的说法，你会从${getRepeatAngle(getQuestionRepeatCount(context, query) + 1)}怎么回答？`
+    : "";
+
+  return unique([
+    ...knowledgeQuestions,
+    roleQuestion[persona.role],
+    nextTopicLabel ? `${nextTopicLabel}又说明了什么？` : undefined,
+    repeatQuestion,
+  ])
+    .filter((question) => question && normalize(question) !== normalize(query))
+    .slice(0, 3);
 }
 
 function createHiddenMemories(persona: HistoricalPersona) {
@@ -463,6 +522,272 @@ function selectTopicForLocalResponse(
 
 function includesAny(normalizedQuery: string, keywords: string[]) {
   return keywords.some((keyword) => normalizedQuery.includes(normalize(keyword)));
+}
+
+const PERSONA_MENTION_ALIASES: Array<{ personaId: string; terms: string[] }> = [
+  { personaId: "pearl_fdr", terms: ["罗斯福", "富兰克林", "总统", "白宫", "fdr", "roosevelt"] },
+  { personaId: "pearl_yamamoto", terms: ["山本", "山本五十六", "联合舰队", "yamamoto"] },
+  { personaId: "pearl_churchill", terms: ["丘吉尔", "英国首相", "churchill"] },
+  { personaId: "pearl_hu_shih", terms: ["胡适", "中国", "驻美"] },
+  { personaId: "pearl_sailor_carter", terms: ["卡特", "水兵", "美国水兵", "港口水兵"] },
+  { personaId: "pearl_pilot_sato", terms: ["佐藤", "飞行员", "日本飞行员", "舰载机"] },
+  { personaId: "pearl_keiko_morita", terms: ["森田", "惠子", "日裔", "日裔美国人"] },
+  { personaId: "pearl_harold_miller", terms: ["米勒", "评论员", "孤立主义", "调查"] },
+];
+
+const TOPIC_KNOWLEDGE_GRAPH: Partial<Record<string, TopicKnowledgeNode>> = {
+  what_happened: {
+    directAnswers: [
+      "珍珠港事件就是1941年12月7日日本海军突然袭击美国太平洋舰队基地，美国随后对日宣战，太平洋战争全面爆发。",
+      "如果先给结论：这是一次军事突袭，也是美国从援助者转为正式参战者的转折点。",
+    ],
+    questionFrame: "先分清现场伤亡、军事目标和随后宣战这三层。",
+    followUps: ["那天清晨现场到底有多混乱？", "为什么美国会因此正式参战？"],
+  },
+  attack_morning: {
+    directAnswers: [
+      "那天清晨不是有序会战，而是警报、误判、救火、爆炸和寻找同伴同时发生的混乱。",
+    ],
+    followUps: ["现场普通水兵最先承受了什么？", "这种混乱和情报失败有什么关系？"],
+  },
+  japanese_pilot: {
+    directAnswers: [
+      "日本飞行员是在训练、命令和舰队纪律中执行任务；这能解释他们为何起飞，却不能替个人责任完全开脱。",
+    ],
+    evidenceBoundary: "他们通常知道任务目标，却未必理解全部外交和内阁决策。",
+    followUps: ["执行命令能否减轻个人责任？", "让飞行员和水兵互相质问会发生什么？"],
+  },
+  strategic_gamble: {
+    directAnswers: [
+      "珍珠港是战略赌博，因为它押注一次先发制人能争取时间，却无法真正摧毁美国长期战争能力。",
+    ],
+    followUps: ["山本为什么不相信长期必胜？", "战术成功为什么会变成战略失败？"],
+  },
+  resource_embargo: {
+    directAnswers: [
+      "资源禁运确实加重了日本困境，但困境不是偷袭的免责理由；真正越过战争门槛的是决策和命令。",
+    ],
+    followUps: ["资源压力如何推向南进战略？", "外交谈判为什么没能阻止战争？"],
+  },
+  diplomacy: {
+    directAnswers: [
+      "外交失败不是突然断裂，而是谈判、照会、猜疑和军事部署同时推进，最后舰队先于和平方案抵达。",
+    ],
+    followUps: ["赫尔照会为什么重要？", "谈判是在避免战争还是争取时间？"],
+  },
+  pacific_fleet: {
+    directAnswers: [
+      "太平洋舰队成为目标，是因为它被日本军方视为南进东南亚时最可能干预的美国海军力量。",
+    ],
+    followUps: ["为什么选择夏威夷而不是别处？", "航母不在港内造成了什么后果？"],
+  },
+  carrier_tactics: {
+    directAnswers: [
+      "珍珠港的战术关键在航母远距离隐蔽接近、舰载机分波攻击和浅水鱼雷等准备。",
+    ],
+    followUps: ["这种战术为什么当时危险？", "周密战术能否证明行动正当？"],
+  },
+  tactical_success: {
+    directAnswers: [
+      "只看当天破坏，它是战术成功；但战术成功并不等于战争目标成功。",
+    ],
+    followUps: ["当天具体造成了什么损失？", "为什么短期成功会带来长期失败？"],
+  },
+  strategic_failure: {
+    directAnswers: [
+      "它成为战略失败，是因为没有压垮美国战争能力，反而给美国民意、工业和同盟动员提供了共同理由。",
+    ],
+    followUps: ["美国工业动员后来如何改变战局？", "中途岛和珍珠港有什么关联？"],
+  },
+  american_entry: {
+    directAnswers: [
+      "美国参战是因为本土军事基地遭到攻击，国会、公众和总统都获得了明确的战争理由。",
+    ],
+    followUps: ["国会宣战如何形成共识？", "孤立主义为什么被击碎？"],
+  },
+  day_of_infamy: {
+    directAnswers: [
+      "《国耻日》演说把分散的震惊组织成国家语言，使宣战变成公众可以理解和支持的行动。",
+    ],
+    followUps: ["这场演说如何塑造美国记忆？", "演说能否遮住更复杂的责任问题？"],
+  },
+  isolationism: {
+    directAnswers: [
+      "孤立主义被击碎，不是争论消失，而是遭袭让继续置身战争之外变得难以自圆其说。",
+    ],
+    followUps: ["袭击前美国社会为什么反战？", "珍珠港后民意如何变化？"],
+  },
+  intelligence_failure: {
+    directAnswers: [
+      "情报失败要分层看：知道战争风险、判断具体地点时间、让基地有效戒备，是三个不同问题。",
+    ],
+    evidenceBoundary: "可以追问警讯和戒备失败，但不能把零散警讯直接等同于准确预知。",
+    followUps: ["哪些警讯没有转化成戒备？", "责任应落在白宫还是军方指挥链？"],
+  },
+  conspiracy_boundary: {
+    directAnswers: [
+      "主流证据不支持罗斯福明确知道12月7日珍珠港会被袭击却故意放任；但警讯、误判和戒备失败确实值得追问。",
+      "如果问“是否早知道”，我会把答案拆开：知道战争风险，不等于知道具体时间地点；有警讯，也不等于故意牺牲水兵。",
+    ],
+    evidenceBoundary: "这个问题必须区分史料可证、政治责任和阴谋推断。",
+    questionFrame: "先问证据链，再问责任，而不是先把猜测当结论。",
+    followUps: ["警讯为什么没有变成有效戒备？", "哈罗德·米勒会怎样质疑这个结论？", "罗斯福本人会怎样辩解？"],
+  },
+  allied_war: {
+    directAnswers: [
+      "珍珠港使太平洋、欧洲和亚洲战场更紧密连成同盟国战争，美国的资源和军力从此正式进入全球战局。",
+    ],
+    followUps: ["美国参战如何改变英国处境？", "中国战场因此发生了什么变化？"],
+  },
+  britain_view: {
+    directAnswers: [
+      "英国视角里，珍珠港既是美国的惨痛遭袭，也是英国苦撑局面出现决定性盟友的转折。",
+    ],
+    followUps: ["丘吉尔为什么会感到战略释然？", "英国是否也回避了战争阴影？"],
+  },
+  war_mobilization: {
+    directAnswers: [
+      "战争动员就是把愤怒变成制度：征兵、造船、飞机、税收、宣传和社会管制一起启动。",
+    ],
+    followUps: ["美国工业动员为什么这么关键？", "动员是否也带来公民权问题？"],
+  },
+  civilian_cost: {
+    directAnswers: [
+      "普通人的代价不是战报数字，而是伤亡、失踪、家书、恐惧和很久以后仍会回来的创伤。",
+    ],
+    followUps: ["水兵会怎样记住那天？", "日裔居民承受了怎样的另一种代价？"],
+  },
+  japanese_american: {
+    directAnswers: [
+      "日裔美国人的处境说明，战争动员不只带来团结，也会把怀疑和审查压到无辜社区身上。",
+    ],
+    evidenceBoundary: "夏威夷袭击后有戒严、审查和局部拘押；美国本土大规模拘禁主要是在1942年政策扩大后发生。",
+    followUps: ["森田惠子如何证明自己的归属？", "国家安全能否压过公民权？"],
+  },
+  responsibility: {
+    directAnswers: [
+      "责任不能只交给国家、军人或时代中的任何一方；命令、服从、选择和后果都要被追问。",
+    ],
+    followUps: ["执行命令能否成为免责理由？", "受害者和执行者该如何对话？"],
+  },
+  victim_executor: {
+    directAnswers: [
+      "受害者与执行者对话的难处在于，双方都不能躲进抽象词：一个承受火焰，一个承认自己投下炸弹。",
+    ],
+    followUps: ["水兵会怎样质问日本飞行员？", "飞行员能否请求理解？"],
+  },
+  postwar_memory: {
+    directAnswers: [
+      "战后记忆不会自动统一；纪念、胜利叙事、创伤、责任和公民权争论会继续拉扯珍珠港。",
+    ],
+    followUps: ["纪念珍珠港时谁容易被遗漏？", "后世该如何同时记住伤亡和责任？"],
+  },
+};
+
+const ROLE_TOPIC_LENSES: Partial<Record<HistoricalPersona["role"], Partial<Record<string, string[]>>>> = {
+  president: {
+    conspiracy_boundary: [
+      "从我的位置说，我可以承认警讯和责任压力，但我不能接受把未经证实的放任说成事实。",
+      "总统要为战争准备和戒备体系接受审视，可审视不能越过证据本身。",
+    ],
+    japanese_american: [
+      "国家安全的压力真实存在，但若它伤害无辜公民，后来的人也有权审视我的政府。",
+    ],
+  },
+  admiral: {
+    conspiracy_boundary: [
+      "美国是否误判不是我能替他们裁决的事；我能承认的是，日本确实选择了奇袭。",
+    ],
+    strategic_failure: [
+      "我最担心的正是这里：一次奇袭若唤醒美国工业，就会把短期主动变成长期困局。",
+    ],
+  },
+  prime_minister: {
+    conspiracy_boundary: [
+      "我不会替华盛顿回答所有调查问题；把复杂警讯压成单一阴谋，会让理解战争变得懒惰。",
+    ],
+  },
+  diplomat: {
+    conspiracy_boundary: [
+      "外交上可以查证警讯和政策压力，但没有证据链时，谨慎比痛快的阴谋结论更重要。",
+    ],
+  },
+  sailor: {
+    conspiracy_boundary: [
+      "我不知道白宫桌上有什么文件；我只知道如果有人本该让我们更戒备，那就该被追问。",
+      "别让我替高层下结论。我能作证的是港口没有准备好，而代价落在我们身上。",
+    ],
+  },
+  pilot: {
+    conspiracy_boundary: [
+      "美国是否误判我不知道；我能证明的是，我们接到命令，飞向一个没有充分准备的港口。",
+    ],
+  },
+  minority_civilian: {
+    conspiracy_boundary: [
+      "我不能替白宫作证；我知道的是，答案越混乱，街上越容易先怀疑长着日本面孔的人。",
+      "对我来说，这个问题不只在总统办公室里，也在邻居看我的眼神里。",
+    ],
+    japanese_american: [
+      "这就是我的处境：我反对日本袭击，却仍要证明自己不是敌人。",
+      "国家说安全时，我听见的是小店门口的盘查、低声议论和家里人的沉默。",
+    ],
+  },
+  commentator: {
+    conspiracy_boundary: [
+      "我会追问政府，但也必须承认边界：战争风险和警讯存在，不等于已经证明总统故意放任。",
+      "真正值得咬住的问题是，为什么警讯没有变成戒备，而不是急着宣布一个证据不足的结论。",
+    ],
+  },
+};
+
+const ROLE_DEFAULT_LENSES: Partial<Record<HistoricalPersona["role"], string[]>> = {
+  president: ["我必须把这件事放在国家、国会和公众责任里回答。"],
+  admiral: ["我只能从舰队、时间窗口和战略风险里回答，不能把战争说成荣耀。"],
+  prime_minister: ["我从盟友和世界战争结构里看这件事，但不会假装自己站在每一处现场。"],
+  diplomat: ["我会先看证据、国际法和长期战争链条，而不是只听情绪的回声。"],
+  sailor: ["我能讲的是身体记住的现场，而不是高层文件里的全部真相。"],
+  pilot: ["我能讲的是训练、命令和飞行视角，但这不能取消我对伤害的责任。"],
+  minority_civilian: ["我会把问题带回街区、家庭和身份，因为大战略最后会落到普通人身上。"],
+  commentator: ["我会继续追问权力，因为悲痛不该成为停止调查的理由。"],
+};
+
+function analyzeUserQuestion(
+  query: string,
+  context: ConversationContext,
+  intent: LocalUserIntent,
+): UserQuestionFrame {
+  const normalizedQuery = normalize(query);
+  const asksForEvidence = includesAny(normalizedQuery, ["证据", "史料", "证明", "调查", "阴谋", "故意", "早知道", "预知", "警讯", "情报"]);
+  const asksForCause = includesAny(normalizedQuery, ["为什么", "为何", "原因", "怎么会", "如何导致"]);
+  const asksForResponsibility = includesAny(normalizedQuery, ["责任", "负责", "罪", "错", "道德", "正当", "背叛", "开脱"]);
+  const asksForEmotion = includesAny(normalizedQuery, ["感受", "害怕", "后悔", "痛苦", "怎么看", "心情", "记得"]);
+  const asksDirectly = includesAny(normalizedQuery, ["是否", "是不是", "有没有", "会不会", "能不能", "难道", "吗"]);
+  const targetPersonaIds = PERSONA_MENTION_ALIASES
+    .filter((entry) => entry.terms.some((term) => normalizedQuery.includes(normalize(term))))
+    .map((entry) => entry.personaId);
+
+  let mode: QuestionMode = "open";
+  if (asksForEvidence) mode = "evidence";
+  else if (asksForResponsibility) mode = "responsibility";
+  else if (asksForEmotion) mode = "emotion";
+  else if (asksForCause) mode = "cause";
+  else if (asksDirectly) mode = "direct";
+  else if (includesAny(normalizedQuery, ["比较", "区别", "不同", "谁更"])) mode = "comparison";
+  else if (includesAny(normalizedQuery, ["过程", "怎么发生", "如何发生"])) mode = "process";
+
+  return {
+    intent,
+    mode,
+    normalizedQuery,
+    repeatCount: getQuestionRepeatCount(context, query),
+    asksForEvidence,
+    asksForCause,
+    asksForResponsibility,
+    asksForEmotion,
+    asksDirectly,
+    targetPersonaIds,
+  };
 }
 
 function detectUserIntent(query: string, context: ConversationContext, exactTopic: PersonaTopicNode | null): LocalUserIntent {
@@ -690,6 +1015,141 @@ function createGroundedTopicPoint(persona: HistoricalPersona, topic: PersonaTopi
   return `${asPersonaText(spokenFocus)} ${asPersonaText(topic.response)}`;
 }
 
+function createDirectAnswerSentence(persona: HistoricalPersona, topic: PersonaTopicNode, context: ConversationContext, frame: UserQuestionFrame) {
+  const seedId = getTopicSeedId(topic);
+  const knowledge = TOPIC_KNOWLEDGE_GRAPH[seedId];
+  const answer = knowledge?.directAnswers.length
+    ? pickByTurn(knowledge.directAnswers, context.turnCount + frame.repeatCount - 1)
+    : asPersonaText(topic.topicFocus);
+
+  if (frame.asksDirectly || frame.mode === "evidence" || frame.mode === "responsibility") {
+    return answer;
+  }
+
+  if (frame.mode === "cause") {
+    return `要回答原因，不能只抓一个点：${answer}`;
+  }
+
+  if (frame.mode === "emotion") {
+    return `若你问我心里怎么承受，我会先承认这件事没有轻松答案：${answer}`;
+  }
+
+  if (frame.intent === "continue") {
+    return `顺着前面的问题继续看，下一层是：${answer}`;
+  }
+
+  return answer;
+}
+
+function createBoundarySentence(persona: HistoricalPersona, topic: PersonaTopicNode, frame: UserQuestionFrame) {
+  const seedId = getTopicSeedId(topic);
+  const knowledge = TOPIC_KNOWLEDGE_GRAPH[seedId];
+  const mentionedOtherPersona = frame.targetPersonaIds.some((personaId) => personaId !== persona.id);
+
+  if (knowledge?.evidenceBoundary && (frame.asksForEvidence || frame.asksDirectly || seedId === "conspiracy_boundary" || seedId === "japanese_american")) {
+    return knowledge.evidenceBoundary;
+  }
+
+  if (mentionedOtherPersona) {
+    return `但我不能替${frame.targetPersonaIds.includes("pearl_fdr") ? "罗斯福或白宫" : "另一个当事人"}作完整证词，我只能守住自己的位置。`;
+  }
+
+  if (persona.knowledgeBoundary && (frame.mode === "evidence" || frame.mode === "responsibility")) {
+    return persona.knowledgeBoundary;
+  }
+
+  return "";
+}
+
+function createRoleLensSentence(persona: HistoricalPersona, topic: PersonaTopicNode, context: ConversationContext) {
+  const seedId = getTopicSeedId(topic);
+  const topicLens = ROLE_TOPIC_LENSES[persona.role]?.[seedId];
+  if (topicLens?.length) return pickByTurn(topicLens, context.turnCount);
+
+  const defaultLens = ROLE_DEFAULT_LENSES[persona.role];
+  if (defaultLens?.length) return pickByTurn(defaultLens, context.turnCount);
+
+  return "我只能从自己站的位置说起。";
+}
+
+function isNearDuplicateSentence(a: string, b: string) {
+  const left = normalize(a);
+  const right = normalize(b);
+  if (!left || !right) return false;
+  const minLength = Math.min(left.length, right.length);
+  if (minLength < 10) return left === right;
+  const leftKey = left.slice(0, Math.min(14, left.length));
+  const rightKey = right.slice(0, Math.min(14, right.length));
+  return left.includes(rightKey) || right.includes(leftKey);
+}
+
+function createRelationshipSentence(context: ConversationContext, intent: LocalUserIntent) {
+  if (intent === "criticism") {
+    return pickByTurn([
+      "你的质疑不能被我一口挡回去。",
+      "这个问题确实该被追问，而不是被一句口号盖住。",
+      "若你逼问到这里，我也不能装作没有听见。",
+    ], context.turnCount);
+  }
+
+  if (intent === "praise") {
+    return pickByTurn([
+      "先别急着称赞，称赞若不连着代价，就会变轻。",
+      "我不愿把这件事说成可以被轻易赞美的决定。",
+      "如果要理解我，就要连迟疑和责任一起听。",
+    ], context.turnCount);
+  }
+
+  if (intent === "responsibility") {
+    return pickByTurn([
+      "责任这个词不能被我轻轻放过去。",
+      "谈责任，就不能让国家、命令和个人互相遮蔽。",
+      "我不会把责任全推给抽象的时代。",
+    ], context.turnCount);
+  }
+
+  return "";
+}
+
+function createQuestionAwareResponse(
+  persona: HistoricalPersona,
+  topic: PersonaTopicNode,
+  context: ConversationContext,
+  query: string,
+  intent: LocalUserIntent,
+) {
+  const frame = analyzeUserQuestion(query, context, intent);
+  const seedId = getTopicSeedId(topic);
+  const knowledge = TOPIC_KNOWLEDGE_GRAPH[seedId];
+  const directAnswer = createDirectAnswerSentence(persona, topic, context, frame);
+  const boundary = createBoundarySentence(persona, topic, frame);
+  const roleLens = createRoleLensSentence(persona, topic, context);
+  const relationship = createRelationshipSentence(context, intent);
+  const personalDetail = createPersonalDetail(persona, context, intent);
+  const rawTopicPoint = pickByTurn(SPOKEN_TOPIC_FOCUS[seedId] ?? [asPersonaText(topic.topicFocus)], context.turnCount + 1);
+  const topicPoint = intent === "continue" || isNearDuplicateSentence(rawTopicPoint, directAnswer) || isNearDuplicateSentence(rawTopicPoint, roleLens)
+    ? ""
+    : rawTopicPoint;
+  const questionFrame = frame.repeatCount > 1
+    ? `你又问到这里，我这次不重复上一句，而从${getRepeatAngle(frame.repeatCount)}说。`
+    : knowledge?.questionFrame ?? "";
+
+  const pieces = [
+    relationship,
+    questionFrame,
+    directAnswer,
+    boundary,
+    roleLens,
+    topicPoint,
+  ];
+
+  if (intent === "emotion" || context.turnCount >= 5 || frame.repeatCount > 1) {
+    pieces.push(personalDetail);
+  }
+
+  return polishResponseText(unique(pieces).join(" "));
+}
+
 function createIntentResponse(
   persona: HistoricalPersona,
   topic: PersonaTopicNode,
@@ -715,16 +1175,8 @@ function createIntentResponse(
     return `害怕当然有，迟疑也有。${asPersonaText(persona.innerConflict)} ${asPersonaText(persona.profile.innerConflict)} ${asPersonaText(persona.sampleLine)}`;
   }
 
-  if (intent === "responsibility") {
-    return `${createTopicLead(persona, topic, context, intent)}${createGroundedTopicPoint(persona, topic, context)} ${asPersonaText(persona.profile.innerConflict)} 责任若只说成胜败，就太便宜了。`;
-  }
-
-  if (intent === "praise") {
-    return `${createTopicLead(persona, topic, context, intent)}${createGroundedTopicPoint(persona, topic, context)} ${asPersonaText(persona.innerConflict)} 若只称赞决断而不看代价，那样的理解太容易，也太冷。`;
-  }
-
-  if (intent === "criticism") {
-    return `${createTopicLead(persona, topic, context, intent)}${createGroundedTopicPoint(persona, topic, context)} ${asPersonaText(persona.stance)} ${personalDetail}`;
+  if (intent === "responsibility" || intent === "praise" || intent === "criticism") {
+    return createQuestionAwareResponse(persona, topic, context, query, intent);
   }
 
   if (intent === "farewell") {
@@ -735,18 +1187,7 @@ function createIntentResponse(
     return createVariantResponse(persona, topic, context, query);
   }
 
-  if (intent === "continue") {
-    const continueLead = pickByTurn([
-      "那就顺着这条线往下看。",
-      "如果继续追下去，就会碰到下一层。",
-      "再往深处走，问题会变得更沉。",
-      "下一层问题，不该被跳过去。",
-      "把前面的话接住，我继续说。",
-    ], context.turnCount);
-    return `${continueLead}${createGroundedTopicPoint(persona, topic, context)} ${personalDetail}`;
-  }
-
-  return `${createTopicLead(persona, topic, context, intent)}${createGroundedTopicPoint(persona, topic, context)} ${personalDetail}`;
+  return createQuestionAwareResponse(persona, topic, context, query, intent);
 }
 
 export function createCharacterProfile(persona: HistoricalPersona): PersonaCharacterProfile {
@@ -944,6 +1385,7 @@ export function generateLocalResponse(
   mood: string;
   emotionScore: number;
   followUpHint?: string;
+  followUpQuestions?: string[];
   narration?: PersonaResponseNarration;
   context: ConversationContext;
 } {
@@ -992,12 +1434,21 @@ export function generateLocalResponse(
   const nextDiscussed = Array.from(new Set([...context.discussedTopics, selectedTopic.id]));
   const response = polishResponseText(createIntentResponse(persona, selectedTopic, context, query, userIntent));
   const localMemory = updateLocalMemory(persona, context, selectedTopic, query, response);
+  const followUpQuestions = createPersonaFollowUpQuestions(
+    persona,
+    selectedTopic,
+    persona.topicNodes,
+    context,
+    query,
+    userIntent,
+  );
 
   return {
     response,
     mood: selectedTopic.mood,
     emotionScore: selectedTopic.emotionScore,
-    followUpHint: createFollowUpHint(selectedTopic, persona.topicNodes, nextDiscussed),
+    followUpHint: followUpQuestions[0] ?? createFollowUpHint(selectedTopic, persona.topicNodes, nextDiscussed),
+    followUpQuestions,
     narration: context.turnCount === 0 ? narration : undefined,
     context: {
       ...context,

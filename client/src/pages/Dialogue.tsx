@@ -261,6 +261,8 @@ export default function Dialogue() {
               mood: result.emotion,
               emotionScore: nextContext.currentEmotion,
               character: selectedPersona.name,
+              followUpHint: result.next_hook,
+              followUpQuestions: result.next_hook ? [result.next_hook] : [],
             },
             mode: mode,
             persona: selectedPersona,
@@ -280,6 +282,8 @@ export default function Dialogue() {
             mood: localResult.mood,
             emotionScore: localResult.emotionScore,
             character: selectedPersona.name,
+            followUpHint: localResult.followUpHint,
+            followUpQuestions: localResult.followUpQuestions || [],
           },
           mode: mode,
           persona: selectedPersona,
@@ -329,6 +333,8 @@ export default function Dialogue() {
           mood: result.mood,
           emotionScore: result.emotionScore,
           character: selectedPersona.name,
+          followUpHint: result.followUpHint,
+          followUpQuestions: result.followUpQuestions || [],
         };
       }
       
@@ -652,6 +658,33 @@ export default function Dialogue() {
                   <div className="max-w-[1500px] mx-auto flex gap-2 overflow-x-auto">
                     {questions.map((q: string, i: number) => (
                       <button key={i} onClick={() => handleSearch(q)} className="shrink-0 text-xs font-mono px-3 py-1.5 border border-border bg-secondary/50 hover:bg-secondary hover:border-primary transition-all whitespace-nowrap">{q}</button>
+                    ))}
+                  </div>
+                </div>
+              );
+            }
+            if (mode === 'persona') {
+              const personaFollowUp = [
+                ...(lastBot?.content?.followUpQuestions || []),
+                lastBot?.content?.followUpHint,
+              ]
+                .filter(Boolean)
+                .filter((q: string, index: number, arr: string[]) => arr.indexOf(q) === index)
+                .filter((q: string) => !chatHistory.some(m => m.type === 'user' && m.content === q))
+                .slice(0, 3);
+              if (personaFollowUp.length === 0) return null;
+              return (
+                <div className="px-4 pt-3 pb-1 border-t border-amber-700/30 bg-amber-100/20 shrink-0">
+                  <div className="max-w-[1500px] mx-auto flex gap-2 overflow-x-auto">
+                    {personaFollowUp.map((q: string, i: number) => (
+                      <button
+                        key={i}
+                        onClick={() => handleSearch(q)}
+                        className="shrink-0 inline-flex items-center gap-1.5 text-xs font-mono px-3 py-1.5 border border-amber-700/60 bg-amber-50 hover:bg-amber-100 hover:border-amber-700 transition-all whitespace-nowrap"
+                      >
+                        <HelpCircle className="w-3 h-3" />
+                        {t('继续追问：', 'Follow up: ')}{q}
+                      </button>
                     ))}
                   </div>
                 </div>
