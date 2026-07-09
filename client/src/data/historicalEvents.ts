@@ -6,6 +6,7 @@ export interface HistoricalEvent {
   period: string;
   category: "politics" | "economy" | "society" | "military";
   description: string;
+  image?: string;
   sources: string[];
   tags: string[];
   topicId: string;

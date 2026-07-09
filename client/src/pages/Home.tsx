@@ -9,7 +9,11 @@ import {
 import { Link, useLocation } from "wouter";
 import { motion } from "framer-motion";
 import { getImagePath } from "@/lib/utils";
-import { ARCHIVE_TOPICS } from "@/data/historicalEvents";
+import {
+  ARCHIVE_TOPICS,
+  type ArchiveTopic,
+  type HistoricalEvent,
+} from "@/data/historicalEvents";
 import {
   useRef,
   useState,
@@ -41,8 +45,164 @@ const caseOrbitSpots = [
   { x: 24, y: 53, size: "4.6rem", tilt: 4 },
 ] as const;
 
+const eventOrbitSpots = [
+  { x: 17, y: 22, size: "3.9rem", tilt: 5 },
+  { x: 32, y: 18, size: "3.7rem", tilt: -4 },
+  { x: 45, y: 23, size: "3.8rem", tilt: 7 },
+  { x: 62, y: 22, size: "3.7rem", tilt: -6 },
+  { x: 79, y: 27, size: "3.8rem", tilt: 4 },
+  { x: 86, y: 42, size: "3.8rem", tilt: -7 },
+  { x: 80, y: 56, size: "3.7rem", tilt: 6 },
+  { x: 73, y: 69, size: "3.8rem", tilt: 8 },
+  { x: 61, y: 73, size: "3.7rem", tilt: -4 },
+  { x: 47, y: 75, size: "3.8rem", tilt: 5 },
+  { x: 34, y: 71, size: "3.7rem", tilt: -6 },
+  { x: 22, y: 61, size: "3.8rem", tilt: 7 },
+  { x: 16, y: 47, size: "3.7rem", tilt: -4 },
+  { x: 8, y: 31, size: "3.8rem", tilt: 9 },
+  { x: 35, y: 29, size: "3.6rem", tilt: -6 },
+  { x: 73, y: 36, size: "3.6rem", tilt: -5 },
+  { x: 55, y: 64, size: "3.6rem", tilt: -6 },
+  { x: 28, y: 51, size: "3.6rem", tilt: 4 },
+  { x: 14, y: 82, size: "3.6rem", tilt: 6 },
+] as const;
+
+type EventWithOptionalImage = HistoricalEvent & {
+  image?: string;
+  coverImage?: string;
+  img?: string;
+};
+
+type CaseConstellationItem = {
+  id: string;
+  topicId: string;
+  title: string;
+  subtitle: string;
+  image: string;
+  kind: "case" | "event";
+  spot: {
+    readonly x: number;
+    readonly y: number;
+    readonly size: string;
+    readonly tilt: number;
+  };
+};
+
+const topicEnglishCopy: Record<string, { title: string; subtitle: string }> = {
+  meiji: { title: "Meiji Restoration", subtitle: "1868-1912 / Japan" },
+  french_revolution: {
+    title: "French Revolution",
+    subtitle: "1789-1799 / France and Europe",
+  },
+  cold_war: { title: "Cold War and Berlin Wall", subtitle: "1947-1991 / Global" },
+  american_revolution: {
+    title: "American Revolution",
+    subtitle: "1775-1789 / North America",
+  },
+  industrial_revolution: {
+    title: "Industrial Revolution",
+    subtitle: "1760-1900 / Britain and the world",
+  },
+  ww1: { title: "First World War", subtitle: "1914-1918 / Global" },
+  age_of_exploration: {
+    title: "Age of Exploration",
+    subtitle: "15th-17th century / Global oceans",
+  },
+  american_civil_war: {
+    title: "American Civil War",
+    subtitle: "1861-1865 / North America",
+  },
+  black_death: {
+    title: "Black Death",
+    subtitle: "1347-1351 / Europe, North Africa, and West Asia",
+  },
+  cuban_missile_crisis: {
+    title: "Cuban Missile Crisis",
+    subtitle: "October 1962 / Cuba and the Caribbean",
+  },
+  decolonization: {
+    title: "Decolonization",
+    subtitle: "1945-1970s / Asia, Africa, and Latin America",
+  },
+  korean_war: { title: "Korean War", subtitle: "1950-1953 / Korean Peninsula" },
+  mongol_empire: {
+    title: "Mongol Empire",
+    subtitle: "1206-1368 / Eurasia",
+  },
+  reformation: {
+    title: "Reformation",
+    subtitle: "1517-1648 / Central and Western Europe",
+  },
+  renaissance: {
+    title: "Renaissance",
+    subtitle: "14th-17th century / Italy and Europe",
+  },
+  roman_empire: {
+    title: "Roman Empire",
+    subtitle: "27 BCE-476 CE / Mediterranean world",
+  },
+  russian_revolution: {
+    title: "Russian Revolution",
+    subtitle: "1917-1918 / Russian Empire",
+  },
+  slave_trade: {
+    title: "Atlantic Slave Trade",
+    subtitle: "16th-19th century / Africa, Americas, and Atlantic",
+  },
+  ww2: {
+    title: "Second World War",
+    subtitle: "1939-1945 / Europe, Asia, Pacific, and North Africa",
+  },
+};
+
+const eventEnglishTitles: Record<string, string> = {
+  mj1: "Black Ships Arrive",
+  fr1: "Estates-General Opens",
+  cw1: "Iron Curtain Speech",
+  ar1: "Boston Massacre",
+  ir1: "Flying Shuttle Invented",
+  ww1_1: "Assassination at Sarajevo",
+  aoe1: "Portuguese Voyages Begin",
+  acw1: "Fort Sumter",
+  bd1: "Plague Reaches Europe",
+  cmc1: "U-2 Discovers Missile Sites",
+  de1: "Postwar Independence Wave",
+  kw1: "War Breaks Out",
+  mge1: "Temujin Unifies the Steppe",
+  ref1: "Ninety-Five Theses",
+  ren1: "Humanism Takes Root",
+  rom1: "Augustus Establishes Principate",
+  rr1: "February Revolution",
+  st1: "Atlantic Trade Expands",
+  ww2_1: "Invasion of Poland",
+};
+
+function getEventImage(event: HistoricalEvent, topic: ArchiveTopic) {
+  const eventWithImage = event as EventWithOptionalImage;
+
+  const image = eventWithImage.image ?? eventWithImage.coverImage ?? eventWithImage.img;
+
+  return image && image !== topic.coverImage ? image : null;
+}
+
+function getTopicTitle(topic: ArchiveTopic, language: "zh" | "en") {
+  return language === "en"
+    ? (topicEnglishCopy[topic.id]?.title ?? topic.id.replaceAll("_", " "))
+    : topic.title;
+}
+
+function getTopicSubtitle(topic: ArchiveTopic, language: "zh" | "en") {
+  return language === "en"
+    ? (topicEnglishCopy[topic.id]?.subtitle ?? `${topic.period} / ${topic.region}`)
+    : `${topic.period} / ${topic.region}`;
+}
+
+function getEventTitle(event: HistoricalEvent, language: "zh" | "en") {
+  return language === "en" ? (eventEnglishTitles[event.id] ?? event.id) : event.title;
+}
+
 export default function Home() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
   const [, navigate] = useLocation();
   const heroImage = getImagePath("/images/hero-bg.jpg");
   const [spotlight, setSpotlight] = useState({ x: 50, y: 50, active: false });
@@ -50,16 +210,65 @@ export default function Home() {
   const [hasExploredHero, setHasExploredHero] = useState(false);
   const [openingPaper, setOpeningPaper] = useState<string | null>(null);
   const heroEntryPoint = useRef<{ x: number; y: number } | null>(null);
-  const caseConstellationTopics = ARCHIVE_TOPICS.slice(
-    0,
-    caseOrbitSpots.length
-  ).map((topic, index) => ({ ...topic, spot: caseOrbitSpots[index] }));
+  const caseItems = ARCHIVE_TOPICS.slice(0, caseOrbitSpots.length).map((topic, index) => ({
+    id: `case-${topic.id}`,
+    topicId: topic.id,
+    title: getTopicTitle(topic, language),
+    subtitle: getTopicSubtitle(topic, language),
+    image: topic.coverImage,
+    kind: "case" as const,
+    spot: caseOrbitSpots[index],
+  }));
+  const eventItems = ARCHIVE_TOPICS.flatMap(topic =>
+    topic.events.map(event => {
+      const image = getEventImage(event, topic);
+
+      if (!image) {
+        return null;
+      }
+
+      return {
+        id: `event-${event.id}`,
+        topicId: topic.id,
+        title: getEventTitle(event, language),
+        subtitle:
+          language === "en"
+            ? `${event.year} / ${getTopicTitle(topic, language)}`
+            : `${event.year} / ${topic.title}`,
+        image,
+        kind: "event" as const,
+      };
+    })
+  )
+    .filter((item): item is NonNullable<typeof item> => Boolean(item))
+    .filter((item, index, items) => items.findIndex(candidate => candidate.image === item.image) === index)
+    .slice(0, eventOrbitSpots.length)
+    .map((item, index) => ({
+      ...item,
+      spot: eventOrbitSpots[index],
+    }));
+  const seenImages = new Set<string>();
+  const caseConstellationItems = [...caseItems, ...eventItems].filter(item => {
+    const imageKey = item.image.toLowerCase();
+
+    if (seenImages.has(imageKey)) {
+      return false;
+    }
+
+    seenImages.add(imageKey);
+    return true;
+  }) as CaseConstellationItem[];
   const [activeCaseId, setActiveCaseId] = useState(
-    caseConstellationTopics[0]?.id ?? ""
+    caseConstellationItems[0]?.id ?? ""
   );
   const activeCase =
-    caseConstellationTopics.find(topic => topic.id === activeCaseId) ??
-    caseConstellationTopics[0];
+    caseConstellationItems.find(item => item.id === activeCaseId) ??
+    caseConstellationItems[0];
+  const lensCoreStyle = activeCase
+    ? ({
+        "--lens-bg-image": `url(${getImagePath(activeCase.image)})`,
+      } as CSSProperties)
+    : undefined;
   const archivePapers = [
     {
       id: "dialogue",
@@ -423,14 +632,14 @@ export default function Home() {
               preserveAspectRatio="none"
               aria-hidden="true"
             >
-              {caseConstellationTopics.map((topic, index) => (
+              {caseConstellationItems.map((item, index) => (
                 <line
-                  key={topic.id}
+                  key={item.id}
                   x1="50"
                   y1="38"
-                  x2={topic.spot.x}
-                  y2={topic.spot.y}
-                  className={activeCaseId === topic.id ? "is-active" : ""}
+                  x2={item.spot.x}
+                  y2={item.spot.y}
+                  className={activeCaseId === item.id ? "is-active" : ""}
                   style={{ "--line-delay": `${index * 35}ms` } as CSSProperties}
                 />
               ))}
@@ -442,38 +651,38 @@ export default function Home() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, amount: 0.45 }}
               transition={{ duration: 0.65, ease: "easeOut" }}
+              style={lensCoreStyle}
             >
               <span>Global History Lens</span>
               <strong>{activeCase?.title}</strong>
-              <em>
-                {activeCase?.period} / {activeCase?.region}
-              </em>
+              <em>{activeCase?.subtitle}</em>
             </motion.div>
 
-            {caseConstellationTopics.map((topic, index) => (
+            {caseConstellationItems.map((item, index) => (
               <a
-                key={topic.id}
-                href={`/archive/${topic.id}`}
+                key={item.id}
+                href={`/archive/${item.topicId}`}
+                data-kind={item.kind}
                 className={`case-constellation-node ${
-                  activeCaseId === topic.id ? "is-active" : ""
+                  activeCaseId === item.id ? "is-active" : ""
                 }`}
                 style={
                   {
-                    "--x": `${topic.spot.x}%`,
-                    "--y": `${topic.spot.y}%`,
-                    "--node-size": topic.spot.size,
-                    "--node-tilt": `${topic.spot.tilt}deg`,
+                    "--x": `${item.spot.x}%`,
+                    "--y": `${item.spot.y}%`,
+                    "--node-size": item.spot.size,
+                    "--node-tilt": `${item.spot.tilt}deg`,
                     "--node-delay": `${index * 42}ms`,
                   } as CSSProperties
                 }
-                aria-label={`${topic.title} ${topic.period}`}
-                onMouseEnter={() => setActiveCaseId(topic.id)}
-                onFocus={() => setActiveCaseId(topic.id)}
+                aria-label={`${item.title} ${item.subtitle}`}
+                onMouseEnter={() => setActiveCaseId(item.id)}
+                onFocus={() => setActiveCaseId(item.id)}
               >
-                <img src={getImagePath(topic.coverImage)} alt={topic.title} />
+                <img src={getImagePath(item.image)} alt={item.title} />
                 <span className="case-node-meta">
-                  <span>{topic.title}</span>
-                  <small>{topic.period}</small>
+                  <span>{item.title}</span>
+                  <small>{item.subtitle}</small>
                 </span>
               </a>
             ))}

@@ -923,7 +923,7 @@
   .case-constellation-stage {
     position: relative;
     width: min(100%, 76rem);
-    min-height: clamp(25rem, 50vh, 36rem);
+    min-height: clamp(30rem, 60vh, 42rem);
     margin: clamp(1rem, 2.6vh, 1.8rem) auto 0;
   }
 
@@ -967,33 +967,66 @@
     place-items: center;
     align-content: center;
     gap: 0.55rem;
+    overflow: hidden;
+    isolation: isolate;
     transform: translate(-50%, -50%);
     border: 2px solid rgba(245, 238, 224, 0.72);
     border-radius: 50%;
     background:
-      linear-gradient(145deg, rgba(245, 238, 224, 0.12), rgba(0, 0, 0, 0.54)),
+      radial-gradient(
+        circle at 50% 36%,
+        rgba(245, 238, 224, 0.14),
+        rgba(0, 0, 0, 0.16) 38%,
+        rgba(0, 0, 0, 0.58) 76%
+      ),
+      linear-gradient(145deg, rgba(245, 238, 224, 0.08), rgba(0, 0, 0, 0.62)),
+      var(--lens-bg-image, none) center / cover no-repeat,
       rgba(16, 16, 14, 0.88);
     box-shadow:
       0 0 0 1px rgba(245, 238, 224, 0.12),
       0 2rem 6rem rgba(0, 0, 0, 0.5),
       inset 0 0 4rem rgba(232, 181, 91, 0.12);
     text-align: center;
+    text-shadow:
+      0 0.18rem 1.2rem rgba(0, 0, 0, 0.92),
+      0 0 3rem rgba(0, 0, 0, 0.7);
   }
 
   .history-lens-core::before,
   .history-lens-core::after {
     content: "";
     position: absolute;
-    inset: 1.1rem;
-    border: 1px solid rgba(245, 238, 224, 0.18);
     border-radius: inherit;
     pointer-events: none;
   }
 
+  .history-lens-core::before {
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(16, 16, 14, 0.34),
+        rgba(16, 16, 14, 0.74)
+      ),
+      radial-gradient(
+        circle at 50% 46%,
+        rgba(16, 16, 14, 0.08),
+        rgba(16, 16, 14, 0.64) 72%
+      );
+    mix-blend-mode: multiply;
+  }
+
   .history-lens-core::after {
-    inset: 2.4rem;
-    border-style: dashed;
-    opacity: 0.7;
+    inset: 1.1rem;
+    z-index: 1;
+    border: 1px solid rgba(245, 238, 224, 0.18);
+    box-shadow: inset 0 0 0 1.3rem rgba(16, 16, 14, 0.06);
+  }
+
+  .history-lens-core > * {
+    position: relative;
+    z-index: 2;
   }
 
   .history-lens-core span {
@@ -1048,6 +1081,15 @@
       transform 180ms ease;
   }
 
+  .case-constellation-node[data-kind="event"] {
+    width: calc(var(--node-size) * 1.12);
+    aspect-ratio: 1.36;
+    border-color: rgba(245, 238, 224, 0.36);
+    box-shadow:
+      0.42rem 0.5rem 0 rgba(0, 0, 0, 0.3),
+      0 0.58rem 1.5rem rgba(0, 0, 0, 0.32);
+  }
+
   .case-constellation-node img {
     width: 100%;
     height: 100%;
@@ -1067,6 +1109,12 @@
       0.8rem 0.9rem 0 rgba(0, 0, 0, 0.38),
       0 1.1rem 2.8rem rgba(0, 0, 0, 0.5);
     transform: translate(-50%, -50%) rotate(0deg) scale(1.18);
+  }
+
+  .case-constellation-node[data-kind="event"]:hover,
+  .case-constellation-node[data-kind="event"]:focus-visible,
+  .case-constellation-node[data-kind="event"].is-active {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1.12);
   }
 
   .case-constellation-node:hover img,
@@ -1186,6 +1234,11 @@
       transform: none;
       animation: case-node-grid-arrive 520ms ease-out forwards;
       animation-delay: var(--node-delay, 0ms);
+    }
+
+    .case-constellation-node[data-kind="event"] {
+      width: 100%;
+      aspect-ratio: 1.36;
     }
 
     .case-constellation-node:hover,
