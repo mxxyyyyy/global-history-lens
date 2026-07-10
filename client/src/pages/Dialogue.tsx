@@ -10,7 +10,7 @@ import CredibilityAssessment from "@/components/CredibilityAssessment";
 import CrossPerspectiveQuestions from "@/components/CrossPerspectiveQuestions";
 import LLMSettings from "@/components/LLMSettings";
 import { HISTORICAL_PERSONAS, HistoricalPersona } from "@/data/historicalPersonas";
-import { ALL_PERSPECTIVES } from "@/data/perspectiveCredibility";
+import { ALL_PERSPECTIVES, getSourceVerificationUrl } from "@/data/perspectiveCredibility";
 import { createDialogueRecord, saveDialogueHistory, loadDialogueHistory } from "@/data/dialogueHistory";
 import { loadLLMConfig, askPerspective, askPersona, type LLMConfig } from "@/lib/llm";
 import {
@@ -88,13 +88,17 @@ function getPersonaAuraClass(score?: number) {
   return "ring-2 ring-emerald-500/50";
 }
 
+function getTextSourceSearchUrl(sourceTitle: string) {
+  return `https://www.worldcat.org/search?q=${encodeURIComponent(sourceTitle)}`;
+}
+
 function toPerspectiveCardData(perspective: any) {
   const primarySource = perspective.sources?.[0];
   return {
     title: perspective.title,
     content: perspective.content,
     source: primarySource?.title || "",
-    sourceUrl: primarySource?.originalUrl || "",
+    sourceUrl: primarySource ? getSourceVerificationUrl(primarySource) : "",
     tags: perspective.biasIndicators.slice(0, 2),
   };
 }
@@ -220,6 +224,7 @@ export default function Dialogue() {
               title: p.title,
               content: p.content,
               source: p.sources?.[0] || "",
+              sourceUrl: p.sources?.[0] ? getTextSourceSearchUrl(p.sources[0]) : "",
               tags: p.biases || [],
             };
           });
@@ -316,7 +321,7 @@ export default function Dialogue() {
                 title: p.title,
                 content: `关于"${text.length > 20 ? text.substring(0, 20) + '...' : text}"这个问题，${p.title}认为：${p.credibilityAssessment} 需要特别关注的是：${p.biasIndicators[0] || ''}`,
                 source: relevantSource?.title || p.sources[0]?.title || "",
-                sourceUrl: relevantSource?.originalUrl || p.sources[0]?.originalUrl || "",
+                sourceUrl: relevantSource ? getSourceVerificationUrl(relevantSource) : p.sources[0] ? getSourceVerificationUrl(p.sources[0]) : "",
                 tags: p.biasIndicators.slice(0, 2),
               };
             });

@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { HistoricalPersona } from "@/data/historicalPersonas";
-import { Users, MapPin, Calendar, BookOpen, Heart, Shield, Brain, Flame, AlertTriangle } from "lucide-react";
+import { Users, MapPin, Calendar, BookOpen, Heart, Shield, Brain, Flame, AlertTriangle, ExternalLink } from "lucide-react";
 
 interface PersonaSelectorProps {
   personas: HistoricalPersona[];
@@ -213,6 +213,31 @@ export default function PersonaSelector({ personas, selectedPersona, onSelect }:
                   <p className="text-[11px] font-typewriter text-muted-foreground leading-relaxed">
                     已预置 {selectedPersona.topicNodes.length} 个珍珠港话题节点。知识边界：{selectedPersona.knowledgeBoundary}
                   </p>
+                </div>
+
+                <div className="bg-background border border-border/50 p-2.5 space-y-1.5">
+                  <h5 className="font-mono text-[10px] font-bold uppercase text-foreground/60 flex items-center gap-1">
+                    <BookOpen className="w-3 h-3" /> 参考来源
+                  </h5>
+                  <div className="space-y-1.5">
+                    {selectedPersona.sources.map((source) => (
+                      <a
+                        key={source.url}
+                        href={source.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="group block border border-border/40 bg-secondary/20 p-2 hover:bg-secondary/40 transition-colors"
+                      >
+                        <span className="flex items-start gap-1.5 text-[11px] font-mono font-bold text-primary underline underline-offset-2">
+                          <ExternalLink className="w-3 h-3 mt-0.5 shrink-0" />
+                          <span>{source.title}</span>
+                        </span>
+                        <span className="block mt-1 text-[10px] font-typewriter text-muted-foreground leading-relaxed">
+                          {source.description}
+                        </span>
+                      </a>
+                    ))}
+                  </div>
                 </div>
               </>
             )}

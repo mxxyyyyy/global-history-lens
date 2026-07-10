@@ -12,6 +12,12 @@ export interface SourceReference {
   originalUrl?: string;
 }
 
+export function getSourceVerificationUrl(source: SourceReference) {
+  if (source.originalUrl) return source.originalUrl;
+  const query = [source.title, source.author, source.year].filter(Boolean).join(" ");
+  return `https://www.worldcat.org/search?q=${encodeURIComponent(query)}`;
+}
+
 export interface PerspectiveAnalysis {
   title: string;
   content: string;
@@ -1884,6 +1890,256 @@ type HistoricalTopicId =
   | "slave_trade"
   | "ww2";
 
+const TOPIC_AUXILIARY_SOURCES: Record<HistoricalTopicId, SourceReference[]> = {
+  meiji: [
+    {
+      id: "aux-meiji-shimonoseki",
+      title: "《马关条约》英文全本",
+      author: "USC US-China Institute",
+      year: "1895",
+      type: "official_archive",
+      credibilityScore: 90,
+      excerpt: "条约文本呈现甲午战后日本扩张与清政府割地赔款的直接外交结果。",
+      credibilityReason: "一手条约文本可校验明治维新后日本对外扩张与东亚秩序变化的关键节点。",
+      originalUrl: "https://china.usc.edu/treaty-shimonoseki-1895",
+    },
+  ],
+  french_revolution: [
+    {
+      id: "aux-french-1791-constitution",
+      title: "1791年法国宪法文本",
+      author: "Fordham Internet History Sourcebooks",
+      year: "1791",
+      type: "official_archive",
+      credibilityScore: 88,
+      excerpt: "1791年宪法把人权宣言原则转化为君主立宪制度设计。",
+      credibilityReason: "可用于核验法国大革命从权利宣言进入制度实验阶段的具体条文。",
+      originalUrl: "https://sourcebooks.fordham.edu/mod/1791frenchconstitution.asp",
+    },
+  ],
+  cold_war: [
+    {
+      id: "aux-coldwar-nato-treaty",
+      title: "《北大西洋公约》官方文本",
+      author: "NATO",
+      year: "1949",
+      type: "official_archive",
+      credibilityScore: 92,
+      excerpt: "北约条约第五条体现西方集体防务机制的制度化。",
+      credibilityReason: "官方条约文本能核验冷战同盟结构和集体安全承诺。",
+      originalUrl: "https://www.nato.int/cps/en/natohq/official_texts_17120.htm",
+    },
+  ],
+  american_revolution: [
+    {
+      id: "aux-american-articles-confederation",
+      title: "《邦联条例》",
+      author: "美国国家档案馆",
+      year: "1781",
+      type: "official_archive",
+      credibilityScore: 91,
+      excerpt: "邦联条例显示独立后美国早期中央权力受限的制度安排。",
+      credibilityReason: "官方档案文本有助于理解独立战争后从邦联到宪法体制的转折。",
+      originalUrl: "https://www.archives.gov/milestone-documents/articles-of-confederation",
+    },
+  ],
+  industrial_revolution: [
+    {
+      id: "aux-industrial-factory-acts",
+      title: "英国工厂法与童工改革",
+      author: "英国议会",
+      year: "1833",
+      type: "official_archive",
+      credibilityScore: 88,
+      excerpt: "1833年工厂法限制儿童劳动并建立工厂监察制度。",
+      credibilityReason: "议会史料可核验工业化劳工问题如何进入国家立法。",
+      originalUrl: "https://www.parliament.uk/about/living-heritage/transformingsociety/livinglearning/19thcentury/overview/factoryacts/",
+    },
+  ],
+  ww1: [
+    {
+      id: "aux-ww1-zimmermann",
+      title: "齐默曼电报",
+      author: "美国国家档案馆",
+      year: "1917",
+      type: "official_archive",
+      credibilityScore: 92,
+      excerpt: "齐默曼电报是美国舆论转向参战的重要外交与情报证据。",
+      credibilityReason: "解密档案可核验一战后期美国参战背景。",
+      originalUrl: "https://www.archives.gov/milestone-documents/zimmermann-telegram",
+    },
+  ],
+  age_of_exploration: [
+    {
+      id: "aux-exploration-tordesillas",
+      title: "《托尔德西里亚斯条约》",
+      author: "Avalon Project",
+      year: "1494",
+      type: "official_archive",
+      credibilityScore: 88,
+      excerpt: "条约体现西葡对海外势力范围的早期制度化划分。",
+      credibilityReason: "一手条约文本能补充大航海叙事中的殖民权力结构。",
+      originalUrl: "https://avalon.law.yale.edu/15th_century/mod001.asp",
+    },
+  ],
+  american_civil_war: [
+    {
+      id: "aux-civilwar-13th-amendment",
+      title: "美国第十三修正案",
+      author: "美国国家档案馆",
+      year: "1865",
+      type: "official_archive",
+      credibilityScore: 94,
+      excerpt: "第十三修正案在宪法层面废除奴隶制。",
+      credibilityReason: "官方宪法档案可核验内战政治结果和重建起点。",
+      originalUrl: "https://www.archives.gov/milestone-documents/13th-amendment",
+    },
+  ],
+  black_death: [
+    {
+      id: "aux-blackdeath-laborers",
+      title: "1351年《劳工法令》",
+      author: "Fordham Internet History Sourcebooks",
+      year: "1351",
+      type: "official_archive",
+      credibilityScore: 86,
+      excerpt: "劳工法令试图限制瘟疫后工资上涨与劳动力流动。",
+      credibilityReason: "中世纪法令文本能核验黑死病后的社会经济冲突。",
+      originalUrl: "https://sourcebooks.fordham.edu/source/1351laborers.asp",
+    },
+  ],
+  cuban_missile_crisis: [
+    {
+      id: "aux-cmc-test-ban",
+      title: "《部分禁止核试验条约》",
+      author: "Avalon Project",
+      year: "1963",
+      type: "international",
+      credibilityScore: 88,
+      excerpt: "危机后美苏开始用军控条约降低核升级风险。",
+      credibilityReason: "国际条约文本可补充古巴导弹危机后的危机管理制度化。",
+      originalUrl: "https://avalon.law.yale.edu/20th_century/testban.asp",
+    },
+  ],
+  decolonization: [
+    {
+      id: "aux-decolonization-un1514",
+      title: "联合国大会第1514号决议",
+      author: "联合国",
+      year: "1960",
+      type: "international",
+      credibilityScore: 91,
+      excerpt: "该决议宣告给予殖民地国家和人民独立。",
+      credibilityReason: "联合国正式记录可核验非殖民化国际法与政治语言。",
+      originalUrl: "https://digitallibrary.un.org/record/206145",
+    },
+  ],
+  korean_war: [
+    {
+      id: "aux-korean-armistice",
+      title: "《朝鲜停战协定》",
+      author: "联合国调停档案",
+      year: "1953",
+      type: "international",
+      credibilityScore: 90,
+      excerpt: "停战协定规定军事分界线、非军事区和停火监督机制。",
+      credibilityReason: "停战文本是核验朝鲜战争结局和半岛分裂结构的一手材料。",
+      originalUrl: "https://peacemaker.un.org/koreanarmisticeagreement1953",
+    },
+  ],
+  mongol_empire: [
+    {
+      id: "aux-mongol-yuanshi-shizu",
+      title: "《元史·世祖本纪》",
+      author: "宋濂等",
+      year: "1370",
+      type: "literature",
+      credibilityScore: 82,
+      excerpt: "《元史》记录忽必烈建元、定都与王朝制度化过程。",
+      credibilityReason: "传统正史有助于补充蒙古帝国在中国王朝制度中的转型视角。",
+      originalUrl: "https://zh.wikisource.org/wiki/%E5%85%83%E5%8F%B2/%E5%8D%B704",
+    },
+  ],
+  reformation: [
+    {
+      id: "aux-reformation-calvin",
+      title: "加尔文《基督教要义》",
+      author: "John Calvin",
+      year: "1536",
+      type: "literature",
+      credibilityScore: 84,
+      excerpt: "《基督教要义》系统化阐释改革宗神学。",
+      credibilityReason: "关键神学文本可补充宗教改革内部思想分化。",
+      originalUrl: "https://www.ccel.org/ccel/calvin/institutes.html",
+    },
+  ],
+  renaissance: [
+    {
+      id: "aux-renaissance-copernicus",
+      title: "哥白尼《天体运行论》早期印本",
+      author: "Library of Congress",
+      year: "1543",
+      type: "literature",
+      credibilityScore: 86,
+      excerpt: "日心体系挑战传统宇宙观，连接文艺复兴知识转型与科学革命。",
+      credibilityReason: "馆藏早期印本能核验文艺复兴晚期科学知识转向。",
+      originalUrl: "https://www.loc.gov/item/49049778/",
+    },
+  ],
+  roman_empire: [
+    {
+      id: "aux-roman-res-gestae",
+      title: "Res Gestae Divi Augusti",
+      author: "Augustus",
+      year: "14",
+      type: "official_archive",
+      credibilityScore: 84,
+      excerpt: "奥古斯都自述功业呈现元首制合法性叙事。",
+      credibilityReason: "官方铭文文本可核验罗马帝国早期政治宣传与制度建构。",
+      originalUrl: "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Augustus/Res_Gestae/home.html",
+    },
+  ],
+  russian_revolution: [
+    {
+      id: "aux-russian-april-theses",
+      title: "列宁《四月提纲》",
+      author: "Vladimir Lenin",
+      year: "1917",
+      type: "literature",
+      credibilityScore: 85,
+      excerpt: "《四月提纲》提出从临时政府转向苏维埃政权的政治路线。",
+      credibilityReason: "革命核心文本可核验布尔什维克策略转向。",
+      originalUrl: "https://www.marxists.org/archive/lenin/works/1917/apr/04.htm",
+    },
+  ],
+  slave_trade: [
+    {
+      id: "aux-slavetrade-1807-act",
+      title: "1807年英国废除奴隶贸易法",
+      author: "英国立法档案",
+      year: "1807",
+      type: "official_archive",
+      credibilityScore: 90,
+      excerpt: "该法禁止英国船只参与奴隶贸易。",
+      credibilityReason: "立法原文可核验废奴运动从道德动员进入国家强制的节点。",
+      originalUrl: "https://www.legislation.gov.uk/ukpga/Geo3/47/36/contents",
+    },
+  ],
+  ww2: [
+    {
+      id: "aux-ww2-cairo",
+      title: "《开罗宣言》",
+      author: "中、美、英三国政府",
+      year: "1943",
+      type: "official_archive",
+      credibilityScore: 90,
+      excerpt: "宣言确认日本所窃取中国领土应归还中国。",
+      credibilityReason: "同盟国高层外交文件可核验中国战场与战后亚洲秩序安排。",
+      originalUrl: "https://avalon.law.yale.edu/wwii/cairo.asp",
+    },
+  ],
+};
+
 const CHINESE_PERSPECTIVES: Record<HistoricalTopicId, PerspectiveAnalysis> = {
   meiji: {
     title: "中国视角",
@@ -2496,11 +2752,32 @@ const CHINESE_PERSPECTIVES: Record<HistoricalTopicId, PerspectiveAnalysis> = {
   },
 };
 
+function withAuxiliarySources(topicId: HistoricalTopicId, perspectives: TopicPerspectives): TopicPerspectives {
+  const auxiliarySources = TOPIC_AUXILIARY_SOURCES[topicId] ?? [];
+
+  return Object.fromEntries(
+    Object.entries(perspectives).map(([key, perspective]) => {
+      const existingIds = new Set(perspective.sources.map((source) => source.id));
+      const existingTitles = new Set(perspective.sources.map((source) => source.title));
+      const newSources = auxiliarySources.filter(
+        (source) => !existingIds.has(source.id) && !existingTitles.has(source.title),
+      );
+      return [
+        key,
+        {
+          ...perspective,
+          sources: [...perspective.sources, ...newSources],
+        },
+      ];
+    }),
+  );
+}
+
 function withChinesePerspective(topicId: HistoricalTopicId, perspectives: TopicPerspectives): TopicPerspectives {
-  return {
+  return withAuxiliarySources(topicId, {
     ...perspectives,
     china: CHINESE_PERSPECTIVES[topicId],
-  };
+  });
 }
 
 // ========== ALL_PERSPECTIVES 汇总 ==========

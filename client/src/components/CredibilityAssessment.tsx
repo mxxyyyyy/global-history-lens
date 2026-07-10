@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { AlertCircle, CheckCircle, BookOpen, TrendingUp, ExternalLink } from "lucide-react";
-import { PerspectiveAnalysis } from "@/data/perspectiveCredibility";
+import { getSourceVerificationUrl, PerspectiveAnalysis } from "@/data/perspectiveCredibility";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 interface CredibilityAssessmentProps {
@@ -80,7 +80,7 @@ export default function CredibilityAssessment({ perspective }: CredibilityAssess
           <BookOpen className="w-4 h-4" /> {t("主要来源", "Key Sources")} ({perspective.sources.length})
         </h4>
         <div className="space-y-2">
-          {perspective.sources.slice(0, 2).map((source) => (
+          {perspective.sources.slice(0, 3).map((source) => (
             <motion.div
               key={source.id}
               initial={{ opacity: 0, x: -10 }}
@@ -89,18 +89,19 @@ export default function CredibilityAssessment({ perspective }: CredibilityAssess
             >
               <div className="flex justify-between items-start gap-2">
                 <div className="flex-1 min-w-0">
-                  {source.originalUrl ? (
+                  {(() => {
+                    const verificationUrl = getSourceVerificationUrl(source);
+                    return (
                     <a
-                      href={source.originalUrl}
+                      href={verificationUrl}
                       target="_blank"
                       rel="noreferrer"
                       className="block font-bold text-primary underline underline-offset-2 hover:opacity-80 truncate"
                     >
                       {source.title}
                     </a>
-                  ) : (
-                    <h5 className="font-bold text-foreground truncate">{source.title}</h5>
-                  )}
+                    );
+                  })()}
                   <p className="text-muted-foreground">
                     {source.author && `${source.author} · `}
                     {source.year} · {source.type === "official_archive" && t("官方档案", "official archive")}
@@ -121,9 +122,11 @@ export default function CredibilityAssessment({ perspective }: CredibilityAssess
                 <span className="font-mono">{t("评价：", "Note: ")}</span>
                 {source.credibilityReason}
               </p>
-              {source.originalUrl && (
+              {(() => {
+                const verificationUrl = getSourceVerificationUrl(source);
+                return (
                 <a
-                  href={source.originalUrl}
+                  href={verificationUrl}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-1 text-[10px] font-mono text-primary underline underline-offset-2 hover:opacity-80"
@@ -131,12 +134,13 @@ export default function CredibilityAssessment({ perspective }: CredibilityAssess
                   <ExternalLink className="w-3 h-3" />
                   {t("在线核验", "Verify online")}
                 </a>
-              )}
+                );
+              })()}
             </motion.div>
           ))}
-          {perspective.sources.length > 2 && (
+          {perspective.sources.length > 3 && (
             <p className="text-[10px] text-muted-foreground font-mono">
-              {t("已显示前 2 条核心来源，更多来源保留在档案库中。", "Showing the top 2 sources here. More source detail remains in the archive.")}
+              {t("已显示前 3 条核心来源，更多来源保留在档案库中。", "Showing the top 3 sources here. More source detail remains in the archive.")}
             </p>
           )}
         </div>

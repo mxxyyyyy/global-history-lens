@@ -6,7 +6,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Search, Filter, Calendar, MapPin, FileText, Image as ImageIcon, Film, Mic, Database, X, ArrowLeft, Route } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link, useLocation } from "wouter";
-import { HISTORICAL_EVENTS, ARCHIVE_CATEGORIES, ARCHIVE_TOPICS, ArchiveTopic, HistoricalEvent } from "@/data/historicalEvents";
+import { HISTORICAL_EVENTS, ARCHIVE_CATEGORIES, ARCHIVE_TOPICS, ArchiveTopic, HistoricalEvent, getArchiveSourceUrl } from "@/data/historicalEvents";
 import { getImagePath } from "@/lib/utils";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -31,6 +31,27 @@ const TOPICS_WITH_TRAVEL_ROUTES = new Set([
   "slave_trade",
   "ww2",
 ]);
+
+function ArchiveSourceLink({
+  source,
+  className,
+}: {
+  source: string;
+  className: string;
+}) {
+  return (
+    <a
+      href={getArchiveSourceUrl(source)}
+      target="_blank"
+      rel="noreferrer"
+      onClick={(event) => event.stopPropagation()}
+      className={`${className} hover:border-primary hover:text-primary hover:underline underline-offset-2 transition-colors`}
+      title="在线核验"
+    >
+      {source}
+    </a>
+  );
+}
 
 export default function Archive() {
   const { t } = useLanguage();
@@ -213,9 +234,11 @@ export default function Archive() {
                     <p className="text-xs font-mono text-muted-foreground mb-2">{t("档案来源", "Archive Sources")}:</p>
                     <div className="flex flex-wrap gap-1">
                       {event.sources.map((source, i) => (
-                        <span key={i} className="text-[10px] font-mono bg-secondary/50 px-1.5 py-0.5 border border-border/30">
-                          {source}
-                        </span>
+                        <ArchiveSourceLink
+                          key={i}
+                          source={source}
+                          className="text-[10px] font-mono bg-secondary/50 px-1.5 py-0.5 border border-border/30"
+                        />
                       ))}
                     </div>
                   </div>
@@ -387,7 +410,16 @@ export default function Archive() {
                     <h4 className="font-mono font-bold text-sm mb-3">{t("相关引证档案", "Related Source Files")}</h4>
                     <div className="flex flex-wrap gap-2">
                       {selectedEvent.sources.map((s,i) => (
-                        <span key={i} className="text-xs bg-secondary/30 px-3 py-1.5 font-mono border border-border/50 flex items-center gap-1.5"><FileText className="w-3 h-3" />{s}</span>
+                        <a
+                          key={i}
+                          href={getArchiveSourceUrl(s)}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-xs bg-secondary/30 px-3 py-1.5 font-mono border border-border/50 flex items-center gap-1.5 hover:border-primary hover:text-primary hover:underline underline-offset-2 transition-colors"
+                          title="在线核验"
+                        >
+                          <FileText className="w-3 h-3" />{s}
+                        </a>
                       ))}
                     </div>
                   </div>
@@ -461,9 +493,11 @@ export default function Archive() {
                               <p className="text-xs font-mono text-muted-foreground mb-2">{t("档案来源", "Archive Sources")}:</p>
                               <div className="flex flex-wrap gap-1">
                                 {event.sources.map((source, i) => (
-                                  <span key={i} className="text-[10px] font-mono bg-secondary/50 px-1.5 py-0.5 border border-border/30">
-                                    {source}
-                                  </span>
+                                  <ArchiveSourceLink
+                                    key={i}
+                                    source={source}
+                                    className="text-[10px] font-mono bg-secondary/50 px-1.5 py-0.5 border border-border/30"
+                                  />
                                 ))}
                               </div>
                             </div>

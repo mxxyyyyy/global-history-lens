@@ -15,6 +15,12 @@ export interface PersonaProfile {
   traits: PersonaTrait[];
 }
 
+export interface PersonaSourceReference {
+  title: string;
+  url: string;
+  description: string;
+}
+
 export type HistoricalPersonaRole =
   | "resistance_fighter"
   | "exile_student"
@@ -71,6 +77,7 @@ export interface HistoricalPersona {
   knowledgeBoundary: string;
   futureArc: string;
   sampleLine: string;
+  sources: PersonaSourceReference[];
   profile: PersonaProfile;
   topicNodes: PersonaTopicNode[];
   responses: {
@@ -121,6 +128,7 @@ interface PersonaSeed {
   knowledgeBoundary: string;
   futureArc: string;
   sampleLine: string;
+  sources: PersonaSourceReference[];
   profile: PersonaProfile;
   axisResponses: Record<TopicAxis, string>;
   axisMoods: Record<TopicAxis, string>;
@@ -419,6 +427,18 @@ const personaSeeds: PersonaSeed[] = [
     knowledgeBoundary: "可谈禁运、外交谈判、国会宣战、公众动员和同盟责任；面对阴谋论时承认警讯存在，但否认“故意放任”的证据链。",
     futureArc: "1941年强调回应攻击；1942年强调全民动员；1945年回望时会承认胜利也留下日裔拘禁和战略轰炸等道德阴影。",
     sampleLine: "我向国会陈述的不是一场遥远战争，而是美国已经遭受攻击的事实。",
+    sources: [
+      {
+        title: "罗斯福“国耻日”演说",
+        url: "https://avalon.law.yale.edu/20th_century/dec71941.asp",
+        description: "总统向国会请求对日宣战的核心文本。",
+      },
+      {
+        title: "罗伯茨委员会珍珠港调查报告",
+        url: "https://www.ibiblio.org/pha/pha/roberts/roberts.html",
+        description: "战时官方调查材料，用于限定情报失败与责任争议。",
+      },
+    ],
     profile: {
       age: "59岁",
       origin: "纽约州海德公园",
@@ -474,6 +494,18 @@ const personaSeeds: PersonaSeed[] = [
     knowledgeBoundary: "可讲资源困境、南进战略、先发制人、航母奇袭和对美国工业力的担忧；不应把袭击说成必然胜利。",
     futureArc: "1941年强调争取半年到一年主动权；1942年后面对美国反攻压力；战后回望会承认击中舰队也唤醒工业巨人。",
     sampleLine: "我能做的，是在最初数月争取主动；若战争拖长，日本面对的将不是一支舰队，而是整个美国工业。",
+    sources: [
+      {
+        title: "Japanese Monograph No. 97: Pearl Harbor Operations",
+        url: "https://www.ibiblio.org/hyperwar/Japan/Monos/JM-97/index.html",
+        description: "日方战后作战史资料，支撑奇袭计划与舰队视角。",
+      },
+      {
+        title: "珍珠港袭击听证与档案汇编",
+        url: "https://www.ibiblio.org/pha/",
+        description: "多卷调查资料，适合交叉核验计划、警讯与责任争论。",
+      },
+    ],
     profile: {
       age: "57岁",
       origin: "日本新潟县长冈",
@@ -529,6 +561,18 @@ const personaSeeds: PersonaSeed[] = [
     knowledgeBoundary: "可谈英美同盟、大西洋宪章、全球战争格局、欧洲与太平洋战场连接；不要让他主导解释日本军事计划细节。",
     futureArc: "1941年说英国不再孤立；1944年强调美国工业与登陆能力；1945年后看到胜利与帝国松动同时到来。",
     sampleLine: "美国不是被邀请进战争的，它是被战争击中了。",
+    sources: [
+      {
+        title: "《大西洋宪章》",
+        url: "https://avalon.law.yale.edu/wwii/atlantic.asp",
+        description: "英美战时合作与战后秩序语言的关键文本。",
+      },
+      {
+        title: "Churchill: Blood, Toil, Tears and Sweat",
+        url: "https://sourcebooks.fordham.edu/mod/churchill-blood.asp",
+        description: "丘吉尔战时动员语言与政治风格的代表性材料。",
+      },
+    ],
     profile: {
       age: "67岁",
       origin: "英国牛津郡布伦海姆宫",
@@ -584,6 +628,18 @@ const personaSeeds: PersonaSeed[] = [
     knowledgeBoundary: "可谈中国抗战、美国援华、太平洋战争全球化、国际法与侵略问题；不要预知战后秩序的所有结果。",
     futureArc: "1941年强调中国多年呼吁被听见；1943年可谈开罗会议；1945年回望中国成为战胜国但秩序仍不稳定。",
     sampleLine: "太平洋不是隔离战争的海洋，而是战争抵达美国门前的道路。",
+    sources: [
+      {
+        title: "《开罗宣言》",
+        url: "https://avalon.law.yale.edu/wwii/cairo.asp",
+        description: "中美英关于战后亚洲秩序与中国领土归还的外交文本。",
+      },
+      {
+        title: "胡适档案与外交研究检索",
+        url: "https://www.worldcat.org/search?q=%E8%83%A1%E9%80%82+%E9%A9%BB%E7%BE%8E+%E5%A4%96%E4%BA%A4+%E7%8F%8D%E7%8F%A0%E6%B8%AF",
+        description: "用于追踪胡适驻美外交、援华舆论与太平洋战争语境的研究材料。",
+      },
+    ],
     profile: {
       age: "50岁",
       origin: "安徽绩溪",
@@ -639,6 +695,18 @@ const personaSeeds: PersonaSeed[] = [
     knowledgeBoundary: "不能讲高层情报判断；只能讲现场、军中传闻和后来听说的东西。",
     futureArc: "1941年只想活下来；1942年想回到海上作战；1945年后仍会梦见那天早上的火。",
     sampleLine: "我不知道东京和华盛顿谈了什么。我只记得警报响起来时，天空里全是飞机。",
+    sources: [
+      {
+        title: "美国国家档案馆：珍珠港研究入口",
+        url: "https://www.archives.gov/research/military/ww2/pearl-harbor",
+        description: "现场伤亡、舰队与调查材料的官方档案入口。",
+      },
+      {
+        title: "罗斯福“国耻日”演说",
+        url: "https://avalon.law.yale.edu/20th_century/dec71941.asp",
+        description: "用于连接现场经验与美国参战动员语言。",
+      },
+    ],
     profile: {
       age: "22岁",
       origin: "美国俄亥俄州（复合设定）",
@@ -694,6 +762,18 @@ const personaSeeds: PersonaSeed[] = [
     knowledgeBoundary: "不能替日本内阁解释全部政策；可讲训练、命令、飞行视角和对美国舰队的理解。",
     futureArc: "1941年说任务完成；1943年后意识到胜利没有延续；1945年后明白投下的不只是炸弹。",
     sampleLine: "起飞前，没有人说这是轻松的胜利。我们被告知，若不能先击中美国舰队，日本南方作战就会被掐住喉咙。",
+    sources: [
+      {
+        title: "Japanese Monograph No. 97: Pearl Harbor Operations",
+        url: "https://www.ibiblio.org/hyperwar/Japan/Monos/JM-97/index.html",
+        description: "日方作战经过、航母编队与攻击计划的战后整理资料。",
+      },
+      {
+        title: "珍珠港袭击调查档案汇编",
+        url: "https://www.ibiblio.org/pha/",
+        description: "用于交叉核验日方行动与美方调查材料。",
+      },
+    ],
     profile: {
       age: "24岁",
       origin: "日本地方中产家庭（复合设定）",
@@ -749,6 +829,18 @@ const personaSeeds: PersonaSeed[] = [
     knowledgeBoundary: "可谈夏威夷戒严、怀疑、局部拘押和歧视；谈美国本土大规模日裔拘禁时要说明那是1942年后政策扩大。",
     futureArc: "1941年说我也害怕炸弹；1942年说我更害怕别人看我的眼神；战后追问国家安全是否压过公民权。",
     sampleLine: "爆炸那天，我也害怕。我害怕日本飞机，也害怕第二天街上看我的眼神。",
+    sources: [
+      {
+        title: "第9066号行政令",
+        url: "https://www.archives.gov/milestone-documents/executive-order-9066",
+        description: "日裔拘禁政策扩大的关键官方文本，用于界定1942年后的政策背景。",
+      },
+      {
+        title: "Densho Encyclopedia",
+        url: "https://encyclopedia.densho.org/",
+        description: "日裔美国人战时经历、夏威夷语境与拘禁史的权威专题资料库。",
+      },
+    ],
     profile: {
       age: "19岁",
       origin: "夏威夷檀香山二代移民家庭（复合设定）",
@@ -804,6 +896,18 @@ const personaSeeds: PersonaSeed[] = [
     knowledgeBoundary: "必须标注为争议叙事；可质疑警讯与戒备失败，但主流史学不支持“罗斯福明确知道12月7日珍珠港将被袭却故意放任”。",
     futureArc: "1942年质疑政府利用珍珠港；1946年说调查没有回答所有问题；现代回看必须提示证据边界。",
     sampleLine: "我能证明华盛顿知道战争正在逼近；我不能证明总统桌上写着“12月7日，珍珠港”。",
+    sources: [
+      {
+        title: "珍珠港袭击听证与档案汇编",
+        url: "https://www.ibiblio.org/pha/",
+        description: "阴谋论与情报失败争议必须回到调查材料中核验。",
+      },
+      {
+        title: "罗伯茨委员会珍珠港调查报告",
+        url: "https://www.ibiblio.org/pha/pha/roberts/roberts.html",
+        description: "战时官方调查报告，适合标注争议叙事的证据边界。",
+      },
+    ],
     profile: {
       age: "45岁",
       origin: "美国中西部城市（复合设定）",
