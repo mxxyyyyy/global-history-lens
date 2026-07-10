@@ -88,6 +88,17 @@ function getPersonaAuraClass(score?: number) {
   return "ring-2 ring-emerald-500/50";
 }
 
+function toPerspectiveCardData(perspective: any) {
+  const primarySource = perspective.sources?.[0];
+  return {
+    title: perspective.title,
+    content: perspective.content,
+    source: primarySource?.title || "",
+    sourceUrl: primarySource?.originalUrl || "",
+    tags: perspective.biasIndicators.slice(0, 2),
+  };
+}
+
 function getResponseForQuestion(question: string) {
   const normalized = question.toLowerCase();
   const allTopicQuestions: { [topicId: string]: string[] } = {};
@@ -106,12 +117,7 @@ function getResponseForQuestion(question: string) {
       if (!perspectives) return null;
       const result: any = {};
       Object.keys(perspectives).forEach((key) => {
-        result[key] = {
-          title: perspectives[key].title,
-          content: perspectives[key].content,
-          source: perspectives[key].sources[0]?.title || "",
-          tags: perspectives[key].biasIndicators.slice(0, 2),
-        };
+        result[key] = toPerspectiveCardData(perspectives[key]);
       });
       return { response: result, topicId, perspectives };
     }
@@ -152,12 +158,7 @@ function getResponseForQuestion(question: string) {
 
   const result: any = {};
   Object.keys(perspectives).forEach((key) => {
-    result[key] = {
-      title: perspectives[key].title,
-      content: perspectives[key].content,
-      source: perspectives[key].sources[0]?.title || "",
-      tags: perspectives[key].biasIndicators.slice(0, 2),
-    };
+    result[key] = toPerspectiveCardData(perspectives[key]);
   });
   return { response: result, topicId: matchedTopic, perspectives };
 }
@@ -315,6 +316,7 @@ export default function Dialogue() {
                 title: p.title,
                 content: `关于"${text.length > 20 ? text.substring(0, 20) + '...' : text}"这个问题，${p.title}认为：${p.credibilityAssessment} 需要特别关注的是：${p.biasIndicators[0] || ''}`,
                 source: relevantSource?.title || p.sources[0]?.title || "",
+                sourceUrl: relevantSource?.originalUrl || p.sources[0]?.originalUrl || "",
                 tags: p.biasIndicators.slice(0, 2),
               };
             });
@@ -538,7 +540,7 @@ export default function Dialogue() {
                             <div className="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-6 items-start">
                               {Object.keys(msg.content._data).map((key, pIdx) => {
                                 const perspective = msg.content._data[key];
-                                const flags: { [k: string]: string } = { japan: "JP", international: "INT", britain: "UK", france: "FR", usa: "US", soviet: "SU", german: "DE", western: "WEST", central_asia: "CA", american: "US", british: "UK", workers: "LAB", colonial: "COL", allied: "ALL", european: "EU", indigenous: "IND" };
+                                const flags: { [k: string]: string } = { japan: "JP", china: "CN", international: "INT", britain: "UK", france: "FR", usa: "US", soviet: "SU", german: "DE", western: "WEST", central_asia: "CA", american: "US", british: "UK", workers: "LAB", colonial: "COL", allied: "ALL", european: "EU", indigenous: "IND" };
                                 const flag = flags[key] || "📜";
                                 const topicId = msg.content._topicId;
                                 const fullPerspective = topicId && ALL_PERSPECTIVES[topicId] ? ALL_PERSPECTIVES[topicId][key] : null;
@@ -559,7 +561,18 @@ export default function Dialogue() {
                                         {perspective.source && (
                                           <div className="border-t border-border/40 pt-3 text-xs font-typewriter text-muted-foreground">
                                             <span className="font-mono font-bold text-foreground">{t('主要来源：', 'Primary source: ')}</span>
-                                            {perspective.source}
+                                            {perspective.sourceUrl ? (
+                                              <a
+                                                href={perspective.sourceUrl}
+                                                target="_blank"
+                                                rel="noreferrer"
+                                                className="text-primary underline underline-offset-2 hover:opacity-80"
+                                              >
+                                                {perspective.source}
+                                              </a>
+                                            ) : (
+                                              perspective.source
+                                            )}
                                           </div>
                                         )}
                                         {perspective.tags?.length > 0 && (

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { AlertCircle, CheckCircle, BookOpen, TrendingUp } from "lucide-react";
+import { AlertCircle, CheckCircle, BookOpen, TrendingUp, ExternalLink } from "lucide-react";
 import { PerspectiveAnalysis } from "@/data/perspectiveCredibility";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -89,7 +89,18 @@ export default function CredibilityAssessment({ perspective }: CredibilityAssess
             >
               <div className="flex justify-between items-start gap-2">
                 <div className="flex-1 min-w-0">
-                  <h5 className="font-bold text-foreground truncate">{source.title}</h5>
+                  {source.originalUrl ? (
+                    <a
+                      href={source.originalUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="block font-bold text-primary underline underline-offset-2 hover:opacity-80 truncate"
+                    >
+                      {source.title}
+                    </a>
+                  ) : (
+                    <h5 className="font-bold text-foreground truncate">{source.title}</h5>
+                  )}
                   <p className="text-muted-foreground">
                     {source.author && `${source.author} · `}
                     {source.year} · {source.type === "official_archive" && t("官方档案", "official archive")}
@@ -97,6 +108,7 @@ export default function CredibilityAssessment({ perspective }: CredibilityAssess
                     {source.type === "media" && t("媒体报道", "media")}
                     {source.type === "memoir" && t("亲历记录", "memoir")}
                     {source.type === "international" && t("国际文献", "international record")}
+                    {source.type === "literature" && t("文献文本", "historical text")}
                   </p>
                 </div>
                 <div className="shrink-0 flex items-center gap-1">
@@ -109,6 +121,17 @@ export default function CredibilityAssessment({ perspective }: CredibilityAssess
                 <span className="font-mono">{t("评价：", "Note: ")}</span>
                 {source.credibilityReason}
               </p>
+              {source.originalUrl && (
+                <a
+                  href={source.originalUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 text-[10px] font-mono text-primary underline underline-offset-2 hover:opacity-80"
+                >
+                  <ExternalLink className="w-3 h-3" />
+                  {t("在线核验", "Verify online")}
+                </a>
+              )}
             </motion.div>
           ))}
           {perspective.sources.length > 2 && (
